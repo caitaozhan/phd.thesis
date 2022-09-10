@@ -1,0 +1,44 @@
+\chapter{Efficient Localization of Multiple Intruders for Shared Spectrum System}
+\label{chap:ipsn}
+
+% Abstract
+
+We address the problem of localizing multiple intruders (unauthorized
+transmitters) using a distributed set of sensors in the context of a
+shared spectrum system. 
+In contrast to single transmitter localization, multiple
+transmitter localization (\mtl) has not been thoroughly studied.
+In shared spectrum systems, it is important to be able to
+localize simultaneously present multiple intruders to effectively
+protect a shared spectrum from malware-based, jamming, or other
+multi-device unauthorized-usage attacks. The key challenge in solving
+the MTL problem comes from the need to ``separate'' an aggregated
+signal received from multiple intruders into separate
+signals from individual intruders. Furthermore, in a shared spectrum
+paradigm, presence of an evolving set of authorized users (e.g.,
+primary and secondary users) adds to the challenge.
+
+In this paper, we propose an efficient algorithm for the \mtl problem
+based on the hypothesis-based Bayesian approach called
+\map. Direct application of the \map approach to
+the \mtl problem incurs prohibitive computational and training
+cost. In this work, we develop optimized techniques based on \map with
+significantly improved computational and training costs. In
+particular, we develop a novel interpolation method, \ildw, which helps
+minimize the training cost. We generalize our techniques via
+online-learning to the setting wherein there may be a set of
+dynamically-changing authorized users present in the background.
+We evaluate our developed techniques on large-scale simulations as
+well as on small-scale indoor and outdoor testbeds. Our experiments
+demonstrate that our technique outperforms the prior approaches by
+significant margins,  i.e., error up to 74\% less in large-scale simulations and 30\% less in real-world testbeds.
+
+
+\input{chapters/ipsn/new-intro}
+\input{chapters/ipsn/problem_background}
+\input{chapters/ipsn/localization}
+\input{chapters/ipsn/authorized_users}
+\input{chapters/ipsn/evaluation-gupta2}
+\input{chapters/ipsn/testbed}
+\input{chapters/ipsn/conclusion}
+\input{chapters/ipsn/acknowledge}

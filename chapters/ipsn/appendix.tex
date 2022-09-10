@@ -1,0 +1,19 @@
+\section*{Appendix}
+\subsection*{Deduction of Lemma ~\ref{lem:p}}
+Use $S$ number of sensors to determine the power for the hypothesis at location $\lstar$, such that the hypothesis has the maximum probability.
+Let $N(\mu_1, \sigma_1^2), \cdots, $ $N(\mu_S, \sigma_S^2)$ be the PDs of the $S$ sensors, built during the training phase, when a transmitter with power $\pstar$ is transmitting at location $\lstar$. 
+Let $\vx = \{x_1, x_2, \cdots, x_S\}$ be the observation vector of the $S$ sensors during the localization phase. 
+Then we predict the hypothesis at location $\lstar$ most likely has the power $\pstar + \delta_p$, where 
+$$\delta_p = \frac{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2} (x_j - \mu_j)}{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}}$$
+The deduction relies on the assumption that the path loss between a transmitter and receiver is independent of transmit power, or unchanged. The likelihood of \vx, given  $ \mathbf{N} = \{ N(\mu_1, \delta_1^2), \cdots, $ $N(\mu_S, \delta_S^2) \} $ and $\delta_p$ is,
+\begin{align*}
+P(\vx | \mathbf{N}, \delta_p)        = & \prod_{j=1}^{S} \frac{1}{\sqrt{2\pi\sigma_j^2}} \exp{(- \frac{(x_j - (\mu_j + \delta_p))^2}{2\sigma_j^2})} \\
+log_e(P(\vx | \mathbf{N}, \delta_p)) = & log_e(\prod_{j=1}^{S}\frac{1}{\sqrt{2\pi\sigma_j^2}}) - (\sum_{j=1}^{S} \frac{(x_j - (\mu_j + \delta_p))^2}{2\sigma_j^2})  \\
+\frac{\partial (log_e(P(\vx | \mathbf{N}, \delta_p))) }{\partial \delta_p} = & \sum_{j=1}^{S} \frac{x_j - \mu_j - \delta_p}{\sigma_j^2}
+\end{align*}
+To maximize the likelihood of \vx, let the differential equals to 0.
+\begin{align*}
+\sum_{j=1}^{S} \frac{x_j - \mu_j - \delta_p}{\sigma_j^2} = & 0 \\
+ %\Rightarrow  \delta_p  = &(\frac{  \frac{\gamma}{\sigma_1^2}(x_1 - \mu_1) + \cdots + \frac{\gamma}{\sigma_S^2} (x_S - \mu_S)  %}{\sigma_1^2 \cdots \sigma_S^2}) \times \frac{\sigma_1^2 \cdots \sigma_S^2}{\frac{\gamma}{\sigma_1^2} + \cdots + %\frac{\gamma}{\sigma_S^2} } \\
+\Rightarrow \delta_p= & \frac{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2} (x_j - \mu_j)}{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}}  \ \ \ \text{ , where } \gamma = \prod_{j=1}^{S}\sigma_j^2 \\
+\end{align*}

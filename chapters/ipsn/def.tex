@@ -1,0 +1,172 @@
+
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\arani}[1]{\textcolor{red}{\bf{Arani: #1 \\}}}
+\newcommand{\sd}[1]{\textcolor{red}{\footnotesize{SD: #1 \\}}}
+\newcommand{\cbl}{\color{blue}}
+\newcommand{\cbr}{\color{red}}
+\newcommand{\cb}{\color{black}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize} \bigskip}
+\newcommand{\parahead}[1]{\textbf{#1}}
+\newcommand{\para}[1]{\smallskip \noindent\textbf{#1}}
+\newcommand{\eat}[1]{}
+\newcommand{\ph}[1]{\parahead{#1}\\}
+\newcommand{\softpara}[1]{\smallskip \noindent \underline{#1}}
+\newcommand{\softerpara}[1]{\smallskip \noindent \underline{\textsc{#1}}}
+
+
+\newenvironment{nalign}{
+	\begin{equation}
+	\begin{aligned}
+}{
+\end{aligned}
+\end{equation}
+\ignorespacesafterend
+}
+
+\newcommand{\mtl}{\texttt{MTL}\xspace}
+\newcommand{\mtlss}{\texttt{MTL-SS}\xspace}
+\newcommand{\ouralgo}{\texttt{MAP$^*$}\xspace}
+\newcommand{\ouralgos}{\texttt{MAP$^{*+}$}\xspace}
+\newcommand{\ouralgoss}{\texttt{MAP$^{**}$}\xspace}
+\newcommand{\ildw}{\texttt{ILDW}\xspace}
+\newcommand{\idw}{\texttt{IDW}\xspace}
+\newcommand{\map}{\texttt{MAP}\xspace}
+\newcommand{\mll}{\texttt{MAP}\xspace}
+\newcommand{\mapij}{\texttt{MAP}\ensuremath{_ij}\xspace}
+\newcommand{\mmap}{\texttt{O-MAP}\xspace}
+\newcommand{\splot}{\texttt{SPLOT}\xspace}
+\newcommand{\cl}{\texttt{CLUS}\xspace}
+\newcommand{\random}{\texttt{RAND}\xspace}
+\newcommand{\coverage}{\texttt{COV}\xspace}
+
+\def\lss{{\texttt LSS}\xspace}
+
+
+\newcommand{\perr}{\mathrm{P_{err}}}
+\newcommand{\lerr}{\mathrm{L_{err}}}
+\newcommand{\mr}{\mathrm{M_{r}}}
+\newcommand{\fr}{\mathrm{F_{r}}}
+\newcommand{\ierr}{\mathrm{I_{err}}}
+\newcommand{\bbx}{\mathbf{x}}
+\newcommand{\bbp}{\mathbf{p}}
+\newcommand{\bbw}{\mathbf{w}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\matp}{\Sigma^{-1}}
+\newcommand{\qterm}[3]{Q(\frac{1}{2}\sqrt{(#3 - #1)^T{#2}^{-1}(#3 - #1))}}
+
+\newcommand{\ar}[1]{{\textcolor{red}{Arani:#1}}}
+\newcommand{\hg}[1]{{\textcolor{blue}{Himanshu:#1}}}
+\newcommand{\ques}[2]{{\textcolor{black}{#1}}}
+\newcommand{\ca}[1]{{\textcolor{green}{Caitao:#1}}}
+
+\newcommand{\bbS}{\mathbf{S}}
+\newcommand{\xn}{\mathbf{x}}
+\newcommand{\tn}{\mathbf{t}_n}
+\newcommand{\T}{\ensuremath{\mathbf{T}}}
+\newcommand{\oacc}{\ensuremath{\mathrm{O_{acc}}}}
+\newcommand{\oaux}{\ensuremath{\mathrm{O_{aux}}}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\bbh}{\mathbb{H}}
+\newcommand{\eqn}[1]{Eq (#1)}
+
+\newcommand\test[2]{
+	\underset{#1}{\overset{#2}{\gtrless}}
+}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{obs}{Observation}
+\newtheorem{applem}{Lemma}
+\newtheorem{sublem}{Lemma}[lem]
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+%\newtheorem{definition}{Definition}
+
+\def\blackbox{\hfill {\vrule height6pt width6pt depth0pt}}
+\def\Box{\hfill \framebox(5.25,5.25){}}
+\def\qd{\Box}
+\def\QD{\blackbox}
+\def\qedsymbol{\blackbox}
+
+
+\newenvironment{thm-prf}{\vsp \begin{thm} \nopagebreak}{\end{thm}}
+\newenvironment{lemma-wo-prf}{\begin{lem} \nopagebreak}{{\hfill$\blackbox$} \end{lem}}
+\newenvironment{lem-prf}{\vsp \begin{lem} \nopagebreak}{\end{lem}}
+\newenvironment{prf}{{\sc Proof:} \nopagebreak }{{\hfill$\blackbox$} \vsp}
+
+\newcommand{\lz}{\ensuremath{R_0}\xspace}
+\newcommand{\lo}{\ensuremath{R_1}\xspace}
+\newcommand{\lt}{\ensuremath{R_2}\xspace}
+\newcommand{\li}{\ensuremath{R_i}\xspace}
+\newcommand{\lm}{\ensuremath{R_n}\xspace}  % m vs n. intentional.
+\newcommand{\uz}{\ensuremath{\mathbf{u_0}}\xspace}
+\newcommand{\ui}{\ensuremath{\mathbf{u_i}}\xspace}
+\newcommand{\di}{\ensuremath{d_i}\xspace}
+\newcommand{\dz}{\ensuremath{d_0}\xspace}
+
+\newcommand{\hz}{\ensuremath{H_0}\xspace}
+\newcommand{\ho}{\ensuremath{H_1}\xspace}
+\newcommand{\hi}{\ensuremath{H_i}\xspace}
+\newcommand{\hio}{\ensuremath{H_{i1}}\xspace}
+\newcommand{\hit}{\ensuremath{H_{i2}}\xspace}
+\newcommand{\hj}{\ensuremath{H_j}\xspace}
+\newcommand{\hM}{\ensuremath{H_m}\xspace}
+\newcommand{\ith}{\ensuremath{i^{th}}\xspace}
+\newcommand{\jth}{\ensuremath{j^{th}}\xspace}
+
+
+%%\def\hil{$H_1(L)$\xspace}
+%%\def\hir{$H_1(r)$\xspace}
+%\def\pd{$P_d$\xspace}
+%\def\pfa{$P_{fa}$\xspace}
+
+\newcommand{\st}{\ensuremath{S_T}\xspace}
+\newcommand{\vx}{\ensuremath{\mathbf{x}}\xspace}    % 
+\newcommand{\vs}{\ensuremath{\mathbf{x_S}}\xspace}  %
+\newcommand{\vxt}{\ensuremath{\mathbf{x_T}}\xspace}  % 
+%\newcommand{\hlp}{\ensuremath{H_{l}^{p_l}}}
+\newcommand{\pstar}{\ensuremath{p^*}\xspace}  % find. Training power.
+\newcommand{\lstar}{\ensuremath{l^*}\xspace}  % Could/should be changed. particular location in power.tex
+\newcommand{\hlp}{\ensuremath{\calh_{l,p}}\xspace}
+\newcommand{\hLp}{\ensuremath{\calh_{\lstar,p}}\xspace}
+\newcommand{\hlpl}{\ensuremath{\calh_{l,p(l)}}\xspace}
+\newcommand{\hLP}{\ensuremath{\calh_{\lstar,\pstar}}\xspace}
+\newcommand{\vxlp}{\ensuremath{\mathbf{x}_{l,p}}}
+\newcommand{\vxlpl}{\ensuremath{\mathbf{x}_{l,p(l)}}}
+%\newcommand{\rp}{\ensuremath{r_p}\xspace}
+\newcommand{\Rp}{\ensuremath{R_p}\xspace}
+\newcommand{\rt}{\ensuremath{R_t}\xspace}
+%%%%
+\newcommand{\Ka}{\ensuremath{\mathcal{K}}\xspace}
+\newcommand{\Pa}{\ensuremath{\mathcal{R}}\xspace}
+\newcommand{\pd}{\ensuremath{\mathcal{P}}\xspace}
+\newcommand{\I}{\ensuremath{\mathcal{I}}\xspace}
+%\def\ka{\cal{K}\xspace}
+%\def\P{\cal{P}\xspace}
+%\def\I{\cal{I}\xspace}
+\newcommand{\ii}{\ensuremath{\I_{j}}\xspace}
+
+\newcommand{\squishlisttwo}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\leftmargin}{2em}
+    \setlength{\labelwidth}{1.5em}
+    \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+  \end{list}  }
+
+\newcounter{packednmbr}
+\newcounter{packedalph}
+\newenvironment{packedalpha}{\begin{list}{(\alph{packedalph})}{\usecounter{packedalph}\setlength{\itemsep}{0pt}\addtolength{\labelwidth}{-5pt}\setlength{\leftmargin}{\labelwidth}\setlength{\listparindent}{\parindent}\setlength{\parsep}{0pt}\setlength{\topsep}{3pt}}}{\end{list}}
+\newenvironment{packedenumerate}{\begin{list}{\thepackednmbr.}{\usecounter{packednmbr}\setlength{\itemsep}{0pt}\addtolength{\labelwidth}{-5pt}\setlength{\leftmargin}{\labelwidth}\setlength{\listparindent}{\parindent}\setlength{\parsep}{0pt}\setlength{\topsep}{3pt}}}{\end{list}}
+\newenvironment{packeditemize}{\begin{list}{$\bullet$}{\setlength{\itemsep}{0pt}\addtolength{\labelwidth}{-1pt}\setlength{\leftmargin}{\labelwidth}\setlength{\listparindent}{\parindent}\setlength{\parsep}{0pt}\setlength{\topsep}{3pt}}}{\end{list}}
+\newenvironment{packedlist}{\begin{list}{$\bullet$}{\setlength{\itemsep}{0pt}\addtolength{\labelwidth}{-5pt}\setlength{\leftmargin}{\labelwidth}\setlength{\listparindent}{\parindent}\setlength{\parsep}{0pt}\setlength{\topsep}{3pt}}}{\end{list}}
+

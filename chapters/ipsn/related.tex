@@ -1,0 +1,88 @@
+\subsection{Related Work}
+\label{sec:related}
+
+Localization of an intruder in a field using sensor observations has
+been widely studied, but most of the works have focused on
+localization of a single intruder~\cite{our-infocom,dutta2016see}.
+%%%%%
+In general, to localize multiple intruders, the main challenge comes
+from the need to ``separate'' powers at the sensors~\cite{mobicom-30},
+i.e., to divide the total received power into power received from
+individual intruders. Blind source separation is a very challenging
+problem; only very limited settings allow for known
+techniques~\cite{freq-sig,ben-zhao} using sophisticated receivers. In
+our context of hypotheses-driven approach, the challenge of source
+separation manifests in terms of a large number of hypotheses, a
+challenge addressed in~\S\ref{sec:map-time}.
+%%%
+We note that (indoor) localization of a
+  device~\cite{infocom00-radar} based on signals received from multiple reference points (e.g, WiFi access
+  points) is a quite different problem
+  (see~\cite{zafari-19} for a recent survey), as the signals from
+  reference points remain separate, and localization or tracking of multiple
+  devices can be done independently.
+  Recent works on multi-target localization/tracking are different in the way that targets are passive~\cite{ipsn19-multipassive, ipsn19-chorus, ipsn19-snaploc}, instead of active transmitters in this work.
+
+In absence of blind separation methods, to the best of our knowledge,
+only a few works have addressed multiple intruder(s) localization, and
+none of these consider it in the presence of a dynamically changing
+set of authorized transmitters. In particular,
+(i)~\cite{mobicom17-splot} decomposes the multi-transmitter
+localization problem to multiple single-transmitter localization
+problems based on the sensors with highest of readings in a
+neighbohood, (ii)~\cite{clustering} works by clustering the sensors
+with readings above a certain threshold and then localizing intruders
+at the centers of these clusters, (iii)~\cite{Quasi-EM} uses an
+EM-based approach.
+%%%
+The techniques of~\cite{mobicom17-splot,Quasi-EM} assume a propagation
+model, while that of~\cite{clustering,Quasi-EM} require a priori
+knowledge of the number of intruders present.  We have compared our
+approach with~\cite{mobicom17-splot,clustering} in \S\ref{sec:eval},
+while~\cite{Quasi-EM} has high computational cost and has also been
+shown to be inferior in performance
+to~\cite{mobicom17-splot,clustering} even for a small number of
+intruders. Other related works include
+  (i)~\cite{multi-tx-dyspan-19} that addresses the challenge of
+  handling time-skewed sensors observations in the MTL problem, and
+  (ii)~\cite{info-20} that addresses the sensor selection optimization
+  problem for our proposed hypotheses-based localization approach.
+  
+%%%%%
+%\blue{Other related works include:~\cite{mobicom-22} where sensors are
+%  on mobile and controlled robots,~\cite{mobi-25} focusses on spectrum
+%  allocation via spectrum hole detection in presence of background 
+%  transmitters.} \red{HG: Remove this sentence?}
+
+%% Online selection of sensors: ipsn-04, .... latency vs. energy .. since,
+%% latency is equally critical, ... we dont want to run it for every intruder ... 
+%% Similarly,
+%% \cite{krause2008near} shows that minimizing uncertainty in a gaussian
+%% process is submodular, and thus greedy selection provides a bounded
+%% solution to the optimal.
+
+%% Multiple studies have studied sensor selection to maximize the
+%% accuracy of detection of some event \cite{rowaihy2007survey}.
+
+%% For
+%% example, \cite{joshi2009sensor} provides a heuristic for sensor
+%% selection by forming a convex optimization problem.  However, it uses
+%% a different metric to measure the accuracy of detection.
+%% %%%%
+%% Other studies, such as
+%% \cite{shamaiah2010greedy} and \cite{bian2006utility} have proposed
+%% leveraging submodularity to select sensors.  
+
+%% There are also studies in the active learning literature that focus on
+%% online selection.  For example, \cite{yuxin-when} limits the mutual
+%% information while selecting the minimum possible number of sensors.
+%% \cite{krause2012near} shows that mutual information in sensor
+%% selection is submodular in the absence of noise and propose a
+%% probabilistic greedy algorithm by leveraging it.
+%% \cite{golovin2011adaptive} proposes the concept of adaptive
+%% submodularity that generalizes the greedy approximation to online
+%% selection. Our online selection algorithm builds upon these studies to
+%% limit the number of sensors while maximizing the mutual information.
+%% However, in the presence of noise, mutual information is not adaptive
+%% submodular in nature.  Thus, our work modifies the algorithm discussed
+%% in \cite{yuxin-when} to make it suitable for our use case.

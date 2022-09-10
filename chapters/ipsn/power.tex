@@ -1,0 +1,97 @@
+\subsection{Intruder Power Estimation in the Continuous Domain}
+\label{sec:power}
+
+In this subsection, we derive a {\em closed-form} expression to estimate an
+intruder's power in the continuous domain, for the special case of
+single intruder and Gaussian probability
+distributions~\cite{gauss}. The derived result essentially removes the
+assumption of discrete power levels, and reduces the number of
+hypotheses to consider by a factor of $W$. We use
+this result within Procedure~1 of previous subsection to further
+optimize its time complexity and performance.
+
+\para{Estimating Intruder Power, Given a Location.}  Consider the
+special case of a single intruder in an area. In this case, each
+hypothesis can be represented as \hlp, for each location $l$ and power
+$p$ of the potential intruder. Let us focus on a particular location
+$\lstar$ and the corresponding hypotheses \hLp. 
+%%%%%
+For a given observation vector \vx, we wish to estimate the power $P$
+that corresponds to the hypothesis with maximum likelihood among the
+hypotheses \hLp.
+$$P = \arg max_p P(\hLp | \vx)$$
+%%%%
+The value $P$ can be computed by computing $P(\hLp | \vx)$ for
+each $p$, but our goal is to derive a closed-form expression for $P$
+from the given JPDs; such an expression yield power estimate in
+continuous domain without computing $P(\hLp | \vx)$ for each possible
+discrete $p$.
+
+For each sensor (location) $j$, let $\pd(\vx_j | \hLP)$ represent the
+probability distribution (PD) of $j$'s observations $\vx_j$ when the
+intruder is at \lstar transmitting with power \pstar, the power used
+at training.
+%%%%%%
+For a fixed \lstar and \pstar, the set of PDs $\pd(\vx_j | \hLP)$ are
+equivalent to the JPDs defined in \S\ref{sec:problem} under the
+assumption of conditional independence\footnote{PD $\pd(\vx_j |
+  \hLp)$ can be computed $\pd(\vx_j | \hLP)$ for any $p$, as the
+  path-loss can be assumed to be independent of the transmit power,
+  and JPD $\pd(\vx | \hLp)$ can be computed as product of PDs
+  $\pd(\vx_j | \hLp)$ due to the conditional independence assumption.}.
+%%%%%%%
+%%%%%%%%
+Let us assume that the above PDs are Gaussian
+distributions~\cite{gauss}, and thus, can be represented as $\pd(\vx_j
+| \hLP) = N(\mu_j, \sigma_j^2)$ for a given $\lstar$ and $\pstar$.
+%%%%%%%%%%%%%
+In the above setting, the power value $P$ that maximizes $P(\hLp | \vx)$
+can actually be derived as a closed-form expression; we state the result
+formally in the below lemma. 
+\begin{lemma-wo-prf}
+  Consider the special case of a single intruder in an area.  For a
+  specific location $\lstar$ and power $\pstar$ (the only power used
+  during training), let $\pd(\vx_j | \hLP)$ represent the PDs of the
+  sensor obversations at location $j$. Now, given the above PDs for
+  various $j$ and an observation vector $\vx$, the power value
+  $P = \arg max_p P(\hLp | \vx)$ is   given by: 
+  $$\pstar + \frac{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}(x_j - \mu_j)}{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}},$$
+  where $\gamma = \prod_{j=1}^{S} \sigma_j^2$ and S equals to the number of sensors in the neighborhood of  $\ \lstar$.
+  \label{lem:p}
+\end{lemma-wo-prf}
+We omit the proof here, but give its intuition based on a special
+case. Consider the special case wherein each $\sigma_j$ is 1 for all
+$j$. In this special case, the Lemma's equation reduces to $P = \pstar
++ \frac{\sum_{j=1}^{S}(x_j - \mu_j)}{|S|}$, which implies that if each
+observation $x_j$ is $c$ more than its mean $\mu_j$ then $P$ is also
+$c$ more than $\pstar$. We note that the above result does {\em not}
+extend to the case of multiple intruders. In short, the proof is a process of solving maximum likelihood esitmaion and multiple intruders introduce transcendental functions, thus cannot derive a closed-form solution.
+
+\para{Use of Lemma~\ref{lem:p} in \ouralgo.} \eat{First, we note that,
+  for the special case of a single intruder, the result of
+  Lemma~\ref{lem:p} essentially allows us to determine continuous
+  power value of the intruder while also reducing the overall
+  computational complexity of the optimal \mll algorithm by a factor
+  of $W$, the number of discrete power levels.}  For localization of
+multiple intruders, Lemma~\ref{lem:p} can only be used in Procedure~1
+of \S\ref{sec:time}, due to its assumption of a single intruder. In
+particular, we can Procedure~1 of \S\ref{sec:time} as follows.
+\begin{itemize}
+\item
+We replace \Rp by $R$, the maximum transmission radius.
+  
+\item
+For each location $l$, using Lemma~\ref{lem:p}, we first compute the
+power $p(l)$ such that the hypothesis \hlpl has the most likelihood
+(among the hypotheses at $l$) using the observations from sensors
+within a radius of $R$.
+\item
+Then, in the rest of the procedure, we only consider the (location,
+power) pairs of the type $(l, p(l))$ for any $l$.
+\end{itemize}
+Rest of the Procedure~1 remains unchanged. The above change has two
+benefits. First, the powers predicted in Procedure~1 are now
+continuous rather than discrete. Second, the above removes the factor
+of $W$ from the time complexity of \ouralgo and reduces it to
+$O(LG_R\log(G_R) + G_R(G_R)^T)$ which becomes $O(L)$ if we consider
+$G_R$ and $T$ to be relatively small constants.

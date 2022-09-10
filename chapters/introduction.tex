@@ -1,0 +1,135 @@
+% Chapter Template
+\chapter{Introduction} % Main chapter title
+\label{chap:intro} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+The ability to convey information quickly, accurately, and efficiently has always been one of the main focuses driving human innovation. From prehistoric man with their signal fires to the smartphone-wielding high-powered executives of today, communication still remains a key for survival and success. The history of telecommunication illustrates this never-ending push for progress as it steadily parallels human growth, becoming more widespread and efficient as the development of modern civilization unfolds.Nowadays, the world is filled up with different types of networks like radio networks, switched telephone networks (PSTN), Ethernet, wireless networks, and in a near future quantum networks.
+
+In wireless communications, the RF spectrum is a natural resource in great demand due to unabated increase in mobile (and hence wireless) data consumption \cite{Jeffrey14}. 
+The research community has addressed this capacity crunch via development of shared spectrum paradigms, wherein the spectrum is made available to unlicensed (secondary) users as long as they do not interfere with the transmission of licensed incumbents (primaries).
+Several spectrum management architectures have been proposed before~\cite{spectrumAllocationSurvey13,parishad18,milind05,sudeep16}.
+Essentially, to allocate spectrum to secondary users, we need to have the full knowledge of the signal path-loss between any arbitrary pair of points. However, the best known path-loss models~\cite{chamberlin82,hata2000} have unsatisfactory accuracy. Conducting extensive surveys,on the other hand, to gather this information is not feasible and worse, may not even reflect the dynamic behavior of channel conditions.
+This, consequently, leads to poor spectrum utilization, the fundamental objective of the shared spectrum
+systems.
+
+With the emerge of supreme computational power of quantum regimes, a new (and different) way of communicating information is needed. 
+Robust, reliable and stacked Quantum Networks with the aid of efficient communication help us to harness the tremendous power quantum computation where smaller Quantum Computers~\cite{google-nature-19,ibm-quantum-roadmap} can work collaboratively to achieve a higher good.
+Building quantum networks that support robust communication and entanglement distribution across nodes requires several fundamental scientific and technological advances, especially since classical techniques cannot be directly used in the quantum regime.
+However, quantum network communication is challenging. 
+Physical transmission of quantum states across nodes can incur irreparable communication errors, as the No-cloning Theorem~\cite{Dieks-nocloning} proscribes making independent copies of arbitrary qubits. 
+Transmission noises virtually prohibit direct communication of qubits over long distances, too.
+At the same time, certain aspects unique to the quantum regime, such as entangled states, enables 
+novel mechanisms for communication.
+
+This proposal explores novel ideas of using network resources more efficiently.
+In regard to shared wireless networks, we will investigate the possibility of a learning-based spectrum allocation system.
+We also aim to propose multiple techniques and approaches to facilitate realizing the exciting future Quantum Networks.
+We demonstrate that our proposed techniques outperform current state-of-the-art works in literature.
+
+\section{Motivation}
+
+In general, a spectrum management system requires to have the full knowledge of the path-loss as well as other information about the living elements like primary users. 
+Having all the information, sometimes, is impossible leading to spectrum under-utilization. 
+To circumvent these challenges, we propose to instead directly learn the spectrum allocation as a function of some features that we introduce.
+The entanglement generation latency promised by current state-of-the-art algorithms is still high due to probabilistic behaviour of underlying quantum physics. Therefore, this motivates us to develop more sophisticated algorithms and novel ideas to reduce the latency and use the scarce entanglement resources more efficiently.
+
+% There have been many works that independently look at the increase in mobile devices, new congestion controls, and changing traffic workloads. 
+% However, few works look at these Internet trends in conjunction with each other to determine overall effect on networked applications.
+% Therefore, our motivation is to determine if characterizing the interrelation between emerging devices, congestion controls, and traffic workloads can point to potential improvements in performance of applications.
+
+\section{Thesis Statement}
+
+The thesis of this dissertation is that \textbf{Spectrum Usage in Shared Systems and Entanglement Distribution in Quantum Network.} 
+Our central premise is to explore algorithms that use the scarce resources of different networks.
+
+Specifically, the thesis, first, explores deep learning-based approaches for efficient spectrum allocation in shared wireless systems.
+We also investigate the current state-of-the-art routing algorithms of generation and distribution of entanglement in a general, heterogeneous quantum network.
+
+\section{Contributions}
+
+Towards the goal of our thesis we make the following contributions:
+
+\begin{itemize}
+    \item Improve the scarce spectrum usages of a wireless network
+    \item Introduce the optimal communications in quantum networks
+    \item Improving the high latency of quantum communications
+    \item Devising effective ways of distributing multipartite entanglement in a quantum network (Proposed)
+\end{itemize}
+
+\vspace{6pt}\noindent \textbf{Improve the scarce spectrum usages of a wireless network (SenSys'22, under review)}
+
+Shared spectrum systems facilitate spectrum allocation to unlicensed users without harming the licensed users; they offer great promise in optimizing spectrum utilization, but their management is challenging.
+Current allocation schemes are either based on imperfect propagation models or poor spatial granularity spectrum sensors which leads to spectrum under-utilization,  the fundamental objective of shared
+spectrum systems.
+% To allocate spectrum near-optimally to secondary users (SUs) in general scenarios, we 
+% fundamentally need to have knowledge of the signal path-loss function. In practice, however, even the best known path-loss models have unsatisfactory accuracy, and conducting extensive surveys to gather path-loss values is infeasible.
+%%%%%%%%%%%%%%%
+
+In this work, we propose to learn the spectrum allocation function directly using supervised learning techniques. 
+For settings where information about the primary users' may not be available, we propose to use a crowdsourced sensing architecture and use the spectrum sensor readings as features. 
+%%%%%%%%%%%%%
+For spectrum allocation to a single SU, we develop a CNN-based approach
+and address various challenges that arise in our context; to handle multiple SU
+requests simultaneously, we extend our approach based on recurrent neural networks (RNNs).
+%%%%%%
+We present, via simulations and real testbed, the effectiveness of our developed techniques. We will show how easily our system outperforms the prior work by a high margin.
+
+
+\vspace{6pt}\noindent \textbf{Introduce the optimal communications in quantum networks (TQE'22)}
+
+Quantum network communication is challenging, as the No-cloning theorem in quantum regime makes many classical techniques inapplicable; in particular, 
+direct transmission of qubit, quantum counterpart of classical bit, states over long distances is infeasible
+due to unrecoverable errors.
+%%%%%%%%%%%%%%%%%
+For long-distance communication, the only viable communication approach is teleportation of quantum states, which requires a prior distribution of entangled pairs (\epss) of qubits.
+Establishment of \epss across remote nodes can incur significant latency due to the low probability of success of the underlying physical processes. 
+
+In this work, we develop efficient techniques that minimize \eps generation latency. While prior works
+have focused on selecting entanglement \textit{paths}, we select \emph{entanglement swapping trees} which represent the entanglement generation structure more accurately.
+Specifically, we develop a dynamic programming algorithm to select an optimal swapping-tree for a single pair of nodes, under the given capacity and fidelity constraints.
+We also develop an efficient iterative algorithm to extract the best set of swapping trees for general setting; when the network tries to generate \epss across multiple set of pairs.
+%  For the general setting,
+% We present simulation results which show that our solutions outperform 
+% the prior approaches by an order of magnitude and are viable for long-distance entanglement
+% generation.
+
+
+
+\vspace{6pt}\noindent \textbf{Improving the high latency of quantum communications (QCE'22)}
+In this work, we propose and investigate a complementary technique to further reduce \eps generation latency---to pre-distribute \epss over certain (pre-determined) pairs of network nodes. 
+Upon certain requests to the network, these re-distributed \epss can then be used to lower the generation latency.
+% As mentioned before, \ep generation between a pair of node can be parallelized for lower latency. 
+% This gives us an intuition to prepare some \eps across some nodes repeatedly such that many traffic requests can be served with.
+%%%%
+
+For such a pre-distribution approach to be most effective, we need to carefully select a set of node-pairs where
+the \epss should be pre-distributed to minimize the generation latency of expected \eps requests, under a given cost constraint.
+In this work,
+we appropriately formulate the above optimization problem and design two
+efficient algorithms, one of which is a greedy approach based on an 
+approximation algorithm for a special case. 
+The other approach is derived from the clustering methods.
+%%%%%%%%
+%%%%%%%%%%
+Via extensive evaluations, we demonstrate the effectiveness of our approach and developed techniques;  
+% we show that our developed algorithms outperform a naive approach by up to an order
+% of magnitude. 
+
+
+\vspace{6pt}\noindent \textbf{Devising effective ways of distributing multipartite entanglement in a quantum network (Proposed)} 
+We also propose looking into the entanglement generation among more than two nodes, something that there is no classical counterpart. 
+multipartite entanglement, physically, means there is a high correlation among all the participating nodes which has many applications from distributed computing to conference key sharing.
+We will extend our previous works, which the focus was establishing bipartite entanglement between a pair of nodes.
+As many other systems, entanglement generation is not noise free. To improve the quality service of quantum networks, we will take into consideration optimal distillation protocols merged into our multipartite entanglement.
+Eventually, we try to propose a stack-based quantum network architecture where the different elements of the network is going to be orchestrated in an organic way.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Outline of Thesis}
+
+% In Chapter \ref{chap:deepalloc}, we discuss how to efficiently use resources in a wireless network, aka RF spectrum.
+% Chapter \ref{chap:swappingtrees} first introduces basics for communication in a quantum network and then proposes techniques for optimal routing of single or multiple pairs of nodes.
+% Next, Chapter \ref{chap:predist} presents techniques and algorithms to further reduce the latency of optimal routing in a quantum regime.
+% Finally in chapter \ref{chap:multipartite}, we will motivate our proposed work on devising schemes for distributing entanglement among more than two nodes, efficiently.
+% Finally, Chapter \ref{chap:conclusion} concludes our proposal.
