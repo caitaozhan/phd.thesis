@@ -15,53 +15,10 @@ headsepline, % Uncomment to get a line under the header
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 
-\usepackage[utf8]{inputenc} % Required for inputting international characters
-\usepackage[T1]{fontenc} % Output font encoding for international characters
+\input{package}
 
-\usepackage{apalike}
-\usepackage{epsfig}
-%\usepackage{color}
-\usepackage{xspace}
 \let\proof\relax
 \let\endproof\relax
-\usepackage{amsmath, mathtools, amsthm}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{array}
-\usepackage{enumitem}
-\usepackage{color}
-\usepackage{bm}
-\usepackage{graphicx}
-\usepackage{subfig}
-\usepackage{hyperref}
-\usepackage{spverbatim}
-\usepackage{algorithm}
-\usepackage{siunitx}
-\usepackage[noend]{algpseudocode}
-\usepackage{booktabs} % For formal tables
-\usepackage{pgfplots}
-\usepackage{pgfplotstable}
-\usepackage{diagbox}
-\usepackage{multirow}
-\usepackage{cleveref}
-\usepackage{amsmath}
-\usepackage{listings}
-\usepackage{xcolor}
-
-
-\usepackage[export]{adjustbox}
-\usepackage{wrapfig}
-\usepackage{float}
-
-
-% \usepackage[noadjust]{cite}
-% \usepackage{algorithmic}
-
-\usepackage{textcomp}
-
-\usepackage{appendix}
-\usepackage{chngcntr}
-\usepackage{etoolbox}
 
 \AtBeginEnvironment{subappendices}{%
 \chapter*{Appendices}
@@ -79,16 +36,18 @@ headsepline, % Uncomment to get a line under the header
 } 
 
 
-\captionsetup[subfloat]{labelfont=normalfont}
+% \captionsetup[subfloat]{labelfont=normalfont}
 
-\input{deepalloc_macros}
-\input{swapping_defs}
+% macro
+
+\input{chapters/ipsn/def}
 \input{swapping_macros}
-\input{predistribution_defs}
-\input{predistribution_macros}
 
-\let\bibhang\relax
-\usepackage[style=apa,backend=biber,citestyle=numeric]{biblatex}
+
+% bib
+
+\addbibresource{chapters/ipsn/short.bib}
+
 \addbibresource{deepalloc.bib}
 \addbibresource{swappingtrees.bib}
 \addbibresource{predistribution.bib}
@@ -247,14 +206,16 @@ headsepline, % Uncomment to get a line under the header
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
+\begin{sloppypar}
+
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-% Shared spectrum systems facilitate spectrum allocation to unlicensed users without harming the licensed users; they offer great promise in optimizing spectrum utility, but their management is challenging. A significant shortcoming of current allocation methods is that they are either done very conservatively to ensure correctness, or are based on imperfect propagation models and/or spectrum sensing with poor spatial granularity. This leads to poor spectrum utilization, the fundamental objective of shared spectrum systems. We propose to learn the spectrum allocation function directly using supervised learning techniques. For spectrum allocation to a single SU, we develop a CNN-based approach (called DeepAlloc) and address various challenges that arise in our context; to handle multiple SU requests simultaneously, we extend our approach based on recurrent neural networks (RNNs).
+Shared spectrum systems facilitate spectrum allocation to unlicensed users without harming the licensed users; they offer great promise in optimizing spectrum utility, but their management is challenging. A significant shortcoming of current allocation methods is that they are either done very conservatively to ensure correctness, or are based on imperfect propagation models and/or spectrum sensing with poor spatial granularity. This leads to poor spectrum utilization, the fundamental objective of shared spectrum systems. We propose to learn the spectrum allocation function directly using supervised learning techniques. For spectrum allocation to a single SU, we develop a CNN-based approach (called DeepAlloc) and address various challenges that arise in our context; to handle multiple SU requests simultaneously, we extend our approach based on recurrent neural networks (RNNs).
 
-% In the second phase of this thesis proposal, we propose multiple algorithms and protocols to improve the efficiency of quantum communications. Quantum communication is challenging, as the no-cloning theorem in the quantum regime makes many classical techniques inapplicable; in particular, the direct transmission of qubit states over long distances is infeasible due to unrecoverable errors. For the long-distance communication of unknown quantum states, the only viable communication approach is the teleportation of quantum states, which requires a prior distribution of the entangled pairs (EPs) of qubits. The establishment of EPs across remote nodes can incur significant latency due to the low probability of success of the underlying physical processes. The focus of our work is to develop efficient techniques that minimize EP generation latency. We develop a dynamic programming algorithm to select an optimal route between a pair of nodes, under the given capacity and fidelity constraints. To further reduce the latency of EP generation, we propose a complementary technique to pre-distribute EPs over certain pairs (a.k.a super-links) of network nodes; these pre-distributed EPs can then be used to generate EPs for the requested pairs, when needed, with lower generation latency. 
+In the second phase of this thesis proposal, we propose multiple algorithms and protocols to improve the efficiency of quantum communications. Quantum communication is challenging, as the no-cloning theorem in the quantum regime makes many classical techniques inapplicable; in particular, the direct transmission of qubit states over long distances is infeasible due to unrecoverable errors. For the long-distance communication of unknown quantum states, the only viable communication approach is the teleportation of quantum states, which requires a prior distribution of the entangled pairs (EPs) of qubits. The establishment of EPs across remote nodes can incur significant latency due to the low probability of success of the underlying physical processes. The focus of our work is to develop efficient techniques that minimize EP generation latency. We develop a dynamic programming algorithm to select an optimal route between a pair of nodes, under the given capacity and fidelity constraints. To further reduce the latency of EP generation, we propose a complementary technique to pre-distribute EPs over certain pairs (a.k.a super-links) of network nodes; these pre-distributed EPs can then be used to generate EPs for the requested pairs, when needed, with lower generation latency. 
 
-% Unlike classical networks, there is a more general task a quantum network should serve where an arbitrary entangled state is distributed among multiple nodes of the network. This enables a quantum network to perform distributed quantum tasks like distributed quantum computation, quantum secret sharing, and distributed sensing. For future work, we will propose multiple algorithms including multipartite routing and a well-defined network architecture for an efficient, robust and reliable quantum network.
+Unlike classical networks, there is a more general task a quantum network should serve where an arbitrary entangled state is distributed among multiple nodes of the network. This enables a quantum network to perform distributed quantum tasks like distributed quantum computation, quantum secret sharing, and distributed sensing. For future work, we will propose multiple algorithms including multipartite routing and a well-defined network architecture for an efficient, robust and reliable quantum network.
 
 
 \end{abstract}
@@ -275,9 +236,7 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 
 \tableofcontents % Prints the main table of contents
-
 \listoffigures % Prints the list of figures
-
 \listoftables % Prints the list of tables
 
 
@@ -285,15 +244,11 @@ headsepline, % Uncomment to get a line under the header
 
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
 
-% Include the chapters of the thesis as separate files from the Chapters folder
-% Uncomment the lines as you write the chapters
+% Chapters
 
-% \include{chapters/introduction}
+\include{chapters/introduction}
+\include{chapters/ipsn}
 
-% \include{chapters/deepalloc}
-% \include{chapters/swappingtrees}
-% \include{chapters/predistribution}
-% \include{chapters/multipartite}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
@@ -312,7 +267,9 @@ headsepline, % Uncomment to get a line under the header
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
+
 \printbibliography
 
-%----------------------------------------------------------------------------------------
+\end{sloppypar}
+
 \end{document}  
