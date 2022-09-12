@@ -1,0 +1,109 @@
+\section{\bf Related Work}
+\label{sec:wowmom-related}
+\para{Spectrum sensing} is usually being realized by some distributed crowdsourced low-cost sensors. 
+Electrosense~\cite{electrosense} and its follow up work Skysense \cite{mobisys20-skysense} are typical work of spectrum sensing.
+In this crowdsourced sensing paradigm~\cite{chakraborty2017specsense}, sensors collect I/Q samples (in-phase and quadrature components of raw signals) and compute PSD (power spectral density), which is RSS.
+Crowdsourced low-cost sensors do not have the capability to collect AoA (angle of arrival) data because it requires more expensive antenna arrays.
+They also do not have the capability to collect ToA (time of arrival) data because it requires the transmission of a wide-band known sequence~\cite{pimrc2021-localize}, which is impossible in the case of localizing (blind) intruders.
+Spectrum sensing platforms serve as the foundation of the spectrum applications, and transmitter localization is one of the main applications.
+Other applications include signal classification~\cite{toccn18-sigclassify}, spectrum anomaly detection~\cite{ben-zhao}, sensor selection~\cite{ton-sensorselect,bhattacharya2022fast}, spectral occupancy estimation~\cite{mobicom21-deepradar}, etc.
+
+\para{Transmitter localization.} Localization of an intruder in a field using sensor observations has been widely studied, but most of the works have focused on
+localization of a single intruder~\cite{our-infocom,dutta2016see}.
+%%%%%
+In general, to localize multiple intruders, the main challenge comes
+from the need to ``separate'' powers at the sensors~\cite{mobicom-30},
+i.e., to divide the total received power into power received from
+individual intruders. Blind source separation is a very challenging
+problem; only very limited settings allow for known
+techniques using sophisticated receivers~\cite{freq-sig,ben-zhao}.
+%%%
+We note that (indoor) localization of a
+  device~\cite{infocom00-radar} based on signals received from multiple reference points (e.g, WiFi access
+  points) is a quite different problem
+  (see~\cite{zafari-19} for a recent survey), as the signals from
+  reference points remain separate, and localization or tracking of multiple
+  devices can be done independently.
+  Recent works on multi-target localization/tracking such as~\cite{ipsn19-multipassive} are different in the way that targets are passive, instead of active transmitters in the \mtl problem.
+Among other related works,~\cite{multi-tx-dyspan-19} addresses the challenge of handling time-skewed sensors observations in the MTL problem.
+%%%%%%%%%%%%%%%%%%%%%%%
+\eat{In absence of blind separation methods, to the best of our knowledge,
+only a few works have addressed multiple intruder(s) localization. 
+In particular,
+(i)\splot~\cite{mobicom17-splot} decomposes the multi-transmitter
+localization problem to multiple single-transmitter localization
+problems based on the sensors with highest of readings in a
+neighborhood, (ii)~\cite{clustering} uses a clustering-based approach, (iii)~\cite{Quasi-EM} uses an
+EM-based approach, (iv) \map~\cite{ipsn20-mtl}, uses 
+a hypotheses-based Bayesian
+approach in conjunction with a divide-and-conquer strategy to first localize 
+``isolated"  intruders and then localize the remaining intruders,
+(v) 
+%%%%%%%%%%
+We note that the techniques of~\cite{mobicom17-splot,Quasi-EM} assume a propagation
+model, while that of~\cite{clustering,Quasi-EM} require a priori
+knowledge of the number of intruders present. 
+Schemes in~\cite{Quasi-EM} and~\cite{clustering} have been shown inferior in performance in~\cite{mobicom17-splot,ipsn20-mtl}.
+}
+
+\para{Wireless localization} techniques mainly fall into two categories: geometry mapping and fingerprinting-based.
+Geometry mapping mainly has two subcategories: ranging-based such as trilateration (via RSS/RSSI, ToA, TDoA) and direction-based such as triangulation (via AoA).
+Fingerprinting-based methods can use all signal physical measurements including but not limited to amplitude, RSS/RSSI, ToA, TDoA, and AoA.
+Whenever deep learning is used for localization, it can be considered as a fingerprinting-based method, since it requires a training phase to survey the area of interest and a testing phase to search for (predict) the most likely location.
+
+\para{Deep learning for wireless localization}. 
+Quite a few recent works have harnessed the power of deep learning in the general topic of localization.
+E.g., DeepFi in~\cite{DeepFi2016} designs a restricted Bolzmann machine that localizes a single target using WiFi CSI amplitude data. 
+DLoc in~\cite{mobicom20-deeploc} uses WiFi CSI data as well. 
+Its novelty is to transform CSI data into an image and then uses an image-to-image translation method to localize a single target.~MonoDCell in~\cite{sigspatial19-monodcell} designs an LSTM that localizes a single target in indoor environment using cellular RSS data.~\cite{pimrc2021-localize} designs a three-layer neural network that locations a single transmitter.~\deeptx in~\cite{icccn20-deeptxfinder} uses CNN to address the same \mtl problem using RSS data in this paper.
+
+\para{Transmitter Power Estimation.} There are several works that estimate the transmission power of a single transmitter.~\cite{PowerEstimate2010Zafer} studies the ``blind" estimation of transmission power based on received-power measurements at multiple cooperative sensor nodes using maximum likelihood estimation. Blind means there is no prior knowledge of the location of the transmitter or transmit power.~\cite{Ureten2011powerlocation} propose an iterative technique that jointly estimate the location and power of a single primary transmitter.
+In~\cite{icoin2007-powerposition}, the primary transmitter location and power is jointly estimated by a constrained optimization method.~\cite{ipsn20-mtl} uses the maximum likelihood estimation method to estimate the power of an isolated single transmitter and adopts an online learning method to estimate the power of multiple close by transmitters simultaneously.
+
+
+%Both DLoc and \deeptx also represent the explore the usage of CNN in the wireless localization problem by representing the input wireless data as images.
+%We also use images to represent wireless data (see Fig. \ref{fig:input}) and harness the power of deep learning on top of that.
+%Below, we introduce our high-level approach.
+  
+  %, and (ii)~\cite{info-20} that addresses the sensor selection optimization problem.
+  
+
+  
+%%%%%
+%\blue{Other related works include:~\cite{mobicom-22} where sensors are
+%  on mobile and controlled robots,~\cite{mobi-25} focusses on spectrum
+%  allocation via spectrum hole detection in presence of background 
+%  transmitters.} \red{HG: Remove this sentence?}
+
+%% Online selection of sensors: ipsn-04, .... latency vs. energy .. since,
+%% latency is equally critical, ... we dont want to run it for every intruder ... 
+%% Similarly,
+%% \cite{krause2008near} shows that minimizing uncertainty in a gaussian
+%% process is submodular, and thus greedy selection provides a bounded
+%% solution to the optimal.
+
+%% Multiple studies have studied sensor selection to maximize the
+%% accuracy of detection of some event \cite{rowaihy2007survey}.
+
+%% For
+%% example, \cite{joshi2009sensor} provides a heuristic for sensor
+%% selection by forming a convex optimization problem.  However, it uses
+%% a different metric to measure the accuracy of detection.
+%% %%%%
+%% Other studies, such as
+%% \cite{shamaiah2010greedy} and \cite{bian2006utility} have proposed
+%% leveraging submodularity to select sensors.  
+
+%% There are also studies in the active learning literature that focus on
+%% online selection.  For example, \cite{yuxin-when} limits the mutual
+%% information while selecting the minimum possible number of sensors.
+%% \cite{krause2012near} shows that mutual information in sensor
+%% selection is submodular in the absence of noise and propose a
+%% probabilistic greedy algorithm by leveraging it.
+%% \cite{golovin2011adaptive} proposes the concept of adaptive
+%% submodularity that generalizes the greedy approximation to online
+%% selection. Our online selection algorithm builds upon these studies to
+%% limit the number of sensors while maximizing the mutual information.
+%% However, in the presence of noise, mutual information is not adaptive
+%% submodular in nature.  Thus, our work modifies the algorithm discussed
+%% in \cite{yuxin-when} to make it suitable for our use case.

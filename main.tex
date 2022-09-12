@@ -41,12 +41,16 @@ headsepline, % Uncomment to get a line under the header
 % macro
 
 \input{chapters/ipsn/def}
+\input{chapters/wowmom-pmc/def}
 \input{swapping_macros}
 
 
 % bib
 
-\addbibresource{chapters/ipsn/short.bib}
+\addbibresource{bib.bib}
+
+% \addbibresource{chapters/ipsn/short.bib}
+% \addbibresourse{chapters/wowmom-pmc/bib.bib}
 
 \addbibresource{deepalloc.bib}
 \addbibresource{swappingtrees.bib}
@@ -84,9 +88,11 @@ headsepline, % Uncomment to get a line under the header
 	bindingoffset=.5cm, % Binding offset
 	top=1.5cm, % Top margin
 	bottom=1.5cm, % Bottom margin
+  head=1.5cm,
 	%showframe, % Uncomment to show how the type block is set on the page
 }
 
+% \hfuzz=5.002pt
 
 %----------------------------------------------------------------------------------------
 %	THESIS INFORMATION
@@ -244,25 +250,23 @@ Unlike classical networks, there is a more general task a quantum network should
 
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
 
+
 % Chapters
-
-\include{chapters/introduction}
-\include{chapters/ipsn}
-
+\include{introduction}
+\include{ipsn}
+\include{wowmom-pmc}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
 %----------------------------------------------------------------------------------------
 
+
 \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
 
 % Include the appendices of the thesis as separate files from the Appendices folder
 
-\include{chapters/ipsn/appendix}
 
-%\include{Appendices/AppendixA}
-%\include{Appendices/AppendixB}
-%\include{Appendices/AppendixC}
+% \include{chapters/ipsn/appendix}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY

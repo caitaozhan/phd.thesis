@@ -1,0 +1,25 @@
+In this paper, we address the problem of Multiple Transmitter Localization (\mtl).
+\mtl is to determine the
+locations of potential multiple transmitters in a field, based on readings from a distributed set of sensors.
+In contrast to the widely studied single transmitter localization problem, the \mtl problem has only been studied recently in a few works.
+\mtl is of great significance in many applications wherein intruders
+may be present. E.g., in shared spectrum systems, detection of unauthorized transmitters and estimating their power are imperative to 
+efficient utilization of the shared spectrum.
+	
+In this paper, we present \our, a novel deep learning approach to address the \mtl problem.  
+In particular, we frame
+\mtl as a sequence of two steps, each of which is a computer vision problem: image-to-image translation and object detection. 
+The first step of image-to-image translation essentially maps an input image representing sensor readings to an 
+image representing the distribution of transmitter locations, and the second object detection step derives precise
+locations of transmitters from the image of transmitter distributions.
+%%%%%%%%%%%%%%%%%%%
+For the first step, we design our learning model \imgimg, while for the second step, we customize a 
+state-of-the-art object detection model \yolocust. 
+%%%%%%%%%
+Using  \our as a building block, we also develop techniques to estimate transmit power of the localized transmitters.
+%%%%%%%%
+We demonstrate the effectiveness of our approach
+via extensive large-scale simulations and show that our approach outperforms the previous approaches 
+significantly (by 50\% or more) in performance metrics including localization error, miss rate, and false alarm rate. 
+Our method also incurs a very small latency.
+We evaluate our techniques over a small-scale area with real testbed data and the testbed results align with the simulation results.

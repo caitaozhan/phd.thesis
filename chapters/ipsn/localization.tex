@@ -18,7 +18,7 @@ on \map but with significantly improved computational and
 training cost.
 %%%%%
 We start with optimizing the computation cost in \S\ref{sec:time}. In the following
-  subsection \S\ref{sec:power}, we derive a closed-form expression
+  subsection \S\ref{sec:ipsn-power}, we derive a closed-form expression
   to efficiently estimate intruder's power in the {\em continuous}
   domain.  Finally, we discuss optimizing the training cost via a
   novel interpolation scheme \ildw.
@@ -394,24 +394,25 @@ standard deviations respectively.
 
 
 \begin{figure}
-	\centering
-	\subfloat{\includegraphics[width=0.5\textwidth]{chapters/ipsn/figures/interpolate.png}}
-	\qquad
-	\newline
-	\subfloat{\includegraphics[width=0.7\textwidth]{chapters/ipsn/figures/ildw.png}}
-        \hspace{0.3in}
-      	\caption{Illustration of \ildw vs.\ IDW.
-          %%%
-          (a) Transmitter (T), points with known (R1 and R2) and unknown (R0) received signal strength (RSS) values.
-          %%%
-          (b) Log-normal RSS function (= -10 - 30$\log_{10}({\rm distance}))$
-          plotted for varying distance from the transmitter $T$, along
-          with IDW-estimated RSS value at a point between R1 and R2.
-          %%%%%
-          (c) Log-normal RSS function and ILDW-estimated RSS value at
-          a point between R1 and R2, plotted on a logarithmic distance
-          scale.}
-	  \label{fig:ildw}
+    \begin{subfigure}[t]{0.9\textwidth}
+      \centering
+      \includegraphics[width=0.5\textwidth]{chapters/ipsn/figures/interpolate.png}
+    \end{subfigure}
+    \qquad
+    \newline
+    \begin{subfigure}[t]{\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{chapters/ipsn/figures/ildw.png}
+    \end{subfigure}
+    \caption{Illustration of \ildw vs.\ IDW.
+    (a) Transmitter (T), points with known (R1 and R2) and unknown (R0) received signal strength (RSS) values.
+    (b) Log-normal RSS function (= -10 - 30$\log_{10}({\rm distance}))$
+    plotted for varying distance from the transmitter $T$, along
+    with IDW-estimated RSS value at a point between R1 and R2.
+    (c) Log-normal RSS function and ILDW-estimated RSS value at
+    a point between R1 and R2, plotted on a logarithmic distance
+    scale.}
+    \label{fig:ildw}
 \end{figure}
 
 

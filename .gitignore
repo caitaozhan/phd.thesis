@@ -30,7 +30,6 @@ chapters/ipsn/figures/data
 chapters/ipsn/figures/power-vary-numintru
 chapters/ipsn/figures/time-vary-numintru
 chapters/ipsn/title.tex
-chapters/ipsn/abstract.tex
 chapters/ipsn/bibliography.bib
 chapters/ipsn/new.bib
 chapters/ipsn/ml.bib
@@ -40,4 +39,9 @@ chapters/ipsn/figures/system.png
 chapters/ipsn/main.tex
 chapters/ipsn/SAVE
 
-
+# wowmom-pmc
+chapters/wowmom-pmc/*.bst
+chapters/wowmom-pmc/*.cls
+chapters/wowmom-pmc/main.tex
+chapters/wowmom-pmc/summary_change.tex
+# chapters/wowmom-pmc/bib.bib
