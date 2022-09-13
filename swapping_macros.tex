@@ -1,0 +1,87 @@
+\newcommand{\Dc}{\mbox{${\Delta_c}$}}
+\newcommand{\dg}{\mbox{${\delta_t}$}}
+
+% Specific to this paper:
+
+% \newcommand{\M}{\ensuremath{\mathcal{M}}\xspace}
+\newcommand{\R}{\ensuremath{\mathcal{R}}\xspace}
+% \newcommand{\T}{\ensuremath{\mathcal{T}}\xspace}
+
+\newcommand{\clf}{\mbox{\tt Caleffi}\xspace}
+%\newcommand{\C}{\mbox{${\cal C}$}}
+%\newcommand{\hh}{\mbox{h}\xspace}
+\newcommand{\hh}{\ensuremath{h}}
+\newcommand{\ol}{\mbox{$o'$}\xspace}
+\newcommand{\eps}{\mbox{EP}\xspace}
+\newcommand{\epss}{\mbox{EPs}\xspace}
+\newcommand{\es}{\mbox{ES}\xspace}
+\newcommand{\ess}{\mbox{ESs}\xspace}
+\newcommand{\os}{\mbox{\tt WaitLess}\xspace}
+\newcommand{\wt}{\mbox{\tt Waiting}\xspace}
+\newcommand{\DP}{\mbox{\tt DP}\xspace}
+\newcommand{\dpa}{\mbox{\tt DP-Approx}\xspace}
+\newcommand{\naive}{\mbox{\tt SP}\xspace}
+\newcommand{\dpo}{\mbox{\tt DP-OPT}\xspace}
+\newcommand{\iter}{\mbox{\tt ITER}\xspace}
+\newcommand{\iterdpalt}{\mbox{\tt ITER-Bal}\xspace}
+\newcommand{\iterdpa}{\mbox{\tt ITER-DPA}\xspace}
+\newcommand{\iternaive}{\mbox{\tt ITER-SP}\xspace}
+\newcommand{\qnr}{\mbox{\tt QNR}\xspace}
+\newcommand{\spp}{\mbox{\tt QNR-SP}\xspace}
+% \newcommand{\dp}{\mbox{\tt DP}\xspace}   \dp command already defined ? Where ?
+\newcommand{\LP}{\mbox{\tt LP}\xspace}
+\newcommand{\dpalt}{\mbox{\tt Balanced-Tree}\xspace}
+\newcommand{\qcast}{\mbox{\tt Q-Cast}\xspace}
+\newcommand{\delftlp}{\mbox{\tt Delft-LP}\xspace}
+\newcommand{\name}{\mbox{\tt QTree}\xspace}
+% \newcommand{\eat}[1]{}
+
+\let\emph\textit
+
+\newcommand{\pp}{\ensuremath{\bar{p}}}
+%\newcommand{\pht}{\mbox{$t_{ob}$}\xspace}         % BSM (photon-photon) time. Inverse is rate.
+\newcommand{\php}{\mbox{$p_{ob}$}\xspace}          % BSM (photon-photon) probability of success.
+\newcommand{\bt}{\mbox{$t_{b}$}\xspace}         % BSM (atom-atom time. Inverse is rate.
+\newcommand{\bp}{\mbox{$p_{b}$}\xspace}          % BSM (atom-atom probability of success.
+\newcommand{\gr}{\mbox{$r_g$}\xspace}      % Node generation (atom-photon) rate. Inverse of \gt.
+\newcommand{\gt}{\mbox{$t_g$}\xspace}      % Node generation (atom-photon) time. Inverse is rate.
+\newcommand{\gp}{\mbox{$p_g$}\xspace}       % Node generation probability of success.
+%\newcommand{\et}{\mbox{$t_e$}\xspace}      % photon transmission  time. Inverse is link capacity. 
+\newcommand{\ep}{\mbox{$p_e$}\xspace}       % photon transmission probability of success.
+\newcommand{\ct}{\mbox{$t_c$}\xspace}      % Classical time.
+\newcommand{\cp}{\mbox{$p_c$}\xspace}      % Classical probability of success.
+
+\newcommand{\fidl}{\ensuremath{\tau_l}\xspace}
+\newcommand{\fidd}{\ensuremath{\tau_d}\xspace}
+
+\newtheorem{defn}{Definition}[section]
+
+%%
+%New commands, move to macros.tex
+\newcommand{\bra}[1]{\ensuremath{\langle#1|}}
+\newcommand{\ket}[1]{\ensuremath{|#1\rangle}}
+\newcommand{\norm}[1]{\ensuremath{|#1|}}
+\newcommand{\decT}{\ensuremath{\mathrm{T_{CH}}}\xspace}
+% \NewDocumentCommand{\entT}{\ensuremath{\mathrm{\T_{{\@empty},{\@empty}}}\xspace}}{#1~#2}
+% \NewDocumentCommand{\tauT}{\ensuremath{\mathrm{\T_{{},{}}}\xspace}}{#1~#2}
+\newcommand{\entT}[3]{
+        \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
+            \expandafter\ifx\expandafter\relax\detokenize{#2}\relax
+                \ensuremath{\mathrm{T}}\xspace
+            \else
+                \ensuremath{\mathrm{T_{#2,#3}}}\xspace
+            \fi
+        \else
+            \ensuremath{\mathrm{T^#1_{#2,#3}}}\xspace
+        \fi\xspace}
+\newcommand{\tauT}[3]{
+        \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
+            \expandafter\ifx\expandafter\relax\detokenize{#3}\relax
+                \ensuremath{\mathrm{\tau}}\xspace
+            \else
+                \ensuremath{\mathrm{\tau_{#2,#3}}}\xspace
+            \fi
+        \else
+            \ensuremath{\mathrm{\tau^#1_{#2,#3}}}\xspace
+        \fi\xspace}
+

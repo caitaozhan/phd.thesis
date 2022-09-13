@@ -15,7 +15,10 @@ main.toc
 multipartite.bib
 predistribution.bib
 deepalloc.bib
-swapping*
+swappingtrees.bib
+swapping_defs.tex
+chapters/swapping*
+figures/swapping*
 *.ipynb
 *.pptx
 
