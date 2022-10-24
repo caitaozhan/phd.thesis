@@ -33,7 +33,7 @@ And then in the next subsection we describe our \power model.
 %%%%%%%%%%%%%%%%%%%
 
 
-\subsection{\bf \power: Predicting Power of a Single Isolated TX}
+\subsection{\power: Predicting Power of a Single Isolated TX}
 \label{subsec:in-out-design}
 
 \softpara{\power Input Image}. 
@@ -99,7 +99,7 @@ where $N$ is the number of training samples,~$X^c_{i}$ is the cropped input imag
 $\power(X^c_{i})$ is the predicted power.
 We use Adam as the optimizer, and set the learning rate to 0.001 and the number of epochs to 20, which is sufficient for the model convergence.
 
-\subsection{ \bf Estimating Powers of Multiple Transmitters}
+\subsection{Estimating Powers of Multiple Transmitters}
 Our end goal is to estimate the power of multiple transmitters at the same time. 
 When the multiple transmitters are far away and isolated from each other, the problem reduces to single transmitter power estimation, which \power handles well.
 The hard part is to estimate transmit powers of multiple transmitters that are close by. 

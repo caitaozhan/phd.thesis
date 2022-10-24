@@ -1,4 +1,4 @@
-\section{\bf \our Step 1: Sensor Readings to TX Location Distributions}
+\section{\our Step 1: Sensor Readings to TX Location Distributions}
 \label{sec:translate}
 
 In this section, we present the first step of our overall approach to the \mtl problem, i.e., 
@@ -39,7 +39,7 @@ In the following subsection \ref{subsec:ipsn}, we demonstrate how we generate a 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\bf Input Image Representing Sensors' Readings}
+\subsection{Input Image Representing Sensors' Readings}
 
 We localize transmitters based on observations from a set of sensors, i.e. solve the \mtl problem assuming only intruders.
 %Below, we present details on how to represent the information gathered from the set of crowd-sourced sensors.
@@ -82,7 +82,7 @@ Fig.~\ref{fig:input}~(b) shows how a matrix is used to represent the input infor
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-\subsection{\bf Output Image Representing TX locations' Distributions}
+\subsection{Output Image Representing TX locations' Distributions}
 \label{subsec:imgimg_output_image}
 We now focus on designing the output image to represent the distribution of TX locations; 
 the output image is essentially the ``label" assigned to each input image that guides the training of the CNN model. 
@@ -139,7 +139,7 @@ Note that the location of the TX is in continuous domain and usually not at the 
 \end{figure}
 
 
-\subsection{\bf Image-to-Image Translation: \imgimg CNN Model}
+\subsection{Image-to-Image Translation: \imgimg CNN Model}
 \label{subsec:img-translate}
 
 At a higher level, we use a deep and spatial neural network, in particular a CNN, to learn the
