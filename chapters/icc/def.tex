@@ -10,10 +10,10 @@
 % \usepackage[procnumbered,linesnumbered,ruled]{algorithm2e}
 
 % give Procedure a independent counter
-% \newcounter{procedure}
-% \makeatletter
-% \AtBeginEnvironment{procedure}{\let\c@algocf\c@procedure}
-% \makeatother
+\newcounter{procedure}
+\makeatletter
+\AtBeginEnvironment{procedure}{\let\c@algocf\c@procedure}
+\makeatother
 % new commands
 % \newcommand{\red}[1]{\textcolor{red}{#1}}
 % \newcommand{\green}[1]{\textcolor{green}{#1}}
