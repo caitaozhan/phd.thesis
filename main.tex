@@ -39,6 +39,7 @@ headsepline, % Uncomment to get a line under the header
 % macro
 \input{chapters/ipsn/def}
 \input{chapters/wowmom-pmc/def}
+\input{chapters/icc/def}
 \input{swapping_macros}
 
 % bib
@@ -84,7 +85,7 @@ headsepline, % Uncomment to get a line under the header
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Localization in Wireless Sensor Networks and Quantum Sensor Network} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Transmitter Localization in Classical and Quantum Sensor Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Professor Himanshu Gupta} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 \degree{Doctor of Philosophy} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
@@ -140,9 +141,15 @@ headsepline, % Uncomment to get a line under the header
 \begin{flushright} \large
 \emph{Supervisor:} \\
 \href{https://www3.cs.stonybrook.edu/~hgupta/}{\supname} % Supervisor name - remove the \href bracket to remove the link  
+\emph{Committee:} \\
+\href{https://www3.cs.stonybrook.edu/~samir/}{Professor Samir Das} \\ % Supervisor name - remove the \href bracket to remove the link  
+\emph{Committee:} \\
+\href{https://www3.cs.stonybrook.edu/~cram/}{Professor C.R. Ramakrishnan} % Supervisor name - remove the \href bracket to remove the link  
 \end{flushright}
 \end{minipage}\\[3cm]
- 
+
+      
+
 \vfill
 
 \large \textit{A thesis proposal submitted in fulfillment of the requirements \\for the degree of \degreename}\\[0.7cm] 
@@ -241,6 +248,7 @@ Unlike classical networks, there is a more general task a quantum network should
 \include{introduction}
 \include{ipsn}
 \include{wowmom-pmc}
+\include{icc}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES

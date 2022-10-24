@@ -48,3 +48,7 @@ chapters/wowmom-pmc/*.cls
 chapters/wowmom-pmc/main.tex
 chapters/wowmom-pmc/summary_change.tex
 # chapters/wowmom-pmc/bib.bib
+
+# icc
+chapters/icc/IEEEtran.cls
+chapters/icc/main.tex
