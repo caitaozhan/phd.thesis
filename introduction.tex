@@ -1,49 +1,95 @@
-% Chapter Template
-\chapter{Introduction} % Main chapter title
-\label{chap:intro} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-The ability to convey information quickly, accurately, and efficiently has always been one of the main focuses driving human innovation. From prehistoric man with their signal fires to the smartphone-wielding high-powered executives of today, communication still remains a key for survival and success. The history of telecommunication illustrates this never-ending push for progress as it steadily parallels human growth, becoming more widespread and efficient as the development of modern civilization unfolds.Nowadays, the world is filled up with different types of networks like radio networks, switched telephone networks (PSTN), Ethernet, wireless networks, and in a near future quantum networks.
+\chapter{Introduction}
+\label{chap:intro}
 
-In wireless communications, the RF spectrum is a natural resource in great demand due to unabated increase in mobile (and hence wireless) data consumption \cite{Jeffrey14}. 
-The research community has addressed this capacity crunch via development of shared spectrum paradigms, wherein the spectrum is made available to unlicensed (secondary) users as long as they do not interfere with the transmission of licensed incumbents (primaries).
-Several spectrum management architectures have been proposed before~\cite{spectrumAllocationSurvey13,parishad18,milind05,sudeep16}.
-Essentially, to allocate spectrum to secondary users, we need to have the full knowledge of the signal path-loss between any arbitrary pair of points. However, the best known path-loss models~\cite{chamberlin82,hata2000} have unsatisfactory accuracy. Conducting extensive surveys,on the other hand, to gather this information is not feasible and worse, may not even reflect the dynamic behavior of channel conditions.
-This, consequently, leads to poor spectrum utilization, the fundamental objective of the shared spectrum
-systems.
+\section{Background}
 
-With the emerge of supreme computational power of quantum regimes, a new (and different) way of communicating information is needed. 
-Robust, reliable and stacked Quantum Networks with the aid of efficient communication help us to harness the tremendous power quantum computation where smaller Quantum Computers~\cite{google-nature-19,ibm-quantum-roadmap} can work collaboratively to achieve a higher good.
-Building quantum networks that support robust communication and entanglement distribution across nodes requires several fundamental scientific and technological advances, especially since classical techniques cannot be directly used in the quantum regime.
-However, quantum network communication is challenging. 
-Physical transmission of quantum states across nodes can incur irreparable communication errors, as the No-cloning Theorem~\cite{Dieks-nocloning} proscribes making independent copies of arbitrary qubits. 
-Transmission noises virtually prohibit direct communication of qubits over long distances, too.
-At the same time, certain aspects unique to the quantum regime, such as entangled states, enables 
-novel mechanisms for communication.
+\emph{Wireless sensor network} (WSN) is a network of spatially dispersed and dedicated sensors that monitor and record the 
+physical conditions of the environment and forward the collected data to a central location.
+WSN can measure environment conditions such as temperature, sound, pollution levels, humidity, wind and radio spectrum.
+WSN refers to classical sensor networks since everything it involves is classical.
+A sensor network becomes a \emph{quantum sensor network} (QSN) when the sensors leverage some quantum properties of light and matter, 
+such as quantum coherance and quantum entanglement.
+Quantum sensors are extremely sensitive to physical quantities such as magnetic field, electric field, quadrature displacement
+and phase shift in the optic field.
 
-This proposal explores novel ideas of using network resources more efficiently.
-In regard to shared wireless networks, we will investigate the possibility of a learning-based spectrum allocation system.
-We also aim to propose multiple techniques and approaches to facilitate realizing the exciting future Quantum Networks.
-We demonstrate that our proposed techniques outperform current state-of-the-art works in literature.
+\para{Classical.} WSNs have various applications.
+In this thesis, the application we focus on is spectrum surveillance and monitoring for security and threat detection.
+The \emph{core problem} involved in this application is \emph{transmitter localization}, and in particular, multiple transmitter localization (\mtl) as 
+the number of transmitter present in an area could be more than one and localizing multiple transmitters are not independent.
+The reason for being not independent is that a sensor receives an aggregated power from multiple transmitters and separating 
+the power from different multiple sources is impractical.
+That an aggregated received power not able to separete is a big challenge for \mtl.
+Furthermore, in a shared spectrum paradigm, presence of an evolving set of authorized users 
+(e.g., primary and secondary users) adds to the challenge.
 
-\section{Motivation}
+The shared spectrum paradigm composes an important background for our \mtl work.
+The RF spectrum is a natural resource in great demand due to the unabated increase in mobile (and hence, wireless) data consumption~\cite{Jeffrey14}. 
+The research community has addressed this capacity crunch via development of shared spectrum paradigms, wherein the spectrum 
+is made available to unlicensed users (secondaries) as long as they do not interfere with the transmission of licensed incumbents (primaries).
+The fundamental objective behind such shared spectrum paradigms is to maximize spectrum utilization,
+the viability of such systems depends on the ability to effectively guard the shared spectrum against unauthorized usage. 
+The current mechanisms however to locate such unauthorized users (intruders) are human-intensive and time-consuming, 
+involving FCC enforcement bureau which detects violations via complaints and manual investigation~\cite{mobicom17-splot}. 
 
-In general, a spectrum management system requires to have the full knowledge of the path-loss as well as other information about the living elements like primary users. 
-Having all the information, sometimes, is impossible leading to spectrum under-utilization. 
-To circumvent these challenges, we propose to instead directly learn the spectrum allocation as a function of some features that we introduce.
-The entanglement generation latency promised by current state-of-the-art algorithms is still high due to probabilistic behaviour of underlying quantum physics. Therefore, this motivates us to develop more sophisticated algorithms and novel ideas to reduce the latency and use the scarce entanglement resources more efficiently.
+Motivated by above, we seek for an effective technique that is able to accurately localize multiple simultaneous
+intruders and even in the presence of dynamically changing set of authorized users.
+Our solution assumes a network of crowdsourced sensors wherein relatively low-cost spectrum sensors are available
+for gathering signal strength in the form of received power.
+We introduce two different approaches to the \mtl problem.
+The first approach is a hypothesis-driven Bayesian approach, viz. maximum a posterior approach, where wherein each hypothesis is a configuration
+(i.e. a combination of $\langle$location, power$\rangle$ pair of the potential intruders), and the goal is to determine the hypothesis 
+that best explains the sensor observations.
+The second approach is a deep learning-based approach. We frame \mtl as a sequence of two steps: image-to-image translation 
+and object detection, each of which is solved using a trained CNN model. 
+The first step of image-to-image translation maps an input image representing sensor readings to an image
+representing the distribution of transmitter locations, and the second object detection step derives precise locations of
+transmitters from the image of transmitter distributions. 
+Besides the location, the transmission power is another property of a transmitter that we wish to estimate.
+We also introduces some novel methods to estimate the power of multiple transmitters.
 
-% There have been many works that independently look at the increase in mobile devices, new congestion controls, and changing traffic workloads. 
-% However, few works look at these Internet trends in conjunction with each other to determine overall effect on networked applications.
-% Therefore, our motivation is to determine if characterizing the interrelation between emerging devices, congestion controls, and traffic workloads can point to potential improvements in performance of applications.
+\para{Quantum.}
+In the quantum side, we use QSN, instead of WSN, to continue solving the problem of transmitter localization.
+Albeit classical sensors are omnipresent, there are big motivations to explore quantum sensors.
+Quantum sensing is an emerging field that leverages the quantum properties of light and matter at atomic/subatomic scales and has the potential to sense signals at an unprecedented level of precision.
+Quantum sensing brings new opportunities to new and well-established problems.
+For example, physicists in the year 2016 used squeezed quantum states to improve the sensitivity of the Laser Interferometer Gravitational-wave Observatory (LIGO) detector and successfully detected gravitational waves.
+In~\cite{PRL20-qsn}, researchers use some distributed quantum RF-photonic sensors to estimate the amplitude and phase of a radio signal.
+They showed the performance of sensing a global property of the RF wave is enhanced by leveraging a shared multipartite entangled state produced by squeezed light.
+In their experiments, the estimation variance of RF amplitude and phase both beat the standard quantum limit by over 3 dB.
+The precision improvement factor of $1/\sqrt{N}$ for $N$ sensors is known as reaching the Heisenberg limit.
+Motivated by the above, we aim to leverage quantum sensors to perform some canonical tasks and thus open a new avenue of research.
+The canonical task we picked is RF transmitter localization~\cite{nsdi13-arraytrack,pmc22-deepmtlpro}.
+We consider a network of quantum sensors distributed in a geographic area and a single transmitter active in the area to be localized.
+We pose the localization problem as a quantum state discrimination problem~\cite{bergou-review-2007}. 
+In our approach, the quantum sensor network reports a quantum state, and we discriminate the quantum state via 
+positive-operator valued measure (POVM) and the POVM's output indicates the transmitter location.
+
+Quantum entanglement is a phenomenon that has no counterpart in the classical world.
+It is the physical phenomenon that occurs when a group of particles (electrons, photons, etc) are generated, interact, or share spatial proximity in a way such that
+the quantum state of each particle of the group cannot be described independently of the state of the others, including when the particles
+are separated by a large distance.
+In short, quantum entanglement is a specially strong correlation between multiple particles.
+In our context of QSNs, entanglement can be served as a resource to enhance the perforance of the QSN.
+For example, the $1 / \sqrt{N}$ improvement factor mentioned above requires the initial probe state as an entangled state.
+The entanglement pair resource is generated at a single node, but the quantum sensors are spatially distributed.
+Thus, a major problem is to distribute (or route) the entanglement to the quantum sensors at a potentially large distance apart.
+This a challenging problem in the field of quantum communication.
+Physical transmission of quantum states accross nodes can incur irreparable communication errors, as the no-cloning theorem proscribes
+making independent copies of arbitrary qubits.
+The establish of entanglement over long distance is challenging due to the low probability of success of the underlying physical process
+(short distance entanglement and swapping).
+In this thesis, we propose an efficient heuristic approach that efficiently route an entanglement pair in a quantum network.
+
 
 \section{Thesis Statement}
 
-The thesis of this dissertation is that \textbf{Spectrum Usage in Shared Systems and Entanglement Distribution in Quantum Network.} 
-Our central premise is to explore algorithms that use the scarce resources of different networks.
+The thesis statement is: \textbf{Transmitters can be localized efficiently and accurately with our designed methods in classical and quantum sensor networks.} 
+Consider some transmitters to be localized a geographpical area. We deploy a distributed set of classical or quantum sensors in the area.
+We aim to efficently and accurately localize the transmitters by processing the data received from the sensors intelligently.
+Besides the core goal of transmitter localization, we also solve closely related problems such as transmission power estimation
+and quantum network routing of entanglement.
 
-Specifically, the thesis, first, explores deep learning-based approaches for efficient spectrum allocation in shared wireless systems.
-We also investigate the current state-of-the-art routing algorithms of generation and distribution of entanglement in a general, heterogeneous quantum network.
-
-\section{Contributions}
+\section{Organization and Contributions of this Thesis}
 
 Towards the goal of our thesis we make the following contributions:
 
@@ -121,15 +167,3 @@ We will extend our previous works, which the focus was establishing bipartite en
 As many other systems, entanglement generation is not noise free. To improve the quality service of quantum networks, we will take into consideration optimal distillation protocols merged into our multipartite entanglement.
 Eventually, we try to propose a stack-based quantum network architecture where the different elements of the network is going to be orchestrated in an organic way.
 
-
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-
-\section{Outline of Thesis}
-
-% In Chapter \ref{chap:deepalloc}, we discuss how to efficiently use resources in a wireless network, aka RF spectrum.
-% Chapter \ref{chap:swappingtrees} first introduces basics for communication in a quantum network and then proposes techniques for optimal routing of single or multiple pairs of nodes.
-% Next, Chapter \ref{chap:predist} presents techniques and algorithms to further reduce the latency of optimal routing in a quantum regime.
-% Finally in chapter \ref{chap:multipartite}, we will motivate our proposed work on devising schemes for distributing entanglement among more than two nodes, efficiently.
-% Finally, Chapter \ref{chap:conclusion} concludes our proposal.
