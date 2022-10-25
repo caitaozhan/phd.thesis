@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Background}
+\section{Background and Motivation}
 
 \emph{Wireless sensor network} (WSN) is a network of spatially dispersed and dedicated sensors that monitor and record the 
 physical conditions of the environment and forward the collected data to a central location.
@@ -39,13 +39,16 @@ We introduce two different approaches to the \mtl problem.
 The first approach is a hypothesis-driven Bayesian approach, viz. maximum a posterior approach, where wherein each hypothesis is a configuration
 (i.e. a combination of $\langle$location, power$\rangle$ pair of the potential intruders), and the goal is to determine the hypothesis 
 that best explains the sensor observations.
-The second approach is a deep learning-based approach. We frame \mtl as a sequence of two steps: image-to-image translation 
+The second approach is a deep learning-based approach. First, we encode the sensors' observation data into an image.
+Then, we frame \mtl as a sequence of two steps: image-to-image translation 
 and object detection, each of which is solved using a trained CNN model. 
 The first step of image-to-image translation maps an input image representing sensor readings to an image
 representing the distribution of transmitter locations, and the second object detection step derives precise locations of
 transmitters from the image of transmitter distributions. 
 Besides the location, the transmission power is another property of a transmitter that we wish to estimate.
-We also introduces some novel methods to estimate the power of multiple transmitters.
+We introduces some novel methods to estimate the power of multiple transmitters.
+We also introduce a novel interapolation method for received signal strength.
+
 
 \para{Quantum.}
 In the quantum side, we use QSN, instead of WSN, to continue solving the problem of transmitter localization.
@@ -57,12 +60,17 @@ In~\cite{PRL20-qsn}, researchers use some distributed quantum RF-photonic sensor
 They showed the performance of sensing a global property of the RF wave is enhanced by leveraging a shared multipartite entangled state produced by squeezed light.
 In their experiments, the estimation variance of RF amplitude and phase both beat the standard quantum limit by over 3 dB.
 The precision improvement factor of $1/\sqrt{N}$ for $N$ sensors is known as reaching the Heisenberg limit.
+
 Motivated by the above, we aim to leverage quantum sensors to perform some canonical tasks and thus open a new avenue of research.
 The canonical task we picked is RF transmitter localization~\cite{nsdi13-arraytrack,pmc22-deepmtlpro}.
 We consider a network of quantum sensors distributed in a geographic area and a single transmitter active in the area to be localized.
 We pose the localization problem as a quantum state discrimination problem~\cite{bergou-review-2007}. 
 In our approach, the quantum sensor network reports a quantum state, and we discriminate the quantum state via 
 positive-operator valued measure (POVM) and the POVM's output indicates the transmitter location.
+The key challenge here is the scalability challenge, i.e., the method's time and space complexity grows exponentially against the
+number of sensors and the method's localization accuracy decrease against the number of discrete locations.
+To solve the challenge, we propose a two-level POVM method that is comprised of a coarse-level POVM and a fine-level POVM.
+The two level idea is effective and can be generalized into three levels and more.
 
 Quantum entanglement is a phenomenon that has no counterpart in the classical world.
 It is the physical phenomenon that occurs when a group of particles (electrons, photons, etc) are generated, interact, or share spatial proximity in a way such that
@@ -86,17 +94,24 @@ In this thesis, we propose an efficient heuristic approach that efficiently rout
 The thesis statement is: \textbf{Transmitters can be localized efficiently and accurately with our designed methods in classical and quantum sensor networks.} 
 Consider some transmitters to be localized a geographpical area. We deploy a distributed set of classical or quantum sensors in the area.
 We aim to efficently and accurately localize the transmitters by processing the data received from the sensors intelligently.
-Besides the core goal of transmitter localization, we also solve closely related problems such as transmission power estimation
-and quantum network routing of entanglement.
+Besides the core goal of transmitter localization, we also solve closely related problems such as transmission power estimation, 
+receive signal strength interpolation and quantum network routing of entanglement.
 
-\section{Organization and Contributions of this Thesis}
+\section{Contributions and Organization of this Thesis}
 
 Towards the goal of our thesis we make the following contributions:
 
 \begin{itemize}
-    \item Improve the scarce spectrum usages of a wireless network
-    \item Introduce the optimal communications in quantum networks
-    \item Improving the high latency of quantum communications
+    \item In Chapter~\ref{chap:ipsn}, we introduce an efficient hypothesis-based Bayesian approach \ouralgo for multiple transmitter localization (\mtl) problem (Section~\ref{sec:time}); 
+          A closed-form equation for the estimation of transmission power (Section~\ref{sec:ipsn-power});
+          A novel received signal strength interpolation method inspired from the power law distribution (Section~\ref{sec:inter});
+          Extend \ouralgo to accommodate the presence of authorized users (Section~\ref{sec:auth}).
+    \item In Capter~\ref{chap:wowmom-pmc}, we introduce a deep learning-based approach \our for the \mtl problem (Section~\ref{sec:translate}, Section~\ref{sec:detect});
+          Extend \our via deep learning models to accommodate the presense of authorized users (Section~\ref{sec:authorized});
+          A deep learning-based approach that estimates the transmission power of multiple transmitters (Section~\ref{sec:power}).
+    \item In Chapter~\ref{chap:icc}, we introduce the concept of quantum sensor networks and the model of a quantum sensor (Section~\ref{sec:quantum_problem});
+          In the context of quantum sensor networks, we pose a transmitter localization problem as a quanum state discrimination problem 
+          and introduce a novel quantum localization method \povm and \povmpro based on positive-operator valued measure (Section~\ref{sec:povm}).
     \item Devising effective ways of distributing multipartite entanglement in a quantum network (Proposed)
 \end{itemize}
 
