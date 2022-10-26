@@ -112,73 +112,21 @@ Towards the goal of our thesis we make the following contributions:
     \item In Chapter~\ref{chap:icc}, we introduce the concept of quantum sensor networks and the model of a quantum sensor (Section~\ref{sec:quantum_problem});
           In the context of quantum sensor networks, we pose a transmitter localization problem as a quanum state discrimination problem 
           and introduce a novel quantum localization method \povm and \povmpro based on positive-operator valued measure (Section~\ref{sec:povm}).
-    \item Devising effective ways of distributing multipartite entanglement in a quantum network (Proposed)
+    \item In Chapter~\ref{chap:swappingtrees}, we introduce an efficient heuristic algorithm \dpalt for routing an entanglement pair.
+          The algorithm is Dijkstra-based, and the path selection metric is a closed-form expression that models a path as a tree near accurately (Section~\ref{chap:swappingtrees}).
 \end{itemize}
 
-\vspace{6pt}\noindent \textbf{Improve the scarce spectrum usages of a wireless network (SenSys'22, under review)}
 
-Shared spectrum systems facilitate spectrum allocation to unlicensed users without harming the licensed users; they offer great promise in optimizing spectrum utilization, but their management is challenging.
-Current allocation schemes are either based on imperfect propagation models or poor spatial granularity spectrum sensors which leads to spectrum under-utilization,  the fundamental objective of shared
-spectrum systems.
-% To allocate spectrum near-optimally to secondary users (SUs) in general scenarios, we 
-% fundamentally need to have knowledge of the signal path-loss function. In practice, however, even the best known path-loss models have unsatisfactory accuracy, and conducting extensive surveys to gather path-loss values is infeasible.
-%%%%%%%%%%%%%%%
+\section{Proposed: Transmitter Localization in QSN with Measurement in the Computational Basis}
+In Chapter~\ref{chap:icc}, we pose the transmitter localization problem as a quantum state discrimination problem
+and measure the quantum state reported by the quantum sensor network (QSN) via a positive-operator valued measure (POVM).
+Although POVM is good in theory, it is hard to implement in practice.
+Current hardware such as the IBM quantum computer only support measurement in the computational basis.
 
-In this work, we propose to learn the spectrum allocation function directly using supervised learning techniques. 
-For settings where information about the primary users' may not be available, we propose to use a crowdsourced sensing architecture and use the spectrum sensor readings as features. 
-%%%%%%%%%%%%%
-For spectrum allocation to a single SU, we develop a CNN-based approach
-and address various challenges that arise in our context; to handle multiple SU
-requests simultaneously, we extend our approach based on recurrent neural networks (RNNs).
-%%%%%%
-We present, via simulations and real testbed, the effectiveness of our developed techniques. We will show how easily our system outperforms the prior work by a high margin.
-
-
-\vspace{6pt}\noindent \textbf{Introduce the optimal communications in quantum networks (TQE'22)}
-
-Quantum network communication is challenging, as the No-cloning theorem in quantum regime makes many classical techniques inapplicable; in particular, 
-direct transmission of qubit, quantum counterpart of classical bit, states over long distances is infeasible
-due to unrecoverable errors.
-%%%%%%%%%%%%%%%%%
-For long-distance communication, the only viable communication approach is teleportation of quantum states, which requires a prior distribution of entangled pairs (\epss) of qubits.
-Establishment of \epss across remote nodes can incur significant latency due to the low probability of success of the underlying physical processes. 
-
-In this work, we develop efficient techniques that minimize \eps generation latency. While prior works
-have focused on selecting entanglement \textit{paths}, we select \emph{entanglement swapping trees} which represent the entanglement generation structure more accurately.
-Specifically, we develop a dynamic programming algorithm to select an optimal swapping-tree for a single pair of nodes, under the given capacity and fidelity constraints.
-We also develop an efficient iterative algorithm to extract the best set of swapping trees for general setting; when the network tries to generate \epss across multiple set of pairs.
-%  For the general setting,
-% We present simulation results which show that our solutions outperform 
-% the prior approaches by an order of magnitude and are viable for long-distance entanglement
-% generation.
-
-
-
-\vspace{6pt}\noindent \textbf{Improving the high latency of quantum communications (QCE'22)}
-In this work, we propose and investigate a complementary technique to further reduce \eps generation latency---to pre-distribute \epss over certain (pre-determined) pairs of network nodes. 
-Upon certain requests to the network, these re-distributed \epss can then be used to lower the generation latency.
-% As mentioned before, \ep generation between a pair of node can be parallelized for lower latency. 
-% This gives us an intuition to prepare some \eps across some nodes repeatedly such that many traffic requests can be served with.
-%%%%
-
-For such a pre-distribution approach to be most effective, we need to carefully select a set of node-pairs where
-the \epss should be pre-distributed to minimize the generation latency of expected \eps requests, under a given cost constraint.
-In this work,
-we appropriately formulate the above optimization problem and design two
-efficient algorithms, one of which is a greedy approach based on an 
-approximation algorithm for a special case. 
-The other approach is derived from the clustering methods.
-%%%%%%%%
-%%%%%%%%%%
-Via extensive evaluations, we demonstrate the effectiveness of our approach and developed techniques;  
-% we show that our developed algorithms outperform a naive approach by up to an order
-% of magnitude. 
-
-
-\vspace{6pt}\noindent \textbf{Devising effective ways of distributing multipartite entanglement in a quantum network (Proposed)} 
-We also propose looking into the entanglement generation among more than two nodes, something that there is no classical counterpart. 
-multipartite entanglement, physically, means there is a high correlation among all the participating nodes which has many applications from distributed computing to conference key sharing.
-We will extend our previous works, which the focus was establishing bipartite entanglement between a pair of nodes.
-As many other systems, entanglement generation is not noise free. To improve the quality service of quantum networks, we will take into consideration optimal distillation protocols merged into our multipartite entanglement.
-Eventually, we try to propose a stack-based quantum network architecture where the different elements of the network is going to be orchestrated in an organic way.
+For the proposed work, we continue the work of transmitter localization via quantum state discrimination in a more practical way.
+Instead of measuring via a POVM (square root measurement), we aim to \textit{measurement in the computational basis}.
+To optimize the measurement, we apply \textit{parameterized quantum circuits} (quantum machine learning) before the computational measurement gates.
+We would like to run the measurement not only in simulations, but on \textit{real IBM quantum computers}.
+We are currently in the noisy intermediate-scale quantum (NISQ). 
+Thus, we need to consider \textit{noise} in the measurement process, which is ignored in work of~\ref{chap:icc}.
 

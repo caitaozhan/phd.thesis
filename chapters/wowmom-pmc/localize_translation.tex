@@ -11,7 +11,7 @@ to an output image which represents the distribution of TX locations. Pixels in 
 \para{Input/Output Image Sizes and Tiling Approach for Large Areas.}
 We need to represent data by images of certain sizes.
 Typically, an image should be a size of a few hundred pixels by a few hundred pixels, since a thousand pixels by thousand pixels images will consume too much GPU memory.
-In this paper, we pick $100\times 100$ as the size for both our input and output images in the first image-to-image translation step.
+In this chapter, we pick $100\times 100$ as the size for both our input and output images in the first image-to-image translation step.
 Given an area that we want to monitor and a $100\times100$ size image, we will know how large an area a pixel will represent and we call it a pixel subarea.
 %%%%%%%%
 A large pixel subarea could certainly lead to high localization errors, due

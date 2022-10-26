@@ -15,7 +15,7 @@ In general, estimating the transmission power is beneficial to various operation
 There are several works that estimates the transmission power of a single transmitter, often jointly with its location \cite{PowerEstimate2010Zafer, Ureten2011powerlocation, icoin2007-powerposition}.
 Our previous work \cite{ipsn20-mtl} can estimate the power of multiple transmitters.
 The similarity among all four of these methods is that they are estimating the power and location jointly.
-In this paper, we propose a new method that leverages the capabilities of \our by using it as a building block. We first localize the transmitters by \our. 
+In this chapter, we propose a new method that leverages the capabilities of \our by using it as a building block. We first localize the transmitters by \our. 
 Then given the localized locations, estimate the transmitters' transmission power by a newly designed CNN model \power. 
 Although \power is designed to only estimate the power of a single transmitter, we use it together with a machine learning-based error correction method that can mitigate the errors while applying \power to the multiple transmitter power estimation scenario.
 
