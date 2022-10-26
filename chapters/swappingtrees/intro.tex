@@ -1,0 +1,70 @@
+\section{Introduction}
+\label{sec:swapping_intro}
+
+Fundamental advances in physical sciences and engineering have led to the realization of working quantum computers (QCs)~\cite{google-nature-19,ibm-quantum-roadmap}.  
+%Nevertheless, much work remains to fully realize the revolutionary potential of quantum computing. Specifically, 
+However, there are significant limitations 
+to the capacity of individual QC~\cite{Caleffi18}.  \tqbl{Quantum networks} (QNs) enable the construction of large, robust, and more capable quantum computing platforms by connecting smaller QCs. Quantum networks~\cite{qn}
+also enable various important applications~\cite{qsn,qkd,atomic,secure,byzantine}.
+%such as quantum sensor networks~\cite{qsn}, quantum key
+%distribution (QKD)~\cite{qkd, qkd-2}, 
+%atomic clock~\cite{atomic}, distributed consensus~\cite{byzantine}, secure %communications~\cite{secure}, etc. 
+%%%%%%%%
+However, quantum network communication is challenging --- e.g., physical transmission of quantum states across nodes can incur irreparable communication errors, as 
+the No-cloning Theorem~\cite{Dieks-nocloning} proscribes making 
+independent copies of arbitrary qubits. 
+At the same time, certain aspects unique to the quantum regime, such as entangled states, enables 
+novel mechanisms for communication.
+%%%%%%%%%%%%%
+In particular, teleportation~\cite{Bennett+:93} transfers quantum states with just classical
+communication, but requires an a priori establishment of entangled pairs (\epss).
+This chpater presents techniques for efficient establishment of \epss in a network.
+
+Establishment of \epss over long distances is challenging. 
+Coordinated entanglement swapping (e.g. DLCZ protocol~\cite{dlcz}) using quantum repeaters 
+can be used to establish long-distance entanglements from short-distance entanglements.
+However, due to low probability of success of the underlying physical processes
+(short-distance entanglements and swappings),  \eps generation can incur significant latency---
+of the order of 10s to 100s of seconds between nodes 100s of kms away~\cite{gisin}.
+%%%%%%%%%%%%%%%%%%%%%%%
+Thus, we need to develop techniques that can facilitate fast generation of long-distance \epss. 
+~\cite{tqe22-quantum} sovles the \spp Problem: Given a single $(s,d)$ pair, select a minimum-latency swapping tree under given constraints. 
+In this chapter, we select near-optimal swapping trees by a heuristic at a much lower time complexity.
+
+To the best of our knowledge, no prior work has addressed the problem of selecting an efficient
+swapping-tree for entanglement routing; they all consider selecting routing \textit{paths} \bleu{(\cite{caleffi} selects a path using a metric based on balanced trees; see \S\ref{sec:swapping_related}).}
+%%%%%%%%%%%%
+Almost all prior works have considered the ``waitless''
+model, wherein all underlying physical processes much succeed \textit{near-simultaneously} for 
+an \eps to be generated; this model incurs minimal decoherence, but yields
+very low \eps generation rates. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In contrast, we consider the ``waiting'' protocol, wherein, at each swap operation, the earlier arriving 
+\eps waits for a limited time for the other \eps to be generated. Such an approach with efficient swapping trees yields high entanglement rates; \bleu{the potential decoherence risk can be handled by discarding qubits that "age" beyond a certain threshold.}
+\eat{at the cost of potential decoherence. However, qubit coherence times of the order of several 
+minutes to a few hours~\cite{dec-2021,dec-15} have been demonstrated, 
+which renders our approach feasible even for long distances.}
+
+\para{Our Contributions.} 
+We \bleu{formulate} the entanglement routing problem (\S\ref{sec:swapping_problem})
+in QNs in terms of selecting optimal swapping \textit{trees} in the ``waiting'' protocol, under fidelity
+constraints. In this context, we make the following contribution:
+\begin{enumerate}
+
+\item
+For the \spp problem, the optimal algorithm in~\cite{tqe22-quantum} has high time complexity; 
+we aim to improve the time-complexity of the algorithm without degrading its empirical performance.
+We thus design a near-linear time heuristic for the \spp problem based on an appropriate metric 
+which essentially restricts the solutions to balanced swapping trees (\S\ref{sec:swapping_efficient}).
+
+\end{enumerate}
+
+\eat{
+\para{Overall Pitch and .}
+Generate long-distance EPs “optimally” using a more “practical” model which makes use of memories (and transient storage of intermediate EPs).
+Multiple paths, and Multiple Pairs. -----> Also, “optimally’.
+Evaluation to:
+Validate the realism of the high-level processes/protocols.
+corroborate the expected superior “performance”.
+}
+

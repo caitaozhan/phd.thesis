@@ -1,0 +1,171 @@
+% \newcommand*\pfofthm{PROOF OF THEOREM~\ref{thm:swapping_os-wt}}
+% \section{\protect\pfofthm}
+% \section{Proof of Theorem~\ref{thm:swapping_os-wt}}
+% \label{app:swapping_os-wt}
+% % \section{PROOF OF THEOREM~\ref{thm:os-wt}}
+% % \label{app:os-wt}
+
+% \para{Proof (sketch):} 
+% We provide a main intuition behind the claim in Theorem~\ref{thm:swapping_os-wt}.
+% The key claim is that at any instant the \os protocol generates an \eps,
+% the \wt protocol will also be able to generate an \eps.
+% %%%%%%%%%%
+% Consider an instant $t$ in time when the \os protocol $X$ generates an 
+% \eps, as
+% a result of all the underlying processes succeeding at time $t$. 
+% %%%%%%%%%
+% Right before time $t$, consider the state of the \epss in the swapping-tree $T$ of the \wt 
+% protocol $Y$: Essentially, some of the nodes in $T$ have (generated) 
+% \epss that are waiting for their sibling \eps to be generated; note that these generated \epss have not aged yet, else they would have been already discarded by $Y$. Now, at time $t$, during $X$'s execution, all the underlying processes succeed instantly---it is easy to see that in the protocol $Y$ too, all the un-generated \eps would now be generated instantly\footnote{Here, we have implicitly assumed that if $n$ BSM operations succeed in $X$ protocol at some instant $t$, then at the same instant, $n$ BSM operations anywhere in $Y$ will also succeed.}---yielding a full \eps at the root (using qubits that have not aged beyond the threshold). Finally, since the number of operations in $T$ is the same as the number of BSM operations incurred by $X$ to generate an \eps, the fidelity degradation due to operations is the same in both the protocols.
+% %%%%%%%%%%%%%%%%%%%
+
+% \newcommand*\pfoflem{PROOF OF LEMMA~\ref{lem:swapping_subtrees}}
+% \section{\protect\pfoflem}
+% \section{Proof of Lemma~\ref{lem:swapping_subtrees}}
+% \label{app:swapping_subtrees}
+% % \section{PROOF OF LEMMA~\ref{lem:subtrees}}
+% % \label{app:subtrees}
+
+% \para{Proof.} We first prove the claim that given any swapping tree 
+% $\T_{xy}$ over a path  $P: x \leadsto w \leadsto y$, there exists
+% a swapping tree $\T_{xw}$ over a path $P':x \leadsto w$ such that 
+% $P'$ is a subset of $P$ and generation latency of $\T_{xw}$ is 
+% less than that of $\T_{xy}$. This claim can be easily proved by 
+% induction as follows. Consider two cases: (i) 
+% $w$ is the root of
+% $\T_{xy}$, in which case $T_{xw}$ is the left child of the root.
+% (ii) $i$ and $w$ have a common ancestor $a$ that is other than 
+% the root of $\T_{xy}$. In this case, $a$ = $w$, and the subtree 
+% rooted at $a=w$ is the required  $\T_{xw}$. (iii) The only common
+% ancestor of $i$ and $w$ is the root $a$ of $\T_{xw}$, which is not $w$.
+% In this case, we apply the inductive hypothesis on right subtree $\T_{ay}$
+% of
+% $\T_{xy}$, to extract a subtree $\T_{aw}$ which along with the left 
+% right subtree $\T_{ia}$ of $\T_{xy}$ --- gives the required subtree
+% $\T_{xw}$. This proves the above claim.
+
+% Now, to prove the lemma, let us consider the swapping trees
+% $\T_{ik}$ and $\T_{kj}$ given to us. By the above claim, there are 
+% swapping trees $\T_{iv}$ and $\T_{vj}$, which will satisfy the requirements
+% of the given lemma's claim.
+
+
+% \newcommand*\pfofthmt{PROOF OF THEOREM~\ref{thm:swapping_dp}}
+% \section{\protect\pfofthmt}
+% \section{Proof of Theorem~\ref{thm:swapping_dp}}
+% \label{app:swapping_dp}
+
+
+% \para{Proof.}
+% \tqbl{We show that $T[i, j, h, u_i, u_j]$ is indeed the optimal latency over the
+% nodes $(i,j)$ using a throttled swapping tree of height at most $h$ and 
+% with $u_j$ and $u_j$ as the usage percentages at nodes $i$ and $j$.
+% %%%%%%%%%%%%%
+% We use proof by induction over $h$.
+% %%%%%%%%
+% The base case is obvious.
+% %%%%%%%
+% The inductive hypothesis is that the above statement is true for all heights $\leq (h-1)$.
+% %%%%%%%
+% Now, let $\T$ be an optimal-latency swapping tree of height at most $h$ between
+% a pair of nodes $(i,j)$, for some height greater than 1, and node usage percentages at $i$ and $j$ of $u_i$ and $u_j$ respectively. 
+% Let the expected latency of $\T$ be $L$. 
+% %%%%%%%%
+% Let the two children subtrees of the root of $\T$ be $\T_1$ and $\T_2$, each of latency $L_c$; note that, as $\T$ is throttled, the expected latencies of  $\T_1$ and $\T_2$ are equal. Thus, we have $L_c = (\frac{3}{2}L + \ct + \bt)/\bp)$ by Eqn.~\eqref{eqn:swapping_tree-rate}.
+% Note that $\T_1$ and $\T_2$ are of heights at most 
+% $h-1$, and, without loss of generality, we can assume $\T_1$ and $\T_2$ to be disjoint (as per Lemma~\ref{lem:swapping_subtrees}).
+% %%%%%%%%%%%%%
+% Let $\T_1$ and $\T_2$ be between the pairs of nodes
+% $(i,k)$ and $(k,j)$ with end-nodes usage percentages of $(u_i, u_k)$ and $(u_k',u_j)$ respectively.
+% %%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%
+% Now, optimal throttled trees over $(i,k)$ and $(k,j)$  must have a latency of
+% at most that of $\T_1$ and $\T_2$, i.e., $L_c$. 
+% %%%%%%%%%
+% Finally, by Eqn.~\ref{eqn:swapping_dp-usage} and the inductive hypothesis, we have that the 
+% $T[i, j, h, u_i, u_j]$ (and throttled) will be at most $L$. }
+%%%%%%%%%
+
+
+% \begin{table*}[h]
+%     \centering
+%     \caption{Execution times of \spp algorithm over small networks} %title of the table
+%     % \centering % centering table
+%     \begin{tabular}{c rrrrrr} % creating 8 columns
+%     \hline\hline %inserting double-line
+%     Algorithm&\multicolumn{6}{c}{Number of nodes} \\ [0.5ex]
+%     & 10 & 13 & 15 & 16 & 18 & 20 \\
+%     \hline % inserts single-line
+%     \dpalt & 239$\mu$s & 360$\mu$s & 373$\mu$s& 492$\mu$s& 530$\mu$s& 552$\mu$s\\
+%     \dpa & 4ms & 10ms & 14.7ms& 17.6ms& 28ms& 34ms\\
+%     \dpo & 148ms & 363ms & 572ms & 706ms& 1s& 1.7s\\ 
+%     Caleffi~\cite{caleffi} & 92ms & 4.6s & 14s& 26mins & 3.2hrs& 12.8hrs\\[1ex] % [1ex] adds vertical space
+%     \hline % inserts single-line
+%     \end{tabular}
+%     \label{tab:swapping_runtime}
+% \end{table*}
+    
+%     % \newcommand*\exectime{EXECUTION TIMES OF \clf~\cite{caleffi} ALGORITHM}
+%     % \section{\protect\exectime}
+%     \section{Execution Times of \clf Algorithm}
+%     \label{app:swapping_time}
+%     % \section{Execution Times of \clf~\cite{caleffi} Algorithm}
+%     % \label{app:time}
+    
+    
+%     Here, we give execution times of different algorithms especially \clf's for small networks of 10-20 nodes. See Table~\ref{tab:swapping_runtime}. We see that \dpalt and \dpa take fractions of a second, while \dpo takes upto 2 seconds. However, as expected \clf's execution time increases exponentially with increase in number of nodes -- with 20-node network takes 10+ hours. Below, we further estimate \clf's execution time for larger graphs.
+    
+%     \para{Rough Estimate of \clf's Execution Time for Large Graphs.}
+%     Consider a $n$-node network with an average node-degree of $d$. Consider a node pair $(s,d)$. We try to estimate the number of paths from $s$ to $d$ -- the goal here is merely to show that the number is astronomical for $n$ = 100, and thus, our analysis is very approximate (more accurate analysis seems beyond the scope of this work). 
+%     %%%%%%%%%%%%%%%
+%     Let $P(l)$ be the number of simple paths from $s$ to a node $x$ in the graph of length at most $l$. For large graphs and large $l$, we can assume $P(l)$ to be roughly same for all $x$. We estimate that $P(l+1) = P(l) + P(l)*6*(1 - l/n)$. The first term is to count paths of length at most $l-1$; in the second term, the factor 6 comes from the fact the destination $x$ has 6 neighbors and the factor $(1-l/n)$ is the probability that a path counted in $P(l)$ doesn't contain $x$ (to constrain the paths to be simple, i.e,. without cycles). 
+%     %%%%%%%%%%%%%%%
+%     Using $P()$, the execution time of \clf can be roughly estimated to be at least $P(n-1)*500/(5*10^9)$ seconds where the factor 500 is a conservative estimate of the number of instructions used in computing the latency for a path and $5*10^{9}$ is the number of instructions a 5GHz machine can execute in a second.
+%     %%%%%%%%%%%
+%     The above yields executions times of a few seconds for $n=15$, 
+%     about an hours for $n=20$,  
+%     about 350 hours for $n=25$, 
+%     and $10^{16}$ hours for $n=50$,
+%     and $10^{44}$ hours for $n=100$. 
+%     The above estimates for $n=15$ to 20 are within an order of 
+%     magnitude of our 
+%     actual execution times, and thus, validate our estimation approach.
+    
+%     \section{Comparison with \clf: More Details}
+%     \label{app:swapping_clf-perf}
+    
+%     Fig.~\ref{fig:swapping_caleffi} shows that \dpo outperforms \clf by a margin of around 10\% when averaging multiple experiments.
+%     However, when we look at one experiment at a time and compute the \clf's performance relative to \dpo for each experiment, we see a larger difference between \dpo and \clf.
+%     Fig.~\ref{fig:swapping_caleffi-relative} plots the error bar of the relative performance of three algorithms comparing to \dpo at each experiment.
+%     The lower cap of \clf at 0.2 atomic BSM success rate is 0.35, which means that at an extreme sample, the \dpo is almost 300\% better than \clf.
+%     In that extreme sample, the number of hops between the source and destination is large (thus the overall EP rate is small, which affects little when averaging with other experiments in Fig.~\ref{fig:swapping_caleffi}).
+%     Moreover, we observe that the larger number of hops between the source and destination, the larger the gap of relative performance is between \dpo and \clf.
+%     This observation aligns with what is shown in Fig.~\ref{fig:swapping_spp}(b): our \dpo has an larger advantage in ratio when the source and destination are far away.
+    
+    
+    
+%     \begin{figure}[h]
+%         \centering
+%         \includegraphics[width=0.7\textwidth]{figures/swappingtrees/caleffi-relative.jpg}
+%         % \vspace{0.05in}
+%         \caption{Compare the performance with Caleffi relative to \dpo (the closer to 1 the better).}
+%         \label{fig:swapping_caleffi-relative}
+%     \end{figure}
+    
+    
+    % \section{Execution Times Plot}
+    % \label{app:time-plot}
+    
+    % We give here the plot for execution times of various schemes. 
+    % See Fig.~\ref{fig:runtime}.
+    
+    
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[width=0.5\textwidth]{resources/figures/runtime.png}
+    %     \vspace{-0.1in}
+    %     \caption{The execution time comparison of various algorithms for \spp and \qnr algorithms.}
+    %     \label{fig:runtime}
+    % \end{figure}
+    
+    

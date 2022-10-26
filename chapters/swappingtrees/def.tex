@@ -1,0 +1,161 @@
+\newcommand{\Dc}{\mbox{${\Delta_c}$}}
+\newcommand{\dg}{\mbox{${\delta_t}$}}
+
+% Specific to this paper:
+
+% \newcommand{\M}{\ensuremath{\mathcal{M}}\xspace}
+\newcommand{\R}{\ensuremath{\mathcal{R}}\xspace}
+% \newcommand{\T}{\ensuremath{\mathcal{T}}\xspace}
+
+\newcommand{\clf}{\mbox{\tt Caleffi}\xspace}
+%\newcommand{\C}{\mbox{${\cal C}$}}
+%\newcommand{\hh}{\mbox{h}\xspace}
+\newcommand{\hh}{\ensuremath{h}}
+\newcommand{\ol}{\mbox{$o'$}\xspace}
+\newcommand{\eps}{\mbox{EP}\xspace}
+\newcommand{\epss}{\mbox{EPs}\xspace}
+\newcommand{\es}{\mbox{ES}\xspace}
+\newcommand{\ess}{\mbox{ESs}\xspace}
+\newcommand{\os}{\mbox{\tt WaitLess}\xspace}
+\newcommand{\wt}{\mbox{\tt Waiting}\xspace}
+\newcommand{\DP}{\mbox{\tt DP}\xspace}
+\newcommand{\dpa}{\mbox{\tt DP-Approx}\xspace}
+\newcommand{\naive}{\mbox{\tt SP}\xspace}
+\newcommand{\dpo}{\mbox{\tt DP-OPT}\xspace}
+\newcommand{\iter}{\mbox{\tt ITER}\xspace}
+\newcommand{\iterdpalt}{\mbox{\tt ITER-Bal}\xspace}
+\newcommand{\iterdpa}{\mbox{\tt ITER-DPA}\xspace}
+\newcommand{\iternaive}{\mbox{\tt ITER-SP}\xspace}
+\newcommand{\qnr}{\mbox{\tt QNR}\xspace}
+\newcommand{\spp}{\mbox{\tt QNR-SP}\xspace}
+% \newcommand{\dp}{\mbox{\tt DP}\xspace}   \dp command already defined ? Where ?
+\newcommand{\LP}{\mbox{\tt LP}\xspace}
+\newcommand{\dpalt}{\mbox{\tt Balanced-Tree}\xspace}
+\newcommand{\qcast}{\mbox{\tt Q-Cast}\xspace}
+\newcommand{\delftlp}{\mbox{\tt Delft-LP}\xspace}
+\newcommand{\name}{\mbox{\tt QTree}\xspace}
+% \newcommand{\eat}[1]{}
+
+\let\emph\textit
+
+\newcommand{\pp}{\ensuremath{\bar{p}}}
+%\newcommand{\pht}{\mbox{$t_{ob}$}\xspace}         % BSM (photon-photon) time. Inverse is rate.
+\newcommand{\php}{\mbox{$p_{ob}$}\xspace}          % BSM (photon-photon) probability of success.
+\newcommand{\bt}{\mbox{$t_{b}$}\xspace}         % BSM (atom-atom time. Inverse is rate.
+\newcommand{\bp}{\mbox{$p_{b}$}\xspace}          % BSM (atom-atom probability of success.
+\newcommand{\gr}{\mbox{$r_g$}\xspace}      % Node generation (atom-photon) rate. Inverse of \gt.
+\newcommand{\gt}{\mbox{$t_g$}\xspace}      % Node generation (atom-photon) time. Inverse is rate.
+\newcommand{\gp}{\mbox{$p_g$}\xspace}       % Node generation probability of success.
+%\newcommand{\et}{\mbox{$t_e$}\xspace}      % photon transmission  time. Inverse is link capacity. 
+\newcommand{\ep}{\mbox{$p_e$}\xspace}       % photon transmission probability of success.
+\newcommand{\ct}{\mbox{$t_c$}\xspace}      % Classical time.
+% \newcommand{\cp}{\mbox{$p_c$}\xspace}      % Classical probability of success.
+
+\newcommand{\fidl}{\ensuremath{\tau_l}\xspace}
+\newcommand{\fidd}{\ensuremath{\tau_d}\xspace}
+
+
+
+\newtheorem{defn}{Definition}[section]
+
+%%
+%New commands, move to macros.tex
+% \newcommand{\bra}[1]{\ensuremath{\langle#1|}}
+% \newcommand{\ket}[1]{\ensuremath{|#1\rangle}}
+% \newcommand{\norm}[1]{\ensuremath{|#1|}}
+\newcommand{\decT}{\ensuremath{\mathrm{T_{CH}}}\xspace}
+% \NewDocumentCommand{\entT}{\ensuremath{\mathrm{\T_{{\@empty},{\@empty}}}\xspace}}{#1~#2}
+% \NewDocumentCommand{\tauT}{\ensuremath{\mathrm{\T_{{},{}}}\xspace}}{#1~#2}
+\newcommand{\entT}[3]{
+        \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
+            \expandafter\ifx\expandafter\relax\detokenize{#2}\relax
+                \ensuremath{\mathrm{T}}\xspace
+            \else
+                \ensuremath{\mathrm{T_{#2,#3}}}\xspace
+            \fi
+        \else
+            \ensuremath{\mathrm{T^#1_{#2,#3}}}\xspace
+        \fi\xspace}
+\newcommand{\tauT}[3]{
+        \expandafter\ifx\expandafter\relax\detokenize{#1}\relax
+            \expandafter\ifx\expandafter\relax\detokenize{#3}\relax
+                \ensuremath{\mathrm{\tau}}\xspace
+            \else
+                \ensuremath{\mathrm{\tau_{#2,#3}}}\xspace
+            \fi
+        \else
+            \ensuremath{\mathrm{\tau^#1_{#2,#3}}}\xspace
+        \fi\xspace}
+
+
+
+% \usepackage{subcaption}
+\definecolor{accessbl}{cmyk}{1, 0.4, 0.3, 0}
+\DeclareCaptionFont{bl}{\color{accessbl}}
+% \captionsetup[figure]{labelfont={bf,footnotesize, bl}, skip=0pt, labelsep=period, textfont={footnotesize}}
+
+% *********************
+% \usepackage{tcolorbox}
+% \usepackage{endnotes}
+% \usepackage{paralist}
+% \usepackage[normalem]{ulem}
+% \usepackage{url}
+% \usepackage{soul}
+
+% \usepackage{align}
+% \usepackage{IEEEeqnarray}
+% \usepackage{appendix}
+
+\def\includeComments{include}
+\def\includ{include}
+\def\comm[#1]{\ifx\includeComments\includ  \bl \texttt{\textbf{\textit{Note: #1}}} \par \fi}
+\def\inlinecomm[#1]{\ifx\includeComments\includ  \textit{Note: #1} \fi}
+
+% *********************
+
+% \usepackage{IEEEeqnarray}
+
+% \newcommand{\red}[1]{\textcolor{black}{#1}}
+\newcommand{\blx}[1]{\textcolor{black}{#1}}
+\newcommand{\bleu}[1]{\textcolor{black}{#1}}
+% \newcommand{\blue}[1]{\textcolor{black}{#1}}
+\newcommand{\tqbl}[1]{\textcolor{black}{#1}}
+
+% \newcommand{\para}[1]{\smallskip \noindent {\bf #1}}
+% \newcommand{\softpara}[1]{\smallskip \noindent \underline{#1}}
+% \newenvironment{prf}{{\em Proof:} \nopagebreak }{{\hfill$\blackbox$}}
+\newcommand{\vsp}{\vspace{0.01in}}
+\newcommand{\cw}{\color{white}}
+% \newcommand{\cb}{\color{black}}
+% \newcommand{\cbl}{\color{black}}
+% \newcommand{\cbr}{\color{red}}
+% \newcommand{\rb}[1]{\textcolor{black}{#1}}
+% \newcommand{\rbl}{\color{red}}
+
+\def\blackbox{\hfill {\vrule height6pt width6pt depth0pt}}
+
+
+\newcounter{theorem}
+% \newtheorem{thm}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{formula}{Formula}
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{Plain}{}
+\newtheorem{defin}{Definition}
+\newtheorem{ex}{Example}
+% \newtheorem{lem}{Lemma}
+\newtheorem{ob}{Observation}
+%%\newtheorem{alg}{Algorithm}
+
+\newenvironment{theorem}{\vsp \begin{thm} \nopagebreak}{{\hfill$\blackbox$} \end{thm} \vsp}
+% \newenvironment{thm-prf}{\vsp \begin{thm} \nopagebreak}{\end{thm}}
+\newenvironment{lemma}{\vsp \begin{lem} \nopagebreak}{{\hfill$\blackbox$} \end{lem} \vsp}
+\newenvironment{lem-wo-prf-box}{\vsp \begin{lem} \nopagebreak}{\end{lem}}
+% \newenvironment{lem-prf}{\vsp \begin{lem} \nopagebreak}{\end{lem}}
+% \newenvironment{prf}{{\em Proof:} \nopagebreak }{{\hfill$\blackbox$}}
+\newenvironment{definition}[1]{\vsp\begin{defin}\begin{rm}(\textsc{#1})} {{\hfill$\Box$} \end{rm}\end{defin} \vsp}
+\newenvironment{example}{\begin{ex} \nopagebreak \begin{rm}}{{\hfill$\Box$} \end{rm}\end{ex}}
+\newenvironment{observation}{\noindent \begin{ob}}{{\hfill$\Box$}\end{ob}}
+\newenvironment{cor-prf}{\vsp \begin{corollary} \nopagebreak}{\end{corollary}}
+% \newenvironment{cor}{\vsp \begin{corollary} \nopagebreak}{{\hfill$\Box$} \end{corollary} \vsp}

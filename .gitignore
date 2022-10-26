@@ -18,13 +18,9 @@ predistribution.bib
 deepalloc.bib
 swappingtrees.bib
 swapping_defs.tex
-chapters/swapping*
-figures/swapping*
 *.ipynb
 *.pptx
 
-figures/deepalloc
-figures/predistribution
 
 # ipsn
 chapters/ipsn/cover.tex
@@ -53,3 +49,17 @@ chapters/wowmom-pmc/summary_change.tex
 # icc
 chapters/icc/IEEEtran.cls
 chapters/icc/main.tex
+
+#swappingtree
+chapters/swappingtrees/DP-sp.tex
+chapters/swappingtrees/iterative-qnr.tex
+chapters/swappingtrees/lp-qnr.tex
+chapters/swappingtrees/decoherence.tex
+chapters/swappingtrees/figures/caleffi-relative.jpg
+chapters/swappingtrees/figures/analytical_throttle.jpg
+chapters/swappingtrees/figures/fidelity.jpg
+chapters/swappingtrees/figures/hypergraph.jpg
+chapters/swappingtrees/figures/line_extra2.jpg
+chapters/swappingtrees/figures/QNR.jpg
+chapters/swappingtrees/figures/runtime.jpg
+

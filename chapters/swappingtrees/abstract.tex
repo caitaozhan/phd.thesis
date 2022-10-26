@@ -1,0 +1,28 @@
+Quantum network communication is 
+challenging, as the No-cloning theorem in quantum regime
+makes many classical techniques inapplicable; \tqbl{in particular, 
+direct transmission of qubit states over long distances is infeasible
+due to unrecoverable errors.}
+%%%%%%%%%%%%%%%%%
+For long-distance communication \tqbl{of unknown quantum states}, 
+the only viable communication approach \tqbl{(assuming local operations
+and classical communications)} is 
+teleportation of quantum states, which requires a prior distribution of 
+entangled pairs (\epss) of qubits.
+Establishment of \epss across remote nodes can incur significant 
+latency due to the low probability of success of the underlying 
+physical processes. 
+The focus of this chapter is to develop
+efficient techniques that minimize \eps generation latency. Prior works
+have focused on selecting entanglement \textit{paths}; in contrast, we\eat{propose
+selection of efficient} \bleu{select}  \emph{entanglement swapping trees}---a more accurate 
+representation of the entanglement generation structure. 
+Prior work~\cite{tqe22-quantum} developed a dynamic programming algorithm 
+to select an optimal swapping-tree for a single pair of nodes, under the given capacity
+and fidelity constraints. For the general setting, ~\cite{tqe22-quantum} also developed an 
+efficient iterative algorithm to compute a set of swapping trees.
+However, the dynamic programming algorithm has a high time complexity, and thus, may not
+be practical for real-time route finding in large networks.
+In this chapter, we focus on developing an \emph{almost linear time} heuristic for the \spp problem,
+based on the classic Dijkstra shorted path algorithm.
+The designed heuristic performs close to the DP-based algorithms in our empirical studies.
