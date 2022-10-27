@@ -113,20 +113,8 @@ Towards the goal of our thesis we make the following contributions:
           In the context of quantum sensor networks, we pose a transmitter localization problem as a quanum state discrimination problem 
           and introduce a novel quantum localization method \povm and \povmpro based on positive-operator valued measure (Section~\ref{sec:povm}).
     \item In Chapter~\ref{chap:swappingtrees}, we introduce an efficient heuristic algorithm \dpalt for routing an entanglement pair.
-          The algorithm is Dijkstra-based, and the path selection metric is a closed-form expression that models a path as a tree near accurately (Section~\ref{chap:swappingtrees}).
+          The algorithm is Dijkstra-based, and the path selection metric is a closed-form expression that models a path as a tree near accurately (Section~\ref{sec:swapping_efficient}).
+    \item In Chapter~\ref{chap:proposed}, we described our proposed work of this thesis.
 \end{itemize}
 
-
-\section{Proposed: Transmitter Localization in QSN with Measurement in the Computational Basis}
-In Chapter~\ref{chap:icc}, we pose the transmitter localization problem as a quantum state discrimination problem
-and measure the quantum state reported by the quantum sensor network (QSN) via a positive-operator valued measure (POVM).
-Although POVM is good in theory, it is hard to implement in practice.
-Current hardware such as the IBM quantum computer only support measurement in the computational basis.
-
-For the proposed work, we continue the work of transmitter localization via quantum state discrimination in a more practical way.
-Instead of measuring via a POVM (square root measurement), we aim to \textit{measure in the computational basis}.
-To optimize the measurement, we apply \textit{parameterized quantum circuits} (quantum machine learning) before the computational measurement gates.
-We would like to run the measurement not only in simulations, but on \textit{real IBM quantum computers}.
-We are currently in the noisy intermediate-scale quantum (NISQ). 
-Thus, we need to consider \textit{noise} in the measurement process, which is ignored in work of Chapter~\ref{chap:icc}.
 
