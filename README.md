@@ -1,2 +1,2 @@
 # phd.thesis
-PhD Thesis Proposal
+PhD Thesis, written in LaTeX with Visual Studio Code.
