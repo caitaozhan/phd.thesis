@@ -1,5 +1,22 @@
 \section{Conclusion and Future Work}
-We introduce \povm and an improved version \povmpro that localizes an RF transmitter in a sensor network effectively and efficiently.
-The approach utilizes quantum data obtained from a quantum sensor network and performs POVM measurements in a creative way to determine the transmitter location.
-For future work, we would like to explore performing quantum measurements on a computational basis combined with quantum machine learning.
-We would also like to explore more unitary operator models, as well as whether an entangled initial state's can enhance the localization performance.
+\label{sec:conclusion}
+
+In this paper, we have developed effective schemes for an important quantum sensor
+network application, viz., localization of a wireless transmitter. The work demonstrates
+how a network of quantum sensors can collaborate to predict a parameter (here, location of an
+event/transmitter) that is received/sensed differently at different sensor locations (e.g., depending on the distance from the event).
+%%%%%%%%%%%%%%%%
+In particular, this work shows the promise of quantum sensor networks in localization of 
+events in general---one of the most important applications of classical sensor networks.
+%%%%%%%%%%%%%%%%%
+
+Our work has significant opportunities for improvement. 
+In particular, one can optimize the initial state of the sensors to further improve the localization performance (note that, here, we have only used a uniform superposition initial state).
+In this context, we are also interested in determining whether
+entangled initial states are helpful; recent 
+works~\cite{swapping-tqe-22,predist-qce-22,ghz-qce-23} have shown that entangled states can be efficiently distributed over a quantum network. 
+In addition, one can consider general multi-level approaches and restricted forms of measurement,
+design parameterized quantum circuits with noise~\cite{quantumnas2022}, 
+and develop techniques to distribute such circuits over a quantum (sensor) network as in~\cite{dqc-disc-q21, gdqc-qce-22, dqc-qsw-23}.
+%%%%%%%%
+We plan to explore some of these directions in our future work.

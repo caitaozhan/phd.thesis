@@ -1,108 +1,170 @@
 \section{Sensor Model, Problem, Related Work}
 \label{sec:quantum_problem}
 
-In this section, we describe our mathematical model of a quantum sensor and formulate the quantum transmitter localization problem.
-We also briefly talk about related work.
+In this section, we start with motivating our choice of RF transmitter localization as an application for QSN, and then model the impact of an RF received signal on the quantum state of a quantum sensor. We then formulate the quantum localization problem and discuss related work.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{chapters/qce/figures/unitary.png}
-    % \vspace{-0.1in}
-    \caption{Sensing modeled as a single parameter estimation problem. The initial state $\hat{\rho}_{0}$ is used to probe an unknown parameter $\alpha$ embedded in the unitary operator $\hat{U}(\alpha)$, yielding output state $\hat{\rho}(\alpha)$.}
-    % \vspace{-0.1in}
-    \label{fig:unitary}
-\end{figure}
-\para{The mathematical model of quantum sensors.} We first formulate quantum sensing as a single parameter estimation problem, shown in Fig.~\ref{fig:unitary}.
-Consider a parameter $\alpha$ embedded in a unitary operator.
-To sense $\alpha$, one prepares an initial quantum state $\hat{\rho}_{0}$ and passes it through unitary operator $\hat{U}(\alpha)$, obtaining the output state:
-$\hat{\rho}(\alpha) = \hat{U}(\alpha) \hat{\rho}_{0} \hat{U}^{\dagger}(\alpha)$.
-$\hat{U}(\alpha)$ describes the interaction between a qubit and the environment~\cite{arizona21-thesis}
-\begin{equation}
-    \hat{U}(\alpha) = e^{-i\alpha \hat{G}}
-    \label{equ:unitary_generator}
-\end{equation}
-where $\hat{G}$ is called the generator, which is a Hermitian operator.
-$\hat{G}$ is determined by the type of $\alpha$.
-The type includes quadrature displacement~\cite{PRL20-qsn}, phase shift~\cite{nature21_phase} and qubit phase rotation, etc,~\cite{Zhang_2021}. 
-In this chapter, we assume $\alpha$ is the \emph{phase shift}, and our generator follows the expression in~\cite{nature21_phase}
-\begin{equation}
-    \hat{G} = \sigma_z / 2 = 
-    \begin{bmatrix}
-    \frac{1}{2} & 0\\
-    0 & -\frac{1}{2}
-    \end{bmatrix}
-    \label{equ:generator}
-\end{equation}
-We further assume that the phase shift $\alpha$ is a function of the distance between the transmitter and the sensor.
-This assumption is based on the observation that the closer the sensor is to the transmitter, the more affected the sensor is by the transmitter.
-If we can build a connection between the transmitter-receiver distance and some properties of the RF wave, we can model the $\hat{U}(\alpha)$ as a function of the RF wave.
-In this chapter, we pick received signal strength (RSS) as the bridge that connects the $\alpha$ and the RF wave, because RSS is easily accessible and is widely used in the fingerprinting-based wireless localization field.
-We have
-\begin{equation}
-    \alpha = \frac{2\pi (RSS - NF)}{MP-NF}
-    \label{equ:alpha}
-\end{equation}
-where $NF$ is the noise floor, $MP$ is the maximum power a sensor can receive. 
-We have $\alpha \in [0, 2\pi]$, since the received signal strength $RSS \in [NF, MP]$.
-Derived from Equation~\ref{equ:unitary_generator}, \ref{equ:generator}, \ref{equ:alpha}, the unitary operator at the sensor can be described as
-\begin{equation}
-    \hat{U}(\alpha)   = 
-    \begin{bmatrix}
-    e^{- i \frac{\pi (RSS - NF)}{MP-NF}} & 0\\
-    0 & e^{ i \frac{\pi (RSS - NF)}{MP-NF}}
-    \end{bmatrix}
-    \label{equ:unitary}
-\end{equation}
-The Equation~\ref{equ:unitary} is interpreted as follows: A quantum sensor is affected by the signal sent by a transmitter.
-The transmitter's signal triggers a phase shift in the quantum sensor and a certain value of phase shift is a function of RSS. 
-For the RSS model, we use the log-distance model
-\begin{equation}
-    RSS(d) = P_0 - 10\beta log_{10}(d) + \mathcal{X}
-    \label{equ:propagation}
-\end{equation}
-where $P_0$ is the reference power a sensor receives at 1 meter away from the transmitter, $d$ is the transmitter-receiver distance, $\beta$ is the path-loss exponent, and $\mathcal{X}$ is the shadowing effect that can be represented by a zero-mean Gaussian distribution.
+\para{Motivation for Transmitter Localization.}
+Accurate detection and localization of a wireless transmitter 
+(typically, using a radio-frequency (RF) wireless signal) is important in a 
+variety of wireless and/or mobile
+applications, e.g.,
+as an intruder detection in shared spectrum systems~\cite{infocom18-spectrum}, localization of devices/users in
+indoor settings (e.g., supermarkets, museums, virtual/augmented reality applications~\cite{sigcomm22-cyclops}), 
+etc. In general,
+transmitter localization is a key technology for location-based services, and an 
+improvement in transmitter localization will be very
+beneficial to a variety of applications.
+%%%%%%%%%%%%
+In particular, 
+in shared spectrum systems~\cite{infocom18-spectrum}, there is a need to guard the shared spectrum
+against unauthorized usage which entails detecting and localizing unauthorized transmitters that may
+use and/or jam the spectrum illegally.
+%%%%%%%%%%%%%%%%%%%%%
+Classical techniques for transmitter localization involve triangulation~\cite{nsdi13-arraytrack} or fingerprinting techniques~\cite{infocom00-radar} (see~\cite{localization-survey} for a survey).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-After modeling a single sensor, let us model multiple sensors in a distributed sensing scenario~\cite{Zhang_2021}.
-We assume $N$ unknown parameters at $N$ quantum sensors respectively. 
-The combined unitary operator is a \emph{tensor product} of $N$ individual unitary operators,
-$\hat{U}(\boldsymbol{\alpha}) = \bigotimes_{n=1}^{N} \hat{U}(\alpha_n)$.
-To carry out sensing, one inputs $N$ probes in a quantum state $\hat{\boldsymbol{\rho_0}}$ and obtains the output quantum state,
-$\hat{\boldsymbol{\rho}}_N({\boldsymbol{\alpha}}) = \hat{U}(\boldsymbol{\alpha}) \hat{\boldsymbol{\rho}_0} \hat{U}^{\dagger}(\boldsymbol{\alpha})$,
-where the unknown parameters are $\boldsymbol{\alpha}=\{\alpha_n\}_{n=1}^{N}$, and each $\alpha_n$ represents an unknown parameter at the $n$th sensor. 
+Advances in quantum technologies have led to the creation of efficient quantum sensors for
+radio-frequency (RF) signal detection that are much more sensitive than the classical 
+antenna-based RF sensors and are expected to cover the entire 
+RF spectrum~\cite{PhysRevApplied.rydberg}. 
+E.g., in~\cite{PRL20-qsn},
+researchers use some distributed entangled RF-photonic quantum
+sensors to estimate the amplitude and phase of a radio
+signal, and the estimation variance beats the standard quantum
+limit by over 3 dB. 
+%%%%%%%%%%%%%%%%
+Thus, QSNs may have a great potential in accurate localization of wireless 
+transmitters, which is a problem of great significance in many applications.
 
+\para{Quantum Sensor Model}. 
+Impact on a quantum sensor due to a physical phenomenon is typically modeled by an appropriate unitary operator that results in a quantum phase change~\cite{RevModPhys.quantumsensing}. Below, we model the change in quantum phase
+of a sensor's state due to an RF received signal. 
+Since the RF received signal (and thus the change in quantum phase) depends on the sensor's distance 
+from the transmitter, we can use the phase change that occurs 
+during the sensing period to localize a RF transmitter.
 
-\para{Problem Setting and Formal Definition.}
-Consider a network of quantum sensors distributed in a geographic area and a single transmitter active in the area.
-We assume each quantum sensor holds one qubit. 
-For simplicity, we assume all qubits are in pure states, i.e., $\hat{\rho_0} = \ket{\psi_0} \bra{\psi_0}$ and $\ket{\psi_{\alpha}} = \hat{U}(\alpha) \ket{\psi_0}$.
-Assume the initial state of the quantum sensor network is 
-$\ket{\boldsymbol{\psi_{0}}}$. 
-After the interaction with the environment, the quantum state evolves to $\ket{\boldsymbol{\psi_{\alpha}}} = \hat{U}(\boldsymbol{\alpha}) \ket{\boldsymbol{\psi_{0}}}$.
-Our problem is to determine the location of the transmitter, given the quantum state $\ket{\boldsymbol{\psi_{\alpha}}}$ reported by the quantum sensor network.
+\softpara{Sensor's Hamiltonian.}
+A quantum sensor's Hamiltonian $\hat{H}(t)$ is a sum of two\footnote{The third component 
+of control Hamiltonian is chosen to tune the sensor in a controlled way~\cite{RevModPhys.quantumsensing}; we assume $\hat{H}_{control}=0$ in our analysis~\cite{egerstrom}.}
+components~\cite{RevModPhys.quantumsensing}:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\hat{H}(t) = \hat{H}_0 + \hat{H}_V(t)$$
+where $\hat{H}_0$ is the internal Hamiltonian of the system and
+$\hat{H}_V(t)$ is the change in the Hamiltonian due to an external signal $V(t)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+The internal Hamiltonian $\hat{H}_0$ remains fixed and is equal to $E_0 \ket{0}\bra{0} + E_1\ket{1}\bra{1}$, where $E_0$ and $E_1$ are energies corresponding to the 
+$\ket{0}$ and $\ket{1}$ states respectively. 
+%%%%%%%%%%%%%%%%%%%%%%
+The signal Hamiltonian $\hat{H}_V(t)$ is given by:\footnote{Here, we ignore the 
+transverse component of $\hat{H}_V(t)$~\cite{egerstrom}, since, in most sensor applications, the
+energy difference $\Delta E = E_1 - E_0$ is much higher than the energy 
+changes introduced by the signal $V(t)$~\cite{RevModPhys.quantumsensing}.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\hat{H}_{V}(t) =  -\frac{1}{2}\gamma V_{\parallel}(t)\hat{\sigma}_z$$
+where $\sigma_z$ is the Pauli-Z matrix, $V_{\parallel}(t)$ is parallel component of the signal $V(t)$, and $\gamma$ is the coupling of the qubit to the parallel component.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In essence, the above induces a change in the spin in the $z$ axis direction resulting
+in a  qubit \emph{phase shift}. Above, 
+${V_{\parallel}}(t)$ at the sensor is given by:
+$$V_{\parallel}(t) = E \sin(2\pi f  t + \theta)$$
+where $E$ is the signal's (electric field) maximum amplitude, $f$ is the signal 
+frequency, and $\theta$ is the signal's phase.
 
+\softpara{Evolution Unitary Operator.} Assume at time $t=0$, the quantum state is $\ket{\phi_0}$. Then at time $t=t'$, the state $\ket{\phi_{t'}}$ is,
+$$ \ket{\psi_{t'}} = \hat{U}(0, t') \ket{\psi_0} $$
+where the time evolution unitary operator $\hat{U}(0, t')$ due to the signal is given by:
+\begin{eqnarray*}
+\hat{U}(0, t') &=& e^{\frac{i}{\hbar} \int_{0}^{t'} \hat{H}_V(t) dt}  \\
+&=& e^{\frac{i}{\hbar} \int_{0}^{t'} (-\frac{1}{2}\gamma V_{\parallel}(t)\hat{\sigma}_z) dt} 
+% \\
+% &=& e^{\frac{i}{\hbar} \int_{0}^{t'} (-\frac{1}{2}\gamma V_{\parallel}(t)\hat{\sigma}_z) dt}
+\end{eqnarray*}
+where $\hbar=6.626\times 10^{-34} J\cdot s$ is the plank constant.
+The unit of coupling $\gamma$ is $J/(V\cdot m^{-1})$, and the unit of $V_{\parallel}(t)$ is $V\cdot m^{-1}$.
+% Recall that $\hat{H}_0$ is fixed.
+%\red{and can be viewed as generating a global phase, thus we ignore it during our computation}.
+
+\softpara{Phase Shift over a Sensing Time Window.}
+Let us represent $\hat{U}(0, t')$ as~\cite{nature21_phase,Zhang_2021}
+\begin{equation}
+    \hat{U}(0, t') = e^{-\frac{i}{2} \phi  \hat{\sigma}_z} \label{eqn:unitary}
+\end{equation}
+where the phase shift $\phi  =  \int_{0}^{t'} \frac{\gamma}{\hbar} V_{\parallel}(t) dt$, 
+accumulated during the sensing time $[0, t']$ due to the signal $V(t)$ is estimated as follows.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Note that $V_{\parallel}(t)$ is a sinusoidal function---and hence, the phase shift in
+one full cycle ($t' =\sfrac{1}{f}$) is zero. To address this, we invert the qubit whenever the sinusoidal function turns from positive to negative using a $\pi$ pulse~\cite{RevModPhys.quantumsensing}.
+%%%%%%
+Thus, the accumulated phase in one cycle $\phi = \int_{0}^{\sfrac{1}{f}} \frac{\gamma}{\hbar} V_{\parallel}(t) dt = \frac{2}{\pi \hbar} \gamma E \frac{1}{f}$.
+Since the sensing time $t'$ is expected to be much larger than $1/f$, the phase
+shift accumulated during the sensing time $[0, t']$ can be estimated by:
+\begin{equation}
+    \phi =  \frac{2}{\pi \hbar} \gamma E t'
+    \label{eqn:phase_shift}
+\end{equation}
+Thus, for a fixed sensing time duration, the phase shift in the sensor's quantum state
+accumulated due to the signal is proportional to $E$, the signal's maximum amplitude, which is a function of the distance from the transmitter (see~\S\ref{sec:eval}). 
+%%%%%%
+
+\softpara{Impact on Multiple Quantum Sensors.}
+Consider a set of $m$ quantum sensors distributed over an area, with a global $m$-qubit quantum state of $\ket{\psi_0}$. 
+Consider a transmitter at a certain specific location in the area. 
+Let $\hat{U}_i$ be
+the impact on the $i^{th}$ sensor due to the transmitter over a sensing time window. 
+Then, the overall impact on the {\em global} quantum state is represented by a \emph{tensor product}  of $m$ individual unitary operators, i.e., $\bigotimes_{i=1}^{m} \hat{U}_i$, and
+the evolved global state state is $\bigotimes_{i=1}^{m} \hat{U}_i\ket{\psi_0}$. 
+
+\para{Problem Definition.}
+Consider a network of quantum sensors distributed in a geographic area 
+and a potential transmitter/intruder in the area.
+%%%%%%%%%%%
+Let the initial state of the system of quantum sensors network 
+be $\ket{\psi_{0}}$. 
+%%%%%%%%%%
+As described above, due to the transmission from the intruder, the quantum state evolves to $\ket{\psi_{t'}} = \hat{U} \ket{\psi_{0}}$ over a period of time $t'$.
+The transmitter localization problem is to determine the location of the transmitter based on
+the evolved quantum state $\ket{\psi_{t'}}$.
 
 \para{Related Work.}
-RF localization has been an active area of research for three decades.
-One of the pioneering works is RADAR~\cite{infocom00-radar}.
-RADAR is a fingerprinting-based method that has two phases.
-In the training phase, a person holds a receiver and travels in an area, meanwhile RADAR records information about the radio signal as a function of the location, i.e., constructs a received signal strength (RSS) fingerprinting map.
-In the localization phase, RADAR conducts the nearest neighbor search and reports the location of the closest signal on the fingerprinting map.
-The premise is that RSS information provides a means of inferring RF location.
-Horus~\cite{mobisys05-horus} improves the localization accuracy by using a probabilistic method.
-\eat{and LiFS~\cite{mobicom12-lifs} aims to remove the burden of the site survey process.}
-The target to be localized can either be a transmitter~\cite{tx-localization}, a sensor~\cite{infocom00-radar}, or neither both (device-free localization~\cite{devicefree-loc}).
-In this work, the target we localize is a single transmitter.
-For the simultaneous localization of multiple transmitters, see~\cite{pmc22-deepmtlpro}.
+Radio transmitter localization using a set of sensors/receivers has been
+widely studied~\cite{localization-guide, localization-survey, time-19}. 
+Localization methods can be roughly classified into two types: geometry-based and fingerprinting-based.
+The geometry-based method includes multilateration (by measuring time-of-flight between the transmitter and multiple sensors) or triangulation (by measuring angle-of-arrival (AoA) of the transmitter at multiple sensors)~\cite{nsdi13-arraytrack}.
+The fingerprinting-based method~\cite{infocom00-radar} has a training stage that records
+the signal fingerprint for certain locations; Localization is then achieved by
+matching the real-time signal to the recorded fingerprints. 
+Here, a fingerprint for a transmitter location may be a vector of received signal strengths (RSS)~\cite{localization-guide} at the sensors.  
+% In the training phase, a person holds a receiver and travels in an area, meanwhile RADAR records information about the radio signal as a function of the location, i.e., constructs a received signal strength (RSS) fingerprinting map.
+% In the localization phase, RADAR conducts the nearest neighbor search and reports the location of the closest signal on the fingerprinting map.
+%The premise is that RSS information provides a means of inferring RF location.
+%%%%%%%%%%%%%%%%%
+%The fingerprinting approach will work for arbitrary signal propagation models and other measurements, such as AOA.
+% For simpler propagation models and/or 
+% other measurements (e.g., angle/time of arrival, other
+% techniques such as triangulation~\cite{nsdi13-arraytrack}, triliteration~\cite{} can be used.
+%%%%%%%%%%%%%%%
+Localization of simultaneously-active multiple transmitters is more challenging,
+and has been addressed in recent works~\cite{wowmom, ipsn20-mtl, pmc22-deepmtlpro}.
+%%%%%%%%%%%%%%%%%%%%%%%
 
-All the localization works above are classical, i.e., they use classical wireless sensors and classical localization methods.
-The first localization work that brings in quantum is~\cite{lcn22-qloc}.
-It uses quantum amplitude encoding~\cite{slqc} that embeds an RSS vector of length $2^N$ into the amplitudes of an $N$ qubit quantum state. 
-Thus, in theory, it brings exponential enhancement in space complexity.
-Then, it uses a quantum fingerprinting method based on the quantum cosine similarity algorithm~\cite{PhysRevLett.quantumfingerprint} to match a signal to be localized to a signal recorded in the fingerprinting map.
-The work leverages quantum computing and the power of quantum superposition, but they still use classical wireless sensors that collect classical data.
+Recently, there have been some works that have used quantum technology to investigate
+intruder/transmitter localization related problems. E.g.,~\cite{lcn22-qloc} develops a scheme
+to improve the {\em size} of the fingerprints used in the above-described 
+fingerprinting approach, by encoding classical sensor data into qubits 
+through quantum amplitude encoding.
+%%%%%%%%%%%
+In addition,~\cite{PR22-quantum_positioning} derives analytical equations to compute AoA of an
+incoming RF signal using four entangled distributed quantum sensors, without any evaluations.~\cite{qsn-detection} proposes a quantum sensor network 
+using Mach-Zehnder interferometers to detect (not localize) 
+intruders for surveillance purposes.
+%%% our PRA is in arXiv, but not in the QCE submission
+Finally,~\cite{PhysRevA.quantum_sensors, qsn-acm-23} investigate the optimization of initial state in discrete-outcome quantum sensor networks and show that an entangled initial state yields
+higher measurement accuracy in some applications.
+% }
+% The difference between ours and theirs is that we aim to use {\em both} quantum sensors and quantum localization algorithms, while the first work uses classical sensors and quantum localization algorithms, and the second work uses quantum sensors and classical localization algorithms.}
 
-
-
-% In this chapter, the quantum sensor is derived from the RF-photonic sensors from~\cite{PRL20-qsn}.
-% But our quantum sensors do not do a homodyne measurement.
-% Instead, the quantum state at a quantum sensor is teleported to a central node and a global measurement is performed at the central node.
+\softpara{Parameter Estimation using Quantum Sensors.}
+Prior works on parameter estimation using quantum sensors
+include: estimation of single~\cite{Giovannetti_2011} %~\cite{muri-20} 
+or multiple independent parameters~\cite{Proctor_2018}, estimation of a single linear function over parameters~\cite{Altenburg_2019}, and estimation of multiple linear functions~\cite{Rubio_2020}. Our transmitter localization problem can be looked upon
+as a novel single parameter (TX location) estimation problem based on sensor measurements that are functions (based on signal propagation model and distance) of the parameter being estimated.

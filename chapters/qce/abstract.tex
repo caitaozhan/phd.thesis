@@ -1,10 +1,17 @@
-In this chapter, we present the first radio-frequency (RF) transmitter localization via a quantum sensor network and a quantum-based localization method. 
-Localization of RF signals is a widely studied area in the past three decades. 
-It has a great impact on human lives as
-it serves as the basis of a variety of location-based services.
-Meanwhile, quantum sensing is a new and interdisciplinary area that brings new opportunities to well-established problems.
+A quantum sensor (QS) is able to measure various physical phenomena with extreme sensitivity.
+QSs have been used in several applications such as atomic interferometers, but few applications of a quantum sensor network (QSN) have been proposed or developed.
+We look at a natural application of QSN---localization of an event (in particular, of a wireless signal transmitter).
+In this paper, we develop effective quantum-based techniques for the localization of a transmitter using a QSN.
 
-We assume distributing some quantum sensors in an area that contains a single RF transmitter to be localized. 
-We pose our transmitter localization problem as a quantum state discrimination problem and use the positive operator-valued measurement (POVM) as a tool for localization in a novel way.
-Evaluation results show that our proposed method achieves a high localization accuracy in the discrete case and a low localization error in the continuous case.
-
+Our approaches pose the localization problem as a well-studied quantum state discrimination (QSD) problem and address the challenges in its application to the localization problem. 
+In particular, a quantum state discrimination solution can suffer from a high probability of 
+error, especially when the number of states (i.e., the number of potential transmitter locations in our case) can be high. 
+We address this challenge by developing a two-level localization approach, which localizes the transmitter at a coarser granularity in the first level, and then, in a finer granularity in the second level. 
+%%%%%%%%%%%%%%
+We address the additional challenge of the impracticality of general measurements by 
+developing new schemes that replace the QSD's measurement operator with a trained parameterized hybrid quantum-classical circuit.
+%%%%%%%%%%%%%%%
+Our evaluation results using a custom-built simulator show that our best scheme is able to 
+achieve meter-level (1-5m) localization accuracy; 
+in the case of discrete locations, 
+it achieves near-perfect (99-100\%) classification accuracy. 
