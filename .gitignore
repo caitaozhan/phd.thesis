@@ -48,8 +48,8 @@ chapters/wowmom-pmc/summary_change.tex
 # chapters/wowmom-pmc/bib.bib
 
 # icc
-chapters/icc/IEEEtran.cls
-chapters/icc/main.tex
+chapters/qce/IEEEtran.cls
+chapters/qce/main.tex
 
 #swappingtree
 chapters/swappingtrees/DP-sp.tex

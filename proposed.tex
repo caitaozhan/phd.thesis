@@ -1,13 +1,13 @@
 \chapter{Proposed: Transmitter Localization in QSN with Measurement in the Computational Basis}
 \label{chap:proposed}
 
-In Chapter~\ref{chap:icc}, we pose the transmitter localization problem as a quantum state discrimination problem
+In Chapter~\ref{chap:qce}, we pose the transmitter localization problem as a quantum state discrimination problem
 and measure the quantum state reported by the quantum sensor network (QSN) via a positive-operator valued measure (POVM).
 Although POVM is good in theory, it is hard to implement in practice.
 Current hardware such as the IBM quantum computer only support measurement in the computational basis.
 
 For the proposed work, we continue the work of transmitter localization via quantum state discrimination in a more practical way.
-In Chapter~\ref{chap:icc}, our measurement is done via a POVM constructed by equations for square root measurement~\cite{prettygood},
+In Chapter~\ref{chap:qce}, our measurement is done via a POVM constructed by equations for square root measurement~\cite{prettygood},
 which is also called pretty good measurement. The measurement problem in the context of quantum state discrimination is an optimization problem
 that can be formulated as a semidefinite programming problem (SDP)~\cite{semidefinite}. 
 The pretty good measurement can be viewed as a relatively good heuristic for a measurement optimization problem.
@@ -18,7 +18,7 @@ However, it has two problems:
           In the literature, there are works~\cite{pra19-povm,PhysRevResearch.povm} that try to implement a single-qubit two/three element POVM and cliam
           that their solutions can be generalized to arbitrary number of qubits and arbitrary number of elements. 
           The solution (quantum circuits) in their work has a high circuit depth and requires ancillary qubits.
-          Note that in Chapter~\ref{chap:icc}, a POVM of 8 qubits and up to 256 elements is needed, and using the 
+          Note that in Chapter~\ref{chap:qce}, a POVM of 8 qubits and up to 256 elements is needed, and using the 
           techniques from their work to implement the POVM we need looks daunting (at least to me).
           
     \item Performance problem. As its name ``pretty good'' suggests, it is ``okayish'', but not ``very good''.
@@ -46,8 +46,8 @@ So this leads to serious a performance problem.
 To solve it, we apply some quantum gates before the standard measurement gates to transform the qubits for better serving the computational measurement.
 However, the design of the quantum gates is non-trivial. Take the example of single qubit rotational gate, it is hard to determine how large an angle to rotate.
 Thus, we plan to resort to parameterized quantum circuits (also named quantum neural networks), wherein the angles of the rotation can be \textit{learned} through the training process.
-Also note that we are in the noisy intermediate-scale quantum (NISQ) era. So we plan to take noise in to consideration, which is completely ignored in Chapter~\ref{chap:icc}.
+Also note that we are in the noisy intermediate-scale quantum (NISQ) era. So we plan to take noise in to consideration, which is completely ignored in Chapter~\ref{chap:qce}.
 
 Our end-goal is to be able to run the evaluation experiments on a \textit{real IBM quantum computer} using computational basis measurement and parameterized quantum circuits.
-This is a huge leap compared with classical computer simulations done in Chapter~\ref{chap:icc}. 
+This is a huge leap compared with classical computer simulations done in Chapter~\ref{chap:qce}. 
 We may encounter some unknown road blocks, but the journey is going to be fun.
