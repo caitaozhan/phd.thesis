@@ -1,0 +1,185 @@
+\section{\bf Orthogonality of Final States for $n$ Sensors}
+\label{sec:n-ortho}
+
+In this section, we generalize the result in the previous section to an arbitrary number of sensors greater than 3.\footnote{For two sensors, the single equation corresponding to the Equations~\ref{eqn:img1}-\ref{eqn:img3} can be made equal to zero on both sides with $\theta=45$ degrees and zeroing all coefficients on the RHS (which is possible due to lack of other equations).}
+
+\begin{theorem}
+Consider the \iso problem, with the unitary operator $U$, initial state $\ket{\psi}$,
+and final states $\{\ket{\phi_i}\}$ as defined therein. Recall that the eigenvalues of
+$U$ are $\{e^{+i\theta}, e^{-i\theta}\}$. Let $n \geq 3$ be the number of sensors. The following is true.
+
+For any $\theta \in [T, 180-T]$ degrees, there exists a $\ket{\psi}$ such that the set of $n$ states $\{\ket{\phi_i}\}$ are mutually orthogonal, where $T$ is given by:
+$$T = \frac{1}{2}\arccos{\left(-\frac{\lceil \frac{n}{2} \rceil - 1}{\lceil \frac{n}{2} \rceil}\right)}$$
+    % $$ T = \frac{1}{2}\arccos{[-\left(min_{2 \leq k \leq (n-2)} \frac{{(n-2) \choose (k-2)} + {(n-2) \choose (k)}}{2. {(n-2) \choose (k-1)}}\right)]} $$ 
+%%%%%%
+% $$T = \frac{1}{2}\arccos{[-\left(min_{1 \leq k \leq (n-1)} \frac{{(k) \choose (2)} + {(n-k) \choose (2)}}{{(k) \choose (1)} \times {(n-k) \choose (1)}}\right)]}$$
+Note that $T \in (45, 90)$ degrees. In particular, the values of $T$ for increasing $n$ are:  60 ($n=4)$, 65.9 ($n=5,6$), 69.3 ($n=7,8$), 71.6 ($n=9,10$).
+
+The converse of the above is also true, i.e., 
+for $\theta \in (0, T) \cup (180-T, 180)$, there is
+no initial state $\ket{\psi}$  that makes $\{\ket{\phi_i}\}$  mutually orthogonal. 
+\label{thm:nsensors}
+\end{theorem}
+    
+    % For any $n \geq 4$, the $n$ states of the type $(I \otimes I \ldots U \otimes I \ldots \otimes I)\ket{\psi}$ are mutually orthogonal iff $T \leq \theta \leq 180-T$, where 
+    % $$ T = 0.5\cos^{-1} \left(-min_{2 \leq k \leq (n-2)} \frac{{(n-2) \choose (k-2)} + {(n-2) \choose (k)}}{2. {(n-2) \choose (k-1)}}\right) $$ 
+
+\medskip
+%\hspace{-0.2in}
+%\fbox{
+%\begin{minipage}{0.95\linewidth}
+Before we prove the theorem, we define the partitioning of coefficients and state an observation.
+
+\para{Partitioning the Coefficient-Squares $\{|\psi_j|^2\}$ into ``Symmetric'' Sets.} 
+Note that just renumbering the sensors does not change the optimization problem. 
+Based on this intuition, we can group the eigenvectors $\ket{j}$
+(and the corresponding coefficients $\psi_j$'s) into equivalent classes. 
+Let $n$ be the number of sensors.  
+%%%%%%%%%%%%%%%%%%%%
+Since only the coefficient-squares $\{|\psi_j|^2\}$ appear in the expression for pairwise inner-products of the final states, 
+we just partition the coefficient-squares rather than the coefficients $\{\psi_j\}$ themselves---as only the coefficient-squares are relevant to our proposed solution and discussion. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We partition the set of $2^n$ coefficient-squares into $n+1$ symmetric sets $\{S_k\}$ as follows: 
+% $$S_k =   \{|\psi_j|^{2}\ |\ {\rm Eigenvector}\ \ket{j}\ {\rm has}\ k\ u_{+}'s\}\ \  \forall 0 \leq k \leq n$$
+$$S_k =   \{|\psi_j|^{2}\ |\ \ket{j}\ {\rm has}\ k\  {\rm number\ of}\ u_{+}\}\ \ \forall \ 0 \leq k \leq n$$
+
+\noindent
+For each $0 \leq k \leq n$, let $R_k$ be the number of coefficient-squares from $S_k$ in the RHS of a {\tt Real} equation, and $L_k$ be the number of coefficient-squares from $S_l$ in the LHS of  {\tt Real} equation. (Note that, by Observation~\ref{obs:rhs} below, for any $k$, the number of coefficient-squares of $S_k$ that are in the RHS (LHS) is the same for all {\tt Real} equations.)
+%%%%%%%%%%%%%%%%%%%
+{\bf For the case of} $\mathbf{n=3}$, we have
+$S_0 = \{|\psi_0|^{2}\}, 
+S_1 = \{|\psi_1|^{2},  |\psi_2|^{2},  |\psi_4|^{2} \}, 
+S_2 = \{|\psi_3|^{2},  |\psi_5|^{2},  |\psi_7|^{2} \}, 
+S_3 = \{|\psi_7|^{2} \}.$ Also, we have $R_0 = R_1 = R_2 = R_3 = 1$, while $L_0 = L_3 = 0$, $L_1 = L_2 = 2$. 
+%%%%%%%%%%%%%%%%%
+We will use the above terms to prove the theorem. 
+%\end{minipage}}
+\medskip
+\medskip
+
+\begin{observation}
+For a {\tt Real} equation $E$ corresponding to the inner-product of final states $\phi_i$ and $\phi_j$ (for $0 \leq i, j \leq n-1$), a coefficient-square $|\psi_r|^2$ appears in the RHS of the equation $E$ iff the bit-representation of the number $r$ has either both 0's or both 1's at the $i^{th}$ and $j^{th}$ most-significant bits.
+\label{obs:rhs}
+\end{observation}
+
+% will appear in the RHS when $\ket{j}$'s corresponding\footnote{$\ket{j}$ is also an eigenvector of the middle-part of $z_i$'s expression.} eigenvalue $e_j = 1$; 
+% a coefficient-square $|\psi_j|^2$ will appear in the LHS when $\ket{j}$'s corresponding eigenvalue $e_j = e^{\pm2i\theta}$.}
+% 
+% \end{observation}
+% \magenta{
+% We briefly explain $R_k$.
+% A coefficient-square $|\psi_j|^2$ corresponds to a basis $\ket{j}$ who has $k$ number of $u_+$. 
+% And the basis $\ket{j}$ is an eigenvector of the middle-part (of the inner-product of two final states) that is a tensor product of $U^{\dagger}$, $U$, and $n-2$ number of identity $I$. 
+% ${n-2 \choose k-2}$ implies that two $u_+$ are at the positions of $U^{\dagger}$ and $U$, so the rest $k-2$ number of $u_+$ falls into $n-2$ positions.
+% ${n-2 \choose k}$ implies that no $u_+$ are at the positions of $U^{\dagger}$ and $U$, so $k$ number of $u_+$ falls into $n-2$ positions.}
+
+
+\begin{lem-prf}
+For $n\geq3$,
+$$min_{1 \leq k \leq (n-1)} \frac{R_k}{L_k} =  \frac{\lceil \frac{n}{2} \rceil - 1}{\lceil \frac{n}{2} \rceil}.$$ 
+Thus, for the given $T$ in Theorem~\ref{thm:nsensors}, $L_k\cos(2T) + R_k = 0$ for some $k$, and 
+$R_k + \cos(2T)L_k \geq 0$ for all $k$.
+\label{lemma:t}
+\end{lem-prf}
+\begin{prf}
+For  $n \geq 3$ and $0 \leq k \leq n$, from Observation~\ref{obs:rhs} we get that: 
+$$R_k = {n-2 \choose k-2} + {n-2 \choose k}$$
+$$L_k = 2 {n-2 \choose k-1}.$$
+Above, we assume ${x \choose y} = 0$ if $y > x$ or $y < 0$.
+Now, a simple analysis shows that:
+$$\left(min_{2 \leq k \leq (n-2)} \frac{{n-2 \choose k-2} + {n-2 \choose k}}{2 {n-2 \choose k-1}}\right) =  \frac{\lceil \frac{n}{2} \rceil - 1}{\lceil \frac{n}{2} \rceil}$$ 
+Since, for $n \geq 3$, $R_1 = R_{n-1} = n-2$ and $L_1=L_{n-1}=2$, we get the lemma. 
+\end{prf}
+
+\begin{observation}
+Let $\sum_i x_i =c$, for a set of variables $x_i \geq 0$ and a constant $c > 0$.
+The equation $\sum_i c_ix_i = 0$, where $c_i$ are some constants, has a solution if and only if (i) at least one of the constants is positive and one of the constants is negative, or (ii) one of the constants is zero.
+\label{obs:pos-neg}
+\end{observation}
+
+
+\subsection{\bf Proof of Theorem~\ref{thm:nsensors}.}
+
+\begin{prf} 
+\softpara{If $\theta \in [T, 180-T]$.} Let the set of all coefficient-squares in each $S_k$ to be equal to 
+$x_k$, for each $k$. Then, each {\tt Imaginary} equation becomes:
+\begin{equation}
+\sum_{k=0}^{n}  (L_k/2)x_k  = \sum_{k=0}^{n} (L_k/2)x_k \label{eqn:imag-final}
+\end{equation}
+Each {\tt Real} equation becomes:
+\begin{equation}
+    -\cos(2\theta) \sum_{k=0}^{n}    L_kx_k  = \sum_{k=0}^{n} R_k x_k 
+    \label{eqn:real}
+\end{equation}
+\begin{equation}
+  \sum_{k=0}^{n} ( R_k + \cos(2\theta) L_k) x_k = 0 \label{eqn:real-final}  
+\end{equation}
+
+
+By Observation~\ref{obs:pos-neg}, the above equation (and thus, all {\tt Real} equations) can be made true by appropriate choices of $x_k$ since 
+\begin{enumerate}
+    \item $R_k + \cos(2\theta)L_k$ is positive for $k=0$ as $L_0 = 0$ and $R_0 = 1$.
+    \item $R_k + \cos(2\theta)L_k$ is negative or zero for some $k$ by Lemma~\ref{lemma:t} when $\theta \in [T, 180-T]$.
+\end{enumerate}
+
+\softpara{If $\theta \in (0, T) \cup (180-T, 180)$.}
+Adding all the {\tt Real} equations gives the following. Below, $f(j) = k$ such that $|\psi_j|^2 \in S_k$.
+
+$$ -\cos(2\theta)\sum_{j=0}^{2^n} {n \choose 2} \frac{L_{f(j)}}{|S_{f(j)}|} |\psi_j|^2	= \sum_{j=0}^{2^n} {n \choose 2} \frac{R_{f(j)}}{|S_{f(j)}|}  |\psi_j|^2 $$
+The above gives: 
+$$\sum_{j=0}^{2^n} \frac{1}{|S_{f(j)}|} (R_{f(j)} + \cos(2\theta)L_{f(j)})  |\psi_j|^2 = 0$$
+The above equation doesn't have a solution as $(R_k + \cos(2\theta)L_k) > 0$ for all $k$
+for $\theta \in (0, T)$ (and thus, for $\theta \in (180-T, 180)$) for by Lemma~\ref{lemma:t}.
+\end{prf}
+
+\para{Optimal Initial State under Theorem~\ref{thm:nsensors}'s Condition.}
+Based on the above theorem, we can derive the optimal initial state under the condition of Theorem~~\ref{thm:nsensors}; the optimal initial state yields mutually-orthogonal final states.
+
+\begin{cor-prf}
+\label{cor:orthogonal-opt}
+Consider the \iso problem, with the unitary operator $U$, initial state $\ket{\psi}$,
+and final states $\{\ket{\phi_i}\}$ as defined therein. Recall that the eigenvalues of
+$U$ are $\{e^{+i\theta}, e^{-i\theta}\}$. Let $n \geq 3$ be the number of sensors.
+%%%%%%%%
+When $\theta \in [T, 180-T]$ degrees, where $T$ is defined in Theorem~\ref{thm:nsensors}, an 
+optimal initial state $\ket{\psi}$ that yields
+mutually orthogonal final states $n$ states $\{\ket{\phi_i}\}$ is given as follows.\footnote{We note that there are many optimal solutions.}
+
+Let $S_l$ be the partition that minimizes the ratio $R_l/L_l$. It follows from Lemma~\ref{lemma:t}'s proof (we omit the details) that $l = \lfloor \frac{n}{2} \rfloor$, and $R_l, L_l,$ and $S_l$ are given by:
+\begin{align*}
+L_l &= |S_l| \times \frac{\lceil \frac{n}{2} \rceil}{2\lceil \frac{n}{2} \rceil-1}\\
+R_l &= |S_l| \times \frac{\lceil \frac{n}{2} \rceil - 1}{2\lceil \frac{n}{2} \rceil-1} \\
+|S_l| &= {n \choose \lfloor \frac{n}{2} \rfloor  }
+% c &= \begin{cases}{(n) \choose (\frac{n}{2})} & n\text{ is even} \vspace{0.03in}\\ 
+%                   {(n) \choose (\lfloor \frac{n}{2} \rfloor )} + {(n) \choose (\lceil \frac{n}{2} \rceil )} & n \text{ is odd}\end{cases}
+\end{align*}
+Then, the coefficients of an optimal initial state $\ket{\psi}$, 
+when $\theta \in [T, 180-T]$ degrees with $T$ defined in Theorem~\ref{thm:nsensors}, 
+are such that their coefficient-squares are as follows:
+\begin{align*}
+|\psi_j|^{2} &= \frac{1}{|S_l| - \cos(2\theta) L_l - R_l} \ \hspace{0.2in} \forall\ |\psi_j|^{2} \in S_l  \\
+|\psi_j|^{2} &= \frac{-\cos(2\theta)L_l - R_l}{|S_l| - \cos(2\theta) L_l - R_l}   \ \hspace{0.17in}   \ \forall\ |\psi_j|^{2} \in {S_0} \\
+|\psi_j|^{2} &= 0\ \hspace{1.19in}   \ \forall\ |\psi_j|^{2} \notin {S_l \cup S_0}
+\end{align*}
+\label{thm:optimal-largerT}
+\end{cor-prf}
+
+% \blue{
+% \begin{prf}
+%     We zero out all the coefficient-squares except those that belong to $S_l$ or $S_0$.
+%     Let all coefficient-squares that belong to $S_l$ be equal and their value is $x$.
+%     Let the single coefficient-square that belongs to $S_0$ be $y$.
+%     By Eqn.~\ref{equ:3sensor-sum}, we have
+%     $$|S_l| x + y = 1$$
+%     By Eqn.~\ref{eqn:real}, each ${\tt Real}$ equation becomes
+%     $$-\cos(2\theta)L_l x = R_lx + y$$
+%     We can solve $x, y$ from the above two equations, and thus Corollary~\ref{thm:optimal-largerT} is proved.
+%     Also, the corollary states that there exist many optimal solutions. 
+%     For example, if we don't zero out $S_n$, and let $|\psi_0|^{2} = |\psi_{2^n-1}|^{2} = y$, we will get another optimal solution.
+% \end{prf}
+% }
+\begin{prf}
+The proof of the above Corollary easily follows from the fact that each 
+coefficient-square of the solution is positive (from Lemma~\ref{lemma:t}), and that
+the coefficient-squares of the solution satisfy Eqn.~\ref{eqn:real-final} (and Eqn.~\ref{eqn:imag-final} trivially) as well as the constraint in Eqn.~\ref{equ:3sensor-sum}.
+\end{prf}

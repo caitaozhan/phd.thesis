@@ -1,0 +1,146 @@
+\section{\bf Orthogonality of Final States for Three Sensors}
+\label{sec:three-ortho}
+
+Note that an optimal solution for two sensors (i.e., $n=2$) is known and is based on geometric ideas (See~\cite{Hillery_2023} and~\S\ref{sec:optimal}); however,
+the solution for two sensors doesn't generalize to higher $n$.
+%%%%%%%%%%%%%%%%%
+For $n \geq 3$, instead of directly determining the optimal solution, we first focus on determining the
+the conditions (on $U$) under which the optimal initial state yields orthogonal final states. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We start with the specific case of $n=3$,
+as this gives us sufficient insight to generalize the results to 
+an arbitrary number of sensors. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Determining the conditions for orthogonality also helps us in conjecturing the optimal initial state for general settings. 
+
+The basic idea for deriving the condition on $U$ that yields orthogonal final states (i.e., the below theorem) is to represent the final states on an orthonormal basis based on $U$'s eigenvalues and eigenvectors; this allows us to derive expressions for the pairwise inner products of the final states, and equating these products to zero yields the desired conditions. We now state the main theorem and proof for three sensors.
+
+\begin{thm-prf}
+% Let $U$ be a unitary operator. 
+% As mentioned before, let the two eigenvectors 
+% of $U$ be $\{u_+, u_-\}$, and without loss of generality,
+% let the corresponding eigenvalues be $\{e^{+i\theta}, e^{-i\theta}\}$;
+% thus, $U\ket{u_{\pm}}=e^{\pm i\theta}\ket{u_{\pm}}$.
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% Let $\ket{\psi}$ denote the initial (possibly, entangled) state of the three sensors.
+% Let $\ket{\phi_0} = (U \otimes I \otimes I)\ket{\psi}$,  $\ket{\phi_1} = (I \otimes U \otimes I)\ket{\psi}$,  $\ket{\phi_2} = (I \otimes I \otimes U)\ket{\psi}$.
+Consider the \iso problem, with the unitary operator $U$, initial state $\ket{\psi}$,
+and final states $\{\ket{\phi_i}\}$ as defined therein. Recall that the eigenvalues of
+$U$ are $\{e^{+i\theta}, e^{-i\theta}\}$. When the number of sensors $n$ is three, the following is true.
+
+For any $\theta \in [60, 120]$ degrees, there exists a $\ket{\psi}$ such that $\ket{\phi_0}, \ket{\phi_1}, \ket{\phi_2}$ are mutually orthogonal.
+%%%%%
+Also, the converse is true, i.e., for $\theta \in (0, 60) \cup (120, 180)$, there is
+no initial state that makes $\ket{\phi_0}, \ket{\phi_1}, \ket{\phi_2}$ mutually orthogonal.
+\label{thm:3sensor}
+\end{thm-prf}
+
+\begin{prf}
+Let us first start analyzing the inner product of $\ket{\phi_0}$ and $\ket{\phi_1}$. 
+Let $z_0=\bra{\phi_0}\ket{\phi_1}$. We see that:
+\begin{align*}
+    z_0 & = \bra{\psi}(U^{\dagger} \otimes I \otimes I) (I \otimes U \otimes I)\ket{\psi} \\
+        & = \bra{\psi}(U^{\dagger} \otimes U \otimes I) \ket{\psi}    
+\end{align*}
+%Let $$v_1 = (U^{\dagger} \otimes U \otimes I).$$
+Since $U$ is unitary, its eigenvectors $u_{-}$ and $u_{+}$ are orthogonal.
+% \magenta{We refer to the expression between $\bra{\psi}$ and $\ket{\psi}$ as the ``middle-part'' of $z_0$.}
+It is easy to confirm that the following eight eigenvectors of the middle-part $(U^{\dagger} \otimes U \otimes I)$ form an {\em orthonormal basis}: $\{\ket{u_{-}u_{-}u_{-}}, \ket{u_{-}u_{-}u_{+}}, \ket{u_{-}u_{+}u_{-}}, \ket{u_{-}u_{+}u_{+}}, \ket{u_{+}u_{-}u_{-}},$  $\ket{u_{+}u_{-}u_{+}}, \ket{u_{+}u_{+}u_{-}}, \ket{u_{+}u_{+}u_{+}}\}$. 
+We denote these eight eigenvectors as $\{ \ket{j}  |\ j=0,\cdots,7\}$, with the $\ket{j}$ eigenvector ``mimicking'' the number $j$'s binary representation when $u_{-}$ and $u_{+}$ are looked upon as 0 and 1 respectively (so, $\ket{3}$ is 
+$\ket{u_{-}u_{+}u_{+}}$).
+
+We can write the initial state $\ket{\psi}$ in the  $\{ \ket{j} \}$ basis as
+$$\ket{\psi} = \sum\limits_j \psi_j \ket{j}.$$ 
+%%%%%%%%%%%%%%%%%%%
+Thus, we get 
+\begin{align*}
+    z_0 &=  \bra{\psi}(U^{\dagger} \otimes U \otimes I) \sum\limits_j \psi_j \ket{j}   \\
+       % &=  \bra{\psi} \sum\limits_j \psi_j (U^{\dagger} \otimes U \otimes I) \ket{j}  \\
+       % &=  (\sum\limits_j \psi_j^{\dagger} \bra{j}) (\sum\limits_j \psi_j e_j \ket{j}) \\
+        &=  \sum\limits_j |\psi_j|^{2} e_j
+\end{align*} 
+\noindent
+where $\{e_0, e_1, \ldots, e_7\}$ are the  eigenvalues corresponding to the eight eigenvectors $\{\ket{j}\}$.
+As the eigenvalues are $1, 1, e^{+2i\theta}, e^{+2i\theta}, e^{-2i\theta}, e^{-2i\theta}, 1, 1$, we get:
+\begin{align}
+        z_0 &= (|\psi_2|^{2} + |\psi_3|^{2})e^{+2i\theta} + (|\psi_4|^{2} + |\psi_5|^{2})e^{-2i\theta} + (|\psi_0|^{2} + |\psi_1|^{2} + |\psi_6|^{2}+ |\psi_7|^{2}) 
+\end{align}
+%\blue{$|\psi_j| ^ 2$ is the absolute-square values of the coefficients $\psi_j$, and we refer to $|\psi_j| ^ 2$ as {\em coefficient-square}}.
+Similarly, for $z_1 = \bra{\phi_1}\ket{\phi_2} = \bra{\psi}(I  \otimes U^{\dagger} \otimes U) \ket{\psi}$, we get the below. 
+Note that, in the expression for $z_1$, 
+the order of eigenvalues corresponding to the coefficients 
+$|\psi_i|^{2}$ is $1, e^{+2i\theta}, e^{-2i\theta}, 1, 1, e^{+2i\theta}, e^{-2i\theta}, 1$ 
+(see Observation~\ref{obs:rhs} in \S\ref{sec:n-ortho}). Thus, we get: 
+\begin{align}
+    z_1 &= (|\psi_1|^{2} + |\psi_5|^{2})e^{+2i\theta} + (|\psi_2|^{2} + |\psi_6|^{2})e^{-2i\theta} + (|\psi_0|^{2} + |\psi_3|^{2} + |\psi_4|^{2}+ |\psi_7|^{2})
+\end{align}
+Similarly, for $z_2 =  \bra{\phi_0}\ket{\phi_2} = \bra{\psi}( U^{\dagger}  \otimes I \otimes U) \ket{\psi}$, 
+we get:
+% \magenta{and $\{ e_j \} = \{1, e^{+2i\theta}, 1, e^{+2i\theta}, e^{-2i\theta}, 1, e^{-2i\theta}, 1\}$}. 
+\begin{align}
+    z_2 &= (|\psi_1|^{2} + |\psi_3|^{2})e^{+2i\theta} + (|\psi_4|^{2} + |\psi_6|^{2})e^{-2i\theta} + (|\psi_0|^{2} + |\psi_2|^{2} + |\psi_5|^{2}+ |\psi_7|^{2})
+\end{align}
+
+
+Now, for $\ket{\phi_0}, \ket{\phi_1}, \ket{\phi_2}$ to be mutually orthogonal, we need $z_0 = z_1 = z_2 = 0$. This yields the following seven Equations~\ref{eqn:real1}-\ref{equ:3sensor-sum}.
+
+\softpara{{\tt Imaginary} Equations.}
+For the imaginary parts of $z_0, z_1, z_2$ to be zero, we need the following to be true. We refer to these equations as the \texttt{\textbf{Imaginary}} equations.
+\begin{align}
+    |\psi_2|^{2} + |\psi_3|^{2} &= |\psi_4|^{2} + |\psi_5|^{2} \label{eqn:real1}\\
+    |\psi_1|^{2} + |\psi_5|^{2} &= |\psi_2|^{2} + |\psi_6|^{2}\\
+    |\psi_1|^{2} + |\psi_3|^{2} &= |\psi_4|^{2} + |\psi_6|^{2} \label{eqn:real3}
+\end{align}
+
+\softpara{{\tt Real} Equations.} 
+For the real parts of $z_0, z_1, z_2$ to be zero, we need the following to be true. We refer to these equations as the \texttt{\textbf{Real}} equations.
+\begin{align}
+   -(|\psi_2|^{2} + |\psi_3|^{2} + |\psi_4|^{2}+ |\psi_5|^{2})\cos(2\theta) &=   |\psi_0|^{2} + |\psi_1|^{2} + |\psi_6|^{2}+ |\psi_7|^{2} \label{eqn:img1} \\
+   -(|\psi_1|^{2} + |\psi_5|^{2} + |\psi_2|^{2}+ |\psi_6|^{2})\cos(2\theta) &=   |\psi_0|^{2} + |\psi_3|^{2} + |\psi_4|^{2}+ |\psi_7|^{2} \\
+   -(|\psi_1|^{2} + |\psi_3|^{2} + |\psi_4|^{2}+ |\psi_6|^{2})\cos(2\theta) &=   |\psi_0|^{2} + |\psi_2|^{2} + |\psi_5|^{2}+ |\psi_7|^{2} \label{eqn:img3}
+\end{align}
+Above, the terms with $cos(2\theta)$ are on the left-hand side (LHS), and the remaining
+terms are on the right-hand side (RHS).
+% Each coefficient-square appears exactly once in each \texttt{\textbf{Real}} equation, and whether a coefficient-square will appear on the LHS or the RHS is based on the coefficient's corresponding basis $\ket{j}$ and the middle-part of the $z_i$ that generates the {\tt Real} equation.
+
+\noindent
+Finally, as $\psi_j$ are coefficients of $\ket{\psi}$, we also have
+\begin{align}
+\sum_j |\psi_j|^{2} &= 1  \label{equ:3sensor-sum}
+\end{align}
+
+\medskip
+\noindent
+{\bf Existence of $\ket{\psi}$ when $\theta \in [60, 120]$ that yields mutually orthogonal final states.} 
+Let us assume 
+$|\psi_0|^2 = |\psi_7|^2 = y$ and $|\psi_i|^2 = x$ for $1 \leq i \leq 6$. 
+These satisfy Equations~\ref{eqn:real1}-\ref{eqn:real3}, and the Equations~\ref{eqn:img1}-\ref{eqn:img3} yield: 
+\begin{align}
+    -4x\cos(2\theta) &= 2x + 2y  \nonumber \\
+    -(2\cos(2\theta) + 1)x &= y  \nonumber
+\end{align}
+The above has a valid solution (i.e., $x, y \geq 0$, and $2y + 6x = 1$ from
+Eqn.~\ref{equ:3sensor-sum}) when 
+$\cos(2\theta) \leq -\frac{1}{2}$ i.e., when $\theta \in [60, 120]$.
+
+\medskip
+\noindent
+{\bf When $\theta \in (0, 60) \cup (120, 180)$, no existence of $\ket{\psi}$ that yields mutually orthogonal final states.}
+Let $a = |\psi_0|^{2} + |\psi_7|^{2}$. Then, by using Equation~\ref{eqn:real1} in
+Equation~\ref{eqn:img1} and so on, we get the following:
+\begin{align*}
+    -2 (|\psi_4|^{2} + |\psi_5|^{2})\cos(2\theta) &= a + |\psi_1|^{2} + |\psi_6|^{2} \\
+    -2 (|\psi_2|^{2} + |\psi_6|^{2})\cos(2\theta) &= a + |\psi_3|^{2} + |\psi_4|^{2} \\
+    -2 (|\psi_1|^{2} + |\psi_3|^{2})\cos(2\theta) &= a + |\psi_2|^{2} + |\psi_5|^{2} 
+\end{align*}
+Adding up the above equations and rearranging, we get:
+\begin{align*}
+ (-2\cos(2\theta) - 1) \sum_{j=1}^6 |\psi_j|^{2} &= 3a
+\end{align*}
+Thus, we need $(-2\cos(2\theta) - 1) \geq 0$, as $a \geq 0$, i.e., we need
+$\cos(2\theta) \leq -\frac{1}{2}$. 
+Thus, for $\theta \in (0, 60) \cup (120, 180)$, 
+% i.e., $\cos(2\theta) > -\frac{1}{2}$, 
+there is no solution to the above equations.  {\em Note that we have not used any symmetry argument here.}
+\end{prf}
+

@@ -1,0 +1,270 @@
+\section{\bf Conjectured Optimal \iso Solution}
+\label{sec:optimal}
+
+
+\para{Provably Optimal Solution for Two Sensors.}
+The above joint-optimization problem for the case of 2 sensors can be solved optimally as follows. 
+%%%%%%%%
+First, we note that the minimum probability of error in discriminating two final states for a given initial state $|\psi\rangle$  is given by: 
+
+\begin{equation}
+P_{e} = \frac{1}{2} \left( 1 - \sqrt{ 1 - |\langle \psi |(U\otimes U^{-1} ) |\psi\rangle |^{2}} \right). 
+\label{eqn:two}
+\end{equation}
+
+Now, when the eigenvalues of 
+$U$ are $\{e^{+i\theta}, e^{-i\theta}\}$, as in our \iso problem, then
+the initial state $|\psi\rangle$ that minimizes the above
+probability of error for $0 \leq \theta \leq \pi /4$ and 
+$3\pi/4 \leq \theta \leq \pi$
+can be shown to be the following entangled state:
+ \begin{equation}
+ |\psi\rangle= \frac{1}{\sqrt{2}} (|u_{+}\rangle |u_{-}\rangle + |u_{-}\rangle |u_{+}\rangle ).
+ \label{eqn:two-sol}
+ \end{equation}
+For 
+$\pi /4 \leq \theta \leq 3\pi/4$, there exists an initial state that
+yields orthogonal final states. 
+The above follows from the techniques developed to 
+distinguish between two unitary operators~\cite{DAriano_2002};
+we refer the reader to our recent work~\cite{Hillery_2023} for
+more details. Unfortunately, the 
+above technique doesn't generalize to $n$ greater than 2, because
+for greater $n$, there is no corresponding closed-form expression for minimum
+probability of error.
+% In particular, for the minimum-error strategy, the measurement operators are orthogonal projections and are given by 
+% $|v_{1}\rangle \langle v_{1}|$ 
+% and $|v_{2}\rangle \langle v_{2}|$, 
+% where $|v_{1}\rangle  = \frac{1}{\sqrt{2}} (|u_{+}\rangle |u_{-}\rangle -i |u_{-}\rangle \|u_{+}\rangle )$ and $|v_{2}\rangle = \frac{1}{\sqrt{2}} (|u_{+}\rangle |u_{-}\rangle + i |u_{-}\rangle \|u_{+}\rangle)$. 
+% %%%%%%%%
+
+\para{Conjectured Optimal Solution For $n$ Sensors.}
+The main basis for our conjectured optimal solution is that an 
+optimal initial state
+must satisfy the {\em symmetry of coefficients} property which is defined as
+follows: an initial state satisfies the {\em symmetry of coefficients} property, if for each $k$, the set of coefficient-squares in $S_k$ have the same value.
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+The {\em intuition} behind why an optimal initial state must satisfy the 
+{\em symmetry of coefficients} property comes from the following facts: 
+\begin{enumerate}
+\item 
+The optimal initial state, under the condition of Theorem~\ref{thm:nsensors}, satisfies the symmetry of coefficients property. 
+
+\item
+Since sensors are homogeneous, ``renumbering'' the 
+sensors doesn't change the optimization problem 
+instance fundamentally. 
+%%%%%%%%%%%%%%%%%%%%%%%
+Thus, if $\ket{\psi}$ is an optimal initial state, then all initial
+state solutions obtained by permuting the orthonormal 
+basis $\{\ket{j}\}$ corresponding to a renumbering of 
+sensors,\footnote{Note that renumbering the sensors is tantamount to
+renumbering the bits in the bit-representation of $j$ integers
+of the orthonormal basis $\{\ket{j}\}$. 
+See Theorem~\ref{thm:final}'s proof for more details.}
+must also yield optimal initial 
+states.\footnote{Note that this fact doesn't imply that the optimal solution must satisfy the 
+symmetry of coefficients property.}
+%%%%%%%%%%%%%%%%
+Now, observe that an initial state that satisfies
+the symmetry of coefficients property remains unchanged under 
+any permutation of the orthonormal 
+basis $\{\ket{j}\}$ corresponding to a renumbering of sensors.
+
+\item 
+Similarly, due to the homogeneity of sensors, an optimal initial state 
+must yield ``symmetric'' final states---i.e., final 
+state vectors that have the same pairwise angle between them.
+%%%%%%%%%%%%
+Now, from Observation~\ref{obs:rhs}, we observe that
+an initial state that satisfies the symmetry of coefficients yields
+final states such that their pairwise inner-product value is the same.
+\end{enumerate}
+Finally, it seems intuitive that this common (see \#3 above) 
+inner-product value of every pair of final 
+states should be minimized to minimize the probability of error in discriminating the final states. Minimizing the common inner-product value within the problem's constraints yields the below optimal solution conjecture.
+
+% Now, with the above assumption of symmetry of coefficients, it is easy to see that the resulting final states are such that their pairwise inner-products have the same value $x$ (this comes from the resulting symmetry of the RHS and LHS of the {\tt Real} and {\tt Imaginary} equations). 
+
+
+
+
+\medskip
+\begin{conjecture}
+\label{conj:opt}
+Consider the \iso problem, with the unitary operator $U$, initial state $\ket{\psi}$,
+and final states $\{\ket{\phi_i}\}$ as defined therein. Recall that the eigenvalues of
+$U$ are $\{e^{+i\theta}, e^{-i\theta}\}$. Let $n \geq 3$ be the number of sensors.
+For a given $\theta \in (0, T] \cup [180-T, 180),$ degrees, where $T$ is from Theorem~\ref{thm:nsensors}, the optimal initial state $\ket{\psi}$ for the \iso 
+problem is as follows. 
+% that minimizes $P(\the overall probability of error in discriminating the $n$ states $\{\ket{\phi_i}\}$
+% is as follows.
+
+Let $S_l$ be the partition 
+that minimizes $(R_l + \cos(2\theta)L_l)/(R_l + L_l)$,
+where $R_l$ and $L_l$ are as defined in the previous section. 
+The coefficients of the optimal solution are such that their coefficient-squares are given by:
+\begin{align*}
+|\psi_j|^{2} &= 1/|S_l|\ \ \ \ \forall\ |\psi_j|^{2} \in S_l  \\
+|\psi_j|^{2} &= 0\ \hspace{0.3in}   \ \forall\ |\psi_j|^{2} \notin S_l
+\end{align*}
+\label{thm:optimal}
+\end{conjecture}
+We note the following: (i) The above conjecture optimal solution is provably optimal for $n=2$, with $T = 45$ degrees; see Eqn.~\ref{eqn:two-sol} above and~\cite{PhysRevA.qsn}.
+(ii) The above conjectured optimal solution yields orthogonal final states for $\theta = T$. 
+In particular, it can be easily shown that the above conjectured optimal solution
+is the same as the solution derived in Corollary~\ref{cor:orthogonal-opt} for $\theta = T$.
+(iii) The proposed state in the above conjecture is a Dicke State in the basis made up of $\ket{u_{-}}$ and $\ket{u_{+}}$.
+Dicke states can be prepared deterministically by linear depth quantum circuits in a single quantum computer~\cite{dicke_state}, and be prepared in a distributed quantum network as well~\cite{dickestate_distributed}.
+We now show that the above conjecture can be proved with the help of the following simpler conjecture. 
+
+
+% Corollary~\ref{thm:optimal-largerT} is effective in the range $\theta \in [T, 180-T]$ and Conjecture~\ref{thm:optimal} is effective in the range $\theta \in [0, T) \cup (180-T, 180]$. 
+% While the two ranges don't intersect,  Corollary~\ref{thm:optimal-largerT} and the Conjecture~\ref{thm:optimal} \emph{coincide} at $\theta=T$ and $\theta=180-T$, where $T$ is defined in Theorem~\ref{thm:nsensors}.
+% Because at $\theta=T$, the expression $\cos(2\theta) L_l + R_l = 0$, i.e., equals zero.
+% Same to $\theta=180-T$.
+% The solution in Corollary~\ref{thm:optimal-largerT} contains the expression $\cos(2\theta) L_l + R_l$ and if we replace the expression with zero, we get the solution in Conjecture~\ref{thm:optimal}.
+
+\para{Proving Symmetry of Coefficients.} Based on the intuition behind the above Conjecture~\ref{conj:opt}, one way to prove it would be to prove the symmetry of coefficients---i.e., the existence of an optimal solution wherein the coefficient-squares in any $S_k$ are equal. Proving symmetry of coefficients directly seems very challenging, but we believe that the below conjecture (which implies symmetry of coefficients, as shown in Theorem~\ref{thm:final}) is likely more tractable. Also, {\em the below Conjecture has been verified to hold true in our empirical study (see \S\ref{sec:sim})}. 
+
+\begin{conjecture}
+For a given $U$,
+consider two initial states 
+%%
+$\ket{\psi} = \sum\limits_j \psi_j \ket{j}$ and 
+$\ket{\psi'} = \sum\limits_j \psi'_j \ket{j}$
+%%%%
+such that (i) they are two unequal coefficient-squares, i.e., for some $j$, $|\psi_j|^2 \neq |\psi'_j|^2$, 
+and 
+(ii) they have the same objective function value, i.e., $P(\ket{\psi}, U) = P(\ket{\psi'}, U)$. 
+%probability of errors $p$ (in optimally discriminating the resulting final $\ket{\phi_i}$ states, using an optimal measurement). 
+We claim that the ``average'' state given by 
+%%%%%%%%%%%%%%
+$$\ket{\psi_{avg}} = \sum_j \sqrt{\frac{|\psi_j|^2 + |\psi'_j|^2}{2}}  \ket{j}$$ 
+%%%%%%%%%%%%%%%%%%%
+has a lower objective function value, i.e., $P(\ket{\psi_{avg}}, U) < P(\ket{\psi'}, U)$.
+%yields a probability of error of less than $p$  (in optimally discriminating the $n$ resulting $\ket{\phi_i}$ final states, using an optimal measurement).
+\label{conj:avg}
+\end{conjecture}
+
+We now show that the above Conjecture is sufficient to prove the optimal solution Conjecture~\ref{conj:opt}.
+
+\begin{thm-prf}
+Conjecture~\ref{conj:avg} implies Conjecture~\ref{conj:opt}. 
+\label{thm:final}
+\end{thm-prf}
+
+\begin{prf}
+We start by showing that Conjecture~\ref{conj:avg} implies 
+the symmetry of coefficients, and then minimize the common pairwise inner-product values of
+the final states.
+
+\softpara{Conjecture~\ref{conj:avg} implies Symmetry of Coefficients.}
+First, note that for a given initial state $\ket{\psi}$, we can generate ($n!-1)$ 
+other ``equivalent'' initial states (not necessarily all different) by 
+just renumbering the sensor (or, in other words, permuting the basis eigenvectors).
+Each of these initial states should yield the same objective value $P()$ 
+as that of $\ket{\psi}$, as it can be shown that they would 
+yield essentially the same set of final states.
+%%%%%%%%%%%%%%%%%%%%
+As an example, the following two initial states are  
+equivalent (i.e., yield the same objective value $P()$); 
+here, the sensors numbered 1 and 2 have been interchanged. 
+$$\psi_0 \ket{0} +  \psi_1 \ket{1} + \psi_2 \ket{2} + \psi_3 \ket{3} +
+\psi_4 \ket{4} + \psi_5 \ket{5} + \psi_6 \ket{6} + \psi_7 \ket{7}$$
+$$\psi_0 \ket{0} +  \psi_2 \ket{1} + \psi_1 \ket{2} + \psi_3 \ket{3} +
+\psi_4 \ket{4} + \psi_6 \ket{5} + \psi_5 \ket{6} + \psi_7 \ket{7}$$
+More formally, for a given initial state $\ket{\psi} =  \sum_j \phi_j \ket{j}$, 
+a permutation (renumbering of sensors) $\pi: \{0, 1, \ldots, n-1\} \mapsto \{0, 1, \ldots, n-1\}$ yields
+an equivalent initial state given by
+$\ket{\psi'} =  \sum_j |\phi_\Pi(j)| \ket{j}$ where $\Pi: \{0, 1, \ldots, 2^n-1\} \mapsto \{0, 1, \ldots, 2^n-1\}$ is 
+such that $\Pi(j) = i$ where the bits in the bit-representation of $j$ are permuted using $\pi$ to yield $i$.
+It can be shown that the set of final states yielded by $\ket{\psi}$ and $\ket{\psi'}$ 
+are essentially the same (modulo the permutation of basis dimensions), 
+and hence, they will yield the same probability of error and thus objective value $P()$.
+
+Now, consider an optimal initial state $\ket{\psi} = \sum_j |\phi_j| \ket{j}$ 
+that doesn't have symmetry of coefficients---i.e., there is a pair of 
+coefficient-squares $|\phi_i|^2$ and $|\phi_j|^2$ such that
+they are in the same set $S_k$ but are not equal.
+%%%%%%%%%%%%%
+The numbers $i$ and $j$ have the same number of 1's and 0's in their binary representation, 
+as $|\phi_i|^2$ and $|\phi_j|^2$ belong to the same set $S_k$.
+Let  $\Pi$ be a permutation function (representing renumbering of the $n$ sensors)
+such that $\Pi(i) = j$. Consider an initial state 
+$\ket{\psi'} = \sum_j \psi_{\Pi(j)} \ket{j}$, which has the same probability of 
+error as $\ket{\psi}$. Now, applying Conjecture~\ref{conj:avg} on $\ket{\psi}$ and 
+$\ket{\psi'}$ yields a new initial state with a lower objective value $P()$, which 
+contradicts the optimality of $\ket{\psi}$. Thus, all optimal initial-states 
+must satisfy the symmetry of coefficients. 
+
+
+\softpara{Maximizing the Pairwise Angle.}
+Now, an optimal initial state with symmetry of coefficient will yield 
+final states that have the same pairwise inner-product values (this follows from Theorem~\ref{thm:nsensors}'s proof). 
+Also, we see that each pairwise inner-product value is (see Eqns.\ref{eqn:imag-final} and \ref{eqn:real-final} from \S\ref{sec:n-ortho}):
+\begin{equation}
+\sum_{k=0}^{n} ( R_k + \cos(2\theta) L_k) x_k \label{eqn:common}
+\end{equation}
+with the constraint that
+$$ \sum_{k=0}^{n} ( R_k + L_k) x_k = 1.$$
+
+{\em When $\theta \in (0, T]$.}
+By Lemma~\ref{lemma:t}, note that $(R_k + \cos(2\theta) L_k) x_k \geq 0$ for all $k$, for 
+$\theta \in (0,T)$. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+We show in Lemma~\ref{lemma:angle} below that, for states with equal and positive
+pairwise inner-products, the probability of error in discriminating them using an optimal
+measurement increases with an increase in the common inner-product value. 
+Thus, the optimal initial state must minimize the above inner-product value expression in Eqn.~\ref{eqn:common}.
+%%%%%%%%%%
+Now, from Observation~\ref{obs:pos-neg2} below, the inner-product value above is minimized when the coefficient-squares in the $S_l$ that minimizes $(R_k + \cos(2\theta) L_k)/|S_l|$ are non-zero, while the coefficient-squares in all other 
+$S_k$'s where $k \neq l$ are zero. This proves the theorem.
+
+
+{\em When $\theta \in [180-T, 180)$.} 
+Note that $\cos(2\theta) = \cos(2(180-\theta))$, and since $(180-\theta) \in (0, T]$ for  
+$\theta \in [180-T, 180)$, we can use the same argument as above for this case as well.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now to maximize the pairwise angle between every pair of resulting states
+% $\ket{\phi_i}$, we need to minimize their inner products---this can be 
+% achieved by applying the below observation to the {\em real} equations. 
+\end{prf}
+
+\begin{observation}
+Let $\sum_i a_i x_i =1$, for a set of positive-valued variables $x_i$ and positive constants $a_i$. 
+The expression $\sum_i c_ix_i$, where constants $c_i$'s are all {\em positive}, has a minimum value of $\min_i c_i/a_i$ which is achieved by $x_i = 1/a_i$ for the $i$ that minimizes $\min_i c_i/a_i$. 
+\label{obs:pos-neg2}
+\end{observation}
+
+
+
+\para{Minimizing Probability of Error in Discriminating ``Symmetric'' Final States.} 
+We now show, using prior results, that 
+if the pairwise inner-products (and hence, angles) 
+of the resulting final states $\ket{\phi_i}$ are equal, then the 
+probability of error in discriminating them 
+is minimized when the pairwise inner-product values are minimized. 
+
+\begin{lem-prf}
+Consider $n$ states to be discriminated $\phi_0, \phi_1, \ldots, \phi_{n-1}$ 
+such that $\bra{\phi_i}\ket{\phi_j} = x$,
+for all $0 \leq i, j \leq n-1$ and $i \neq j$. 
+The probability of error in discriminating 
+$\phi_0, \phi_1, \ldots, \phi_{n-1}$ using an optimal measurement 
+increases with an increase in $x$ when $x \geq 0$.
+\label{lemma:angle}
+\end{lem-prf}
+\begin{prf}
+The optimal/minimum probability of error using the optimal POVM for a set of states with equal pairwise inner products can be computed to be~\cite{quantum_pyramid}:
+$$P_e = 1- \frac{1}{n}\left(\sqrt{1-\frac{(n-1)(1-x)}{n}} + (n-1)\sqrt{\frac{1-x}{n}}\right)^2$$
+Let the inner term be $y$, such that $P_e = 1 - (y^2/n)$. The derivative of $y$ with respect to $x$ is given by:
+$$ \frac{n-1}{2\sqrt{n}}\left(\frac{1}{\sqrt{nx+1-x}} - \frac{1}{\sqrt{1-x}}\right).$$
+The above is negative for $x \geq 0$. Thus, for a given number of sensors $n$ and $x \geq 0$, the probability of error $P_e$ increases with an increase in $x$.
+\end{prf}
+
+\para{Summary.} 
+In summary, we propose the Conjecture~\ref{conj:opt} for the optimal solution for the \iso problem, based on the symmetry of coefficients. 
+We also propose a Conjecture~\ref{conj:avg} which seems simpler to prove and provably implies Conjecture~\ref{conj:opt}. 
+We empirically validate these conjectures using several search heuristics in the following sections.  

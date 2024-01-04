@@ -1,0 +1,62 @@
+\section{Introduction}
+
+
+\eat{Quantum sensing is expected to serve as an early use case for quantum technologies.}
+Quantum sensors, being strongly sensitive to external disturbances, can measure various physical phenomena with extreme sensitivity. 
+These quantum sensors interact with the environment 
+and have the environment phenomenon or parameters encoded in their state, which can then be 
+measured. Estimation of a single continuous parameter by quantum sensors can be further enhanced by using a group of entangled sensors, improving the standard deviation of measurement by a factor of $1/\sqrt{N}$ for $N$ sensors~\cite{Giovannetti_2011}. 
+Generally, a network of sensors can facilitate spatially distributed sensing; e.g., a fixed transmitter's signal observed from different locations facilitates localization via triangulation. 
+%%%%%%%
+Thus, as in the case of classical wireless sensor networks, it is natural to deploy a network of quantum sensors to detect/measure a spatial phenomenon, and there has been recent interest in developing protocols for such quantum sensor networks (QSNs)~\cite{PhysRevResearch.qsn, PhysRevA.qsn, mpe_2018, Eldredge_2018}.
+
+\para{Initial State Optimization.}
+Quantum sensing protocols typically involve four steps~\cite{RevModPhys.quantumsensing}: {\em initialization} of the quantum sensor to a desired initial state, transformation of the sensor's state over a {\em sensing} period, {\em measurement}, and {\em classical processing}.
+Quantum sensor networks would have similar protocols.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+In general, the initial state of the QSN can have a strong bearing on the
+sensing protocol's overall performance (i.e., accuracy). E.g., in certain
+settings, an entangled initial state is known to offer better estimation than
+a non-entangled state~\cite{mpe_2018,Eldredge_2018}. 
+If entanglement helps, then different 
+entangled states may yield different estimation accuracy.
+Thus, in general, determining the initial state that offers optimal estimation 
+accuracy is important to designing an optimal sensing protocol.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The focus of our work is to address this problem of determining an optimal initial 
+state. Since an optimal initial state depends on the sensing and 
+measurement protocol specifics, we consider a specific and concrete 
+setting in this paper involving detectors.  
+To the best of our knowledge, 
+ours is the only work (including our recent work~\cite{PhysRevA.qsn}) to 
+address the problem of determining provably optimal initial states in quantum sensor 
+networks with discrete outcome/parameters.\footnote{For estimation of continuous parameters, 
+some works~\cite{Eldredge_2018,saleem_dickestate} exist that have shown that 
+certain initial states can saturate the quantum Cramer-Rao bound 
+(also see \S\ref{sec:related}).}
+
+
+\para{QSNs with Detector Sensors.}
+We consider a network of quantum ``detector'' sensors. Here,
+a detector sensor is a qubit sensor whose state changes to a unique final state when an event happens. 
+More formally, a sensor with initial state $\ket{\psi}$ gets transformed to $U\ket{\psi}$ when an event happens, where $U$ is a particular unitary matrix that signifies the impact of an event on the sensor.  Such detector sensors can be very useful in {\em detecting} an event, rather than {\em measuring} a continuous parameter representing an environmental phenomenon. 
+More generally, we 
+consider a network of quantum detector sensors wherein, when an event happens, exactly one of the sensors fires--- i.e., changes its state as above.
+%%%%%%%%%%%%%%%%%
+In general, a network of such detector sensors can be deployed to {\em localize} an event --- by determining the firing sensor and hence, the location closest to the event.
+%, \magenta{similar to a classical proximity sensor}. 
+%%%%%%
+Our paper addresses the problem of optimizing the initial global state of such QSNs
+to minimize the probability of error in determining the firing sensor.
+
+\para{Contributions.}
+In the above context, we make the following contributions. 
+We formulate the problem of initial state optimization in detector quantum sensor networks. We derive necessary and sufficient conditions for the existence of an initial state that can detect the firing sensor with perfect accuracy, i.e., with zero probability of error.
+%%%%%%%
+Using the insights from this result, we derive a conjectured optimal solution for the problem and provide a pathway to proving the conjecture. 
+%%%%%%%%%
+We also develop multiple search-based heuristics for the problem and  
+empirically validate the conjectured solution 
+through extensive simulations. Finally, we extend our results to the unambiguous discrimination measurement scheme.
+
+

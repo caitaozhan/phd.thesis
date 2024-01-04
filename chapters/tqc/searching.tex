@@ -1,0 +1,275 @@
+\section{Search Heuristics}
+\label{sec:searching}
+
+\begin{algorithm}[ht] 
+  	\KwIn{The initial state $\vx$, $i$th element of $\vx$, step size}
+	\KwOut{A neighbor $\vx'$ of $\vx$}
+	$\vx' \leftarrow \vx$ \;
+	$direction \leftarrow$ Generate a random unit 2D-vector \;
+	$direction' \leftarrow$ convert $direction$ to complex number \;
+	$\vx'[i] \leftarrow \vx'[i] + direction' \times stepSize$ \;
+	$\vx' \leftarrow Normalize(\vx'$) \tcp*{$\vx^{\dagger}\vx = 1$}
+	\Return $\vx'$ \;
+	\caption{FindNeighbor($\vx, i, stepSize$)}
+\label{algo:find-neighbor}
+\end{algorithm}
+
+In this section, we design three search heuristics to determine an efficient
+\iso solution, viz., hill-climbing algorithm, simulated annealing, and genetic algorithm. In the next section, we will evaluate these heuristics and observe
+that they likely deliver near-optimal solutions. 
+%%%%%%%%%%%%%%%%%%%
+We start with a numerical (SDP) formulation of determining an optimal 
+measurement, and thus, develop a method to estimate the objective value
+$P(\ket{\psi}, U)$ of a given initial state $\ket{\psi}$.
+
+\para{Semi-Definite Program (SDP) for State Discrimination.}
+We now formulate a 
+semi-definite program (SDP) to compute the optimal measurement 
+for a given initial state; this formulation allows us to determine the optimal measurement 
+using numerical methods, and thus, facilitates the development of the
+search heuristics for the \iso problem as described below.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Given a set of (final) quantum states, determining the optimal measurement that
+discriminates them with minimum probability of error is a convex optimization problem, and in particular, can be formulated as a semi-definite program~\cite{Eldar_2003}.
+% Let's denote $\calh$ as the $n$-dimensional complex Hilbert space and $\calb$ as the set of Hermitian operators on $\calh$.
+Let the final states be $\{\ket{\phi_i}\}$ with
+prior 
+probabilities $p_{i}$, where $\sum_i p_i = 1$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $\{\Pi_{i}\}$ be the POVM operator with $\Pi_{i}$ being the element associated with the state $\ket{\phi_i}$, and let $Tr()$ be the trace operator.
+%%%%%%%%%%%%%%%%%%
+The SDP program to determine the optimal measurement operator can be formulated
+as below, where the objective is to minimize the probability of error.
+\begin{equation}
+    \min_{\Pi_{i} \in \calb} 1 - \sum_{i=0}^{n-1} p_{i} Tr(\Pi_{i} \ket{\phi_i}\bra{\phi_i} )
+    \label{eqn:measure-sdp}
+\end{equation}
+subject to the constraints:
+\begin{align}
+    \Pi_{i} & \succeq 0, \ \ \ \   0 \leq i \leq n-1 \label{eqn:semidefinite} \\
+    \sum_{i=0}^{n-1} \Pi_{i} &= I \label{eqn:identity}
+\end{align}
+Above, Eqn.~\ref{eqn:semidefinite} ensures that every measurement operator is positive semidefinite, while Eqn.~\ref{eqn:identity} ensures that the set of measurement operators is a valid POVM, i.e., the summation of all measurement operators is the identity matrix.
+Eqn.~\ref{eqn:measure-sdp} minimizes the probability of error expression for a given POVM measurement and set of quantum states.
+% \eat{The maximization objective Eqn.~\ref{eqn:measure-sdp} is concave.
+% Constraint Eqn.~\ref{eqn:semidefinite} ensures that every measurement operator is positive semidefinite.  
+% Constraint Eqn.\ref{eqn:identity}) ensures that the set of measurement operators is a valid POVM, i.e., the summation of all measurement operators being the identity matrix.}
+
+
+\begin{algorithm}[t] 
+  	\KwIn{Unitary operator $U$}
+        \KwIn{Number of sensor $n$}
+	\KwOut{Initial State $\vx$}
+	$\vx \leftarrow$ a random state vector with a length of $2^{n}$\;
+	$bestObjective \leftarrow P(\vx, U)$ \;
+        $stepSize \leftarrow$ 0.1 \;
+        $stepDecreaseRate \leftarrow$ 0.96\ \;
+	\While{Termination Condition Not Satisfied}{
+	    \For{$i = 1$ to  $2^{n}$}{
+	        $neighbors \leftarrow$ Find 4 neighbors, call FindNeighbor($\vx, i, stepSize$) four times \;
+	        $bestStep \leftarrow 0$ \;
+	        \For{$j = 1$ to $4$}{
+	            $objective \leftarrow P(neighbors[j], U)$  \;
+	            \If{$objective < bestObjective$}{
+	                $bestObjective \leftarrow objective$ \;
+	                $bestStep \leftarrow j$      \;
+	            }
+	        }
+    	    \If{$bestStep$ is not 0}{
+    	        $\vx \leftarrow neighbors[bestStep]$ \;
+    	    }
+	    }
+	    $stepSize \leftarrow stepSize\times stepDecreaseRate$ \;
+	    % \If{$bestScore - prevScore <$ EPSILON}{
+	    %     $Terminate \leftarrow True$
+	    % }
+	}
+	\Return $\vx$ \;
+	\caption{HillClimbing($U$, $n$)}
+\label{algo:hill-climbing}
+\end{algorithm}
+
+
+\para{The Objective Value of an Initial State.}
+To design the search-based heuristics, we need a method to estimate an objective value for a given initial quantum state that evaluates its quality.
+In our context, for a given initial state $\ket{\psi}$, 
+the \iso problem's objective function $P(\ket{\psi}, U)$ could
+also serve as the objective function in a search-based heuristic.
+$P(\ket{\psi}, U)$ can be directly estimated
+using the Eqn.~\ref{eqn:measure-sdp} above.
+\begin{equation}
+P(\ket{\psi}, U) = 1-\sum_{i=0}^{n-1} p_{i} Tr(\Pi_{i}  \ket{\phi_i}\bra{\phi_i})
+\label{eqn:objective}
+\end{equation}
+\noindent
+where $\ket{\phi_i} = (I^{\otimes i} \otimes U \otimes I^{\otimes (n-i-1)})\ket{\psi}$ are the final states, and the optimal measurement $\{\Pi_i\}$ can be computed numerically using the SDP formulation given above. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Based on the above method to estimate the objective function $P()$, we can develop  search heuristics for the \iso problem; 
+at a high level, each heuristic searches for a near-optimal initial state by starting with a random initial state \vx\ and iteratively improving (not necessarily in every single iteration) by moving to \vx's better neighbor based on the objective value $P()$ of \vx. 
+
+% Our problem can be formulated as a maximization problem:
+% \begin{equation}
+%     \max_{\Pi_{i} \in \calb, \ket{\psi} \in \calc} \sum_{i=1}^{n} p_{i} Tr(\Pi_{i}  \ket{\phi_i}\bra{\phi_i})
+%     \label{eqn:init-measure-sdp}
+% \end{equation}
+% subject to the constraints:
+% \begin{align}
+%     \Pi_{i} & \succeq 0, \ \ \ \   1 \leq i \leq n \\
+%     \sum_{i=1}^{n} \Pi_{i} &= I  \\
+%     \ket{\phi_i} &= (I^{\otimes (i-1)} \otimes U \otimes I^{\otimes (n-i)})\ket{\psi}, \ \ \ \  1 \leq i \leq n
+%     \label{eqn:unitary-transform}
+% \end{align}
+
+% \blue{Maximizing Eqn.~\ref{eqn:measure-sdp} can be solved by a semidefinite programming solver, such as CVXPY~\cite{diamond2016cvxpy}. 
+% However, maximizing Eqn.~\ref{eqn:init-measure-sdp} can not. }
+% \red{The reason is that Eqn.~\ref{eqn:init-measure-sdp} is a double optimization problem, i.e., the measurement operator $\Pi$ and initial state $\ket{\psi}$, and the measurement operator has a dependency on the initial state.}
+% Since directly using an SDP solver will not work, we design our own search algorithms.
+% To guide the searching process of an optimal initial state, we need to determine how good it is.
+% In the next subsection, we describe the evaluation of an initial state.
+
+% Note that our optimization target of interest is the initial state, not the measurement, although the measurement is part of the Eqn.~\ref{eqn:init-measure-sdp}. 
+% Being able to solve Eqn.~\ref{eqn:measure-sdp} by an SDP solver implies that an optimal measurement can safely be assumed for a given set of final states.
+% The SDP solver will output the final maximal probability of correctness after the optimization process.
+% This probability of correctness in the range of $[0, 1]$ indicates how good an initial state is (the higher the better) and serves as the guidance of the searching algorithms to solve Eqn.~\ref{eqn:init-measure-sdp} proposed in the following subsections.
+
+
+% Given an initial state, we get the final states by Eqn.~\ref{eqn:unitary-transform}.
+% Given the final states, \blue{computing the objective function} Eqn.~\ref{eqn:init-measure-sdp} \blue{reduces to maximizing} Eqn.~\ref{eqn:measure-sdp} since we assume that an optimal POVM is used for discriminating the final states. 
+% We use an SDP solver to maximize Eqn.~\ref{eqn:measure-sdp}, and the SDP solver's returned value, a real number between 0 and 1, is used as an evaluation of an initial state.
+% The higher the number, the better the initial state.
+% Note that the number equaling 1 implies that the final states are perfectly distinguishable, thus the initial state must be optimal.
+
+%%%%%%%%%%%%%%%%%
+
+
+\begin{algorithm}[b] 
+  	\KwIn{Unitary operator $U$}
+        \KwIn{Number of sensor $n$}
+	\KwOut{Initial State $\vx$}
+	$\vx \leftarrow$ a random state vector with a length of $2^{n}$\;
+	$stepSize \leftarrow 0.1$ \;
+	$T \leftarrow$ Standard deviation of some \vx \ neighbors' objective values \;
+    $stepDecreaseRate \leftarrow$ 0.96 \;
+    $coolingRate \leftarrow$ 0.96\ \;
+    $stdRatio \leftarrow 1$ \;
+	\While{Termination Condition Not Satisfied}{
+	    \For{$i = 1$ to $2^{n}$}{
+                \For{$j=1$ to $4$}{
+                    $\vx' \leftarrow$ FindNeighbor($\vx, i, stepSize$) \;
+	            $E_1 \leftarrow P(\vx, U)$  \;
+	            $E_2 \leftarrow P(\vx', U)$  \;
+    	        $\Delta E \leftarrow E_2 - E_1$ \;
+    	        \uIf{$\Delta E < 0$}{
+    	             $\vx \leftarrow \vx'$
+    	        }
+    	        \Else{
+    	            $\vx \leftarrow \vx'$ with probability $e^{-\Delta E/T}$
+    	        }
+                }
+	    }
+	    $stepSize \leftarrow stepSize \times stepDecreaseRate$ \;
+	    $std \leftarrow$ Standard dev. of \vx\ recent neighbors' scores\;
+	    $stdRatio \leftarrow stdRatio\times coolingRatio$ \;
+	    $T \leftarrow min(T\times coolingRate, std\times stdRatio)$ \;
+	}
+	\Return $\vx$ \;
+	\caption{SimulatedAnnealing($U$, $n$)}
+\label{algo:simulated-annealing}
+\end{algorithm}
+
+\para{Hill-Climbing\footnote{In our context of a minimization problem, the heuristic actually {\em descends} into a valley of solutions, but we stick to the Hill-Climbing name because that's the common usage.} (HC) Search Heuristic.}
+The Hill-climbing (HC) heuristic starts with randomly picking an initial quantum state for the $n$-sensors, i.e., a $2^{n}$ length vector $\vx$ of complex numbers with $\vx^{\dagger}\vx = 1$.
+During each iteration, we look into one element of the state vector $\vx$ at a time.
+And for each element, we look into four random ``neighbors'' of the initial state (as described below), 
+and pick the neighbor with the lowest objective value $P()$. 
+We repeat the process until reaching the termination criteria, i.e., the improvement (if any) of moving to the best neighbor is smaller than a threshold (i.e., $10^{-6}$). 
+We also set a minimum number of 100 iterations.
+% It implies getting stuck at a local optimum.
+% See Algo.~\ref{algo:hill-climbing} for pseudo code.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note that the search space (Hilbert space) is continuous and involves complex numbers. 
+% Thus, we need a neighbor-finding method that works in this environment.
+
+To find a neighbor of a quantum state, 
+we update one element of the state vector \vx\ at a time---by 
+adding to it a random unit vector multiplied by a step size
+which decreases with each iteration (a post-normalization 
+step is done to maintain $\vx^{\dagger}\vx = 1$).
+For each element, we look into four random neighbors instead of one, to increase the chance of discovering better neighbors.
+See Algo.~\ref{algo:find-neighbor} for the neighbor-finding procedure and Algo.~\ref{algo:hill-climbing} for the overall Hill Climbing heuristic.
+
+
+
+
+\para{Simulated Annealing (SA) Heuristic.}
+The above Hill-climbing heuristic can get stuck in a local optimal.
+Thus, we also develop a more sophisticated Simulated Annealing 
+(SA)~\cite{Kirkpatrick_1983} metaheuristic which has a mechanism to 
+jump out of a local minimum.
+%%%%%%%%%%%%%%%%%%%%%%%
+By convention, SA applies the concept of energy $E$.
+In our context, the energy is the equivalent of the objective function value $P()$.
+In essence, SA allows itself to transition to solutions with worse objective values with a small (but non-zero) probability.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In SA, the transition probability to a new neighbor state depends upon the improvement
+$\Delta E$ in the objective function and is given by: 
+\begin{equation}
+    P(\Delta E) = \min (1, e^{-\Delta E/T}),
+    \label{eqn:boltzmann}
+\end{equation}
+where $T$ is the temperature.
+% The transitional probability equation should include a Boltzmann constant. But since we set the constant to 1, we do not show it in the equation.
+We note that when the new state's objective value is lower, then $\Delta E$ is negative, and thus, $P(\Delta E)$ is 1, and the new state is readily transitioned to. 
+%%%%%%%%%%%%%%%%%%%%%%%
+Same as in~\cite{SA-sudoku}, we set the initial temperature as the standard deviation of the objective value of several initial state's neighbors. 
+As the SA algorithm iterates, the temperature $T$ gradually decreases. 
+In our context, the following works well and leads to fast convergence, compared to other standard equations used in other contexts~\cite{Laarhoven_1987}.
+\begin{equation}
+    T_{n} = min\{(1-\epsilon)T_{n-1}, (1 - \epsilon)^{n}\sigma_{n-1}\},
+    \label{eqn:our-anneal}
+\end{equation}
+where $\sigma_{n-1}$ is the standard deviation of objective values of the latest ten neighbors explored at the $(n-1)^{th}$ iteration.
+SA uses the same neighbor-finding method (Algo.~\ref{algo:find-neighbor}) as in the previous Hill-climbing heuristic, with a similar termination condition as Hill-climbing except that we 
+allow a few iterations for improvement.
+The pseudo-code of SA is shown in Algo.~\ref{algo:simulated-annealing}.
+
+
+\begin{algorithm}[b] 
+  	\KwIn{Unitary operator $U$}
+        \KwIn{Number of sensor $n$}
+	\KwOut{Initial State $\vx$}
+        $N \leftarrow$ population size\;
+	$\vx_{pop} \leftarrow$ a size $N$ population of length $2^{n}$ random state vectors\;
+	% $bestScore \leftarrow$ best fitness value of $\vx_{pop}$ \;
+	\While{Termination Condition Not Satisfied}{
+            $ranks \leftarrow$ $computeRank(\vx_{pop}, U)$ \;
+            $\vx_{pop}' \leftarrow$ an empty children population\;
+	    \While{$length(\vx_{pop}') < size$}{
+                $parents \leftarrow$ get two states by $select(ranks, \vx_{pop})$ \;
+                $children \leftarrow$ get two new states by $twoPointCrossover(parents)$ \;
+                Do mutation for $children$ \;
+                Add  $children$ to $\vx_{pop}'$   \;
+	    }
+             $\vx_{pop} \leftarrow$ the top $N$ of states in $\vx_{pop} + \vx_{pop}'$ \;
+        }
+        $\vx \leftarrow$ the best state in $\vx_{pop}$   \;
+	\Return $\vx$ \;
+	\caption{GeneticAlgorithm($U$, $n$)}
+\label{algo:genetic-algorithm}
+\end{algorithm}
+
+\para{Genetic Algorithm (GA) Heuristic.}
+The Genetic Algorithm (GA) is another popular metaheuristic algorithm for solving optimization problems.
+Inspired by the natural evolution of survival of the fittest~\cite{Holland_1992}, 
+GA works by considering a ``population'' of candidate solutions and creating the
+next generation iteratively, until the best solution in a new generation does not
+improve from the best solution in the previous generation by at least a threshold.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In our context, the initial population of candidate solutions is a set of random initial states. 
+And candidate solutions are evaluated by a fitness function, which is conceptually the same as our objective function $P()$ (Eqn.~\ref{eqn:objective}) except that the fitness function is the higher the better while $P()$ is the lower the better.
+So, $1-P()$ will serve as the fitness function for GA.
+The pseudo code for GA is shown in Algo.~\ref{algo:genetic-algorithm}.
+To create a new generation, we pick a pair of candidate states as parents through the rank selection~\cite{review-ga} and then generate a pair of children states by using the two-point crossover method~\cite{review-ga}. 
+Finally, we mutate the children in a way similar to finding neighbors in Algo.~\ref{algo:find-neighbor}.
+

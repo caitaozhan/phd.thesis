@@ -26,7 +26,7 @@ To localize a transmitter, we first compute the evolved state and then, use the 
 %%%%%%%%%%%%%%
 This is done repeatedly as described in Section~\ref{sec:povm}, and in two levels (coarse, fine) depending on the localization scheme. 
 The target states and evolved states are both generated using the sensor model described
-in Section~\ref{sec:problem}, i.e., using Eqns.~\ref{eqn:unitary}-\ref{eqn:phase_shift}, with the electric field strength ($E$) and phase shift range modeled as below. 
+in Section~\ref{sec:quantum_problem}, i.e., using Eqns.~\ref{eqn:unitary}-\ref{eqn:phase_shift}, with the electric field strength ($E$) and phase shift range modeled as below. 
 % \magenta{Note that implementation of QSD-based methods does not require evaluating quantum circuits.}
 % The sensor data is generated using the sensor model described in \S\ref{sec:problem}, i.e., using Eqns.~\ref{eqn:unitary}-\ref{eqn:phase_shift}, with the electric field strength ($E$) and phase shift range modeled as below. 
 % \magenta{The hybrid circuits in PQC-based methods are implemented and trained in a separate quantum circuit simulator as described later. } 
@@ -65,9 +65,12 @@ Thanks to PyTorch, we are able to train the PQCs fast on a GPU.
 We use the Adam optimizer and train for 80 epochs for both \pqcone and \pqctwo methods.
 
 The sensor readings are also used as the sensor data to train the PQC-based hybrid circuit models. 
-Essentially, for a fixed initial global state of the sensors (say, $\psi$), each sample consists of the quantum state received from the quantum sensor network (input feature) and the location of the transmitter (ground truth target). 
+Essentially, for a fixed initial global state of the sensors (say, $\psi$), each sample consists of the quantum state received from 
+the quantum sensor network (input feature) and the location of the transmitter (ground truth target). 
 More formally, each sample is of the kind: 
-$(\bigotimes_{i=1}^{m} \hat{U}_i\ket{\psi}, L)$, where $\hat{U}_i$ is the evolution unitary operator for the $i^{th}$ quantum sensor (as per \S\ref{sec:problem} and above paragraphs), $\ket{\psi}$ is the uniform superposition initial state, and $L$ is the location of the transmitter in the field in all scenarios except for one, i.e., $L$ is the block number for samples used to train a ``coarse-level \pqcone'' in the \pqctwo Classifier Variant. 
+$(\bigotimes_{i=1}^{m} \hat{U}_i\ket{\psi}, L)$, where $\hat{U}_i$ is the evolution unitary operator for the $i^{th}$ quantum sensor (as per \S\ref{sec:quantum_problem} and above paragraphs), 
+$\ket{\psi}$ is the uniform superposition initial state, and $L$ is the location of the transmitter in the field in all scenarios except for one, 
+i.e., $L$ is the block number for samples used to train a ``coarse-level \pqcone'' in the \pqctwo Classifier Variant. 
 We use one hundred training examples/samples for each cell, with the transmitter's location randomly scattered over the cell. 
 %%%%%%%%%%%%%%%%%%%
 For example, consider a $4\times4$ grid with a block length of 2.
