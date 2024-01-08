@@ -1,31 +1,30 @@
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-
 In shared spectrum systems, it is important to be able to localize simultaneously present multiple intruders 
-(unauthorized transmitters) to effectively protect a shared spectrum from malware-based, jamming, or other 
-multi-device unauthorized-usage attacks.
-We address the problem of localizing multiple intruders using a distributed set of classical radio-frequency (RF) sensors 
-in the context of a shared spectrum system. 
-In contrast to single transmitter localization, multiple transmitter localization (MTL) has not been thoroughly studied.  
-The key challenge in solving the MTL problem comes from the need to “separate” an aggregated
-signal received from multiple intruders into separate signals from individual intruders.
-We solve the problem via a Baysian-based approach and a deep-learning-based approach.
+(unauthorized transmitters) to effectively protect a shared spectrum from malware-based, jamming, 
+or other multi-device unauthorized-usage attacks. We address the problem of localizing multiple intruders using 
+a distributed set of classical radio-frequency (RF) sensors in the context of a shared spectrum system. 
+In contrast to single transmitter localization, multiple transmitter localization (MTL) has not been thoroughly studied. 
+The key challenge in solving the MTL problem comes from the need to “separate” an aggregated signal received from 
+multiple intruders into separate signals from individual intruders. We solve the problem via a Bayesian-based approach 
+and a deep-learning-based approach. 
 
-After addressing multiple transmitter localization with a network of classical sensors, we explore a network of quantum sensors
-and continue the work of transmitter localization using quantum sensors.
-A quantum sensor network is a network of spatially dispersed sensors that leverage the quantum properties of light and matter, e.g., quantum coherence and quantum entanglement.
-We pose our transmitter localization problem as a quantum state discrimination problem and use the positive operator-valued measurement (POVM) as a tool for localization in a novel way.
-Quantum entanglement is a critical resource for the task of distributed quantum sensing.
-So we also investigate an efficient way to distribute or route the entangled pairs (EPs).
-Routing EPs is challenging because of the no-cloning theorem and the long-distance direct transmission of qubit states being infeasible due to unrecoverable errors.
-We develop a heuristic algorithm that efficiently routes EPs in a quantum network.
+After addressing multiple transmitter localization with a network of classical RF sensors, 
+we explore using a quantum sensor network for transmitter localization. 
+A quantum sensor network is a network of spatially dispersed sensors that leverage the quantum properties of light and matter, 
+e.g., quantum superposition and quantum entanglement. We pose our transmitter localization problem as 
+a quantum state discrimination (QSD) problem and use the positive operator-valued measurement as a tool 
+for localization in a novel way. Then, we address the additional challenge of the impracticality 
+of general quantum measurement by developing new schemes that replace the QSD’s measurement operators 
+with trained parameterized hybrid quantum-classical circuits. 
 
-For the proposed work, we plan to continue the investigation of transmitter localization with a quantum sensor network.
-POVM is the current quantum measurement we are using, it is general but not very practical. 
-Instead of POVM, we plan to use the projective measurement on the computational basis.
-To better optimize the measurement process, parameterized quantum circuit (quantum neural networks) will be utilized to learn an optimal/near-optimal measurement.
-In the end, we aim to run evaluation experiments on a real IBM quantum computer instead of classical simulation.
+Finally, we investigate a problem that is unique in quantum, i.e., optimizing the initial state of detector sensors 
+in quantum sensor networks. We consider a network of quantum sensors, where each sensor is a qubit detector that “fires”, 
+i.e., its state changes when an event occurs close by. The change in state due to the firing of a detector is given 
+by a unitary operator. The determination of the firing sensor can be posed as a QSD problem which incurs a probability 
+of error depending on the initial state and the measurement operator used. We address the problem of determining 
+the optimal initial state of the quantum sensor network that incur a minimum probability of error in determining the firing sensor.
 
 
 \end{abstract}
