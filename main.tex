@@ -87,20 +87,11 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 
 \thesistitle{Transmitter Localization in Classical/Quantum Sensor Networks and Optimizing Initial State of Detector Sensors in Quantum Sensor Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
-\supervisor{Professor Himanshu Gupta} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
-\degree{Doctor of Philosophy} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
 \author{Caitao Zhan} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
 
-\subject{Computer Science} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
-\keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
-\university{\href{http://www.stonybrook.edu}{Stony Brook University}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
-\department{\href{http://www.cs.stonybrook.edu}{Department of Computer Science}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
-\faculty{\href{https://www3.cs.stonybrook.edu/~hgupta/}{Professor Himanshu Gupta}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
-
 \AtBeginDocument{
-\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+  \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+  \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
 }
 
 \begin{document}
@@ -113,222 +104,102 @@ headsepline, % Uncomment to get a line under the header
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\begin{titlepage}
-
-  \begin{center}
-
-    \noindent 
-    
-    \noindent 
-    
-    \noindent 
-    
-    \noindent 
-    
-    \thispagestyle{empty}
-    \pagenumbering{roman}
-    
-    \noindent {\large \textsc{\textbf{\ttitle}}}
-    
-    \vspace{0.45cm}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{A Dissertation presented}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{By}
-    
-    \vspace{0.45cm}
-    
-    \noindent {\large \textsc{\textbf{\authorname}}}
-    
-    \vspace{0.45cm}
-    
-    \vspace{0.45cm}
-    
-    \noindent to
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{The Graduate School}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{in Partial Fulfillment of the Requirements}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{for the Degree of}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{\textbf{Doctor of Philosophy}}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{in}
-    
-    \vspace{0.45cm}
-    
-    \noindent \textsc{\textbf{Computer Science}}
-    
-    \noindent 
-    
-    \vspace{1.2cm}
-    
-    \noindent \textsc{Stony Brook University}
-    
-    \noindent 
-    
-    \vspace{1.2cm}
-    
-    \noindent \textsc{\textbf{May 2024}}
-    
-    \noindent \eject 
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \pagenumbering{roman}
-    \setcounter{page}{2}
-    
-    \noindent {\large \textbf{Stony Brook University}}
-    
-    \vspace{0.25cm}
-    
-    \noindent The Graduate School
-    
-    \vspace{0.5cm}
-    
-    \noindent \textbf{\authorname}
-    
-    \vspace{0.5cm}
-    
-    \noindent {We}, the dissertation committee for the above candidate for the
-    
-    \vspace{0.25cm}
-    \noindent Doctor of Philosophy degree, hereby recommend
-    
-    \vspace{0.25cm}
-    \noindent acceptance of this dissertation.
-    
-    \noindent 
-    
-    \vspace{1.0cm}
-     
-    \noindent \textbf{Prof. Himanshu Gupta -- Advisor} \\
-    \noindent \textbf{Professor, Department of Computer Science}
-    \vspace{0.75cm}
-     
-    \noindent \textbf{Prof. Samir Das  -- Committee Chairperson}\\
-    \noindent \textbf{Professor and Chair, Department of Computer Science}
-    
-    \vspace{0.75cm}
-    
-    \noindent \textbf{Prof. C. R. Ramakrishnan}\\
-    \noindent \textbf{Professor and Graduate Program Director, Department of Computer Science}
-    
-    \vspace{0.75cm}
-    
-    \noindent \textbf{Prof. Nengkun Yu} \\
-    \noindent \textbf{Associate Professor, Department of Computer Science}
-    
-    \vspace{0.75cm}
-
-    \noindent \textbf{Prof. Mark Hillery} \\
-    \noindent \textbf{Professor, Department of Physics and Astronomy, Hunter College of the City University of New York}
-    
-    \vspace{0.75cm}
-    
-    \noindent This dissertation is accepted by the Graduate School
-    
-    \vspace{0.75cm}
-    
-    \noindent \textbf{Celia Marshik}
-    
-    \noindent \textbf{Dean of the Graduate School}
-    \vspace{0.5cm}
-    
-    \noindent \eject 
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    \noindent \textsc{Abstract of the Dissertation}
-    
-    \vspace{0.25cm}
-    
-    \noindent by
-    
-    \vspace{0.25cm}
-    
-    \noindent \textsc{\textbf{\authorname}}
-    
-    \vspace{0.25cm}
-    
-    \noindent \textsc{\textbf{Doctor of Philosophy}}
-    
-    \vspace{0.25cm}
-    
-    \noindent \textsc{in}
-    
-    \vspace{0.25cm}
-    
-    \noindent \textsc{\textbf{Computer Science}}
-    
-    \vspace{0.25cm}
-    
-    \noindent \textsc{\textbf{2024}}
-    
-  \end{center}
-
-\end{titlepage}
-
-
-
-%----------------------------------------------------------------------------------------
-%	DECLARATION PAGE
-%----------------------------------------------------------------------------------------
-
-% \begin{declaration}
-% \addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
-% \noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
-
-% \begin{itemize} 
-% \item This work was done wholly or mainly while in candidature for a research degree at this University.
-% \item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-% \item Where I have consulted the published work of others, this is always clearly attributed.
-% \item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-% \item I have acknowledged all main sources of help.
-% \item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-% \end{itemize}
- 
-% \noindent Signed:\\
-% \rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
- 
-% \noindent Date:\\
-% \rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-% \end{declaration}
-
-% \cleardoublepage
-
-%----------------------------------------------------------------------------------------
-%	QUOTATION PAGE
-%----------------------------------------------------------------------------------------
-
-\vspace*{0.2\textheight}
-
-
-
-
+\begin{center}
+    
+  \thispagestyle{empty}
+  \pagenumbering{roman}
+  {\large \textsc{\textbf{\ttitle}}}  \\
+  \vspace{0.9cm}
+  \textsc{A Dissertation presented}  \\
+  \vspace{0.45cm}
+  \textsc{By}  \\
+  \vspace{0.45cm}
+  {\large \textsc{\textbf{\authorname}}}  \\
+  \vspace{0.9cm}
+  to  \\
+  \vspace{0.45cm}
+  \textsc{The Graduate School}  \\
+  \vspace{0.45cm}
+  \textsc{in Partial Fulfillment of the Requirements}  \\
+  \vspace{0.45cm}
+  \textsc{for the Degree of}  \\
+  \vspace{0.45cm}
+  \textsc{\textbf{Doctor of Philosophy}}  \\
+  \vspace{0.45cm}
+  \textsc{in}  \\
+  \vspace{0.45cm}
+  \textsc{\textbf{Computer Science}}  \\
+  \vspace{1.2cm}
+  \textsc{Stony Brook University}  \\
+  \vspace{1.2cm}
+  \textsc{\textbf{May 2024}}  \\
+  \eject 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pagenumbering{roman}
+  \setcounter{page}{2}
+  {\large \textbf{Stony Brook University}}  \\
+  \vspace{0.25cm}
+  The Graduate School  \\
+  \vspace{0.5cm}
+  \textbf{\authorname}  \\
+  \vspace{0.5cm}
+  {We}, the dissertation committee for the above candidate for the  \\
+  \vspace{0.25cm}
+  Doctor of Philosophy degree, hereby recommend  \\
+  \vspace{0.25cm}
+  acceptance of this dissertation.  \\
+  \vspace{1.0cm}
+  \textbf{Prof. Himanshu Gupta -- Advisor} \\
+  \textbf{Professor, Department of Computer Science}   \\
+  \vspace{0.75cm}
+  \textbf{Prof. Samir Das  -- Committee Chairperson} \\
+  \textbf{Professor and Chair, Department of Computer Science}  \\
+  \vspace{0.75cm}
+  \textbf{Prof. C. R. Ramakrishnan}\\
+  \textbf{Professor and Graduate Program Director, Department of Computer Science}   \\
+  \vspace{0.75cm}
+  \textbf{Prof. Nengkun Yu} \\
+  \textbf{Associate Professor, Department of Computer Science} \\
+  \vspace{0.75cm}
+  \textbf{Prof. Mark Hillery} \\
+  \textbf{Professor, Department of Physics and Astronomy, Hunter College of the City University of New York}
+  \vspace{0.75cm}
+  This dissertation is accepted by the Graduate School  \\
+  \vspace{0.75cm}
+  \textbf{Celia Marshik}  \\
+  \textbf{Dean of the Graduate School}  \\
+  \vspace{0.5cm}
+  \eject 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \textsc{Abstract of the Dissertation}  \\
+  \vspace{0.25cm}
+  by    \\
+  \vspace{0.25cm}
+  \textsc{\textbf{\authorname}}  \\
+  \vspace{0.25cm}
+  \textsc{\textbf{Doctor of Philosophy}}  \\
+  \vspace{0.25cm}
+  \textsc{in}  \\
+  \vspace{0.25cm}
+  \textsc{\textbf{Computer Science}}   \\
+  \vspace{0.25cm}
+  \textsc{\textbf{2024}}    \\
+\end{center}
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
+\input{abstract}
+
+\pagebreak
+
+
+
+
 \begin{sloppypar}
 
-\input{abstract}
+
 
 \input{paperlist}
 
