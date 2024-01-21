@@ -10,7 +10,7 @@ main.lot
 main.out
 main.pdf
 main.run.xml
-main.synctex.gz
+main.synctex*
 main.toc
 *copy*
 multipartite.bib
