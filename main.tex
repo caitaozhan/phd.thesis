@@ -67,10 +67,10 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 % \addbibresource{refs.bib} % The filename of the bibliography
+
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
-
 \geometry{
 	paper=a4paper, % Change to letterpaper for US letter
 	inner=3cm, % Inner margin
@@ -85,8 +85,7 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
-
-\thesistitle{Transmitter Localization in Classical/Quantum Sensor Networks and Optimizing Initial State of Detector Sensors in Quantum Sensor Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Transmitter Localization and Optimizing Initial State in Classical/Quantum Sensor Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \author{Caitao Zhan} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
 
 \AtBeginDocument{
@@ -110,14 +109,6 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 \input{abstract}
 
-\begin{sloppypar}
-
-
-% \begin{acknowledgements}
-% \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-% The acknowledgments and the people to thank go here, don't forget to include your project advisor\ldots
-% \end{acknowledgements}
-
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
@@ -130,16 +121,18 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 \input{acknowledgement}
 
+%----------------------------------------------------------------------------------------
+%	Publications
+%----------------------------------------------------------------------------------------
 \input{paperlist}
-
-
 
 \mainmatter % Begin numeric (1,2,3...) page numbering
 
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
 
-
-% Chapters
+%----------------------------------------------------------------------------------------
+%	THESIS CHAPTERS
+%----------------------------------------------------------------------------------------
 \include{introduction}
 \include{ipsn}
 \include{wowmom-pmc}
@@ -148,19 +141,14 @@ headsepline, % Uncomment to get a line under the header
 \include{swappingtrees}
 
 %----------------------------------------------------------------------------------------
-%	THESIS CONTENT - APPENDICES
+%	THESIS APPENDICES
 %----------------------------------------------------------------------------------------
 \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
-
 \include{chapters/ipsn/appendix}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
-
 \printbibliography
-
-\end{sloppypar}
 
 \end{document}  

@@ -88,33 +88,49 @@ The establish of entanglement over long distance is challenging due to the low p
 (short distance entanglement and swapping).
 In this thesis, we propose an efficient heuristic approach that efficiently route an entanglement pair in a quantum network.
 
+Finally, we investigate a problem that is unique in quantum, i.e., optimizing the initial state of detector sensors 
+in quantum sensor networks. We consider a network of quantum sensors, where each sensor is a qubit detector that “fires”, 
+i.e., its state changes when an event occurs close by. The change in state due to the firing of a detector is given 
+by a unitary operator. The determination of the firing sensor can be posed as a QSD problem which incurs a probability 
+of error depending on the initial state and the measurement operator used. We address the problem of determining 
+the optimal initial state of the quantum sensor network that incur a minimum probability of error in determining the firing sensor.
+
 
 \section{Thesis Statement}
 
-The thesis statement is: \textbf{Transmitters can be localized efficiently and accurately with our designed methods in classical and quantum sensor networks.} 
+\emph{Transmitters can be localized efficiently and accurately with our methods in classical and quantum sensor networks.}
 Consider some transmitters to be localized a geographpical area. We deploy a distributed set of classical or quantum sensors in the area.
 We aim to efficently and accurately localize the transmitters by processing the data received from the sensors intelligently.
 Besides the core goal of transmitter localization, we also solve closely related problems such as transmission power estimation, 
 receive signal strength interpolation and quantum network routing of entanglement.
+\emph{Initial state can be optimized using our methods in quantum sensor networks.} 
+The first step of a quantum sensing protocol is state preparation, and we propose a theory that states the optimal initial state 
+for our specific problem of detector sensors in quantum sensor networks.
 
-\section{Contributions and Organization of this Thesis}
+\section{Thesis Organization}
 
 Towards the goal of our thesis we make the following contributions:
 
 \begin{itemize}
-    \item In Chapter~\ref{chap:ipsn}, we introduce an efficient hypothesis-based Bayesian approach \ouralgo for multiple transmitter localization (\mtl) problem (Section~\ref{sec:time}); 
-          A closed-form equation for the estimation of transmission power (Section~\ref{sec:ipsn-power});
-          A novel received signal strength interpolation method inspired from the power law distribution (Section~\ref{sec:inter});
-          Extend \ouralgo to accommodate the presence of authorized users (Section~\ref{sec:auth}).
-    \item In Capter~\ref{chap:wowmom-pmc}, we introduce a deep learning-based approach \our for the \mtl problem (Section~\ref{sec:translate}, Section~\ref{sec:detect});
-          Extend \our via deep learning models to accommodate the presense of authorized users (Section~\ref{sec:authorized});
-          A deep learning-based approach that estimates the transmission power of multiple transmitters (Section~\ref{sec:power}).
-    \item In Chapter~\ref{chap:qce}, we introduce the concept of quantum sensor networks and the model of a quantum sensor (Section~\ref{sec:quantum_problem});
+    \item In Chapter~\ref{chap:ipsn}, we introduce an efficient hypothesis-based Bayesian approach \ouralgo for multiple transmitter localization (\mtl) problem (\S\ref{sec:time}); 
+          A closed-form equation for the estimation of transmission power (\S\ref{sec:ipsn-power});
+          A novel received signal strength interpolation method inspired from the power law distribution (\S\ref{sec:inter});
+          Extend \ouralgo to accommodate the presence of authorized users (\S\ref{sec:auth}).
+    
+    \item In Capter~\ref{chap:wowmom-pmc}, we introduce a deep learning-based approach \our for the \mtl problem (\S\ref{sec:translate}, \S\ref{sec:detect});
+          Extend \our via deep learning models to accommodate the presense of authorized users (\S\ref{sec:authorized});
+          A deep learning-based approach that estimates the transmission power of multiple transmitters (\S\ref{sec:power}).
+    
+    \item In Chapter~\ref{chap:qce}, we introduce the concept of quantum sensor networks and the model of a quantum sensor (\S\ref{sec:quantum_problem});
           In the context of quantum sensor networks, we pose a transmitter localization problem as a quanum state discrimination problem 
-          and introduce a novel quantum localization method \povm and \povmpro based on positive-operator valued measure (Section~\ref{sec:povm}).
+          and introduce a novel quantum localization method \povm and \povmpro based on positive-operator valued measure (\S\ref{sec:povm}).
+    
+    \item In Chapter~\ref{chap:tqc}, we consider a network of quantum sensors, where each sensor is a qubit detector that "fires", its state changes when an event occurs close by.
+          We address the problem of determining the optimal initial global state of a network of quantum sensors that incur a minimum probability of error in determining the firing sensor (\S\ref{sec:tqc_problem}).
+          We have proposed both theoretical analytical results (\S\ref{sec:n-ortho}, \S\ref{sec:optimal}) and numerical simulation results(\S\ref{sec:searching}).
+          
     \item In Chapter~\ref{chap:swappingtrees}, we introduce an efficient heuristic algorithm \dpalt for routing an entanglement pair.
-          The algorithm is Dijkstra-based, and the path selection metric is a closed-form expression that models a path as a tree near accurately (Section~\ref{sec:swapping_efficient}).
-%     \item In Chapter~\ref{chap:proposed}, we described our proposed work of this thesis.
+          The algorithm is Dijkstra-based, and the path selection metric is a closed-form expression that models a path as a tree near accurately (\S\ref{sec:swapping_efficient}).
 \end{itemize}
 
 

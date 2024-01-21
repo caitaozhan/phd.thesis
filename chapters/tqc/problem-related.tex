@@ -24,15 +24,15 @@ Let $\ket{\phi_i} = (I^{\otimes i} \otimes U \otimes I^{\otimes (n-i-1)})\ket{\p
 where $U$ appears in the $i^{th}$ 
 position and $i\in \{0, \cdots, n-1 \}$, 
 represents the state of the system after the event affects the $i^{th}$ sensor. 
-{\em We assume that events in our setting affect exactly one sensor with uniform probability.}\footnote{\blue{In essence, we assume that sensors are sparsely deployed such that
+{\em We assume that events in our setting affect exactly one sensor with uniform probability.}\footnote{In essence, we assume that sensors are sparsely deployed such that
 an event affects at most one sensor, and that the event itself is uniformly likely to occur at the
 sensor locations. 
 If there is no prior information about the event's location, then assuming uniform probability is reasonable.
-See \S\ref{sec:extend}, where we consider the generalization of non-uniform probabilities.}} 
+See \S\ref{sec:extend}, where we consider the generalization of non-uniform probabilities.}  
 We refer to the $n$ possible resulting states $\{\ket{\phi_i}\}$ as the {\bf final states}; these
 final states have an equal prior probability of occurrence on an event.
 
-\softpara{Objective Function $P(\ket{\psi}, U)$.}  
+\softpara{Objective Function $P(\ket{\psi}, U)$.}
 When an event results in the system going to a particular final state $\ket{\phi_i}$, 
 we want to determine the sensor (i.e., the index $i$) that is impacted by the event by performing a global measurement of the system. For a given setting (i.e.,  $\ket{\psi}$ and $U$), let 
 $M(\ket{\psi}, U)$ be the optimal 
