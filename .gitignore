@@ -21,6 +21,7 @@ swapping_defs.tex
 *.ipynb
 *.pptx
 .DS_store
+thesis*
 
 
 # ipsn
