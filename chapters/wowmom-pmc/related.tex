@@ -45,7 +45,7 @@ Schemes in~\cite{Quasi-EM} and~\cite{clustering} have been shown inferior in per
 }
 
 \para{Wireless localization} techniques mainly fall into two categories: geometry mapping and fingerprinting-based.
-Geometry mapping mainly has two subcategories: ranging-based such as trilateration (via RSS/RSSI, ToA, TDoA) and direction-based such as triangulation (via AoA).
+Geometry mapping mainly has two subcategories: ranging-based such as trilateration (via RSS/RSSI, ToA~\cite{zongxing2022tracking}, TDoA) and direction-based such as triangulation (via AoA).
 Fingerprinting-based methods can use all signal physical measurements including but not limited to amplitude, RSS/RSSI, ToA, TDoA, and AoA.
 Whenever deep learning is used for localization, it can be considered as a fingerprinting-based method, since it requires a 
 training phase to survey the area of interest and a testing phase to search for (predict) the most likely location.
@@ -68,11 +68,31 @@ In~\cite{icoin2007-powerposition}, the primary transmitter location and power is
 ~\cite{ipsn20-mtl} uses the maximum likelihood estimation method to estimate the power of an isolated single transmitter and 
 adopts an online learning method to estimate the power of multiple close by transmitters simultaneously.
 
-\para{Machine Learning empowered applications.} Machine learning techniques have empowered many applications.
+\para{Machine learning empowered applications.} Machine learning techniques have empowered many applications.
 Social media bots can be detected effectively via behavioral patterns~\cite{wu2023botshape} and metric learning~\cite{wu2023bottrinet}.
 Machine learning is used to enhance the portfolio construction based on PolyModel theory~\cite{siqiao2023}.
 AI-assisted audio command recognition enables collaborative human-robot drone inspection of bridges~\cite{yuli_thesis}.
-In~\cite{ziheng_thesis,ziheng2022}, algorithms are developed to make machine learning models more transparent and accountable.
+In~\cite{ziheng_thesis,ziheng2022}, algorithms are developed to make machine learning models more transparent, accountable and explainable~\cite{ziheng_relax,ziheng2023dark}.
+Network function virtualization~\cite{wang2023thesis,wang2022quadrant,wang2020slos} has great potential in low-performance edge devices~\cite{wang2023scheduling}
+as more applications and ISP functionalities are expected to be offloaded to edge clouds~\cite{wang2021galleon,wang2023pinolo}.
+Machine learning can help the simulation and analyses of multi-platelet recruitment simulation~\cite{yicong_thesis}.
+In~\cite{peineng2023}, a machine learning-guided imaging approach is used to segment platelet geometries and quantify adhesion dynamics parameters.
+DeepVS~\cite{zongxing2022dl} combines 1D CNN and attention models to exploit local features and temporal correlations to improve RF-based vital signs sensing.
+A LSTM encoder-decoder model is proposed to generate Chinese poetry~\cite{yubo2017text}.
+
+\para{RF sensing for mobile health and edge computing.}
+RF sensing enables some important mobile health applications such as heart and respiratory rate monitoring~\cite{zongxing2022uwb,zongxing2022measure}. 
+RF based solutions support practical and longitudinal respiration monitoring owing to their non-invasive nature~\cite{zongxing2023rf,zongxing2021uwb}.
+~\cite{zongxing2024rfq} proposed a robust RF-based respiration monitoring.
+Low quality RF sensing data will negatively affect the sensing task, thus reliable signal quality detection is crucial~\cite{zongxing2021quality}.
+Apart from RF sensing, acoustic sensing can also enable important applications such as face authentication~\cite{zongxing2019face,zongxing2022face}.
+In traditional wireless sensor networks, the sensing data is uploaded (via wireless) to a centralized server~\cite{yubo2023blockchain} and the server process the sensing data.
+In an emerging computing paradigm called edge computing, however, sensing data is processed locally on the resource constrained sensors, 
+e.g., on-device machine learning~\cite{yubo2020ondevice,yubo2022demo,yubo2019ondevice}.
+Thus, various works target to scale up task execution on resource-constrained systems~\cite{yubo_thesis}, such as 
+SmartOn~\cite{yubo2021smarton}, Antler~\cite{yubo2023efficient} and intermittently-powered systems~\cite{yubo2023audio,yubo2023intermittent}.
+
+
 
 %Both DLoc and \deeptx also represent the explore the usage of CNN in the wireless localization problem by representing the input wireless data as images.
 %We also use images to represent wireless data (see Fig. \ref{fig:input}) and harness the power of deep learning on top of that.

@@ -263,13 +263,17 @@ The pseudo-code of SA is shown in Algo.~\ref{algo:simulated-annealing}.
 The Genetic Algorithm (GA) is another popular metaheuristic algorithm for solving optimization problems.
 Inspired by the natural evolution of survival of the fittest~\cite{Holland_1992}, 
 GA works by considering a ``population'' of candidate solutions and creating the
-next generation iteratively, until the best solution in a new generation does not
+next generation iteratively~\cite{caitao2016}, until the best solution in a new generation does not
 improve from the best solution in the previous generation by at least a threshold.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 In our context, the initial population of candidate solutions is a set of random initial states. 
-And candidate solutions are evaluated by a fitness function, which is conceptually the same as our objective function $P()$ (Eqn.~\ref{eqn:objective}) except that the fitness function is the higher the better while $P()$ is the lower the better.
+And candidate solutions are evaluated by a fitness function, which is conceptually the same as our 
+objective function $P()$ (Eqn.~\ref{eqn:objective}) except that the fitness function is 
+the higher the better while $P()$ is the lower the better.
 So, $1-P()$ will serve as the fitness function for GA.
 The pseudo code for GA is shown in Algo.~\ref{algo:genetic-algorithm}.
-To create a new generation, we pick a pair of candidate states as parents through the rank selection~\cite{review-ga} and then generate a pair of children states by using the two-point crossover method~\cite{review-ga}. 
+To create a new generation, we pick a pair of candidate states as parents through the 
+rank selection~\cite{review-ga} and then generate a pair of children states by using the two-point 
+crossover method~\cite{review-ga}. 
 Finally, we mutate the children in a way similar to finding neighbors in Algo.~\ref{algo:find-neighbor}.
 
