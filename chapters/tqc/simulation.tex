@@ -14,7 +14,7 @@ experiment's raw data are open-source at~\cite{iso-code}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/tqc/figures/varying_theta_nsensors.png}
+    \includegraphics[width=0.8\textwidth]{chapters/tqc/figures/varying_theta_nsensors.png}
     \caption{Performance of the three search heuristics for varying $U$'s parameter $\theta$, for different number of sensors in the network. Genetic Algorithm (GA) is not shown explicitly, for clarity, but it also performs almost exactly the same as Hill-Climbing and Simulated Annealing (SA) which are plotted above.}
     \label{fig:heuristics}
 \end{figure}
@@ -40,7 +40,7 @@ solve a single SDP instance for $n=10$; this suggests an estimate of 10s of year
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/tqc/figures/compare_methods_similar.png}
+    \includegraphics[width=0.8\textwidth]{chapters/tqc/figures/compare_methods_similar.png}
     \caption{The objective value $P()$, probability of error, of the candidate solution over iterations of the 
     three search heuristics for a special value of $\theta =46$ degrees and $n = 4$ sensors.}
     \label{fig:iterations}
@@ -85,7 +85,7 @@ After 100 iterations, the HC and SA end at a probability of error of $5.85\%$, w
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/tqc/figures/lemma2.png}
+    \includegraphics[width=0.8\textwidth]{chapters/tqc/figures/lemma2.png}
     \caption{Empirical validation of Conjecture~\ref{conj:avg}. For four different values of $\theta$ and three different values of $n$, we show that
     the objective value (Probability of Error) of the original initial state (the red circle) remains higher than the objective value of the many ``averaged'' states (range shown by blue the bar).}
     \label{fig:lemma2}
@@ -109,9 +109,8 @@ objective values of the averaged states are invariably less than that of
 $\ket{\psi}$. 
 
 \begin{figure}
-    % \vspace{-0.15in}
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/tqc/figures/conjecture.png}
+    \includegraphics[width=0.8\textwidth]{chapters/tqc/figures/conjecture.png}
     \caption{The Conjecture~\ref{conj:opt}'s solution performs almost exactly as the Hill-Climbing heuristic when $\theta \in (0, T] \cup [180-T, 180),$ degrees, where $T$ is from Theorem~\ref{thm:nsensors}. 
     For $n=2$, Conjecture~\ref{conj:opt}'s solution matches with the provably optimal solution from~\cite{PhysRevA.qsn} with $T$ being 45 degrees.}
     \label{fig:conjecture}

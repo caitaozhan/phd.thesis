@@ -96,7 +96,7 @@ where $q_i$ is the prior probability and $\rho_i = \ket{\psi_i}\bra{\psi_i}$ is 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/qce/figures/onelevel.png}
+    \includegraphics[width=0.8\textwidth]{chapters/qce/figures/onelevel.png}
     \caption{\povmone Scheme.}
     \label{fig:onelevel}
 \end{figure}
@@ -239,7 +239,6 @@ Algorithm~\ref{algo:povm-loc} relies on Procedure~\ref{algo:sense-measure} that 
 	\caption{\povm}
 \label{algo:povm-loc}
 \end{algorithm}
-%\vspace{-0.25in}
 \begin{procedure}[h]
     \KwIn{$\{E_i\}$ -- a POVM}
     \KwIn{$K$ -- number of repetition}
@@ -255,7 +254,6 @@ Algorithm~\ref{algo:povm-loc} relies on Procedure~\ref{algo:sense-measure} that 
     \caption{SenseMeasure($\{E_i\}$, $K$)}
 \label{algo:sense-measure}
 \end{procedure}
-\vspace{-0.1in}
 }
 
 % \para{\povmpro Scheme.\CZ{consider remove this part}} The above described \povm scheme addresses the scalability challenges sufficiently, and also works reasonably well in practice as observed in our evaluations.  However, we also observed in our evaluations that the \povm scheme has a high error rate when the transmitter is situated at the edge of the blocks; this is unsurprising as a transmitter on either side of a block's borders (i.e., on different blocks, but at the block edge) is likely to have a similar impact on the sensors. See

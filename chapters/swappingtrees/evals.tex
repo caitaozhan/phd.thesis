@@ -17,8 +17,7 @@ by implementing gate operations in entanglement swapping.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\textwidth]{chapters/swappingtrees/figures/protocol.jpg}
-    % \vspace{0.1in}
+    \includegraphics[width=0.8\textwidth]{chapters/swappingtrees/figures/protocol.jpg}
   \caption{Swapping Tree Protocol Illustration.
   The shown tree is a certain hierarchy of nodes to illustrate the BSM operation in the swapping-tree protocol.  
   A link-layer protocol continuously generates \epss over links $(x_0, x_2)$ and $(x_2, x_4)$.
@@ -29,7 +28,6 @@ by implementing gate operations in entanglement swapping.
   If a BSM at say $x_1$ fails, that $x_1$ failure signals (red arrows) to all the descendant nodes of the subtree
   rooted at $x_1$ so that they can start accept new \epss from the link layer protocol. 
   Note that here node $x_2$ plays multiple roles and hence appears at multiple places in the figure.}
-%   \vspace{-0.2in}
   \label{fig:swapping_protocol}
 \end{figure}
 
@@ -56,7 +54,7 @@ We use a similar setting as in the recent work~\cite{sigcomm20}.
 By default, we use a network spread over an area of $100 km \times 100 km$.
 We use the Waxman model~\cite{waxman}, used to create Internet topologies,
 to randomly distribute the nodes and create links; we use the maximum link
-distance to be 10km. We vary the number of nodes from \blue{25} to 
+distance to be 10km. We vary the number of nodes from 25 to 
 500, with 100
 as the default value. We choose the two parameters in the Waxman model to
 maintain the number of links to 3\% of the complete graph (to ensure an 
