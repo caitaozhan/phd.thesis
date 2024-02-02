@@ -138,7 +138,7 @@ over the procedure for reduced values of $f$.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/mmap.png}
+	\includegraphics[width=0.7\textwidth]{chapters/ipsn/figures/mmap.png}
 	\caption{Illustration of Hypothesis \hlp in Step (b) of
           Procedure~1. Here, the intruder $I$ at location $l$ is
           transmitting at power $p$, with no other intruder within a
@@ -199,8 +199,8 @@ Update RRP of each sensor, and go to step (a) above.
 \end{packedalpha}
 %%%%%%%%%%%
 
-\para{Time Complexity.} The worst-case time complexity of the first
-procedure is $O(LWG_R\log(G_R))$, where $L$ and $W$ are the number
+\para{Time Complexity.} The worst-case time complexity of the first procedure is \\
+$O(LWG_R\log(G_R))$, where $L$ and $W$ are the number
 of potential locations (total grid cells) and transmit power levels
 respectively, and $G_R$ is the maximum number of grid cells within a
 transmission range of an intruder.
@@ -306,6 +306,29 @@ accuracy of the interpolation scheme for a given area and/or the
 impact on localization accuracy due to estimated PDs. Below, we
 describe the interpolation scheme that we use for our purposes.
 
+
+\begin{figure}
+  \begin{subfigure}[t]{0.9\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{chapters/ipsn/figures/interpolate.png}
+  \end{subfigure}
+  \qquad
+  \newline
+  \begin{subfigure}[t]{\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/ildw.png}
+  \end{subfigure}
+  \caption{Illustration of \ildw vs.\ IDW.
+  (a) Transmitter (T), points with known (R1 and R2) and unknown (R0) received signal strength (RSS) values.
+  (b) Log-normal RSS function (= -10 - 30$\log_{10}({\rm distance}))$
+  plotted for varying distance from the transmitter $T$, along
+  with IDW-estimated RSS value at a point between R1 and R2.
+  (c) Log-normal RSS function and ILDW-estimated RSS value at
+  a point between R1 and R2, plotted on a logarithmic distance
+  scale.}
+  \label{fig:ildw}
+\end{figure}
+
 \softpara{\ildw Interpolation Scheme.} Consider a fixed transmitter
 location \lstar, and let us assume locations $\lo, \rt, \cdots, \lm$ for
 which we know the path loss from \lstar. Now, consider a new point \lz
@@ -385,33 +408,6 @@ standard deviations respectively.
 %% The basic idea of ILDW is to
 %% give hutilize the fact that the RSS is theoretically linear to the logarithm
 %% of distance.
-
-
-
-\begin{figure}
-    \begin{subfigure}[t]{0.9\textwidth}
-      \centering
-      \includegraphics[width=0.5\textwidth]{chapters/ipsn/figures/interpolate.png}
-    \end{subfigure}
-    \qquad
-    \newline
-    \begin{subfigure}[t]{\textwidth}
-      \centering
-      \includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/ildw.png}
-    \end{subfigure}
-    \caption{Illustration of \ildw vs.\ IDW.
-    (a) Transmitter (T), points with known (R1 and R2) and unknown (R0) received signal strength (RSS) values.
-    (b) Log-normal RSS function (= -10 - 30$\log_{10}({\rm distance}))$
-    plotted for varying distance from the transmitter $T$, along
-    with IDW-estimated RSS value at a point between R1 and R2.
-    (c) Log-normal RSS function and ILDW-estimated RSS value at
-    a point between R1 and R2, plotted on a logarithmic distance
-    scale.}
-    \label{fig:ildw}
-\end{figure}
-
-
-
 
 %% \para{Interpolation Schemes.}
 %% Many interpolation techniques have been explored for RF signals in
