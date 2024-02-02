@@ -3,17 +3,17 @@
 
 \section{Background and Motivation}
 
-\emph{Wireless sensor network} (WSN) is a network of spatially dispersed and dedicated sensors that monitor and record the 
-physical conditions of the environment and forward the collected data to a central location.
+\emph{Wireless sensor network} (WSN)~\cite{wsn_survey} is a network of spatially dispersed and dedicated sensors that monitor and record the 
+physical conditions of the environment and forward the collected data to a central location via wireless communication.
 WSN can measure environment conditions such as temperature, sound, humidity, wind, light, wireless channel state information and radio spectrum, etc.
-A sensor network becomes a \emph{quantum sensor network} (QSN) when the sensors leverage quantum properties
-such as quantum coherance, quantum entanglement and squeezed light.
+A sensor network becomes a \emph{quantum sensor network} (QSN) when the sensors leverage quantum properties~\cite{RevModPhys.quantumsensing}
+such as quantum coherance, quantum entanglement.
 Quantum sensors are extremely sensitive to physical quantities such as magnetic field, electric field, quadrature displacement
 and phase shift in the optic field.
 
-\para{Classical.} WSNs have various applications.
-In this thesis, the application we focus on is spectrum surveillance and monitoring for security and threat detection.
-The \emph{core problem} involved in this application is \emph{transmitter localization}, and in particular, multiple transmitter localization (\mtl) as 
+\para{Classical sensors}. WSNs have various applications~\cite{tsn17-water,sensys10-health,mobicom03-sensor}.
+In this thesis, the application we focus on is spectrum surveillance and monitoring~\cite{arani2018} for security and threat detection.
+The \emph{core problem} involved in this application is \emph{transmitter localization}~\cite{ton-sensorselect,caitao2023qsn}, and in particular, multiple transmitter localization (\mtl) as 
 the number of transmitter present in an area could be more than one and localizing multiple transmitters are not independent.
 The reason for being not independent is that a sensor receives an aggregated power from multiple transmitters and separating 
 the power from different multiple sources is impractical.
@@ -34,7 +34,7 @@ involving FCC enforcement bureau which detects violations via complaints and man
 \begin{figure}[t]
       \centering
       \includegraphics[width=0.8\textwidth]{figures/SDR.png}
-      \caption{Classical software defined radio sensors used in this thesis. Details see~\S\ref{sec:testbed}} 
+      \caption{Classical radio frequency sensors used in this thesis. Details see~\S\ref{sec:testbed}} 
       \label{fig:intro-sdr}
 \end{figure}
 
@@ -59,7 +59,7 @@ We introduces some novel methods to estimate the power of multiple transmitters.
 We also introduce a novel interapolation method for received signal strength.
 
 
-\para{Quantum.}
+\para{Quantum sensors.}
 In the quantum side, we use QSN, instead of WSN, to continue solving the problem of transmitter localization.
 Albeit classical sensors are omnipresent, there are big motivations to explore quantum sensors.
 Quantum sensing is an emerging field that leverages the quantum properties of light and matter at atomic/subatomic scales and has the potential to sense signals at an unprecedented level of precision.
