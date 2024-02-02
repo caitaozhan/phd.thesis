@@ -45,7 +45,8 @@ anywhere within a cell (i.e., their location is in the continuous
 domain), while the sensors are deployed at the centers of the grid cells (i.e. their location is in the discrete domain).
 %%%%%%%
 For each instance (training or test sample), the said number of sensors and transmitters are deployed in the field randomly. 
-For each of the two settings (propagation models described below), we create a 100,000 sample training dataset to train our models and create another 20,000 sample testing dataset to evaluate the trained model. 
+For each of the two settings (propagation models described below), we create a 100,000 sample training dataset 
+to train our models and create another 20,000 sample testing dataset to evaluate the trained model. 
 %\red{Each dataset consists of samples with varying  number of transmitter, 
 %varying sensor density, and varying transmitter power (0 to 5 dBm). 
 %Even for the same sensor density, training  and testing samples may have sensors
@@ -54,17 +55,22 @@ For each of the two settings (propagation models described below), we create a 1
 We will evaluate the performance of various techniques for
 varying number of transmitters/intruders and sensor
 density. When we vary a specific parameter, the other parameter
-is set to its \emph{default} value; the number of transmitters varies from 1 to 10 and the default value is 5; the sensor density varies from 1\% to 10\% and the default value is 6\% (600  sensors in a $100\times100$ grid).
+is set to its \emph{default} value; the number of transmitters varies from 1 to 10 and 
+the default value is 5; the sensor density varies from 1\% to 10\% and the default value is 6\% (600  sensors in a $100\times100$ grid).
 The two default numbers 5 and 6\% are chosen because they are in the middle of their ranges.
 When not mentioned, the default values are used.
 The transmitter power varies from 0 to 5 dBm and is randomly picked.
 To minimize overfitting, the training dataset and testing dataset have sensors placed at completely different locations.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We train the \our model using the 100,000 sample dataset. To train the \deeptx~\cite{icccn20-deeptxfinder}, we partition the 100,000 sample training dataset into ten datasets based on the number of transmitters in the samples which varies from 1 to 10. 
-These ten datasets are used to train the ten ``localization" CNN models in \deeptx, and the full dataset of 100,000 samples is used to train the \deeptx model that determines the number of transmitters. 
+We train the \our model using the 100,000 sample dataset. To train the \\
+\deeptx~\cite{icccn20-deeptxfinder}, we partition the 100,000 sample training dataset into 
+ten datasets based on the number of transmitters in the samples which varies from 1 to 10. 
+These ten datasets are used to train the ten ``localization" CNN models in \deeptx, and the 
+full dataset of 100,000 samples is used to train the \deeptx model that determines the number of transmitters. 
 %%%%%%%%%
-For the \map scheme~\cite{ipsn20-mtl}, we assume the availability of all required probability distributions. We note that using a simple cost model (number of samples need to be gathered), 
+For the \map scheme~\cite{ipsn20-mtl}, we assume the availability of all required 
+probability distributions. We note that using a simple cost model (number of samples need to be gathered), 
 the overall training cost for \map is an order of magnitude higher than \our and \deeptx. 
 Lastly, \splot~\cite{mobicom17-splot} does not require any training.
 
@@ -79,7 +85,8 @@ The sensor readings (i.e. the dataset) are simulated based on a propagation mode
 To demonstrate the generality of our techniques, we consider two propagation models as described below. 
 
 \softpara{Log-Distance Propagation Model and Setting.}
-Log-Distance propagation model is a generic model that extends Friis Free space model 
+Log-Distance propagation model is a \\
+generic model that extends Friis Free space model 
 which is used to predict the path loss for a wide range of environments. 
 As per this model, the path loss (in dB) between 
 two points $x$ and $y$ at a distance $d$ is given by: $PL_d = 10\alpha\log{d} + \mathcal{X},$
@@ -106,7 +113,7 @@ We consider a random area in Long Island, New York of $1km \times 1km$ large and
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{chapters/wowmom-pmc/figures/ours_cdf.png}
+	\includegraphics[width=0.7\textwidth]{chapters/wowmom-pmc/figures/ours_cdf.png}
 	\caption{Cumulative probability of localization error of \our, \ouryolo and \ourpeak, for the special case of single transmitter localization with 6\% sensor density.}
 	\label{fig:ours_cdf}
 \end{figure}
