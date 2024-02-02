@@ -6,7 +6,7 @@
 \emph{Wireless sensor network} (WSN)~\cite{wsn_survey} is a network of spatially dispersed and dedicated sensors that monitor and record the 
 physical conditions of the environment and forward the collected data to a central location via wireless communication.
 WSN can measure environment conditions such as temperature, sound, humidity, wind, light, wireless channel state information and radio spectrum, etc.
-A sensor network becomes a \emph{quantum sensor network} (QSN) when the sensors leverage quantum properties~\cite{RevModPhys.quantumsensing}
+A sensor network becomes a \emph{quantum sensor network} (QSN) when the sensors leverage quantum objects and quantum properties~\cite{RevModPhys.quantumsensing}
 such as quantum coherance, quantum entanglement.
 Quantum sensors are extremely sensitive to physical quantities such as magnetic field, electric field, quadrature displacement
 and phase shift in the optic field.
@@ -33,7 +33,7 @@ involving FCC enforcement bureau which detects violations via complaints and man
 \begin{figure}[t]
       \centering
       \includegraphics[width=0.7\textwidth]{figures/SDR.png}
-      \caption{Classical radio frequency sensors used in this thesis. Details see~\S\ref{sec:testbed}} 
+      \caption{Classical sensors. Radio frequency sensors used in this thesis. Details see~\S\ref{sec:testbed}} 
       \label{fig:intro-sdr}
 \end{figure}
 
@@ -56,6 +56,7 @@ We introduces some novel methods to estimate the power of multiple transmitters.
 We also introduce a novel interapolation method for received signal strength.
 
 
+
 \para{Quantum sensors.}
 In the quantum side, we use QSN, instead of WSN, to continue solving the problem of transmitter localization.
 Albeit classical sensors are omnipresent, there are big motivations to explore quantum sensors.
@@ -66,6 +67,24 @@ In~\cite{PRL20-qsn}, researchers use some distributed quantum RF-photonic sensor
 They showed the performance of sensing a global property of the RF wave is enhanced by leveraging a shared multipartite entangled state produced by squeezed light.
 In their experiments, the estimation variance of RF amplitude and phase both beat the standard quantum limit by over 3 dB.
 The precision improvement factor of $1/\sqrt{N}$ for $N$ sensors is known as reaching the Heisenberg limit.
+
+\begin{figure}[t]
+      \centering
+      \includegraphics[width=0.5\textwidth]{figures/qsensor.png}
+      \caption{Quantum sensor theory. Basic features of a two-state quantum sensor, figure from~\cite{RevModPhys.quantumsensing}.
+               $\ket{0}$ is the lower energy state and $\ket{1}$ is the higher energy state. Quantum sensing leverages changes in the
+               transition frequence $\omega_{0}$ (shifts of the energy level) or the transition rate (transition between energy levels) 
+               in reponse to an external signal $V$.} 
+      \label{fig:intro-qsensor}
+\end{figure}
+
+\begin{figure}[t]
+      \centering
+      \includegraphics[width=0.85\textwidth]{figures/qsensor2.png}
+      \caption{Quantum sensors. (a) Fiber-coupled vapor cell for Electric field measurements using Rydberg atoms;
+               (b) Reconfigurable entangled radio frequency photonic sensor network, figure from~\cite{PRL20-qsn}.} 
+      \label{fig:intro-qsensor2}
+\end{figure}
 
 Motivated by the above, we aim to leverage quantum sensors to perform some canonical tasks and thus open a new avenue of research.
 The canonical task we picked is RF transmitter localization~\cite{nsdi13-arraytrack,pmc22-deepmtlpro}.

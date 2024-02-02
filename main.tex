@@ -14,7 +14,7 @@ headsepline, % Uncomment to get a line under the header
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
-
+% package all here
 \input{package}
 
 \let\proof\relax
@@ -35,7 +35,6 @@ headsepline, % Uncomment to get a line under the header
 \counterwithin{table}{chapter}
 } 
 
-
 % macro
 \input{chapters/ipsn/def}
 \input{chapters/wowmom-pmc/def}
@@ -43,11 +42,8 @@ headsepline, % Uncomment to get a line under the header
 \input{chapters/swappingtrees/def}
 \input{chapters/tqc/def}
 
-%----------------------------------------------------------------------------------------
-%	BIB
-%----------------------------------------------------------------------------------------
+%	bib all here
 \addbibresource{bib.bib}
-
 
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
 
@@ -97,13 +93,11 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{document}
 
-\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
-
-\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
-
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
 \input{titlepage}
 
 %----------------------------------------------------------------------------------------
@@ -128,13 +122,11 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 \input{paperlist}
 
-\mainmatter % Begin numeric (1,2,3...) page numbering
-
-\pagestyle{thesis} % Return the page headers back to the "thesis" style
-
 %----------------------------------------------------------------------------------------
 %	THESIS CHAPTERS
 %----------------------------------------------------------------------------------------
+\mainmatter % Begin numeric (1,2,3...) page numbering
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
 \include{introduction}
 \include{ipsn}
 \include{wowmom-pmc}
