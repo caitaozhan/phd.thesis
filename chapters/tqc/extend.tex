@@ -137,7 +137,7 @@ and use it to discriminate the noisy final state.
 
 
 \para{Evaluation.}
-We consider three popular noise models~\cite{nielsen2010quantum} for evaluation of our above mitigation technique. 
+We consider three popular noise models~\cite{qcqi-book} for evaluation of our above mitigation technique. 
 \begin{enumerate}
     \item \emph{Amplitude damping} causes the quantum system to lose energy.
     \item \emph{Phase damping} describes the loss of quantum information without energy loss.
@@ -152,7 +152,7 @@ $$ \mathcal{N}_{amp} = \{K_{a0}, K_{a1}\} = \{ \begin{bmatrix}
   0 & \sqrt{p} \\
   0 & 0 \\
 \end{bmatrix} \}$$
-where $p$ can be thought of as the probability of losing a photon~\cite{nielsen2010quantum}. 
+where $p$ can be thought of as the probability of losing a photon~\cite{qcqi-book}. 
 % In the above, the noise due to Kraus operator $K_{a0}$ occurs with a probability of $(1-p)$ and due to $K_{a1}$ with a probability of $p$.
 The Kraus operators for the phase damping are:
 $$ \mathcal{N}_{pha} =   \{K_{p0}, K_{p1}\} = \{ \begin{bmatrix}
@@ -163,7 +163,7 @@ $$ \mathcal{N}_{pha} =   \{K_{p0}, K_{p1}\} = \{ \begin{bmatrix}
   0 & 0 \\
   0 & \sqrt{p} \\
 \end{bmatrix} \}$$
-where $p$ can be interpreted as the probability that a photon from the system has been scattered (without loss of energy)~\cite{nielsen2010quantum}.
+where $p$ can be interpreted as the probability that a photon from the system has been scattered (without loss of energy)~\cite{qcqi-book}.
 Finally, the Kraus operators for the depolarizing channel are:
 % \{\sqrt{1-p}I, \sqrt{\frac{p}{3}}X, \sqrt{\frac{p}{3}}Y, \sqrt{\frac{p}{3}}Z\} =
 $$ \mathcal{N}_{dep} = \{K_{d0}, K_{d1}, K_{d2}, K_{d3}\} =  \{\sqrt{1-p}\begin{bmatrix}
