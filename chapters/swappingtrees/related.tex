@@ -2,9 +2,9 @@
 \label{sec:swapping_related}
 
 There have been a few works in the recent years that have addressed generating long-distance \epss
-efficiently. All of these works have focused on selecting an efficient routing path for the swapping
-process \bleu{(\cite{caleffi} also selects a path, but using a metric based
-on balanced trees). }
+efficiently. All of these works have focused on selecting an efficient routing path~\cite{sigcomm20,yiming2023,yuhang2023} for the swapping
+process (Callefi~\cite{caleffi} also selects a path, but using a metric based
+on balanced trees).
 In addition, all except~\cite{caleffi} have looked at the \os protocol of generating the
 \epss. Recall that in the \os model, selection of paths suffice, while in the \wt model, one needs
 to consider selection of efficient swapping trees with high fidelity.
@@ -22,7 +22,8 @@ both of which consider the \os model.
 In particular, Shi and Qian~\cite{sigcomm20} design a Dijkstra-like algorithm to construct an optimal path
 between a pair of nodes, when there are multiple links (channels) between adjacent nodes. Then,
 they use the algorithm iteratively to select multiple paths over multiple pairs of nodes.
-%%%%%%%%%%
+~\cite{yuhang2023} is an improvement of~\cite{sigcomm20} that proposes a synchronous multi-time-slot entanglement routing framework
+based on the idea of reusing the established but unused EP pairs in subsequent time slots.
 Chakraborty et al.~\cite{delft-lp} design a multi-commodity-flow
 like LP formulation to select routing paths for a set of source destination pairs. They map
 the operation-based fidelity constraint to the path length (as in~\cite{BreigelEtAl1998}), and use

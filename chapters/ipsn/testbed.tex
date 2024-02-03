@@ -113,6 +113,20 @@ distributions more robust to multipath fading and shadowing. The
 overall training process takes an hour for indoors, and about two and
 a half hours for outdoors.
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/indoor-error-missfalse.png}
+	\caption{Localization performance of varies algorithms in an indoor testbed}
+	\label{fig:indoor-error-miss-false}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/outdoor-error-missfalse.png}
+	\caption{Localization performance of varies algorithms in an outdoor testbed}
+	\label{fig:outdoor-error-miss-false}
+\end{figure}
+
 \para{Evaluation.}  For evaluation, in both testbeds, we place the 18
 sensors at centers of grid cells that are randomly chosen and are
 different from the cells chosen for training above. The chosen
@@ -127,19 +141,8 @@ listens to HTTP requests containing the sensors' observations.
 
 \subsection{Results}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/indoor-error-missfalse.png}
-	\caption{Localization performance of varies algorithms in an indoor testbed}
-	\label{fig:indoor-error-miss-false}
-\end{figure}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/outdoor-error-missfalse.png}
-	\caption{Localization performance of varies algorithms in an outdoor testbed}
-	\label{fig:outdoor-error-miss-false}
-\end{figure}
+
 
 \para{Localization Metrics.}
 Figure~\ref{fig:indoor-error-miss-false}-\ref{fig:outdoor-error-miss-false}
@@ -159,6 +162,7 @@ algorithms.  In terms of absolute performance, we see that the
 localization error of \ouralgo is roughly around 1 or less grid cell,
 and the sum of miss-rate and false-alarm is between 5-15\%.
 
+
 \begin{table}[ht]
 	\centering
 	\caption{Interpolation Mean Absolute Error (MAE) and  Mean Error (ME) in dB for \idw and \ildw}
@@ -173,6 +177,8 @@ and the sum of miss-rate and false-alarm is between 5-15\%.
 	\end{tabular}
 	\label{tab:inter-error}	
 \end{table}
+
+
 
 \para{Interpolation Error.}
 Table \ref{tab:inter-error} show the
