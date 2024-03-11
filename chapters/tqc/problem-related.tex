@@ -11,24 +11,21 @@
 
 \para{Setting.} Consider $n$ quantum sensors deployed across a geographical area, forming a quantum sensor network. See Fig.~\ref{fig:qsn}. 
 Each sensor stores a qubit whose state may potentially change due to an event in the environment.
-Let $\ket{\psi}$ denote the initial (possibly, entangled) state of the $n$ sensors.
-%%%%%%%
-Let $U$ be a unitary operator that represents the impact of an event over a qubit in a sensor.
-Let the two eigenvectors 
-of $U$ be $\{u_+, u_-\}$, and without loss of generality,
+Let $\ket{\psi}$ denote the initial (possibly entangled) state of the $n$ sensors.
+Let $U$ be a unitary operator that represents the impact of an event over a qubit in a sensor;
+here, $U$ may describe the rotation of a spin caused by a magnetic field or a phase shift induced in a state of light by a transparent object.
+Let the two eigenvectors of $U$ be $\{u_+, u_-\}$, and without loss of generality,
 let the corresponding eigenvalues be $\{e^{+i\theta}, e^{-i\theta}\}$
 where $\theta \in (0, 180)$ degrees;
 thus, $U\ket{u_{\pm}}=e^{\pm i\theta}\ket{u_{\pm}}$.
-%%%%%%%%%%%%%%%%%
 Let $\ket{\phi_i} = (I^{\otimes i} \otimes U \otimes I^{\otimes (n-i-1)})\ket{\psi}$, 
 where $U$ appears in the $i^{th}$ 
 position and $i\in \{0, \cdots, n-1 \}$, 
-represents the state of the system after the event affects the $i^{th}$ sensor. 
+represents the system's state after the event affects the $i^{th}$ sensor. 
 {\em We assume that events in our setting affect exactly one sensor with uniform probability.}\footnote{In essence, we assume that sensors are sparsely deployed such that
-an event affects at most one sensor, and that the event itself is uniformly likely to occur at the
-sensor locations. 
+an event affects at most one sensor, and that the event itself is uniformly likely to occur at the sensor locations. 
 If there is no prior information about the event's location, then assuming uniform probability is reasonable.
-See \S\ref{sec:extend}, where we consider the generalization of non-uniform probabilities.}  
+See \S\ref{sec:extend}, where we consider the generalization of non-uniform probabilities.}
 We refer to the $n$ possible resulting states $\{\ket{\phi_i}\}$ as the {\bf final states}; these
 final states have an equal prior probability of occurrence on an event.
 
@@ -59,6 +56,16 @@ an optimal POVM is used for discrimination.
 {\em For clarity of presentation, we consider only the minimum error measurement 
 scheme, till the last Section~\ref{subsec:ud} where we extend our results to the unambiguous discrimination measurement scheme.}
 
+\softpara{Potential Applications.}
+One of the main applications of detector sensor networks is event localization. 
+Assume we have some critical locations to monitor, and we place one quantum detector at each critical location.
+Then, a network of quantum detectors, wherein a detector's
+state changes (as represented by the unitary $U$), can be used to localize the event occurrence---as the location of the firing detector also gives the event's location. 
+The event in the above scenario could be anything that can be represented by a unitary $U$, e.g., 
+an event may represent the presence of a magnetic field, an acoustic event (e.g., an explosion), a signal transmission that can be detected, or movement of a detectable object.
+
+
+
 \para{Paper Organization.}
 The rest of the paper is organized as follows. We end this section with a discussion on related work.
 In the following section (\S\ref{sec:three-ortho}), 
@@ -66,14 +73,12 @@ we establish a necessary and sufficient condition for \emph{three} final states 
 $P(\ket{\psi}, U) = 0$. 
 We generalize the result to an \emph{arbitrary} number of sensors in \S\ref{sec:n-ortho},
 and give an optimal solution for the \iso problem when the orthogonality condition is satisfied.
-%%%%%%%%%%%
 In \S\ref{sec:optimal}, we use the insights from \S\ref{sec:n-ortho} to derive a conjectured optimal solution for an arbitrary $U$ and the number of sensors; in the section, we also provide a pathway to proving the conjecture. 
-%%%%%%%%%
 In the following sections, we develop search-based heuristics for the problem (\S\ref{sec:searching}) and use these heuristics to 
 empirically validate our conjectured solution through simulations (\S\ref{sec:sim}).
-% Finally, we extend our results to unambiguous discrimination measurement scheme in \S\ref{sec:ud}.
-Finally in \S\ref{sec:extend}, we consider generalizations related to 
+In \S\ref{sec:extend}, we consider generalizations related to 
 unambiguous discrimination measurement, non-uniform prior probabilities, and quantum noise.
+Finally in \S\ref{sec:tqc-conclusion}, we conclude and discuss some potential future work.
 
 \subsection{Related Work}
 \label{sec:related}

@@ -24,13 +24,11 @@ some $i \neq j$. Thus, a QSD solution is associated with an overall {\em probabi
 of error} (PoE), and the optimization goal of the QSD problem is to determine the
 measurement (or a sequence of measurements) that minimizes the PoE. 
 We note that in our developed schemes, we don't actually solve the QSD 
-problems that
-arise due to the impracticality of implementing the general POVMs, as discussed
-later; instead,
-we just use the standard POVM known as pretty good measurement (PGM).
+problems that arise due to the impracticality of implementing the general POVMs, as discussed
+later; instead, we just use the standard POVM known as pretty good measurement (PGM).
 
 \softpara{General Measurements.} 
-A general measurement~\cite{qcqi-book} is defined by matrices $M_1, M_2, \ldots, M_n$ such that
+A general measurement~\cite{qcqi-book} is defined by matrices $M_1, M_2, \ldots,$ $M_n$ such that
 $\sum_i M_i^{\dagger}M_i = I$ where $M_i^{\dagger}$ is the conjugate transpose of
 $M_i$. If this general measurement is carried out on a pure state,
 %\footnote{See~\cite{qcqi-book} for generalization to mixed states} state $\ket{\phi}$
@@ -70,8 +68,7 @@ based on the model described in the previous section.
 %%%%%%%%%%%%%%%
 Now, consider the set of target states $\{\ket{\psi_1}, \ket{\psi_2}, \ldots, \ket{\psi_n}\}$ corresponding to the set of potential locations of the transmitter. Then, localizing the transmitters, i.e., determining the location $l_i$ from where the transmission occurred, is
 tantamount to solving the QSD problem with the target states $\{\ket{\psi_i}\}$.
-Thus, determining the state of the quantum system yields
-the transmitter location.
+Thus, determining the state of the quantum system yields the transmitter location.
 
 \softpara{Selection of Initial State and Measurement.} 
 In the above context, our goal is to select an initial state $\ket{\psi_0}$ and the 
