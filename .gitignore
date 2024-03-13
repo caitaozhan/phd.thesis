@@ -53,16 +53,16 @@ chapters/wowmom-pmc/bib.bib
 chapters/qce/IEEEtran.cls
 chapters/qce/main.tex
 
-#swappingtree
-chapters/swappingtrees/DP-sp.tex
-chapters/swappingtrees/iterative-qnr.tex
-chapters/swappingtrees/lp-qnr.tex
-chapters/swappingtrees/decoherence.tex
-chapters/swappingtrees/figures/caleffi-relative.jpg
-chapters/swappingtrees/figures/analytical_throttle.jpg
-chapters/swappingtrees/figures/fidelity.jpg
-chapters/swappingtrees/figures/hypergraph.jpg
-chapters/swappingtrees/figures/line_extra2.jpg
-chapters/swappingtrees/figures/QNR.jpg
-chapters/swappingtrees/figures/runtime.jpg
+#tqe
+chapters/tqe/DP-sp.tex
+chapters/tqe/iterative-qnr.tex
+chapters/tqe/lp-qnr.tex
+chapters/tqe/decoherence.tex
+chapters/tqe/figures/caleffi-relative.jpg
+chapters/tqe/figures/analytical_throttle.jpg
+chapters/tqe/figures/fidelity.jpg
+chapters/tqe/figures/hypergraph.jpg
+chapters/tqe/figures/line_extra2.jpg
+chapters/tqe/figures/QNR.jpg
+chapters/tqe/figures/runtime.jpg
 
