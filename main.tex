@@ -14,13 +14,10 @@ headsepline, % Uncomment to get a line under the header
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
-% package all here
-\input{package}
 
 \let\proof\relax
 \let\endproof\relax
-
-\AtBeginEnvironment{subappendices}{%
+\AtBeginEnvironment{subappendices}{
 \chapter*{Appendices}
 \addcontentsline{toc}{chapter}{Appendices}
 \counterwithin{figure}{section}
@@ -35,14 +32,23 @@ headsepline, % Uncomment to get a line under the header
 \counterwithin{table}{chapter}
 } 
 
-% macro
+%----------------------------------------------------------------------------------------
+%	all packages are here
+%----------------------------------------------------------------------------------------
+\input{package}
+
+%----------------------------------------------------------------------------------------
+%	macro. NOTE: need to remove the overlap of newcommand
+%----------------------------------------------------------------------------------------
 \input{chapters/ipsn/def}
 \input{chapters/wowmom-pmc/def}
 \input{chapters/qce/def}
 \input{chapters/tqc/def}
 \input{chapters/tqe/def}
 
-%	bib all here
+%----------------------------------------------------------------------------------------
+%	all bib is here
+%----------------------------------------------------------------------------------------
 \addbibresource{bib.bib}
 
 \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
@@ -62,10 +68,6 @@ headsepline, % Uncomment to get a line under the header
   {\endlist}
   {\item}
   
-
-\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
-% \addbibresource{refs.bib} % The filename of the bibliography
-
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -123,7 +125,7 @@ headsepline, % Uncomment to get a line under the header
 \input{paperlist}
 
 %----------------------------------------------------------------------------------------
-%	THESIS CHAPTERS
+%	THESIS CHAPTERS. ipsn, wowmom, pmc, qce, tqc, tqe are either conference or journal names
 %----------------------------------------------------------------------------------------
 \mainmatter % Begin numeric (1,2,3...) page numbering
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
