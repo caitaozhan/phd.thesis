@@ -1,3 +1,4 @@
+phd.thesis.code-workspace
 *.aux
 main.bbl
 main.bcf
@@ -48,7 +49,7 @@ chapters/wowmom-pmc/main.tex
 chapters/wowmom-pmc/summary_change.tex
 chapters/wowmom-pmc/bib.bib
 
-# icc
+# qce
 chapters/qce/IEEEtran.cls
 chapters/qce/main.tex
 
@@ -65,4 +66,3 @@ chapters/swappingtrees/figures/line_extra2.jpg
 chapters/swappingtrees/figures/QNR.jpg
 chapters/swappingtrees/figures/runtime.jpg
 
-phd.thesis.code-workspace
