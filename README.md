@@ -1,7 +1,7 @@
 # PhD Thesis
 PhD Thesis, written in LaTeX with **Visual Studio Code**. Need to use an extension called **LaTeX Workshop** developed by James Yu.
 
-PDF: [thesis.v2024.3.13.pdf](https://caitaozhan.github.io/file/thesis.v2024.3.13.pdf)
+PDF: [thesis.v2024.3.13.pdf](https://caitaozhan.github.io/file/thesis.v2024.3.17.pdf)
 
 **Who should use this template**: If your Ph.D. thesis is a combination of several papers written in LaTeX separately, then this template will help you combine the papers together.
 
