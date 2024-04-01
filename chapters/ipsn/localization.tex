@@ -3,13 +3,13 @@
 
 The \map algorithm of \S\ref{sec:map} can be directly applied to
 localize multiple intruders with optimal localization accuracy.
-However, \map incurs prohibitive computational cost especially for a
+However, \map incurs prohibitive computational costs, especially for a
 large number of potential intruders.  In particular, note that if
 there are $L$ potential locations, up to $T$ potential intruders, and
 $W$ possible discrete transmit-power levels, then the
 hypotheses-driven \map algorithm needs to consider $(LW)^T$
-hypotheses---making its runtime complexity exponential in number of
-potential intruders, and thus, making it impractical for localizing
+hypotheses---making its runtime complexity exponential in the number of
+potential intruders, and thus, making it impractical to localize
 even a moderate number of intruders present simultaneously.  In
 addition, \mll also incurs a high training cost. In the following
 subsections, we develop an optimized algorithm called \ouralgo based
@@ -18,7 +18,7 @@ training cost.
 %%%%%
 We start with optimizing the computation cost in \S\ref{sec:time}. In the following
   subsection \S\ref{sec:ipsn-power}, we derive a closed-form expression
-  to efficiently estimate intruder's power in the {\em continuous}
+  to efficiently estimate the intruder's power in the {\em continuous}
   domain.  Finally, we discuss optimizing the training cost via a
   novel interpolation scheme \ildw.
 
@@ -174,7 +174,7 @@ for smaller and smaller neighborhoods.
 %% noisy/inaccurate results.
 
 \para{Procedure 2. Localize Intruders Situated Close-By.}  Once we
-have localized separated intruders as above, we now localize remaining
+have localized separated intruders as above, we now localize the remaining
 intruders, if any, by applying the general \map algorithm
 independently over ``subareas'' that still have some sensors with
 high-enough RRP (residual received power), but no intruder localized
@@ -184,7 +184,7 @@ the maximum transmission radius.
 
 \begin{packedalpha}
  \item
-Let $s$ be the sensor with highest RRP; if $s$'s RRP is below a
+Let $s$ be the sensor with the highest RRP; if $s$'s RRP is below a
 certain threshold (tantamount to noise), then quit.
 
 \item
@@ -240,19 +240,19 @@ only one-time,\footnote{JPDs depend on the channel state and
     environment changes are infrequent. Also, note that the
     online-training of~\S\ref{sec:auth} is done repeatedly, but only
     for specific sensors and authorized users, and thus incurs minimal
-    cost. See ~\cite{mobicom19-bigspec} for spectrum sensing in both spatio and temporal domains. }
+    cost. See ~\cite{mobicom19-bigspec} for spectrum sensing in both spatial and temporal domains. }
 and hence, a certain cost is acceptable. The training cost
 incurred during such data gathering depends greatly on the exact
 mechanism used for such purposes, e.g., drones with appropriate routes
 can be used to gather such data~\cite{robot-ref}.  In general, the
 cost of training would depend on the number of JPDs that need to be
-constructed, with the cost reduced with reduction in the number of
+constructed, with the cost reduced with a reduction in the number of
 JPDs needed. In this subsection, we design effective {\em interpolation}
 schemes that are useful in reducing the number of JPDs gathered which
 in turn will reduce the overall training cost. Note that reduction in
 JPDs constructed from raw data is bound to negatively impact the
 accuracy---we will evaluate this trade-off in our evaluations and show
-that impact on accuracy is minimal even with significant reduction in
+that impact on accuracy is minimal even with a significant reduction in
 training cost.
 
 \para{Probability Distributions.}  First, we note that making the
@@ -273,7 +273,7 @@ distributions (PDs) of received powers at {\em individual sensors}.
 
 \item
   Lastly, we need to only construct a PD for one transmit power for
-  each transmitter and sensor location pair, since path-loss is
+  each transmitter and sensor location pair, since path loss is
   independent of transmit power.
 \end{itemize}
 Based on the above observations, if there are $L$ discrete locations
@@ -299,7 +299,7 @@ location \lstar of a potential intruder; a PD may be computed either
 by constructing it directly from gathered sensor observations or by
 estimation via interpolation from the constructed PDs. In particular,
 for effective interpolation, we construct PDs at coarser-grid sensor
-locations, and estimate via interpolation the PDs at the remaining
+locations and estimate via interpolation the PDs at the remaining
 finer-grid locations. See Figure~\ref{fig:path-loss}. The exact
 coarseness at which the PDs are constructed is determined by the
 accuracy of the interpolation scheme for a given area and/or the
@@ -339,10 +339,10 @@ such as inverse distance weighting (IDW), Ordinary Kriging (OK), k-NN,
 etc. have been evaluated even in the special context of signal
 strength or received power~\cite{chakraborty2017specsense}.
 %%%%
-However, our specific context has an unique element. We
+However, our specific context has a unique element. We
 {\em know} the location \lstar of the transmitter from which the
 path-loss is being estimated---as we are in the training phase wherein
-we are gathering observations with transmitter at \lstar.
+we are gathering observations with the transmitter at \lstar.
 \eat{ (ii) Second,
 the points with known values viz.\ $\lo, \rt, \cdots, \lm$ are not
 arbitrary or random points, but can be chosen to facilitate accurate
@@ -353,7 +353,7 @@ In light of the above unique element of our setting, and the observation of wire
 interpolation technique which is a nontrivial modification of the IDW
 scheme, called {\em inverse log-distance weighting} (\ildw). The traditional
 IDW interpolation scheme estimates the
-path loss at \lz by taking a weighted average of the path-losses at
+path loss at \lz by taking a weighted average of the path losses at
 $\lo, \rt, \cdots, \lm$, with the weight being the inverse of the
 distance from \lz. 
 %%%%%
@@ -373,7 +373,7 @@ $$w_i = \frac{1}{|\log d(\li, \lstar) - \log d(\lz, \lstar)|},$$ where $d()$ is 
 Euclidean distance function and the path loss at \lz is estimated as:
 $$\uz = \frac{\sum_{i=1}^{n}w_i \ui}{\sum_{i=1}^{n}w_i},$$ where \ui
 denotes the path loss at point \li from \lstar. In the above equation for
-weights, if denominator is zero, then we assign $w_i$ to be equal to
+weights, if the denominator is zero, then we assign $w_i$ to be equal to
 the maximum of the weights among the given points (and if all
 denominators are 0, each weight is assigned to be 1).
 %%%%%%%

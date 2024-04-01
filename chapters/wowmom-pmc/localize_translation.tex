@@ -6,7 +6,7 @@ the image-to-image translation step which translates/transforms the sensor readi
 of TX locations. Here, we first create a grayscale image to represent the input sensor readings;
 this image encodes both the sensors' RSS readings and the sensors' physical location. We then train and use
 a convolutional neural network (CNN) model to transform this input image
-to an output image which represents the distribution of TX locations. Pixels in the output image that have higher values will have a higher chance of having a TX being present at that location. 
+to an output image that represents the distribution of TX locations. Pixels in the output image that have higher values will have a higher chance of having a TX being present at that location. 
  
 \para{Input/Output Image Sizes and Tiling Approach for Large Areas.}
 We need to represent data by images of certain sizes.
@@ -57,11 +57,11 @@ RSS is computed using FFT over the I/Q samples collected in a time window. More 
 Different than~\cite{mobicom17-splot,ipsn20-mtl}, we represent the sensor information, i.e.,
 their locations and observations, in a 2D input image.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We use a 2D grayscale image, and let us denote it $\mx$. The pixel \mxij denotes the observation of the sensor at the grid cell whose index is $(i, j)$. For example, $\mx_{10, 20}=-50$ denotes there is a sensor at coordinate $(10, 20)$ with an RSS reading of $-50$ dB. 
+We use a 2D grayscale image and let us denote it $\mx$. The pixel \mxij denotes the observation of the sensor at the grid cell whose index is $(i, j)$. For example, $\mx_{10, 20}=-50$ denotes there is a sensor at coordinate $(10, 20)$ with an RSS reading of $-50$ dB. 
 If there is no sensor at location $(i, j)$, we assign the noise floor $\nf$ (i.e. -80 dB) value to \mxij.
 Note that the above pixel values (representing the sensor observations) are not the standard
 image pixel values that lie in the [0, 255] range.
-Also, since the pathloss computed by propagation models during simulations could be real numbers, the sensor observation values could be real numbers. 
+Also, since the path loss computed by propagation models during simulations could be real numbers, the sensor observation values could be real numbers. 
 So we use a 2D matrix with real numbers instead of an image object.
 
 Before passing this sensor reading image as input to our CNN model, we do a normalization step; we first subtract the $\nf$ from each value and then divide it by $-\nf$/2.
@@ -119,7 +119,7 @@ Thus, a geographic area with multiple transmitters present is represented by a g
 %%%%%%%%%%%%%%%%%%%%
 Based on preliminary performance
 tests, we pick the amplitude of the 2D Gaussian peak to 10, the standard deviation to 0.9, and located the center of the distribution at the location of each transmitter.
-Note that the location of the TX is in continuous domain and usually not at the center of the grid cell.
+Note that the location of the TX is in the continuous domain and usually not at the center of the grid cell.
 %To represent off-center location of a transmitter within the grid cell, we offset the intensity value at each pixel by the distance between the actual location of the transmitter and the grid cell's center.
 
 % \red{Need very precise details. 
@@ -167,19 +167,19 @@ We refer to our image-to-image translation CNN model as \imgimg, as it translate
 readings to ``peaks" with Gaussian distributions corresponding to transmitter locations.  
 It has four \footnote{We observe that a four-layer lightweight and symmetric \imgimg  model produces good results and adding more layers gives marginal improvement.}
 convolutional layers, as shown in Fig.~\ref{fig:overall}(a). 
-We use an input size of $100\times100$. The number of convolutional filters are varying for
+We use an input size of $100\times100$. The number of convolutional filters varies for
 different layers, with up to 32 in one of the layers. 
 %%%%%
-We tried doubling the filter numbers at each layer, but it does not lead to significant 
+We tried doubling the filter numbers at each layer, but it did not lead to significant 
 improvement (it does yield a lower error, but the output image does not improve significantly
 to impact the second step of our architecture). We use a kernel size of $5\times5$, a stride of 1, and a padding of 2.
 This ensures that the dimensions do not decrease and all the pixels are treated 
 uniformly, including the ones at the edge of the image.
 With the above four convolutional layers, the receptive field~\cite{receptive-field} of each neuron in the output layer is $17\times17$.
 Normalization layers can improve the learning process. We chose group normalization \cite{groupnorm} and put it after the first three convolutional layers. 
-We compared group and batch normalization~\cite{batchnorm} methods in our context, and observed
+We compared group and batch normalization~\cite{batchnorm} methods in our context and observed
 better performance with the group normalization. 
-For the activation layers, we select rectified linear unit (ReLU) and put it after the group normalization layers.
+For the activation layers, we select the rectified linear unit (ReLU) and put it after the group normalization layers.
 
 % \softpara{Derived Pixels in Higher Layers.} 
 % We have four convolutional layers with kernel size of 5x5. 
@@ -189,12 +189,13 @@ For the activation layers, we select rectified linear unit (ReLU) and put it aft
 % will have a 17x17 view of the input volume. So each single pixel 
 % in the output image is derived from 17x17 pixels of the input image. \blue{Whats the point of talking about this? .}
 
-\softpara{The Loss Function}. Our inputs ($X$) and output ($Y$) are images. We use L2 loss function which computes the mean squared error aggregated over individual pixels.
+\softpara{The Loss Function}. Our inputs ($X$) and output ($Y$) are images. We use the L2 loss function which computes the mean squared error aggregated over individual pixels.
 More formally, our loss function is  defined as:
 \begin{equation}
  \frac{1}{N} \sum_{i}^{N} || \imgimg(X_i) - Y_i ||^2
  \label{equ:sen2peak_loss}
 \end{equation}
-where $N$ is the number of samples used in computing the loss, $|| \cdot ||^2$ is L2 loss function, $X_i$ and $Y_i$ are the $i_{th}$ sample's input and output images respectively, and $\imgimg(X_i)$ is the predicted output image corresponding to the input $X_i$. During training, we use 
+where $N$ is the number of samples used in computing the loss, $|| \cdot ||^2$ is the L2 loss function, $X_i$ and $Y_i$ are the $i_{th}$ sample's input and output images respectively, 
+and $\imgimg(X_i)$ is the predicted output image corresponding to the input $X_i$. During training, we use 
 Adam~\cite{kingma2017adam} as the optimizer that minimizes the loss function. We set the learning rate to 0.001 and the number of epochs to 20 and the model converges well.
 % \red{more info about the training and testing such as normalization. HG: Not sure its needed.}

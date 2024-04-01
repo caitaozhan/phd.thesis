@@ -27,25 +27,25 @@ that is based on SeQUeNCe for entanglement generation between two remote atom-en
   for desired manipulation/correction after which $x_2$ ($x_4$) sends an ACK (dashed green arrows) to the other end-node $x_0$ ($x_2$) to complete the EP generation. If 
   BSM  at  $x_1$ and $x_3$ are both successful, then $x_2$ attempts the BSM as above. 
   If a BSM at say $x_1$ fails, that $x_1$ failure signals (red arrows) to all the descendant nodes of the subtree
-  rooted at $x_1$ so that they can start accept new \epss from the link layer protocol. 
+  rooted at $x_1$ so that they can start accepting new \epss from the link layer protocol. 
   Note that here node $x_2$ plays multiple roles and hence appears at multiple places in the figure.}
   \label{fig:swapping_protocol}
 \end{figure}
 
 \para{Swapping Tree Protocol.}
 Our algorithms compute swapping tree(s), and we need a way to implement them on a network. 
-We build our protocol on top of the link-layer of~\cite{sigcomm19},
+We build our protocol on top of the link layer of~\cite{sigcomm19},
 which is delegated with the task of continuously generating \epss on a link at a desired rate (as per the swapping tree specifications).
 Note that a link $(a,b)$ may be in multiple swapping trees, and hence, may need to handle multiple link-layer requests 
 at the same time; we implement such link-layer requests by creating independent atom-photon generators at $a$ and $b$, 
 with one pair of synchronized generators for each link-layer request. 
 As the links generate continuous \epss at desired rates, we need a protocol to
 swap the \epss. Omitting the tedious bookkeeping details, the key aspect of the protocol
-is that swap operation is done only when both the appropriate \eps pairs have arrived.
+is that the swap operation is done only when both the appropriate \eps pairs have arrived.
 We implement all the gate operations (including, atomic and optical BSMs) within 
 NetSquid to keep track of the fidelity of the qubits. 
-On BSM success, the swapping node transmits classical bits to the end node which manipulates its qubit, and send the final ack to the other end node. 
-On BSM failure, a classical ack is send to all descendant link leaves, so that they can now start accepting new link \epss; note that in our protocol, a link $l$ does not 
+On BSM success, the swapping node transmits classical bits to the end node which manipulates its qubit and sends the final ack to the other end node. 
+On BSM failure, a classical ack is sent to all descendant link leaves, so that they can now start accepting new link \epss; note that in our protocol, a link $l$ does not 
 accept any more \epss, while its ancestor is waiting for its sibling's \eps. See Fig.~\ref{fig:swapping_protocol}.
 
 
@@ -73,8 +73,8 @@ distance, with the default being 30-40 kms.
 % of them. 
 
 \softpara{Parameter Values.}
-\blx{We use parameter values mostly similar to the ones used in~\cite{caleffi} corresponding to a single-atom based quantum memory platform, and vary some of them.}
-In particular, we use atomic-BSM probability of success (\bp) 
+\blx{We use parameter values mostly similar to the ones used in~\cite{caleffi} corresponding to a single-atom-based quantum memory platform and vary some of them.}
+In particular, we use the atomic-BSM probability of success (\bp) 
 to be 0.4 and latency (\bt) to be 10 $\mu$ secs; in some plots, we vary \bp from 
 0.2 to 0.6. The optical-BSM probability of success (\php) is half of \bp. 
 We use atom-photon generation times (\gt) and probability of success
@@ -120,7 +120,7 @@ fidelity of 99.5\%~\cite{delft-lp}.
 
 
 \para{Algorithms and Performance Metrics.}
-To compare our techniques with prior approaches, we implement most recently proposed
+To compare our techniques with prior approaches, we implement the most recently proposed
 approaches, viz., (i) \blx{the \os-based \tqbl{linear programming (LP)} approach 
 from~\cite{delft-lp} (called
 \delftlp here), (ii) \qcast approach from~\cite{sigcomm20} which is \os-based but
@@ -130,15 +130,14 @@ by Caleffi~\cite{caleffi} uses an
 exponential-time approach, and is thus compared only for small networks.
 The~\cite{guha} and~\cite{greedy2019distributed} approaches are not compared
 as they were found to be inferior to \qcast.
-Alrorithms \dpo and \dpa in~\cite{swapping-tqe-22} are also being compared.
-We compare our \dpalt with all the above mentioned algorithms largely in terms of \eps generation rates and the execution times.
+Algorithms \dpo and \dpa in~\cite{swapping-tqe-22} are also being compared.
+We compare our \dpalt with all the above-mentioned algorithms largely in terms of \eps generation rates and the execution times.
 
-For all algorithm except for \qcast, we use only one link between adjacent nodes,
+For all algorithms except for \qcast, we use only one link between adjacent nodes,
 since only \qcast takes advantage of multiple links in a creative way. 
 %%%%%%%%%%
 In particular, for \qcast, we use $W = 1, 5$, or 10 sub-links (\cite{sigcomm20} calls them
-channels) on each link, with the node and link "capacity" divided equally among the 
-them.
+channels) on each link, with the node and link "capacity" divided equally among them.
 \eat{(e.g., for $W=5$ sub-links, each node's atom-photon generation capacity is divided among
 $2W = 10$ sub-links to handle sub-links on either side).}
 %%%%%%%%%%%%
@@ -160,7 +159,7 @@ extracted from their LP solution.
     \centering
     \includegraphics[width=0.9\textwidth]{chapters/tqe/figures/caleffi.jpg}
     % \vspace{-0.0in}
-    \caption{Compare the performance with Caleffi in a (a) low density network and a (b) high density network.}
+    \caption{Compare the performance with Caleffi in (a) low-density network and (b) high-density network.}
     % \vspace*{-0.05in}
     \label{fig:swapping_caleffi}
 \end{figure}
@@ -168,7 +167,7 @@ extracted from their LP solution.
 \para{Comparison with~\cite{caleffi} for \spp Problem.}
 Note that~\cite{caleffi} gives only an \spp algorithm referred to as
 \clf; it takes
-exponential-time making it infeasible to run for
+exponential time making it infeasible to run for
 network sizes much larger than 15-20. In particular, for network sizes
 17-20, it takes several hours, and our preliminary analysis suggests that
 it will take of the order of $10^{40}$ \textit{years} on our 100-node
@@ -177,10 +176,10 @@ network. See Table~\ref{tab:swapping_runtime}.
 Thus, we use a small network of 15 nodes over a 25km $\times$ 25km area;
 we consider average node degrees of 3 or 6. See Fig.\ref{fig:swapping_caleffi}.
 %%%%%%%%
-We see that \dpo outperforms \clf by 10\% on a average for the sparser
+We see that \dpo outperforms \clf by 10\% on an average for the sparser
 graph and minimally for the denser graph. 
 % However, for some instances, \dpo outperformed \clf by as much as 300\% (see Appendix~\ref{app:swapping_clf-perf}). 
-We see that \dpa performs similar to \dpo,
+We see that \dpa performs similarly to \dpo,
 while \dpalt is outperformed slightly by \clf; however, for this small
 network, since the \dpo and \dpa algorithms only take 10-100s of
 msecs (Table~\ref{tab:swapping_runtime}), \dpalt need not be used in practice.  
@@ -189,7 +188,7 @@ msecs (Table~\ref{tab:swapping_runtime}), \dpalt need not be used in practice.
 \eat{
 notably better than~
 We see that each node has a degree of 3 on average, the performance of \dpa is almost 10\% better than Caleffi on average. We pick $(s,d)$, randomly. In cases, where even the best $(s,d)$ pairs' path are at least four hops and the difference between balanced vs. non-balanced comes to the picture, the performance difference between our \dpo (or even \dpa) than ~\cite{caleffi} is more substantial. See Fig.[??]. This difference can be as high as 3 times as Fig.~\ref{fig:non-balance} shows.
-In Fig.~\ref{fig:caleffi}(b), a high density case, where each node has 6 neighbors, \dpa is still better than Caleffi, but the margin is smaller. 
+In Fig.~\ref{fig:caleffi}(b), a high-density case, where each node has 6 neighbors, \dpa is still better than Caleffi, but the margin is smaller. 
 The performance of \dpalt is inferior to Caleffi. 
 }
 
@@ -246,7 +245,7 @@ more realistic model, the link \eps success probability is
 $\gp^2\ep^2\php = 0.012$ for the default \bp value.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 We reiterate that our schemes require only 2 memory 
-units per node, while the \qcast schemes requires $2W$ units. 
+units per node, while the \qcast schemes require $2W$ units. 
 \eat{In addition, \qcast and \delftlp require 
 tight synchronization of all links across a path, while
 our schemes are asynchronous.}
@@ -259,7 +258,8 @@ over a path is a very low probability event---essentially $p^l$ where $p$ is the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In addition, 
 %Other than the above key observations, 
-we see that performance increases with increase in \bp, number of nodes, or network link density, as expected due to availability of better trees/paths; it also increases with decrease in $(s,d)$ distance as fewer hops are needed.
+we see that performance increases with an increase in \bp, number of nodes, or network link density, as expected due to the availability of better trees/paths; 
+it also increases with a decrease in $(s,d)$ distance as fewer hops are needed.
 %The performance increases with increase in \bp, and decreases  with increase in $(s,d)$ distance as more hops are needed. 
 
 % \para{\qnr Problem Results.}

@@ -8,7 +8,7 @@ Gaussian distributions in the input image (which is also the output image of the
 The first step outputs an image that has multiple distributions (presumably, Gaussian), whose
 peaks need to be interpreted as precise locations of the transmitters/intruders.
 %%%%%%%%%%%%
-As, our end goal is to determine the precise locations of the present transmitters, we develop techniques to detect peaks within  the output image of the first step. 
+As, our end goal is to determine the precise locations of the present transmitters, we develop techniques to detect peaks within the output image of the first step. 
 %%%%%%%%%%%%%%%%%%%%%%%
 We propose two different strategies for the peak-detection task. The first strategy is a straightforward peak detection algorithm based on finding local maximal values, while the 
 second strategy is based on framing the problem as an object detection task; for the second strategy, we utilize a widely used state-of-the-art computer vision model called YOLOv3~\cite{yolov3}.
@@ -17,7 +17,7 @@ second strategy is based on framing the problem as an object detection task; for
 The simple and straightforward peak detection method is to designate pixels with
 locally maximal values as peaks, subject to certain thresholds.
 %%%%%%%%%
-More formally, we use a threshold $x$ for a peak value, and also use a parameter $r$ to define a $r$-radius neighborhood of a pixel. 
+More formally, we use a threshold $x$ for a peak value and also use a parameter $r$ to define a $r$-radius neighborhood of a pixel. 
 Then, any pixel whose value is more than $x$ and is the maximum among all pixels with a $r$-radius neighborhood, is designated as a peak (transmitter location). 
 We use $x=2$ and $r=3$, in our evaluations.
 %%%%%%%%%%%%%
@@ -27,20 +27,22 @@ implies the transmitter location at the {\em center} of the corresponding subare
 To localize the transmission more precisely with the pixel's subarea, we use a scheme that localizes the transmitter within the subarea by computing a weighted average of the peak pixel's coordinate and the peak's neighbor pixels' coordinates.
 The weight of a pixel is the predicted pixel value itself from the first step \imgimg.
 %%%%%%%%%%%%%%%%%%%%%
-We refer to the above simple approach for the second-step of \our as \simpeak.
+We refer to the above simple approach for the second step of \our as \simpeak.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/wowmom-pmc/figures/yolo.png}
-	\caption{Our \yolocust in the second step of the \our. The two major customization are: (i) Use only the third YOLO layer that detects small size objects (the output of \yolocust is the bounding box predicted by the third YOLO layer and we use the center of the bounding box as the transmitter location), and (ii) change the rectangle anchors to square anchors.}
+	\caption{Our \yolocust in the second step of the \our. The two major customizations are: 
+    (i) Use only the third YOLO layer that detects small-size objects (the output of \yolocust is the bounding box predicted by the third YOLO layer and we use the center of the bounding box as the transmitter location), 
+    and (ii) change the rectangle anchors to square anchors.}
 	\label{fig:yolo}
 \end{figure}
 
 \subsection{Object-Detection Based Precise Localization: \yolocust} 
 
-The simple hand-crafted method described in the previous subsection performs reasonable well in most cases in our simulations. 
+The simple hand-crafted method described in the previous subsection performs reasonably well in most cases in our simulations. 
 However, its key drawback is that it needs appropriate threshold values that may vary from case to case; such thresholds can be difficult to determine, especially since
-the input images (with distributions) are not expected to be perfect as they are themselves output of a learning model.
+the input images (with distributions) are not expected to be perfect as they are themselves the output of a learning model.
 Inaccurate threshold values can lead to false alarms and misses. 
 Also, the previous method is not sufficiently accurate at the sub-pixel level, where
 each pixel may represent a large area such as $10m \times 10m$ or even $100m \times 100m$. Thus,
@@ -52,15 +54,15 @@ known objects in a given image. We observe that our second-step peak detection p
 Thus, we turn the \mtl problem of localizing multiple transmitters into detecting 
 peaks in the images output by \imgimg model. 
 For object/peak detection, we design \yolocust, our customized version of YOLOv3~\cite{yolov3}.
-Fig.~\ref{fig:peaks} is a zoom-in of localizing two close by transmitters (peaks) in Fig.~\ref{fig:overall}(b).
+Fig.~\ref{fig:peaks} is a zoom-in of localizing two close-by transmitters (peaks) in Fig.~\ref{fig:overall}(b).
 
 \softpara{Peak Detection Using \yolocust.} 
 Object detectors are usually comprised of two parts: (i) a backbone which is usually pre-trained on ImageNet, and (ii) a front part (head), which is used to predict bounding boxes of objects, probability of an object present, and the  object class. 
 For the front part, object detectors are usually classified into two categories, i.e., one-stage detectors such as the YOLO~\cite{cvpr16-yolo} series, and two-stage detectors such as the R-CNN~\cite{cvpr14-rcnn} series.
-We choose the one-stage YOLO series because of its computational efficiency, high popularity and available ways to customize it for our specific context. We refer to the customized version as \yolocust, see Fig.~\ref{fig:yolo}.
+We choose the one-stage YOLO series because of its computational efficiency, high popularity, and available ways to customize it for our specific context. We refer to the customized version as \yolocust, see Fig.~\ref{fig:yolo}.
 %%%%%%%%%
 Implementing a 106-layer deep neural network with a complex design from scratch is
-out of scope of our work. 
+out of the scope of our work. 
 Thus, we use a publicly available source repository~\cite{yolo-github} and made customization on top of it.
 We refer to the architecture that uses \imgimg $\ $and \yolocust in sequence as \our, our key product.  
 In addition, we use \imgimg in combination with the uncustomized original YOLOv3,
@@ -68,7 +70,7 @@ and refer to it as \ouryolo (still change the class number to one).
 %\blue{For the two important hyper-parameters of YOLOv3, object confidence threshold and intersect-of-union threshold for non-maximum suppression, we tweaked to 0.8 and 0.5 respectively.}
 
 \softpara{Customization of YOLOv3}.
-Overall, we incorporated four customization to YOLOv3, of which two are significant and the
+Overall, we incorporated four customizations to YOLOv3, of which two are significant and the
 other two are relatively minor. See Table~\ref{table:yolocust}. YOLOv3 is designed to be a general object detector that can detect objects of various sizes, shapes, and classes within input images
 of various sizes. However, in our context, the input images are of a fixed size, with
 only a single class of objects which are relatively small and semi-circular. 
@@ -79,7 +81,7 @@ decrease the model complexity and improve its performance.
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/wowmom-pmc/figures/peaks.png}
 	\caption{(a) is the zoom-in of two peaks at the bottom of the Fig.~\ref{fig:overall} example.
-	(c) is the zoom-in of the two close by peaks in the middle right of the Fig.~\ref{fig:overall} example. (b) and (d) shows the bounding boxes that \yolocust outputs for (a) and (c) respectively.}
+	(c) is the zoom-in of the two close-by peaks in the middle right of the Fig.~\ref{fig:overall} example. (b) and (d) shows the bounding boxes that \yolocust outputs for (a) and (c) respectively.}
 	\label{fig:peaks}
 \end{figure}
 
@@ -94,7 +96,7 @@ decrease the model complexity and improve its performance.
      \hline
      Has 3 different rectangle anchors for each YOLO layer & Has 3 square anchors \\
      \hline
-     Every 10 batches, randomly chooses a new input image dimension size & Do not randomly choose new input dimension size \\ 
+     Every 10 batches, randomly choose a new input image dimension size & Do not randomly choose new input dimension size \\ 
      \hline
      Has 80 different categories of object class & Only has one category for the peak class \\ 
      \hline
@@ -103,9 +105,9 @@ decrease the model complexity and improve its performance.
 \end{table}
 
 {\em Customization Details}. 
-The first and second changes presented in Table~\ref{table:yolocust} are major changes and we elaborate them in the following paragraphs.
+The first and second changes presented in Table~\ref{table:yolocust} are major changes and we elaborate on them in the following paragraphs.
 %%%%%%%%o
-Making prediction at three different scales is one of the highlights of YOLOv3 and an improvement comparing to the previous version YOLOv2 which was prone to missing at detecting small objects. 
+Making predictions at three different scales is one of the highlights of YOLOv3 and an improvement compared to the previous version YOLOv2 which was prone to missing at detecting small objects. 
 As shown in Fig.~\ref{fig:yolo}, the coarse-grain $13\times13$ YOLO layer-1 is designed for detecting large size objects, 
 the $26\times 26$ YOLO layer-2 is designed for detecting middle-sized objects, and 
 the fine-grained $52\times52$ YOLO layer-3 is designed for detecting small-sized objects.
@@ -120,15 +122,15 @@ computing the overall loss function and their outputs are not used in predicting
 % substantially. }
 %%%%%%%%%%%%%%%%%%
 In our \yolocust, the only YOLO layer predicts 8112 bounding boxes, since it has a 
-dimension of $52\times 52$ and each cell results in prediction of 3 bounding boxes; this is in contrast
+dimension of $52\times 52$ and each cell results in the prediction of 3 bounding boxes; this is in contrast
 to the original YOLOv3, which predicts 10647 bounding boxes ($3 \times (13\times13 + 26\times26 + 52\times52) = 10647$).
 
 The anchor box is one of the most important hyperparameters of YOLOv3 that can be tuned to improve
 its performance on a given dataset.  The original YOLO's anchor boxes are $10\times13$,  $16\times30$, and $33\times23$ (for
 the input image of size $416\times416$ pixels), which are essentially bounding boxes of a rectangular shape. 
 %%%%%%%%%%%%%
-These original YOLOv3 anchors were designed for the Microsoft COCO \cite{mscoco} data set, and were chosen
-since they best describe the dimensions of the real world objects in the MS COCO data set. In our context,
+These original YOLOv3 anchors were designed for the Microsoft COCO \cite{mscoco} data set and were chosen
+since they best describe the dimensions of the real-world objects in the MS COCO data set. In our context,
 since the peaks are generally squares---we use the anchor boxes to be $15\times15$, $25\times25$, and $35\times35$.
 
 %%%%%%%%%%% peaks %%%%%%%%%
@@ -136,19 +138,19 @@ since the peaks are generally squares---we use the anchor boxes to be $15\times1
 \softpara{Input Image for \yolocust.}
 The first step \imgimg's output image is $100\times100$, while the second step \yolocust's input is required\footnote{YOLOv3 was developed before our work and the YOLOv3 authors set the input size of the CNN model to $3\times416\times416$.~Although we are customizing their YOLOv3 model, we cannot change the input size because changing it will change the convolutional layer structure, which will 
 preclude us from using the pre-trained weights in the YOLOv3 backbone.} 
-to be a three-channel (RGB) image with each channel being size of $416\times 416$. 
+to be a three-channel (RGB) image with each channel being a size of $416\times 416$. 
 %%%%%%%%%%%
 To feed the output of \imgimg to \yolocust, we do the following: (i) First, we duplicate 
 the \imgimg's output image to create two more copies and thus create a three-channel image
 of 100 $\times$ 100 size channels; (ii) Next, we resize the $100\times100$ channels to $416\times416$ channels using the PyTorch's default ``nearest neighbor" interpolation. See Fig.~\ref{fig:yolo-preprocess}.
 
 \softpara{Output of \yolocust.}
-YOLO treats objected detection as a regression problem. The regression target (or ``label") for an object is a five-value tuple $(x, y,$ $length,$ $width, class)$. 
+YOLO treats object detection as a regression problem. The regression target (or ``label") for an object is a five-value tuple $(x, y,$ $length,$ $width, class)$. 
 In our case, there is only one $class$. 
 $x$ and $y$ are real number location coordinates of the center of the bounding box, which we use as the location of the transmitter. 
 $Width$ and $height$ determine the size and shape of the object---which we consistently set to be 5 each to signify a $5\times5$ square. 
 Note that the center of the bounding box is in the continuous domain. 
-Thus, we are able to get sub-pixel level location of the transmitters.
+Thus, we are able to get the sub-pixel level location of the transmitters.
 
 
 \begin{figure}[t]

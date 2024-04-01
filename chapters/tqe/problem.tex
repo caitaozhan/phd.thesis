@@ -20,17 +20,17 @@ Thus, each node has an atom-photon \eps generator with generation
 latency (\gt) and probability of success (\gp). Generation latency
 is the time between successive attempts by the node to excite the 
 atom to generate an atom-photon \eps; this implicitly includes the times for
-photon transmission, optical-BSM latency, and classical acknowledgement.
+photon transmission, optical-BSM latency, and classical acknowledgment.
 \textit{For clarity of presentation} and without loss of generality,  
-we assume homogeneous network nodes with same parameter values.
+we assume homogeneous network nodes with the same parameter values.
 The generation rate is the inverse
 of generation latency, as before.
 A node's atom-photon generation capacity/rate 
-is its aggregate capacity, and may be split across its incident links 
-(i.e., in generation 
+is its aggregate capacity and may be split across its incident links 
+(i.e., in the generation 
 of \epss over its incident links/nodes).
 Each node is also equipped with a certain number of atomic
-memories to store the  qubits of the atom-atom \epss. 
+memories to store the qubits of the atom-atom \epss. 
 
 \begin{figure}
 %\begin{wrapfigure}{r}{2.1in}
@@ -43,7 +43,7 @@ memories to store the  qubits of the atom-atom \epss.
 \end{figure}
 A network link is a quantum channel (e.g., using an 
 optical fiber or a free-space link),
-and, in our context, is used only for establishment 
+and, in our context, is used only for the establishment 
 of link \eps.
 %%%%%%%%%%%%%%%%%
 In particular, a link $e=(A,B)$ is used to transmit telecom-photons 
@@ -64,7 +64,7 @@ we assume classical transmission
 always succeeds.
 %Classical transmission is used for acknowledgments, and in  teleportation and \es operations.
 
-\softpara{Single vs.\ Multiple Links Between Nodes.}   For our techniques multiple links between a pair of  adjacent nodes can be replaced by a single link of aggregated
+\softpara{Single vs.\ Multiple Links Between Nodes.}   For our techniques multiple links between a pair of adjacent nodes can be replaced by a single link of aggregated
 rate/capacity.  Hence we
 assume only a single link between every pair of nodes. However, 
 distinct multiple links between nodes have been used creatively
@@ -72,7 +72,7 @@ in~\cite{sigcomm20} (which refers to them as multiple channels); thus, we will
 discuss multiple links further in~\S\ref{sec:swapping_eval} when we evaluate various techniques. 
 We note that the all-photonic protocol in~\cite{all-photo-15} is essentially a more sophisticated version of the multi-link \os protocol in~\cite{sigcomm20} to further
 minimize memory requirements, but it uses multipartite cluster states which are
-challenging to create. In either case, in terms of selection of paths/trees,
+challenging to create. In either case, in terms of the selection of paths/trees,
 the path-selection techniques from~\cite{sigcomm20} should also apply to the all-photonic protocol with certain modifications to account for 
 how the cluster states are generated.
 
@@ -108,7 +108,7 @@ generation of atom-photon \epss at nodes
 will result in an overflow. (See Eqn.~\ref{eqn:swapping_gen-link-rate} 
 for a more general expression.)}
 The exact expression above has no bearing 
-on the applicability or correctness of our techniques, 
+on the applicability or correctness of our techniques 
 but is presented largely for understanding of our model.
 }
 %%%%%%%%%%%%%
@@ -242,7 +242,7 @@ and $y$ is the number of trees that use $i$ as an end node.
 
 
 
-For homogeneous nodes and link parameters, it is easy to see that the best swapping-tree is the balanced or almost-balanced tree over the shortest path.
+For homogeneous nodes and link parameters, it is easy to see that the best swapping tree is the balanced or almost-balanced tree over the shortest path.
 % We note that \spp is not a special case of \qnr in the formal sense; e.g., 
 % the LP algorithm (\S\ref{sec:swapping_multiple-path}) for \qnr cannot be used for the \spp problem, due to the single tree requirement (LP may produce multiple trees).
 As described in \S\ref{sec:swapping_related}, the \spp problem has been addressed before in~\cite{sigcomm20, caleffi} under different models. 

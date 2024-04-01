@@ -1,11 +1,11 @@
 \section{Related Work}
 \label{sec:wowmom-related}
 \para{Spectrum sensing} is usually being realized by some distributed crowdsourced low-cost sensors. 
-Electrosense~\cite{electrosense} and its follow up work Skysense \cite{mobisys20-skysense} are typical work of spectrum sensing.
+Electrosense~\cite{electrosense} and its follow-up work Skysense \cite{mobisys20-skysense} are typical works of spectrum sensing.
 In this crowdsourced sensing paradigm~\cite{chakraborty2017specsense}, sensors collect I/Q samples (in-phase and quadrature components of raw signals) and compute PSD (power spectral density), which is RSS.
 Crowdsourced low-cost sensors do not have the capability to collect AoA (angle of arrival) data because it requires more expensive antenna arrays.
 They also do not have the capability to collect ToA (time of arrival) data because it requires the transmission of a wide-band known sequence~\cite{pimrc2021-localize}, which is impossible in the case of localizing (blind) intruders.
-Spectrum sensing platforms serve as the foundation of the spectrum applications, and transmitter localization is one of the main applications.
+Spectrum sensing platforms serve as the foundation of spectrum applications, and transmitter localization is one of the main applications.
 Other applications include signal classification~\cite{toccn18-sigclassify}, spectrum anomaly detection~\cite{ben-zhao}, sensor selection~\cite{ton-sensorselect,bhattacharya2022fast}, spectral occupancy estimation~\cite{mobicom21-deepradar}, etc.
 
 \para{Transmitter localization.} Localization of an intruder in a field using sensor observations has been widely studied, but most of the works have focused on
@@ -52,24 +52,24 @@ training phase to survey the area of interest and a testing phase to search for 
 
 \para{Deep learning for wireless localization}. 
 Quite a few recent works have harnessed the power of deep learning in the general topic of localization.
-E.g., DeepFi in~\cite{DeepFi2016} designs a restricted Bolzmann machine that localizes a single target using WiFi CSI amplitude data. 
+E.g., DeepFi in~\cite{DeepFi2016} designs a restricted Boltzmann machine that localizes a single target using WiFi CSI amplitude data. 
 DLoc in~\cite{mobicom20-deeploc} uses WiFi CSI data as well. 
 Its novelty is to transform CSI data into an image and then uses an image-to-image translation method to localize a single target.~MonoDCell 
-in~\cite{sigspatial19-monodcell} designs an LSTM that localizes a single target in indoor environment using cellular RSS data.
+in~\cite{sigspatial19-monodcell} designs an LSTM that localizes a single target in an indoor environment using cellular RSS data.
 ~\cite{pimrc2021-localize} designs a three-layer neural network that locations a single transmitter.~\deeptx in~\cite{icccn20-deeptxfinder} 
 uses CNN to address the same \mtl problem using RSS data in this chapter.
 
 \para{Transmitter Power Estimation.} There are several works that estimate the transmission power of a single transmitter.
 ~\cite{PowerEstimate2010Zafer} studies the ``blind" estimation of transmission power based on received-power measurements at 
 multiple cooperative sensor nodes using maximum likelihood estimation. Blind means there is no prior knowledge of the location of the 
-transmitter or transmit power.~\cite{Ureten2011powerlocation} propose an iterative technique that jointly estimate the location and 
+transmitter or transmit power.~\cite{Ureten2011powerlocation} proposes an iterative technique that jointly estimates the location and 
 power of a single primary transmitter.
-In~\cite{icoin2007-powerposition}, the primary transmitter location and power is jointly estimated by a constrained optimization method.
+In~\cite{icoin2007-powerposition}, the primary transmitter location and power are jointly estimated by a constrained optimization method.
 ~\cite{ipsn20-mtl} uses the maximum likelihood estimation method to estimate the power of an isolated single transmitter and 
-adopts an online learning method to estimate the power of multiple close by transmitters simultaneously.
+adopts an online learning method to estimate the power of multiple close-by transmitters simultaneously.
 
 \para{Machine learning empowered applications.}
-Machine learning includes supervised, unsupervised, semi-supervised, self-supervised and reinforcement learning~\cite{yifei2022,yifei2022path}.
+Machine learning includes supervised, unsupervised, semi-supervised, self-supervised, and reinforcement learning~\cite{yifei2022,yifei2022path}.
 ~\cite{yifei2023} has studied reinforcement learning in the setting of episodic Markov decision processes.
 ~\cite{yifei2021} studies the off-policy evaluation problem in reinforcement learning with linear function approximation.
 Machine learning techniques have empowered many applications.
@@ -78,21 +78,21 @@ and breast cancer treatment response biomarker~\cite{fan2021topotxr}.
 Novel meta-learning algorithms are developed for generalizable magnetic resonance imaging reconstruction~\cite{wanyu_thesis}.
 RELAX-MORE~\cite{wanyu2024} leverages self-supervised learning techniques to achieve out-performing state-of-the-art on less qMRI training data.
 XGBoost is great at capturing the upward trend using the portfolio features constructed by PolyModel theory~\cite{siqiao2023} 
-and deep learning based techniques have shown to further enhance the portfolio construction~\cite{siqiao2024}.
-Deep reinforcement learning can be novely used to minimize battery energy storage cost~\cite{binhuang2023grid} 
+and deep learning-based techniques have been shown to further enhance portfolio construction~\cite{siqiao2024}.
+Deep reinforcement learning can be used to minimize battery energy storage cost~\cite{binhuang2023grid} 
 and maintain the fidelity of equivalent model for active distribution networks~\cite{binhuang2023renew}.
-~\cite{xiaobo_thesis} proposes machine learning methods that help transportation engineers and policymakers conduct accurate traffic performance ealuations~\cite{xiaobo2020,xiaobo2021,xiaobo2023}.
-Novel machine learning techniques have proposed to deal with noisy labeled data~\cite{jinjin2023} and genetic data~\cite{jinjin_thesis}.
+~\cite{xiaobo_thesis} proposes machine learning methods that help transportation engineers and policymakers conduct accurate traffic performance evaluations~\cite{xiaobo2020,xiaobo2021,xiaobo2023}.
+Novel machine learning techniques have been proposed to deal with noisy labeled data~\cite{jinjin2023} and genetic data~\cite{jinjin_thesis}.
 Social media bots can be detected effectively via behavioral patterns~\cite{wu2023botshape} and metric learning~\cite{wu2023bottrinet}.
 AI-assisted audio command recognition enables collaborative human-robot drone inspection of bridges~\cite{yuli_thesis}.
-In~\cite{ziheng_thesis,ziheng2022}, algorithms are developed to make machine learning models more transparent, accountable and explainable~\cite{ziheng_relax,ziheng2023dark}.
+In~\cite{ziheng_thesis,ziheng2022}, algorithms are developed to make machine learning models more transparent, accountable, and explainable~\cite{ziheng_relax,ziheng2023dark}.
 Network function virtualization~\cite{wang2023thesis,wang2022quadrant,wang2020slos} has great potential in low-performance edge devices~\cite{wang2023scheduling}
 as more applications and ISP functionalities are expected to be offloaded to edge clouds~\cite{wang2021galleon,wang2023pinolo}.
 Machine learning can help the simulation and analyses of multi-platelet recruitment simulation~\cite{yicong_thesis}.
 In~\cite{peineng2021,peineng2021semi}, semi-supervised learning algorithms are developed to segment platelet images.
 In~\cite{peineng2023}, a machine learning-guided imaging approach is used to segment platelet geometries and quantify adhesion dynamics parameters.
 DeepVS~\cite{zongxing2022dl} combines 1D CNN and attention models to exploit local features and temporal correlations to improve RF-based vital signs sensing.
-A LSTM encoder-decoder model is proposed to generate Chinese poetry~\cite{yubo2017text}.
+An LSTM encoder-decoder model is proposed to generate Chinese poetry~\cite{yubo2017text}.
 Machine learning also has applications in e-commerce~\cite{kexin2023ecommerce}, recommendation system~\cite{dong2020,dong2023,dong2023recommend}
 financial time series data~\cite{kexin2023financial}, and spectrum allocation~\cite{mohammad2024}.
 ~\cite{lyu-clinical} provide a novel multimodal transformer to fuse clinical notes and structured electronic health record data
@@ -100,34 +100,34 @@ financial time series data~\cite{kexin2023financial}, and spectrum allocation~\c
 ~\cite{lyu-2022-trojaned} studies the attention abnormality in Trojaned BERTs,
 and~\cite{lyu-2023-attentionenhancing} proposes a Trojan attention loss for backdoor training which enhances
 the Trojan behavior.
-~\cite{zhenglin} conducts a examination of malware detection using machine learning techniques.
+~\cite{zhenglin} conducts an examination of malware detection using machine learning techniques.
 ~\cite{hongpeng2024} introduces innovative selection methods within the active learning framework.
 Semi-supervised contrastive learning~\cite{yifei2023medical} and neural rendering~\cite{yifei2023medical2} can greatly improve medical image segmentation.
 ~\cite{yifei2024} calibrates multi-model representations and~\cite{yifei2023samping} uses sampling techniques for linear contextural bandits.
 Novel decision transformer~\cite{chen2023real} based methods and explainable machine learning techniques~\cite{chen2023ride,chen2023explainable} have been applied to the network intrusion detection problem.
-Reinforcment learning~\cite{chen2023rgmcomm} has been novelly applied in various network utility optimization problems~\cite{chen2021bringing,chen2023distributional} .
-FIAT~\cite{yunming2022} uses machine learning methods to acheive frictionless authentication for IoT traffic.
-Graph neural networks have shown to enhance quantum approximate optimization algorithms as a warm-start technique~\cite{zhiding2024}.
+Reinforcement learning~\cite{chen2023rgmcomm} has been applied in various network utility optimization problems~\cite{chen2021bringing,chen2023distributional} .
+FIAT~\cite{yunming2022} uses machine learning methods to achieve frictionless authentication for IoT traffic.
+Graph neural networks have been shown to enhance quantum approximate optimization algorithms as a warm-start technique~\cite{zhiding2024}.
 
 \para{Mobile health sensing and edge computing.}
 RF sensing enables some important mobile health applications such as heart and respiratory rate monitoring~\cite{zongxing2022uwb,zongxing2022measure}. 
-RF based solutions support practical and longitudinal respiration monitoring owing to their non-invasive nature~\cite{zongxing2023rf,zongxing2021uwb}.
+RF-based solutions support practical and longitudinal respiration monitoring owing to their non-invasive nature~\cite{zongxing2023rf,zongxing2021uwb}.
 ~\cite{zongxing2024rfq} proposed a robust RF-based respiration monitoring.
-Low quality RF sensing data will negatively affect the sensing task, thus reliable signal quality detection is crucial~\cite{zongxing2021quality}.
+Low-quality RF sensing data will negatively affect the sensing task, thus reliable signal quality detection is crucial~\cite{zongxing2021quality}.
 Apart from RF sensing, acoustic sensing can also enable important applications such as face authentication~\cite{zongxing2019face,zongxing2022face}.
-Apart from RF sensor, other sensor such as inertial sensor, photoplethysmography and actigraphy also play a big role in mobile health and wearable IoT, 
+Apart from RF sensors, other sensors such as inertial sensors, photoplethysmography, and actigraphy also play a big role in mobile health and wearable IoT, 
 such as finger motion tracking~\cite{yilin2021}, end-stage kidney fluid intake prediction in~\cite{guimin2022health} and predicting salivary cortisol levels in pancreatic cancer patients~\cite{guimin2021pancreatic}.
 In~\cite{guimin2021health}, a semi-supervised graph instance transformer is proposed for mental health inference.
-Graph neural networks are useful in various IoT sensing environment~\cite{guimin2023survey} and mobile health sensing~\cite{guimin_thesis}.
-In traditional wireless sensor networks, the sensing data is uploaded (via wireless) to a centralized server~\cite{gupta2020,yubo2023blockchain} and the server process the sensing data.
-In an emerging computing paradigm called edge computing, however, sensing data is mainly processed locally on the resource constrained sensors, 
+Graph neural networks are useful in various IoT sensing environments~\cite{guimin2023survey} and mobile health sensing~\cite{guimin_thesis}.
+In traditional wireless sensor networks, the sensing data is uploaded (via wireless) to a centralized server~\cite{gupta2020,yubo2023blockchain}, and the server processes the sensing data.
+In an emerging computing paradigm called edge computing, however, sensing data is mainly processed locally on resource-constrained sensors, 
 e.g., on-device machine learning~\cite{yubo2020ondevice,yubo2022demo,yubo2019ondevice}.
 Thus, various works target to scale up task execution on resource-constrained systems~\cite{yubo_thesis}, such as 
 SmartOn~\cite{yubo2021smarton}, Antler~\cite{yubo2023efficient} and intermittently-powered systems~\cite{yubo2023audio,yubo2023intermittent}.
 Works tackle the computation overhead and battery limitation of on-device edge computing via 
 interactive learning framework~\cite{zhou2022}, offloading scheme~\cite{zhou2023offloading} and reinforcement-learning-based scheduling technique~\cite{zhou2023}.
 Studies have shown that deep learning can reconstruct ambiance information~\cite{wenwan} for mental health purposes.
-Large language models could help building a practical benchmark for cloud configuration generation~\cite{yuning2023cloud}.
+Large language models could help build a practical benchmark for cloud configuration generation~\cite{yuning2023cloud}.
 Other works study the non-volatile hybrid memory in mobile memory systems~\cite{feiwen2021,feiwen2021fpga,feiwen2022}.
 
 %Both DLoc and \deeptx also represent the explore the usage of CNN in the wireless localization problem by representing the input wireless data as images.

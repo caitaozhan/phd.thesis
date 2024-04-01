@@ -8,18 +8,17 @@ path algorithm; the designed heuristic performs close to the DP-based algorithms
 in our empirical studies.
 
 \para{Basic Idea.}
-The main reason for the high-complexity of our DP-based algorithms
+The main reason for the high complexity of our DP-based algorithms
 in~\cite{swapping-tqe-22} is that
 the goal of the \spp problem is to select an optimal swapping \textit{tree} 
-rather
-than a path. One way to circumvent this challenge efficiently while still
+rather than a path. One way to circumvent this challenge efficiently while still
 selecting near-optimal swapping tree, is to restrict ourselves to only 
 ``balanced'' swapping trees. This restriction allows us to think in terms
 of selection of paths---rather than trees---since each path has a unique\footnote{In fact, there can be multiple balanced trees over a path whose length is not a power of 2, but, since they differ minimally in our context,
 we can pick a unique way of constructing a balanced tree over a path.}
 balanced swapping tree.
 %%%%%%%%%%%%%
-We can then develop an appropriate path metric based on above, and design
+We can then develop an appropriate path metric based on the above and design
 a Dijkstra-like algorithm to select an $(s,d)$ path that has the optimal
 metric value.
 %%%%%%%%%%%%%%%%%
@@ -83,13 +82,13 @@ using the link's \eps generation
 latencies as their weights. We refer to this algorithm
 as \dpalt, and it can be implemented with a time complexity of 
 $O(m + n \log n)$ using Fibonacci heaps, where $m$ is the number of edges 
-and $n$ is the number nodes in the network. 
+and $n$ is the number of nodes in the network. 
 
 \para{Incorporating Fidelity Constraints.}
 \begin{definition}
     Given a swapping tree, the total time spent by a qubit in a swapping
     tree is the time spent from its ``birth'' via an atom-photon \eps generation at a node till its consumption
-    in a swapping operation or in generation of the tree's root \eps. 
+    in a swapping operation or in the generation of the tree's root \eps. 
     We refer to this as a qubit's \textit{age}. The maximum age over all qubits 
     in a swapping tree is called the tree's (expected) \textit{age}. See Fig.~\ref{fig:swapping_age}.
 \end{definition}
@@ -101,16 +100,16 @@ and $n$ is the number nodes in the network.
   \label{fig:swapping_age}
 \end{figure}
 
-Fidelity constraints in our path-metric based setting can be handled by essentially
-computing the optimal path for each path-length (number of hops in the path) up to
+Fidelity constraints in our path-metric-based setting can be handled by essentially
+computing the optimal path for each path length (number of hops in the path) up to
 $\fidl$, and then pick the best path among them that satisfies the fidelity constraints.
 %%%%%%%%%%
 This obviously limits the number of leaves to \fidl and addresses the operations-based
-fidelity degradation. The above also address the decoherence/age
+fidelity degradation. The above also addresses the decoherence/age
 constraint, since it is easy to see %(from analysis in \S\ref{sec:swapping_dec}) 
 that the age of a balanced swapping tree can be very closely 
 approximated in terms of the latency and the number of leaves.
 %%%%%%%%%%%%%%%
-Now, to compute the optimal path for each path-length, we can use a simple dynamic
+Now, to compute the optimal path for each path length, we can use a simple dynamic
 programming approach that run in $O(m\fidl)$ time where $m$ is the number of edges 
 and $\fidl$ is the constraint on number of leaves. 

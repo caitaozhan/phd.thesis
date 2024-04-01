@@ -11,7 +11,7 @@ applications, e.g.,
 as an intruder detection in shared spectrum systems~\cite{arani2018}, localization of devices/users in
 indoor settings (e.g., supermarkets, museums, virtual/augmented reality applications~\cite{sigcomm22-cyclops}), 
 etc. In general,
-transmitter localization is a key technology for location-based services, and an 
+transmitter localization is a key technology for location-based services and an 
 improvement in transmitter localization will be very
 beneficial to a variety of applications.
 %%%%%%%%%%%%
@@ -37,11 +37,12 @@ Thus, QSNs may have a great potential in accurate localization of wireless
 transmitters, which is a problem of great significance in many applications.
 
 \para{Quantum Sensor Model}. 
-Impact on a quantum sensor due to a physical phenomenon is typically modeled by an appropriate unitary operator that results in a quantum phase change~\cite{RevModPhys.quantumsensing}. Below, we model the change in quantum phase
-of a sensor's state due to an RF received signal. 
+Impact on a quantum sensor due to a physical phenomenon is typically modeled by an appropriate unitary operator that results in a quantum phase change~\cite{RevModPhys.quantumsensing}. 
+Below, we model the change in the quantum phase
+of a sensor's state due to an RF-received signal. 
 Since the RF received signal (and thus the change in quantum phase) depends on the sensor's distance 
 from the transmitter, we can use the phase change that occurs 
-during the sensing period to localize a RF transmitter.
+during the sensing period to localize an RF transmitter.
 
 \softpara{Sensor's Hamiltonian.}
 A quantum sensor's Hamiltonian $\hat{H}(t)$ is a sum of two\footnote{The third component 
@@ -61,14 +62,14 @@ energy difference $\Delta E = E_1 - E_0$ is much higher than the energy
 changes introduced by the signal $V(t)$~\cite{RevModPhys.quantumsensing}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $$\hat{H}_{V}(t) =  -\frac{1}{2}\gamma V_{\parallel}(t)\hat{\sigma}_z$$
-where $\sigma_z$ is the Pauli-Z matrix, $V_{\parallel}(t)$ is parallel component of the signal $V(t)$, and $\gamma$ is the coupling of the qubit to the parallel component.
+where $\sigma_z$ is the Pauli-Z matrix, $V_{\parallel}(t)$ is the parallel component of the signal $V(t)$, and $\gamma$ is the coupling of the qubit to the parallel component.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In essence, the above induces a change in the spin in the $z$ axis direction resulting
 in a  qubit \emph{phase shift}. Above, 
 ${V_{\parallel}}(t)$ at the sensor is given by:
 $$V_{\parallel}(t) = E \sin(2\pi f  t + \theta)$$
 where $E$ is the signal's (electric field) maximum amplitude, $f$ is the signal 
-frequency, and $\theta$ is the signal's phase.
+frequency and $\theta$ is the signal's phase.
 
 \softpara{Evolution Unitary Operator.} Assume at time $t=0$, the quantum state is $\ket{\phi_0}$. Then at time $t=t'$, the state $\ket{\phi_{t'}}$ is,
 $$ \ket{\psi_{t'}} = \hat{U}(0, t') \ket{\psi_0} $$
@@ -149,17 +150,17 @@ and has been addressed in recent works~\cite{wowmom21, ipsn20-mtl, pmc22-deepmtl
 %%%%%%%%%%%%%%%%%%%%%%%
 
 Recently, there have been some works that have used quantum technology to investigate
-intruder/transmitter localization related problems. E.g.,~\cite{lcn22-qloc} develops a scheme
+intruder/transmitter localization-related problems. E.g.,~\cite{lcn22-qloc} develops a scheme
 to improve the {\em size} of the fingerprints used in the above-described 
 fingerprinting approach, by encoding classical sensor data into qubits 
 through quantum amplitude encoding.
 %%%%%%%%%%%
-In addition,~\cite{PR22-quantum_positioning} derives analytical equations to compute AoA of an
+In addition,~\cite{PR22-quantum_positioning} derives analytical equations to compute the AoA of an
 incoming RF signal using four entangled distributed quantum sensors, without any evaluations.~\cite{qsn-detection} proposes a quantum sensor network 
 using Mach-Zehnder interferometers to detect (not localize) 
 intruders for surveillance purposes.
 %%% our PRA is in arXiv, but not in the QCE submission
-Finally,~\cite{Hillery_2023,qsn-acm-23} investigate the optimization of initial state in discrete-outcome quantum sensor networks and show that an entangled initial state yields
+Finally,~\cite{Hillery_2023,qsn-acm-23} investigate the optimization of the initial state in discrete-outcome quantum sensor networks and show that an entangled initial state yields
 higher measurement accuracy in some applications.
 In particular, QuCS lecture series~\cite{zhiding2023} have successfully enhanced the visibility of quantum computing software and system level worldwide.
 % The difference between ours and theirs is that we aim to use {\em both} quantum sensors and quantum localization algorithms, while the first work uses classical sensors and quantum localization algorithms, and the second work uses quantum sensors and classical localization algorithms.}

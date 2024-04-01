@@ -90,7 +90,7 @@ The PQC-based methods have a bottleneck on the number of sensors due to POVM con
 we are still limited in practice nevertheless due to training time and GPU memory; thus, we 
 use a maximum of 16 sensors in the first level or in any block of the second level. This limits
 the training time to at most several hours and GPU memory requirements to 8-16 GB. 
-We discuss more details on number of sensors used at various levels and blocks, below.
+We discuss more details on the number of sensors used at various levels and blocks, below.
 Finally, each grid cell is of size $10m \times 10m$ in all settings, and the transmitter 
 can be anywhere in the given area except that the minimum distance between any sensor
 and transmitter is 5m.
@@ -104,7 +104,7 @@ However, in this section, to get a better insight into the performance trends, i
 %%%%%%%%%
 For such $N$ values, we have determined block sizes as integers close to the $\sqrt{N}$; e.g., for a $12\times12$ grid, we divided the grid into $4 \times 4$ blocks each of $3 \times 3$ cells.
 %%%%%%%%%%%%%%%%%
-In terms of the number of sensors at each level---we use up to 16 sensors in the first-level of localization, but in the second-level we always use exactly 4 sensors per block irrespective of the block/grid size.
+In terms of the number of sensors at each level---we use up to 16 sensors in the first level of localization, but in the second level we always use exactly 4 sensors per block irrespective of the block/grid size.
 
 \para{Performance Metrics.} 
 We use the {\tt Localization error} ($\lerr$, in meters) as the main metric to evaluate our localization schemes. $\lerr$ is defined as the distance between the actual location of the transmitter and the predicated location. 
@@ -113,7 +113,7 @@ In all plots except the CDF plots, average $\lerr$ refers to the
 in the CDF plots, the distribution is over many TX locations.
 
 \subsection{Evaluation Results}
-In our evaluation, we evaluate the performance of our proposed four localization algorithms' performances for varying  grid size and number of quantum sensors.
+In our evaluation, we evaluate the performance of our proposed four localization algorithms' performances for varying grid size and number of quantum sensors.
 Note that, for one-level algorithms, the number of sensors is the total number of sensors used, while for the two-level algorithms, the number of sensors parameter is the number of sensors used in the first/coarse level (recall that, in the second level, we use only 4 sensors for each block). 
 \begin{figure}[t]
     \centering
@@ -158,12 +158,12 @@ and then, in the second level, each block will always have 4 sensors associated 
 
 \para{CDF.}
 Fig.~\ref{fig:continuous.errorcdf} shows the cumulative distribution function of $\lerr$ for four methods when the grid size is $16\times16$ and the number of sensors is 8.
-This plot gives insight into the {\em distribution} of $\lerr$ over different TX location, 
+This plot gives insight into the {\em distribution} of $\lerr$ over different TX locations, 
 compared with Fig.~\ref{fig:continuous.varysen} which shows only average $\lerr$ across many TX locations. 
 Here, the distribution is over 256 TX locations---one random TX location per cell for 256 cells in the $16\times 16$ grid.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We observe, as expected, that  the two-level schemes are better than the one-level schemes, and the PQC-based methods are better than the QSD-based methods, except that \povm has a better CDF plot than
-\pqcone up to the 83-th percentile. The above exception implies that \povm has higher number of locations with large $\lerr$ compared with \pqcone;
+We observe, as expected, that the two-level schemes are better than the one-level schemes, and the PQC-based methods are better than the QSD-based methods, except that \povm has a better CDF plot than
+\pqcone up to the 83-th percentile. The above exception implies that \povm has a higher number of locations with large $\lerr$ compared with \pqcone;
 this is likely due to \povm incurring errors in determining the block at the first/coarse level, which can lead to large localization errors.
 % \sout{But in most cases, the performance of \povm is actually better than \pqcone.
 % So the $95\%$ percentile performance of \povm is poor, making the overall average $\lerr$ worse than \pqcone.}

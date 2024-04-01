@@ -10,14 +10,14 @@ walls and other obstacles.
 
 \para{Sensor and Transmitters Used.}  Our low-cost (sub \$100, see~\cite{pam19-lowcostsensing} for a measurement study of low-cost spectrum sensors)
 sensing device  is composed of a single-board computer
-Odroid-C2 with an RTL-SDR dongle which
+Odroid-C2 with an RTL-SDR dongle that
 connects to a dipole antenna. We deploy 18 of these sensing devices
-in our indoor and outdoor testbeds, and configure them for low gain.
+in our indoor and outdoor testbeds and configure them for low gain.
 %The RTL-SDR devices has a noise floor of \ble{-48dB.}
 %%%%%
 For transmitters/intruders, we use USRP B210 and HackRF devices
   powered by laptops; we place these on a cart for mobility. These
-  transmiter devices are uncalibrated, and there is no way to assign a
+  transmitter devices are uncalibrated, and there is no way to assign a
   specific transmit power. However, they have a configurable parameter
   called {\em gain} which is almost perfectly correlated to power when
   the gain is in a specific range, i.e., when the transmitter's gain
@@ -29,7 +29,7 @@ For transmitters/intruders, we use USRP B210 and HackRF devices
   observations, we implemented a Python repository in Linux that
   measures spectrum in real time at 915MHz ISM band and 2.4Msps
   sample rate.  The repository collects I/Q samples fetched from the
-  RTL-SDR dongle and computes the RSS value, then record the RSS along
+  RTL-SDR dongle and computes the RSS value, then records the RSS along
   with timestamp and location.  These three pieces of information are
   sent to a server that runs the localization algorithms. 
 
@@ -80,7 +80,7 @@ ceiling tiles each of which is 0.6m $\times$ 0.6 $m$.
 The {\bf outdoor} testbed is over an open space parking lot.  See
 Figure~\ref{fig:outdoor}. The area is 32m $\times$ 32m. We divide the
 area into 100 grid cells with each cell representing an area of 3.2m
-$\times$ 3.2m. The GPS device returns location in (latitude,
+$\times$ 3.2m. The GPS device returns the location in (latitude,
 longitude) and the program converts it into coordinates. We use an
 outdoor WiFi router and long power cords for network and electrical
 connection respectively.
@@ -116,21 +116,21 @@ a half hours for outdoors.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/indoor-error-missfalse.png}
-	\caption{Localization performance of varies algorithms in an indoor testbed}
+	\caption{Localization performance of various algorithms in an indoor testbed}
 	\label{fig:indoor-error-miss-false}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/ipsn/figures/outdoor-error-missfalse.png}
-	\caption{Localization performance of varies algorithms in an outdoor testbed}
+	\caption{Localization performance of various algorithms in an outdoor testbed}
 	\label{fig:outdoor-error-miss-false}
 \end{figure}
 
 \para{Evaluation.}  For evaluation, in both testbeds, we place the 18
 sensors at centers of grid cells that are randomly chosen and are
-different from the cells chosen for training above. The chosen
-locations for the outdoor tested are shown in
+different from the cells chosen for the training above. The chosen
+locations for the outdoor testbed are shown in
 Fig.~\ref{fig:outdoor}(b). We choose the intruder's gain/power to be
 in the range of [$\pstar-1, \pstar+1$], where $\pstar$ is the
 gain/power used during the training phase as mentioned above.
@@ -181,11 +181,11 @@ and the sum of miss-rate and false-alarm is between 5-15\%.
 
 
 \para{Interpolation Error.}
-Table \ref{tab:inter-error} show the
+Table \ref{tab:inter-error} shows the
 interpolation mean absolute error (MEA) as well as mean error (ME) of
 \idw and \ildw when the transmitter and receiver are close by (i.e.,
 within a distance of 3 grid cells). When the transmitter and receiver
-are far away, the difference of \idw and \ildw is small and thus not
+are far away, the difference between \idw and \ildw is small and thus not
 shown.  We see that when compared with \idw, our \ildw interpolation
 scheme decreased the mean absolute error by 35 percent in the indoor
 environment and 56 percent in the outdoor environment.  In terms of
@@ -210,7 +210,7 @@ while \ildw's estimates are more even across the ground truth.
 	\label{table:power-error}
 \end{table}
 
-\para{Intruder Power.}  Table ~\ref{table:power-error} show the errors in the predicted powers of
+\para{Intruder Power.}  Table ~\ref{table:power-error} shows the errors in the predicted powers of
 the intruders in \ouralgo. We see that the outdoors have a slightly
 higher power prediction error, likely because of a larger number of
 grid cells. We also note that with the increase in the number of

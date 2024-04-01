@@ -7,7 +7,7 @@ single intruder and Gaussian probability
 distributions~\cite{gauss}. The derived result essentially removes the
 assumption of discrete power levels, and reduces the number of
 hypotheses to consider by a factor of $W$. We use
-this result within Procedure~1 of previous subsection to further
+this result within Procedure~1 of the previous subsection to further
 optimize its time complexity and performance.
 
 \para{Estimating Intruder Power, Given a Location.}  Consider the
@@ -23,7 +23,7 @@ $$P = \arg max_p P(\hLp | \vx)$$
 %%%%
 The value $P$ can be computed by computing $P(\hLp | \vx)$ for
 each $p$, but our goal is to derive a closed-form expression for $P$
-from the given JPDs; such an expression yield power estimate in
+from the given JPDs; such an expression yields power estimate in
 continuous domain without computing $P(\hLp | \vx)$ for each possible
 discrete $p$.
 
@@ -52,11 +52,11 @@ formally in the below lemma.
   Consider the special case of a single intruder in an area.  For a
   specific location $\lstar$ and power $\pstar$ (the only power used
   during training), let $\pd(\vx_j | \hLP)$ represent the PDs of the
-  sensor obversations at location $j$. Now, given the above PDs for
+  sensor observations at location $j$. Now, given the above PDs for
   various $j$ and an observation vector $\vx$, the power value
   $P = \arg max_p P(\hLp | \vx)$ is   given by: 
   $$\pstar + \frac{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}(x_j - \mu_j)}{\sum_{j=1}^{S} \frac{\gamma}{\sigma_j^2}},$$
-  where $\gamma = \prod_{j=1}^{S} \sigma_j^2$ and S equals to the number of sensors in the neighborhood of  $\ \lstar$.
+  where $\gamma = \prod_{j=1}^{S} \sigma_j^2$ and S equals the number of sensors in the neighborhood of  $\ \lstar$.
   \label{lem:p}
 \end{lemma-wo-prf}
 The proof is in Appendix~\ref{appen:ipsn}. 
@@ -66,7 +66,7 @@ $j$. In this special case, the Lemma's equation reduces to $P = \pstar
 + \frac{\sum_{j=1}^{S}(x_j - \mu_j)}{|S|}$, which implies that if each
 observation $x_j$ is $c$ more than its mean $\mu_j$ then $P$ is also
 $c$ more than $\pstar$. We note that the above result does {\em not}
-extend to the case of multiple intruders. In short, the proof is a process of solving maximum likelihood esitmaion and multiple intruders introduce transcendental functions, thus cannot derive a closed-form solution.
+extend to the case of multiple intruders. In short, the proof is a process of solving maximum likelihood estimation and multiple intruders introduce transcendental functions, thus cannot derive a closed-form solution.
 
 \para{Use of Lemma~\ref{lem:p} in \ouralgo.} \eat{First, we note that,
   for the special case of a single intruder, the result of
@@ -90,7 +90,7 @@ within a radius of $R$.
 Then, in the rest of the procedure, we only consider the (location,
 power) pairs of the type $(l, p(l))$ for any $l$.
 \end{itemize}
-Rest of the Procedure~1 remains unchanged. The above change has two
+The rest of the Procedure~1 remains unchanged. The above change has two
 benefits. First, the powers predicted in Procedure~1 are now
 continuous rather than discrete. Second, the above removes the factor
 of $W$ from the time complexity of \ouralgo and reduces it to

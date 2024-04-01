@@ -1,13 +1,13 @@
 \subsection{Related Works}
 \label{sec:swapping_related}
 
-There have been a few works in the recent years that have addressed generating long-distance \epss
+There have been a few works in recent years that have addressed generating long-distance \epss
 efficiently. All of these works have focused on selecting an efficient routing path~\cite{sigcomm20,yiming2023,yuhang2023} for the swapping
 process (Callefi~\cite{caleffi} also selects a path, but using a metric based
 on balanced trees).
 In addition, all except~\cite{caleffi} have looked at the \os protocol of generating the
-\epss. Recall that in the \os model, selection of paths suffice, while in the \wt model, one needs
-to consider selection of efficient swapping trees with high fidelity.
+\epss. Recall that in the \os model, the selection of paths suffices, while in the \wt model, one needs
+to consider the selection of efficient swapping trees with high fidelity.
 %%%%%%%%%%%%%%%%%%%%%%%
 Selection of optimal swapping trees is a fundamentally more challenging problem 
 than selection of paths---and has not 
@@ -25,14 +25,14 @@ they use the algorithm iteratively to select multiple paths over multiple pairs 
 ~\cite{yuhang2023} is an improvement of~\cite{sigcomm20} that proposes a synchronous multi-time-slot entanglement routing framework
 based on the idea of reusing the established but unused EP pairs in subsequent time slots.
 Chakraborty et al.~\cite{delft-lp} design a multi-commodity-flow
-like LP formulation to select routing paths for a set of source destination pairs. They map
-the operation-based fidelity constraint to the path length (as in~\cite{BreigelEtAl1998}), and use
+like LP formulation to select routing paths for a set of source-destination pairs. They map
+the operation-based fidelity constraint to the path length (as in~\cite{BreigelEtAl1998}) and use
 node copies to model the constraint in the LP. However, they explicitly assume that the link
 \eps generation is deterministic---i.e., always succeeds. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Among earlier relevant works,~\cite{guha} proposes a greedy solution
 for grid networks, and~\cite{greedy2019distributed} proposes 
-virtual-path based routing in ring/grid networks.
+virtual-path-based routing in ring/grid networks.
 \eat{and~\cite{gradient} using a gradient approach to select
 efficient routing paths.}
 
@@ -80,7 +80,7 @@ consider only balanced trees; however, we use a heuristic metric that facilitate
 
 \para{Other Works.}
 In~\cite{Jiang17291}, Jiang et al.\ address a related problem; given a 
-path with uniform link-lengths, they give an algorithm for selecting an 
+path with uniform link lengths, they give an algorithm for selecting an 
 optimal sequence of swapping and purification operations 
 to produce an \eps with fidelity constraints.  
 In other recent works, Dahlberg et al~\cite{sigcomm19} design physical and link layer protocols
@@ -98,7 +98,7 @@ Most recent works: sigcomm and delft-lp. They both do paths in \os model.
 easily derived to be $p^n \bp^n$ per time slot. But, for multiple channels, it requires
 a more complex metric -- derived in their paper.
 %%%%%%
-They use a Dijkstra like algorithm to find an optimal path. Use an iterative procedure
+They use a Dijkstra-like algorithm to find an optimal path. Use an iterative procedure
 to find paths for more pairs. They use a simplistic model of resource -- multiple channels per link. }
 
 \eat{

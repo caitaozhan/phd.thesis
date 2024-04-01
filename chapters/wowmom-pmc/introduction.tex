@@ -4,7 +4,7 @@
 The RF spectrum is a limited natural resource in great demand due to the
 unabated increase in mobile (and hence, wireless) data
 consumption~\cite{Jeffrey14,sigcomm21-5G}.
-In 2020, the U.S. FCC moves to free up 100 MHz of previously military occupied mid-band spectrum in the 3.45-3.55 GHz band for paving the way for 5G development. 
+In 2020, the U.S. FCC moves to free up 100 MHz of previously military-occupied mid-band spectrum in the 3.45-3.55 GHz band for paving the way for 5G development. 
 Also, the research and industry communities have been addressing this capacity crunch via the development of {\em shared spectrum}.
 Spectrum sharing is the simultaneous usage of a specific frequency band in a specific geographical area and time by a number of independent entities where harmful electromagnetic interference is mitigated through agreement (i.e., policy, protocol)~\cite{dod20-spectrum}. 
 Spectrum sharing techniques are also normally used in 5G networks to enhance spectrum efficiency~\cite{survey-specshare}.~However, protection of spectrum from unauthorized
@@ -14,9 +14,9 @@ The increasing affordability of the software-defined radio (SDR)
 technologies makes the shared spectrum particularly prone to
 unauthorized usage or security attacks. With easy access to SDR
 devices (e.g. HackRF, USRP), it is easy for selfish users to transmit data
-on a shared spectrum without any authorization and potentially causing
+on a shared spectrum without any authorization and potentially cause
 harmful interference to the incumbent users.  Such illegal spectrum
-usage could also happen as a result of infiltration of computer viruses
+usage could also happen as a result of the infiltration of computer viruses
 or malware on SDR devices.~\cite{survey-specshare} depicts three cases of spectrum attack.
 As the fundamental objective behind such
 shared spectrum paradigms is to maximize spectrum utilization, the
@@ -73,7 +73,7 @@ latency.
 %%%%%%%%%%%
 \deeptx uses a CNN-based learning model approach; 
 however, they use a separate CNN model for a specific number of transmitters
-and thus may incur high model complexity and training cost while also limiting the number 
+and thus may incur high model complexity and training costs while also limiting the number 
 of transmitters that can be localized.
 In our evaluations, we compare our work with each of the above approaches.
 %In this approach, like ours, a model is trained, which later is used to predict the configuration of the transmitters the best based on sensors received power.
@@ -85,7 +85,7 @@ In our evaluations, we compare our work with each of the above approaches.
 \centering
 \includegraphics[width=0.9\textwidth]{chapters/wowmom-pmc/figures/architecture.png}
 \caption{Multiple transmitter localization using a distributed set of sensors. Sensing data is uploaded to a spectrum manager server in the cloud. \our is a deep learning approach to multiple transmitter localization which helps protect 
-spectrum against unauthorized usage. After that, prediction of transmission powers happens using \our as a building block.}
+spectrum against unauthorized usage. After that, the prediction of transmission powers happens using \our as a building block.}
 \label{fig:illustration}
 \end{figure}
 
@@ -108,7 +108,7 @@ We name our \mtl approach as \our.
 Our overall approach and its various aspects are motivated by the following considerations. 
 {\bf First}, we use a learning-based strategy to 
 preclude assuming a propagation model~\cite{mobicom17-splot} or conducting surveys of sensors reading distributions~\cite{ipsn20-mtl}.
-Assumption of propagation model suffers from the fact that 
+The assumption of the propagation model suffers from the fact that 
 even sophisticated propagation models yield unsatisfactory accuracy and thus lead to degraded performance.
 Among all learning-based strategies, deep learning can implicitly capture the environment characteristics (e.g., objects, walls, landscape) in the neural network layers' weights learned through the training of the data~\cite{mobicom20-deeploc}.
 Even though a learning-based approach incurs a one-time high training cost,
@@ -118,9 +118,9 @@ The intruder detection should incur minimal latency to be effective.
 well-suited for efficient
 learning of the desired function. In particular, the features of the \mtl problem can be
 represented in an image (2D matrix) corresponding to their geographic locations, which can be fed as an input
-to an appropriate CNN model which can leverage the spatial correlation among the input features 
+to an appropriate CNN model that can leverage the spatial correlation among the input features 
 to facilitate efficient learning. 
-{\bf Lastly,} we use a two-step architecture to  facilitate efficient training by essentially
+{\bf Lastly,} we use a two-step architecture to facilitate efficient training by essentially
 providing an additional intermediate image. 
 In particular,  we are able to map each step to well-studied standard computer vision problems, allowing us to build upon known techniques. 
 
@@ -138,18 +138,18 @@ For the second step of mapping transmitter distributions to precision locations 
 we customize the well-known  object detection method YOLOv3 (Section \ref{sec:detect}).
 
 \item
-For localization of transmitters in presence of authorized users, we 
+For localization of transmitters in the presence of authorized users, we 
 augment the \our model by adding a pre-processing step based on a 
 CNN-model that first reduces the 
 sensor readings by the power received from the authorized users (Section \ref{sec:authorized}).
 
 \item
-To estimate transmit power of the intruders, we augment our \our model
+To estimate the transmit power of the intruders, we augment our \our model
 with a power-estimation CNN-model which iteratively estimates the power of transmitters
 in sub-areas (Section \ref{sec:power}).
 
 \item
-We evaluate our techniques via large-scale simulations as well as a small-scale testbed data and demonstrate their effectiveness and superior
+We evaluate our techniques via large-scale simulations as well as small-scale testbed data and demonstrate their effectiveness and superior
 performance compared to the prior works (Section \ref{sec:evaluation}).
 \end{enumerate}
 

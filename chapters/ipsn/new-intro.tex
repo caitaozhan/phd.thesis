@@ -4,7 +4,7 @@
 The RF spectrum is a natural resource in great demand due to the
 unabated increase in mobile (and hence, wireless) data
 consumption~\cite{Jeffrey14}.  The research community has
-addressed this capacity crunch via development of {\em shared spectrum
+addressed this capacity crunch via the development of {\em shared spectrum
   paradigms}, wherein the spectrum is made available to unlicensed
 users (secondaries) as long as they do not interfere with the
 transmission of licensed incumbents (primaries).  E.g., in the recent
@@ -26,7 +26,7 @@ The increasing affordability of the software-defined radio (SDR)
 technologies makes the shared spectrums particularly prone to
 unauthorized usage or security attacks. With easy access to SDR
 devices~\cite{usrp,hackrf}, it is easy for selfish users to transmit data
-on shared spectrum without any authorization and potentially causing
+on the shared spectrum without any authorization and potentially causing
 harmful interference to the incumbent users.  Such illegal spectrum
 usage could also happen as a result of infiltration of computer virus
 or malware on SDR devices.  As the fundamental objective behind such
@@ -39,12 +39,12 @@ which detects violations via complaints and manual
 investigation~\cite{mobicom17-splot}. 
 \eat{As explained below, an effective
 technique should be able to accurately localize multiple simultaneous
-intruders and even in the presence of dynamically changing set of
+intruders and even in the presence of a dynamically changing set of
 authorized users.}
-Motivated by above, we seek for an effective
+Motivated by the above, we seek for an effective
 technique that is able to accurately localize multiple simultaneous
-intruders and even in the presence of dynamically changing set of
-authorized users. In the following, we begin with describing the multiple transmitter localization problem.
+intruders and even in the presence of a dynamically changing set of
+authorized users. In the following, we begin by describing the multiple transmitter localization problem.
 
 
 %%% Multi-tx and challenges.
@@ -61,7 +61,7 @@ the deployed sensor would receive only a sum of the signals from multiple transm
 addition, the other challenge that MTL in the context of shared
 spectrum system poses is the presence of authorized users---e.g., the
 incumbent users and the dynamic set of secondary users that have been
-allocated spectrum by the manager. To the best our knowledge, no prior
+allocated spectrum by the manager. To the best of our knowledge, no prior
 localization work has considered the presence of authorized users.
 
 %%%% SPLOT and shortcomings.
@@ -99,14 +99,14 @@ observations. This determination is done based on the distributions
 hypothesis.
 %%%%%%%%%%%%
 The \map approach is known to have optimal classification accuracy,
-but (i) incurs prohibitive computation cost---exponential in number of
+but (i) incurs prohibitive computation cost---exponential in the number of
 potential intruders---when applied to the \mtl problem, and (ii)
-requires significant amount of training cost. The focus of our work is
+requires a significant amount of training cost. The focus of our work is
 to address these challenges, and design a viable \map-based approach.
 %%%
 In particular, using \map as a building block, we develop an optimized
-approach that runs in polynomial time with minimized training cost.
-We extend our technique to work in presence of authorized users by
+approach that runs in polynomial time with minimized training costs.
+We extend our technique to work in the presence of authorized users by
 incorporating online (real-time) training.
 
 %%%%% MOTIVATION.
@@ -118,7 +118,7 @@ thus works for arbitrary signal propagation characteristics. Third, it
 allows us to also estimate the intruder's transmit power, which can be
 very useful in some applications, e.g., where the penalty is
 proportional to the extent of violation. Last but not the least,
-it naturally extends to being able to handle a presence of an evolving
+it naturally extends to being able to handle the presence of an evolving
 set of authorized users.
 
 \softpara{Training Cost and Optimization.}  The benefits of a \map-based
@@ -131,7 +131,7 @@ reduce the number of PDs to be constructed via a {\em novel interpolation
 scheme} suited to our unique setting, and evaluate the impact of
 reduced training on the localization accuracy.
 %%%
-We note that the online training to incorporate presence of authorized
+We note that the online training to incorporate the presence of authorized
 users is needed only for the prevailing setting (of authorized
 transmitters and deployed sensors) and hence incurs minimal cost
 (see~\S\ref{sec:auth}).

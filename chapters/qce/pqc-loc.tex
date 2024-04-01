@@ -104,7 +104,7 @@ last $CU_3$ gate which is over the last and the first qubit.
 Thus, a single block has a circuit depth of $N+1$.
 The overall PQC may have a series of above blocks---the expressive power of the model increases monotonically with the increase in the number of blocks.
 %%%%%%%%%%%%%%%%%%%%
-In our evaluations (\S\ref{sec:eval}), we used four blocks as we observe that four blocks provide good performance while having a modest circuit depth.
+In our evaluations (\S\ref{sec:eval}), we used four blocks as we observed that four blocks provide good performance while having a modest circuit depth.
 %%%%%%%%%%
 After the blocks, the PQC ends with the measurement on the standard computational basis, 
 i.e., the Pauli Z basis.
@@ -127,7 +127,7 @@ $\langle Z \rangle$ of the Pauli Z operator is given by $\bra{\psi} Z \ket{\psi}
 % For $\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$, $\langle Z \rangle = |\alpha|^{2} - |\beta|^{2}$ is the measure of how much the probabilities are biased towards $\ket{0}$ and $\ket{1}$.
 % The expectation values of the measurement operators are fed into a neural network for final location prediction as described next. 
 
-\softpara{3. Neural-Network to Predict Location.}
+\softpara{3. Neural Network to Predict Location.}
 We consider two variants of our neural network predictor: (i) Classifier variant. which outputs a class/label corresponding to the cell where the TX is located, and thus, predicts the location to be the cell's center. (ii) 
 Regression variant, that outputs locations as the $x$ and $y$ coordinates.
 

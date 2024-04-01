@@ -17,7 +17,7 @@ become inactive over time.
 One simple way to handle background users is to just localize every
 transmitter, and then remove the authorized users. However, any
 localization approach (including ours) is susceptible to performance
-degradation with increase in number of transmitters to be localized,
+degradation with an increase in the number of transmitters to be localized,
 especially if some of them are situated close together. Thus, this
 simple approach of localizing every transmitter is unlikely to be
 effective, as shown in our evaluations, especially when the number of
@@ -43,13 +43,13 @@ section. We start with defining a few useful notations.
 
 We use \Pa to denote the set of (fixed) primaries, and \Ka to denote
 the set of secondaries at a given instant, and \ii to denote the \jth
-configuration of intruders (we can assume the zero-th configuration to
+configuration of intruders (we can assume the zeroth configuration to
 represent no intruders). We use $\tau = \Pa \cup \Ka \cup \ii$ to denote the
 set to all transmitters (authorized and unauthorized) at a given
 instant.  Finally, we use $\pd(\vx | (\tau = X))$ to denote the joint
 probability distribution (JPD) of observation vectors from the
 deployed sensors when the prevailing hypothesis is that the set $\tau$
-of transmitters is $X$. \ouralgoss is the sequence of following steps.
+of transmitters is $X$. \ouralgoss is the sequence of the following steps.
 \begin{packedenumerate}
 	\item
 	(Offline Step.) Construct JPDs $\pd(\vx | \Pa)$ and $\pd(\vx | \tau = (\ii \cup \Pa))$ for all $j$. Since these JPDs 
@@ -77,9 +77,9 @@ of transmitters is $X$. \ouralgoss is the sequence of following steps.
 
 Note that steps 1 and 2a are essentially learning the authorized users' signal charecteristics
 and view them as the ``background signals''. 
-If there are no authorized users, then the background signals are ``quite''. Else, then the background signals have some "sound".
+If there are no authorized users, then the background signals are ``quiet''. Else, then the background signals have some "sound".
 We now state the observation that forms the basis of JPD computation
-in Steps 2b; note that the noise due to sensor's hardware gets
+in step 2b; note that the noise due to sensor's hardware gets
 duplicated when ``adding'' two JPDs, but can be easily removed.
 \begin{obs}
   The JPD $\pd(\vx | (\tau = A \cup B))$ and be computed from JPDs $\pd(\vx | (\tau = A))$ and $\pd(\vx | (\tau = B))$.  Similarly,

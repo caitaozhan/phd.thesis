@@ -27,12 +27,12 @@ We describe \subtract in the following paragraphs.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{chapters/wowmom-pmc/figures/subtractnet2.png}
-    \caption{Overall architecture of second approach to localize 3 intruders in the presence of 5 authorized users. The input of the \subtract is (c), which is stacking authorized user matrix (a) and the sensor reading matrix (b). (d) is the output of \subtract, where the transmission power of the authorized users is subtracted from the area. The details of the \subtract model is in (e). (f) is the localization output after feeding (d) into \our.}
+    \caption{Overall architecture of the second approach to localize 3 intruders in the presence of 5 authorized users. The input of the \subtract is (c), which is stacking authorized user matrix (a) and the sensor reading matrix (b). (d) is the output of \subtract, where the transmission power of the authorized users is subtracted from the area. The details of the \subtract model is in (e). (f) is the localization output after feeding (d) into \our.}
     \label{fig:subtractnet}
 \end{figure}
 
 \softpara{\subtract Input Image}. The sensor reading has two sources, one is the intruders and the other is the authorized users.
-We aim to subtract the power of the authorized users and remain the power from the intruders.
+We aim to subtract the power of the authorized users and retain the power from the intruders.
 So the input of the \subtract will contain two kinds of information: the authorized users' information (Fig.~\ref{fig:subtractnet}(a)), including both the location and the transmitter power, and the sensor reading matrix (Fig.~\ref{fig:subtractnet}(b)) that encode the power from all transmitters.
 To incorporate the two kinds of information, we first encode the authorized user information into a matrix that has the same dimension as the sensor reading matrix.
 Then stack the two matrices together.
@@ -44,7 +44,7 @@ So the higher the power of the authorized transmitter, the higher the peak in th
 Another difference is that the authorized transmitters are approximated at discrete locations instead of the continuous locations as in \imgimg.
 
 \softpara{\subtract Output Image}. 
-The \subtract's output image is just a one-channel images and represents the sensor readings due to the intruders only.  
+The \subtract's output image is just a one-channel image and represents the sensor readings due to the intruders only.  
 
 \softpara{\subtract CNN Architecture}.
 We refer to the model that subtracts the power from the authorized users as the \subtract. 
