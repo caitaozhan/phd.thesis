@@ -3,7 +3,7 @@
 
 In this section, we describe our model of the shared spectrum systems,
 formulate the \mtl problem, and discuss related work.  We also
-describe the building block of our approach, viz., a hypothesis-drived
+describe the building block of our approach, viz., a hypothesis-driven
 Bayesian localization approach (\map).
 
 \para{Shared Spectrum System.} In a shared spectrum paradigm, the
@@ -25,10 +25,15 @@ manager allocates spectrum to requesting secondaries (i.e., permission
 to transmit up to a certain transmit power at their location) based on
 their location, spectrum demand, configurations of the primaries, other
 active secondaries, prevailing channel conditions, etc.
+SwarmShare~\cite{jiangqi2021spectrum,jiangqi2023spectrum} is proposed to enable spectrum sharing
+between the incumbent systems and the coexisting UAV networks~\cite{jiangqi2023uav} in the 6GHz band.
+Researchers have developed NeXT~\cite{jiangqi2022next,jiangqi2023next}, a software-defined wireless testbed, 
+to support both traditional model-based control and new data-driven control techniques in wireless research~\cite{jiangqi2017eedt,jiangqi2019allocation,jiangqi2019}.
+Demonstrations have shown AWS-based remote access and sharing of IoT over-the-air testbeds~\cite{jiangqi2024demo} and scaling out srsRAN via wireless~\cite{jiangqi2023demo}.
 
 \para{Authorized and Unauthorized Users.}
 Secondary users that have been explicitly given permission to transmit
-at their location are termed as {\em authorized users}; the primaries
+at their location are termed as {\em authorized users}; the primary
 users are also considered as authorized users. Note that the set of
 authorized users evolve over time, as more and more SUs are allocated
 spectrum and as some SUs stop using the spectrum after a while. We can
@@ -42,8 +47,8 @@ time) are referred to as {\em unauthorized users} or {\em intruders}.
 area with a shared spectrum. Without loss of generality, we assume a
 single channel throughout this paper (multiple channels are handled
 similarly). For localization of unauthorized users, we assume
-available crowdsourced sensors that can observe received signal in the
-channel of interest, and compute (totel) received signal strength
+available crowdsourced sensors that can observe the received signal in the
+channel of interest, and compute (total) received signal strength
 indicator (RSSI)\footnote{We do not use angle-of-arrival (AoA)
     measurements~\cite{aoa-multi} as they require additional and
     complex RF hardware.}. These sensors, being crowdsourced, may be at
@@ -88,7 +93,7 @@ localization algorithm to localize the intruders.
 %%%%
 In particular, we use a hypotheses-driven Bayesian approach, as
 described below, where intruders are localized by determining the
-most-likely prevailing hypothesis; this is done based on joint
+most likely prevailing hypothesis; this is done based on joint
 probability distributions of the sensors' observations (constructed
 during a priori training). Below, we formalize the above concepts, and
 the basic localization approach.
@@ -119,11 +124,11 @@ of potential intruders. In this chapter, we largely assume an
   intruder's configuration to be comprised of just its location and
   transmit power, but the concept of configuration is quite general
   and could include any attributes (e.g., height, antenna direction,
-  etc.) that affects how its transmitted signal is received at other
+  etc.) that affect how its transmitted signal is received at other
   locations. Moreover, for simplicity, we assume that each intruder
   transmits at a fixed power (which may be different for different
   intruders). Thus, in our context, a configuration is simply the set
-of (location, transmit power) pairs of the potential intruders. We
+of (location, transmit power) pairs of potential intruders. We
 assume a bounded number of intruders. We use \hz to represent the
 hypothesis with no intruders. See Figure~\ref{fig:hypothesis-grid}.
 
@@ -143,7 +148,7 @@ data gathering and/or analysis:
 \item
 Prior probabilities of the hypotheses, i.e. $P(H_i)$, for each
 hypothesis $H_i$. Prior probabilities come from known knowledge about
-area, intruder's behavior, etc., and can be assumed to be uniform in
+the area, intruder's behavior, etc., and can be assumed to be uniform in
 absence of better knowledge.
 
 \item
@@ -171,7 +176,7 @@ the hypotheses based on the following equation:
   \label{eqn:map}
 \end{equation}
 The above \mll algorithm to determine the prevailing hypothesis is
-known to be {\em optimal}~\cite{map-optimal}, i.e., it yields minimum
+known to be {\em optimal}~\cite{map-optimal}, i.e., it yields the minimum
 probability of (misclassification) error. The above hypothesis-based
 approach to localization works for arbitrary signal propagation
 characteristics, and in particular, obviates the need to assume a
