@@ -20,7 +20,7 @@ journal = {IJWIN},
 @inproceedings{mobicom17-splot,
 	title={Simultaneous Power-Based Localization of Transmitters for Crowdsourced Spectrum Monitoring},
 	author={Khaledi, Mojgan and Khaledi, Mehrdad and Sarkar, Shamik and Kasera, Sneha and Patwari, Neal and others},
-	booktitle={ACM MobiCom},
+	booktitle={ACM MobiCom '17},
 	year={2017},
 }
 
@@ -105,7 +105,6 @@ journal = {IJWIN},
 	title={A Quasi {EM} Method for Estimating Multiple Transmitter Locations},
 	year={2009},
 	volume={16},
-	number={5}
 }
 
 @inproceedings{yuxin-when,
@@ -407,7 +406,6 @@ howpublished={\url{https://en.wikipedia.org/wiki/Citizens_Broadband_Radio_Servic
 	title={A Survey of Indoor Localization Systems and Technologies}, 
 	year={2019}, 
 	volume={21}, 
-	number={3}
 }
 
 @INPROCEEDINGS{info-20,
@@ -510,7 +508,7 @@ author = "Haneet Kour and Rakesh Kumar Jha and Sanjeev Jain",
 @INPROCEEDINGS{ipsn20-mtl,
 	author = {Zhan, Caitao and Gupta, Himanshu and Bhattacharya, Arani and Mohammand Ghaderibaneh},
 	title = {Efficient Localization of Multiple Intruders for Shared Spectrum System},
-	booktitle = {19th ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)},
+	booktitle = {ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)},
 	year = {2020}
 }
 
@@ -543,39 +541,37 @@ author = "Haneet Kour and Rakesh Kumar Jha and Sanjeev Jain",
 }
 
 @InProceedings{miccai15-unet,
-author="Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas",
-title="{U-Net}: Convolutional Networks for Biomedical Image Segmentation",
-booktitle="MICCAI 2015",
-year="2015",
+    author="Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas",
+    title="{U-Net}: Convolutional Networks for Biomedical Image Segmentation",
+    booktitle="MICCAI 2015",
+    year="2015",
 }
 
-@article{receptive-field,
-  author    = {Wenjie Luo and
-               Yujia Li and
-               Raquel Urtasun and
-               Richard S. Zemel},
-  title     = {Understanding the Effective Receptive Field in Deep Convolutional
-               Neural Networks},
-  journal   = {CoRR},
-  year      = {2017},
+@misc{receptive-field,
+    title={Understanding the Effective Receptive Field in Deep Convolutional Neural Networks}, 
+    author={Wenjie Luo and Yujia Li and Raquel Urtasun and Richard Zemel},
+    year={2017},
+    eprint={1701.04128},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
 }
 
-@article{groupnorm,
-  author    = {Yuxin Wu and
-               Kaiming He},
-  title     = {Group Normalization},
-  journal   = {CoRR},
-  year      = {2018},
-  archivePrefix = {arXiv},
-  abstract = {Batchnorm (BN) exploits the batch dimension and pixels sharing the same channel index are normalized together. Groupnorm (GN) is an alternative to batchnorm (BN) where GN is independent of batch dimensions and divide the channels into groups and computes within each group the mean and variance for normalization. GN avoids the BN's limits in small batch sizes caused by inaccurate batch statistics estimation.}
+@misc{groupnorm,
+    title={Group Normalization}, 
+    author={Yuxin Wu and Kaiming He},
+    year={2018},
+    eprint={1803.08494},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
 }
 
-@article{batchnorm,
-  author    = {Sergey Ioffe and
-               Christian Szegedy},
-  title     = {Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift},
-  journal   = {CoRR},
-  year      = {2015},
+@misc{batchnorm,
+    title={Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift}, 
+    author={Sergey Ioffe and Christian Szegedy},
+    year={2015},
+    eprint={1502.03167},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
 }
 
 @misc{kingma2017adam,
@@ -630,7 +626,7 @@ booktitle = {IEEE {CVPR} '16}
 
 @INPROCEEDINGS{Ureten2011powerlocation,
   author={Üreten, O. and Willink, T. J.},
-  booktitle={2011 IEEE 12th International Workshop on Signal Processing Advances in Wireless Communications}, 
+  booktitle={IEEE International Workshop on Signal Processing Advances in Wireless Communications}, 
   title={Joint estimation of emitter power and location in cognitive radio networks}, 
   year={2011},
 }
@@ -638,8 +634,9 @@ booktitle = {IEEE {CVPR} '16}
 @article{PowerEstimate2010Zafer,
 author = {Zafer, Murtaza and Ko, Bong Jun and Ho, Ivan Wang-Hei},
 year = {2010},
+volume={18},
 title = {Transmit Power Estimation Using Spatially Diverse Measurements Under Wireless Fading},
-journal = {IEEE/ACM Transactions on Networking},
+journal = {IEEE/ACM TON},
 }
 
 @inproceedings{icoin2007-powerposition,
@@ -696,7 +693,7 @@ series = {ACM MobiCom '21},
 @ARTICLE{DeepFi2016,
   author={Wang, Xuyu and Gao, Lingjun and Mao, Shiwen and Pandey, Santosh},
   journal={IEEE Transactions on Vehicular Technology}, 
-  title={CSI-Based Fingerprinting for Indoor Localization: A Deep Learning Approach}, 
+  title={{CSI-Based} Fingerprinting for Indoor Localization: A Deep Learning Approach}, 
   year={2017}
 }
 
@@ -721,10 +718,11 @@ booktitle = {ACM SIGSPATIAL}
 %%%%%%%%%%%%%%%%%%%%
 
 @Article{Jeffrey14,
-  author        = "Jeffrey G. Andrews and Stefano Buzzi and others",
-  title         = "What Will {5G} Be?",
-  journal       = "IEEE Journal on Selected Areas in Communications",
-  year          = "2014",
+  author  = "Jeffrey G. Andrews and Stefano Buzzi and others",
+  title   = "What Will {5G} Be?",
+  journal = "IEEE Journal on Selected Areas in Communications",
+  year    = "2014",
+  volume  = "32",
 }
 
 @ARTICLE{spectrumAllocationSurvey13,
@@ -753,6 +751,7 @@ author={K. {Chamberlin} and R. {Luebbers}},
 journal={IEEE Transactions on Antennas and Propagation},
 title={An evaluation of Longley-Rice and GTD propagation models},
 year={1982},
+volume={30}
 }
 
 @INPROCEEDINGS{hata2000,
@@ -971,7 +970,7 @@ year={2017},
 @inproceedings{nsdi13-arraytrack,
 author = {Jie Xiong and Kyle Jamieson},
 title = {{ArrayTrack}: A {Fine-Grained} Indoor Location System},
-booktitle = {10th USENIX {NSDI} '23},
+booktitle = {USENIX {NSDI} '23},
 year = {2013},
 }
 
@@ -1013,6 +1012,7 @@ publisher = {Springer Publishing Company, Incorporated},
     title = {Quantum state discrimination and selected applications},
     author = {Bergou, János},
     year = {2007},
+    volume = {84},
     journal = {Journal of Physics: Conference Series},
 }
 
@@ -1068,6 +1068,7 @@ author = {Adu-Manu, Kofi Sarpong and Tapparello, Cristiano and Heinzelman, Wendi
 title = {Water Quality Monitoring Using Wireless Sensor Networks: Current Trends and Future Research Directions},
 year = {2017},
 journal = {ACM Trans. on Sensor Networks},
+volume = {13}
 }
 
 @inproceedings{sensys10-health,
@@ -1165,7 +1166,7 @@ year = {2012},
 
 @INPROCEEDINGS{wowmom21,
   author={Zhan, Caitao and Ghaderibaneh, Mohammad and Sahu, Pranjal and Gupta, Himanshu},
-  booktitle={IEEE 22nd International Symposium on a World of Wireless, Mobile and Multimedia Networks ({WoWMoM})}, 
+  booktitle={IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks ({WoWMoM} '21)}, 
   title={{DeepMTL}: Deep Learning Based Multiple Transmitter Localization}, 
   year={2021},
 }
@@ -1186,13 +1187,11 @@ VOLUME = {22},
 YEAR = {2022},
 }
 
-@article{qsn-acm-23,
-      title={Optimizing Initial State of Detector Sensors in Quantum Sensor Networks}, 
-      author={Caitao Zhan and Himanshu Gupta and Mark Hillery},
-      year={2023},
-      note={arXiv, 2306.17401},
-      archivePrefix={arXiv},
-      primaryClass={quant-ph}
+@article{qsn-acm-24,
+    title={Optimizing Initial State of Detector Sensors in Quantum Sensor Networks}, 
+    author={Caitao Zhan and Himanshu Gupta and Mark Hillery},
+    year={2024},
+    journal={ACM Transactions on Quantum Computing},
 }
 
 @article{Altenburg_2019,
@@ -1230,9 +1229,7 @@ title = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
 author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and others},
 booktitle = {Advances in Neural Information Processing Systems 32},
 year = {2019},
-publisher = {Curran Associates, Inc.},
 }
-
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -1241,9 +1238,9 @@ publisher = {Curran Associates, Inc.},
 
 @inproceedings{Caleffi18,
 author = {Caleffi, Marcello and Cacciapuoti, Angela Sara and Bianchi, Giuseppe},
-title = {Quantum Internet: From Communication to Distributed Computing!},
+title = {{Quantum Internet: From Communication to Distributed Computing!}},
 year = {2018},
-booktitle = {5th ACM International Conference on Nanoscale Computing and Communication},
+booktitle = {ACM NANOCOM '18},
 }
 
 @article{qn,
@@ -1282,11 +1279,13 @@ booktitle = {5th ACM International Conference on Nanoscale Computing and Communi
   publisher={Optical Society of America}
 }
 
-@article{byzantine,
-  title={Quantum Consensus: an overview},
-  author={Marcozzi, Marco and Mostarda, Leonardo},
-  journal={arXiv preprint arXiv:2101.04192},
-  year={2021}
+@misc{byzantine,
+    title={Quantum Consensus: an overview}, 
+    author={Marco Marcozzi and Leonardo Mostarda},
+    year={2021},
+    eprint={2101.04192},
+    archivePrefix={arXiv},
+    primaryClass={quant-ph}
 }
 
 @article{Bennett+:93,
@@ -1294,7 +1293,6 @@ author = {C. H. Bennett and G. Brassard and C. Crépeau and R. Jozsa and A. Pere
 title = {Teleporting an Unknown Quantum State via Dual Classical and {Einstein-Podolsky-Rosen} Channels},
 journal = {Phys. Rev. Lett.},
 volume = 70,
-number = 13,
 year = 1993,
 }
 
@@ -1328,6 +1326,7 @@ author={Chakraborty, Kaushik and Elkouss, David and Rijsman, Bruno and Wehner, S
 journal={IEEE Transactions on Quantum Engineering},   
 title={Entanglement Distribution in a Quantum Network: A Multicommodity Flow-Based Approach}, 
 year={2020},
+volume={1}
 }
 
 @ARTICLE{guha,
@@ -1616,10 +1615,11 @@ author = {Otfried Gühne and Géza Tóth},
 }
 
 @article{netsquid2020,
-title={NetSquid, a discrete-event simulation platform for quantum networks},
-author={Coopmans, Tim and Knegjens, Robert and Dahlberg, Axel and Maier, David and Nijsten, Loek and Oliveira, Julio and Wehner, Stephanie and others},
-journal={Communications Physics},
-year={2021},
+    title={{NetSquid}, a discrete-event simulation platform for quantum networks},
+    author={Coopmans, Tim and Knegjens, Robert and Dahlberg, Axel and Maier, David and Nijsten, Loek and Oliveira, Julio and Wehner, Stephanie and others},
+    journal={Communications Physics},
+    year={2021},
+    volume={4}
 }
 
 @ARTICLE{waxman,
@@ -1929,6 +1929,7 @@ abstract={The field of machine learning (ML) has achieved remarkable success ove
   journal={IEEE Transactions on Artificial Intelligence}, 
   title={Explain the Explainer: Interpreting Model-Agnostic Counterfactual Explanations of a Deep Reinforcement Learning Agent}, 
   year={2022},
+  volume={5}
 }
 
 @inproceedings{ziheng_relax,
@@ -2125,7 +2126,7 @@ journal = {Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.},
 
 @INPROCEEDINGS{yubo2022demo,
   author={Zhang, Le and Luo, Yubo and Nirjon, Shahriar},
-  booktitle={21st ACM/IEEE IPSN '22}, 
+  booktitle={ACM/IEEE IPSN '22}, 
   title={Demo Abstract: Capuchin: A Neural Network Model Generator for 16-bit Microcontrollers}, 
   year={2022},
 }
@@ -2198,10 +2199,11 @@ title={Deep Graph Learning in Mobile Health},
 }
 
 @article{guimin2023survey,
-author = {Dong, Guimin and Tang, Mingyue and Wang, Zhiyuan and Gao, Jiechao and Guo, Sikun and Cai, Lihua and Gutierrez, Robert and Campbel, Bradford and Barnes, Laura E. and Boukhechba, Mehdi},
-title = {Graph Neural Networks in IoT: A Survey},
-year = {2023},
-journal = {ACM Trans. Sen. Netw.},
+    author = {Dong, Guimin and Tang, Mingyue and Wang, Zhiyuan and Gao, Jiechao and Guo, Sikun and Cai, Lihua and Gutierrez, Robert and Campbel, Bradford and Barnes, Laura E. and Boukhechba, Mehdi},
+    title = {Graph Neural Networks in {IoT}: A Survey},
+    year = {2023},
+    volume = {19},
+    journal = {ACM Trans. Sen. Netw.},
 }
 
 @article{guimin2021pancreatic,
@@ -2248,7 +2250,6 @@ year={2021},
  author = {You, Chenyu and Dai, Weicheng and Min, Yifei and Liu, Fenglin and Clifton, David and Zhou, S. Kevin and Staib, Lawrence and Duncan, James},
  booktitle = {NeurIPS '23},
  title = {Rethinking Semi-Supervised Medical Image Segmentation: A Variance-Reduction Perspective},
- volume = {36},
  year = {2023}
 }
 
@@ -2271,14 +2272,12 @@ year="2023",
   author = {Min, Yifei and He, Jiafan and Wang, Tianhao and Gu, Quanquan},
   booktitle = {ICML '23},
   year = {2023},
-  volume = {202},
 }
 
 @inproceedings{yifei2022,
  author = {Min, Yifei and Wang, Tianhao and Xu, Ruitu and Wang, Zhaoran and Jordan, Michael and Yang, Zhuoran},
  booktitle = {NeurIPS '22},
  title = {Learn to Match with No Regret: Reinforcement Learning in Markov Matching Markets},
- volume = {35},
  year = {2022}
 }
 
@@ -2287,14 +2286,12 @@ year="2023",
   author = {Min, Yifei and He, Jiafan and Wang, Tianhao and Gu, Quanquan},
   booktitle = {ICML '22},
   year = {2022},
-  volume = {162},
 }
 
 @inproceedings{yifei2021,
  author = {Min, Yifei and Wang, Tianhao and Zhou, Dongruo and Gu, Quanquan},
  booktitle = {NeurIPS '21},
  title = {Variance-Aware Off-Policy Evaluation with Linear Function Approximation},
- volume = {34},
  year = {2021}
 }
 
@@ -2310,6 +2307,7 @@ year="2023",
   journal={IEEE Transactions on Smart Grid}, 
   title={Bi-Level Adaptive Storage Expansion Strategy for Microgrids Using Deep Reinforcement Learning}, 
   year={2023},
+  volume={15}
 }
 
 @phdthesis{xiaobo_thesis,
@@ -2364,10 +2362,11 @@ year = {2020},
 booktitle = {KDD '20},
 }
 
-@article{dong2023,
+@article{dong2024,
 author = {Li, Dong and Jin, Ruoming and Liu, Zhenming and Ren, Bin and Gao, Jing and Liu, Zhi},
 title = {On Item-Sampling Evaluation for Recommender System},
-year = {2023},
+year = {2024},
+volume = {2},
 journal = {ACM Trans. Recomm. Syst.},
 }
 
@@ -2395,6 +2394,13 @@ booktitle = {ACM/IEEE IPSN '23},
       primaryClass={cs.DC}
 }
 
+@inproceedings{yuning2024localization,
+  title={{OrchLoc: In-Orchard Localization via a Single LoRa Gateway and Generative Diffusion Model-based Fingerprinting}},
+  author={Yang, Kang and Chen, Yuning and Du, Wan},
+  booktitle={ACM MobiSys '24},
+  year={2024}
+}
+
 @inproceedings{yilin2021,
 author = {Liu, Yilin and Zhang, Shijia and Gowda, Mahanth},
 title = {When Video meets Inertial Sensors: Zero-shot Domain Adaptation for Finger Motion Analytics with Inertial Sensors},
@@ -2405,7 +2411,7 @@ booktitle = {IoTDI '21},
 
 @INPROCEEDINGS{feiwen2021,
   author={Wen, Fei and Qin, Mian and Gratz, Paul and Reddy, Narasimha},
-  booktitle={58th ACM/IEEE DAC '21}, 
+  booktitle={ACM/IEEE DAC '21}, 
   title={OpenMem: Hardware/Software Cooperative Management for Mobile Memory System}, 
   year={2021},
 }
@@ -2449,7 +2455,7 @@ author = {Ti Zhou and Man Lin},
 
 @inproceedings{wsn_survey,
   author={Kocakulak, Mustafa and Butun, Ismail},
-  booktitle={2017 IEEE 7th Annual Computing and Communication Workshop and Conference (CCWC)}, 
+  booktitle={IEEE Annual Computing and Communication Workshop and Conference (CCWC '17)}, 
   title={An overview of Wireless Sensor Networks towards internet of things}, 
   year={2017},
 }
@@ -2514,9 +2520,10 @@ volume = {6},
 
 @article{yiming2023,
   author={Zeng, Yiming and Zhang, Jiarui and Liu, Ji and Liu, Zhenhua and Yang, Yuanyuan},
-  journal={IEEE/ACM Transactions on Networking}, 
+  journal={IEEE/ACM TON}, 
   title={Entanglement Routing Design Over Quantum Networks}, 
   year={2023},
+  volume={32}
 }
 
 @inproceedings{lyu-2022-trojaned,
@@ -2553,6 +2560,7 @@ journal = {Optics Express},
 publisher = {Optica Publishing Group},
 title = {Multi-path photon-phonon converter in optomechanical system at single-quantum level},
 year = {2017},
+volume = {25}
 }
 
 @article{photonic_quantum_sensing,
@@ -2568,6 +2576,7 @@ year = {2017},
     title = {Quantum advantage in microwave quantum radar},
     journal = {Nature Physics},
     year = {2023},
+    volume = {19},
 }
 
 @article{zhenglin,
@@ -2613,6 +2622,7 @@ year = {2017},
    journal={Scientific Reports},
    author={Li, Xiongquan and Wang, Xukang and Chen, Xuhesheng and Lu, Yao and Fu, Hongpeng and Wu, Ying Cheng},
    year={2024},
+   volume={14}
 }
 
 @inproceedings{huayue_esdi,
@@ -2839,7 +2849,7 @@ year="2021",
     author = {Zhang, Ouyang and Qian, Zhenzhi and Mao, Yifan and Srinivasan, Kannan and Shroff, Ness B.},
     title = {{ERSCC}: Enable Efficient and Reliable Screen-Camera Communication},
     year = {2019},
-    booktitle = {ACM Mobihoc '19}
+    booktitle = {ACM MobiHoc '19}
 }
 
 @misc{yifan2023topiary,

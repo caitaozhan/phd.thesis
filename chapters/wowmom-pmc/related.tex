@@ -46,9 +46,11 @@ Schemes in~\cite{Quasi-EM} and~\cite{clustering} have been shown inferior in per
 
 \para{Wireless localization} techniques mainly fall into two categories: geometry mapping and fingerprinting-based.
 Geometry mapping mainly has two subcategories: ranging-based such as trilateration (via RSS/RSSI, ToA~\cite{zongxing2022tracking}, TDoA) and direction-based such as triangulation (via AoA).
-Fingerprinting-based methods can use all signal physical measurements including but not limited to amplitude, RSS/RSSI, ToA, TDoA, and AoA.
+Fingerprinting-based methods can use all signal physical measurements including but not limited to amplitude, RSS/RSSI, ToA, TDoA, AoA, and CSI.
 Whenever deep learning is used for localization, it can be considered as a fingerprinting-based method, since it requires a 
 training phase to survey the area of interest and a testing phase to search for (predict) the most likely location.
+In~\cite{yuning2024localization}, a diffusion model is used to generate the LoRa CSI fingerprints in orchards, 
+and a complex-valued fully-connected block classifier is used for localization.
 
 \para{Deep learning for wireless localization}. 
 Quite a few recent works have harnessed the power of deep learning in the general topic of localization.
@@ -93,7 +95,7 @@ In~\cite{peineng2021,peineng2021semi}, semi-supervised learning algorithms are d
 In~\cite{peineng2023}, a machine learning-guided imaging approach is used to segment platelet geometries and quantify adhesion dynamics parameters.
 DeepVS~\cite{zongxing2022dl} combines 1D CNN and attention models to exploit local features and temporal correlations to improve RF-based vital signs sensing.
 An LSTM encoder-decoder model is proposed to generate Chinese poetry~\cite{yubo2017text}.
-Machine learning also has applications in e-commerce~\cite{kexin2023ecommerce}, recommendation system~\cite{dong2020,dong2023,dong2023recommend}
+Machine learning also has applications in e-commerce~\cite{kexin2023ecommerce}, recommendation system~\cite{dong2020,dong2024,dong2023recommend}
 financial time series data~\cite{kexin2023financial}, and spectrum allocation~\cite{mohammad2024}.
 ~\cite{lyu-clinical} provide a novel multimodal transformer to fuse clinical notes and structured electronic health record data
  for better prediction of in-hospital mortality.
