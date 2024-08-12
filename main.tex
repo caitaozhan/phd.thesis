@@ -1,19 +1,5 @@
-\documentclass[
-11pt, % The default document font size, options: 10pt, 11pt, 12pt
-oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
-english, % ngerman for German
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
-% draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
-%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
-liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
-%toctotoc, % Uncomment to add the main table of contents to the table of contents
-%parskip, % Uncomment to add space between paragraphs
-nohyperref, % Uncomment to not load the hyperref package
-headsepline, % Uncomment to get a line under the header
-%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
-%consistentlayout, % Uncomment to change the layout of the declaration, abstract, and acknowledgments pages to match the default layout
-]{MastersDoctoralThesis} % The class file specifying the document structure
-
+\documentclass[12pt]{report}
+\usepackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}
 
 \let\proof\relax
 \let\endproof\relax
@@ -31,6 +17,7 @@ headsepline, % Uncomment to get a line under the header
 \counterwithout{table}{section}
 \counterwithin{table}{chapter}
 } 
+
 
 %----------------------------------------------------------------------------------------
 %	all packages are here
@@ -62,43 +49,19 @@ headsepline, % Uncomment to get a line under the header
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
       \addtolength{\leftmargin}{\labelsep}%
-      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\bibitemsep}{\baselineskip}%
       \setlength{\parsep}{\bibparsep}}%
       \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
   
-%----------------------------------------------------------------------------------------
-%	MARGIN SETTINGS
-%----------------------------------------------------------------------------------------
-\geometry{
-	paper=a4paper, % Change to letterpaper for US letter
-	inner=3cm, % Inner margin
-	outer=3cm, % Outer margin
-	bindingoffset=.5cm, % Binding offset
-	top=1.5cm, % Top margin
-	bottom=1.5cm, % Bottom margin
-  head=1.5cm,
-	%showframe, % Uncomment to show how the type block is set on the page
-}
-
-%----------------------------------------------------------------------------------------
-%	THESIS INFORMATION
-%----------------------------------------------------------------------------------------
-\thesistitle{Transmitter Localization and Optimizing Initial State in Classical/Quantum Sensor Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
-\author{Caitao Zhan} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
-
-\AtBeginDocument{
-  \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
-  \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
-}
 
 \begin{document}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
-\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+% \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
 \pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
 \input{titlepage}
 
@@ -110,9 +73,15 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
-\tableofcontents % Prints the main table of contents
-\listoffigures % Prints the list of figures
-\listoftables % Prints the list of tables
+\tableofcontents
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
 
 %----------------------------------------------------------------------------------------
 %	ACKNOWLEDGEMENTS
@@ -127,14 +96,16 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	THESIS CHAPTERS. ipsn, wowmom, pmc, qce, tqc, tqe are either conference or journal names
 %----------------------------------------------------------------------------------------
-\mainmatter % Begin numeric (1,2,3...) page numbering
-\pagestyle{thesis} % Return the page headers back to the "thesis" style
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
 \include{introduction}
-\include{ipsn}
-\include{wowmom-pmc}
-\include{qce}
-\include{tqc}
-\include{tqe}
+% \include{ipsn}
+% \include{wowmom-pmc}
+% \include{qce}
+% \include{tqc}
+% \include{tqe}
 
 %----------------------------------------------------------------------------------------
 %	THESIS APPENDICES
@@ -145,6 +116,11 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+
 \printbibliography
+
 
 \end{document}
